@@ -15,8 +15,10 @@ create table ECUE (
 	libelleECUE varchar2(20),
 	nbheures number,
 	id_enseignant number,
+	codeue number,
 	constraint pkECUE primary key(codeMatiere),
-	constraint fkenseignant_ecue foreign key(id_enseignant) references enseignant(id_enseignant)
+	constraint fkenseignant_ecue foreign key(id_enseignant) references enseignant(id_enseignant),
+	constraint fkue_ecue foreign key(codeue) references ue(codeue),
 );
 /
 
@@ -27,8 +29,10 @@ create table UE (
 	libelleUE varchar2(50),
 	optionnel char(1),
 	id_enseignant number,
+	codesemestre number,
 	constraint pkUE primary key(codeUE),
-	constraint fkenseignant_ue foreign key(id_enseignant) references enseignant(id_enseignant)
+	constraint fkenseignant_ue foreign key(id_enseignant) references enseignant(id_enseignant),
+	constraint fksemestre_ue foreign key(codesemestre) references semestre(codesemestre)
 );
 /
 
@@ -38,17 +42,23 @@ create table Semestre (
 	codesemestre number,
 	libellesemestre varchar2(10),
 	nbUEFacultatives number,
-	constraint pkSemestre primary key(codesemestre)
+	codeEtape number,
+	constraint pkSemestre primary key(codesemestre),
+	constraint fketape_ue foreign key(codeetape) references etape(codeetape)
 );
 /
 
 -- Etape
 
+-- mettre les deux semestre en clé étrangeres ici ?
 create table Etape (
-	versionEtape varchar2(10),
+	codeEtape number
+	versionEtape varchar2(10), -- le chiffre de l'année ?
 	id_enseignant number,
-	constraint pkEtape primary key(versionEtape),
-	constraint fkenseignant_etape foreign key(id_enseignant) references enseignant(id_enseignant)
+	mnemo varchar2(10),
+	constraint pkEtape primary key(codeEtape),
+	constraint fkenseignant_etape foreign key(id_enseignant) references enseignant(id_enseignant),
+	constraint fkdepartement_etape foreign key(mnemo) references departement(mnemo)
 );
 /
 
@@ -90,11 +100,38 @@ create table Etudiant (
 	id_provenance number,
 	id_statut number,
 	id_nationalite number,
+	codesemestre number,
+	codeUE number,
 	constraint pkEtudiant primary key(numEtudiant),
 	constraint fkpersonne_etud foreign key(id_personne) references personne(id_personne),
 	constraint fkprovenance_etud foreign key(id_provenance) references provenance(id_provenance),
 	constraint fkstatut_etud foreign key(id_statut) references statut(id_statut),
-	constraint fknationalite_etud foreign key(id_nationalite) references nationalite(id_nationalite)
+	constraint fknationalite_etud foreign key(id_nationalite) references nationalite(id_nationalite),
+	constraint fksemestre_etud foreign key(codesemestre) references semestre(codesemestre)	
+);
+/
+
+create table VAE (
+	codeue number,
+	numEtudiant number,
+	constraint fkue_vae foreign key(codeue) references ue(codeue),
+	constraint fketud_vae foreign key(numetudiant) references etudiant(numEtudiant)
+);
+/
+
+create table choixUE (
+	codeue number,
+	numEtudiant number,
+	constraint fkue_choixUE foreign key(codeue) references ue(codeue),
+	constraint fketud_choixUE foreign key(numetudiant) references etudiant(numEtudiant)
+);
+/
+
+create table APDJ (
+	codeue number,
+	numEtudiant number,
+	constraint fkue_apdj foreign key(codeue) references ue(codeue),
+	constraint fketud_apdj foreign key(numetudiant) references etudiant(numEtudiant)
 );
 /
 
@@ -156,8 +193,8 @@ create Redoublant (
 	numEtudiant number,
 	codesemestre number,
 	constraint pkRedoublant primary key(id_redoublant),
-	constraint fketudiant_pj foreign key(numEtudiant) references etudiant(numEtudiant),
-	constraint fksemectre_pj foreign key(codeSemestre) references semestre(codeSemestre)
+	constraint fketudiant_red foreign key(numEtudiant) references etudiant(numEtudiant),
+	constraint fksemestre_red foreign key(codeSemestre) references semestre(codeSemestre)
 );
 /
 
@@ -174,8 +211,8 @@ create table etranger (
 	numEtudiant number,
 	codesemestre number,
 	constraint pkEtranger primary key(id_etranger),
-	constraint fketudiant_pj foreign key(numEtudiant) references etudiant(numEtudiant),
-	constraint fksemectre_pj foreign key(codeSemestre) references semestre(codeSemestre)
+	constraint fketudiant_etr foreign key(numEtudiant) references etudiant(numEtudiant),
+	constraint fksemestre_etr foreign key(codeSemestre) references semestre(codeSemestre)
 );
 /
 
