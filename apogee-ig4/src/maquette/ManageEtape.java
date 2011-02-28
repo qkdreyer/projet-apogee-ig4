@@ -70,10 +70,6 @@ public class ManageEtape extends javax.swing.JFrame {
         jScrollPane51 = new javax.swing.JScrollPane();
         jList50 = new javax.swing.JList();
         jButton31 = new javax.swing.JButton();
-        jPanel36 = new javax.swing.JPanel();
-        jScrollPane52 = new javax.swing.JScrollPane();
-        jList51 = new javax.swing.JList();
-        jButton32 = new javax.swing.JButton();
         jPanel37 = new javax.swing.JPanel();
         jScrollPane53 = new javax.swing.JScrollPane();
         jList52 = new javax.swing.JList();
@@ -228,7 +224,7 @@ public class ManageEtape extends javax.swing.JFrame {
 
         jLabel11.setText("Année");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "3", "4", "5", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "3", "4", "5" }));
 
         jLabel12.setText("Département : ");
 
@@ -330,18 +326,17 @@ public class ManageEtape extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton13)
-                .addGap(18, 18, 18)
+                .addGap(78, 78, 78)
                 .addComponent(jButton12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(jButton14)
-                .addContainerGap())
+                .addGap(65, 65, 65))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton12)
                     .addComponent(jButton13)
                     .addComponent(jButton14))
@@ -449,38 +444,6 @@ public class ManageEtape extends javax.swing.JFrame {
         );
 
         jPanel20.add(jPanel35);
-
-        jPanel36.setBorder(javax.swing.BorderFactory.createTitledBorder("UE 1 - 6 ECTS"));
-
-        jList51.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "ECUE 1", "ECUE 2", "ECUE 3", "ECUE 4" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane52.setViewportView(jList51);
-
-        jButton32.setText("Détails");
-
-        javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
-        jPanel36.setLayout(jPanel36Layout);
-        jPanel36Layout.setHorizontalGroup(
-            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel36Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton32, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane52, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel36Layout.setVerticalGroup(
-            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel36Layout.createSequentialGroup()
-                .addComponent(jScrollPane52, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton32))
-        );
-
-        jPanel20.add(jPanel36);
 
         jPanel37.setBorder(javax.swing.BorderFactory.createTitledBorder("UE 1 - 6 ECTS"));
 
@@ -976,7 +939,7 @@ public class ManageEtape extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jLabel12)
@@ -1007,7 +970,7 @@ public class ManageEtape extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1050,7 +1013,6 @@ public class ManageEtape extends javax.swing.JFrame {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
@@ -1087,7 +1049,6 @@ public class ManageEtape extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JList jList50;
-    private javax.swing.JList jList51;
     private javax.swing.JList jList52;
     private javax.swing.JList jList53;
     private javax.swing.JList jList54;
@@ -1120,7 +1081,6 @@ public class ManageEtape extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel35;
-    private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
@@ -1137,7 +1097,6 @@ public class ManageEtape extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane51;
-    private javax.swing.JScrollPane jScrollPane52;
     private javax.swing.JScrollPane jScrollPane53;
     private javax.swing.JScrollPane jScrollPane54;
     private javax.swing.JScrollPane jScrollPane55;
