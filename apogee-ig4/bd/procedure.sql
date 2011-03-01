@@ -37,6 +37,42 @@ end;
 
 
 
+---------get_liste_etud_semestre
+--in: codeSemestre
+--out: [numEtudiant]
+
+--require:
+--	Le codeSemestre correspond au code d'un
+--	semestre existante
+--ensure:
+--	[numEtudiant] contient tous les numeros 
+--	d'etudiants qui sont inscrits au semestre
+
+create or replace function get_liste_etud_semestre
+( codeSemestre_in IN Semestre.codeSemestre%type )
+return Etud_num_tab
+is
+	--pour stocker la liste des etudiants
+	liste_etud Etud_num_tab := Etud_num_tab();
+	--l'etape qui comporte le semestre concernee
+	codeEtape_t Etape.codeEtape%type;
+	
+begin
+	--recuperation de l'Etape
+	select codeEtape into codeEtape_t
+	from Semestre
+	where codeSemestre = codeSemestre_in;
+
+	--recuperation de la liste des etudiants
+	liste_etud := table(
+		get_liste_etud_etape(codeEtape_t)
+	);
+
+	return liste_etud;
+end;
+
+
+
 ---------get_liste_etud_ue
 --in: codeUE
 --out: [numEtudiant]
