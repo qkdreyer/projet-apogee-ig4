@@ -110,6 +110,7 @@ create table VAE (
 	numEtudiant number	
 );
 
+--C'est l'UE dans laquelle un étudiant est inscrit
 create table choixUE (
 	codeue number,
 	numEtudiant number	
