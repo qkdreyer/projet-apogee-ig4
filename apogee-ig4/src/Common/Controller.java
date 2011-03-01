@@ -9,7 +9,6 @@ package Common;
  *
  * @author Quentin
  */
-public interface IF {
+public class Controller {
 
-    public abstract void display();
 }
