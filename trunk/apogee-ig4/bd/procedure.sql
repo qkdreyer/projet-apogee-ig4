@@ -122,7 +122,7 @@ begin
 			liste_etud.extend;
 			n := n + 1;
 			--on ajoute les etudiants a la liste_etud
-			liste_etud(n) := r.numetudiant;
+			liste_etud(n) := Etud_num(r.numetudiant);
 		end loop;
 		
 	else
