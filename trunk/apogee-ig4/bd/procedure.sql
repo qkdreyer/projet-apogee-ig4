@@ -2,11 +2,14 @@
 
 --------type table pour la recuperation d'etudiants
 --une table de numeros d'etudiants
-create type Etud_num_tab is table of
-	Etudiant.numEtudiant%type;
 
+create type Etud_num as object (
+	numEtudiant number
+);
+/
 
-
+create type Etud_num_tab is table of Etud_num;
+/
 
 ---------get_liste_etud_etape
 --in: codeEtape
@@ -25,16 +28,23 @@ return Etud_num_tab
 is
 	--pour stocker la liste des etudiants
 	liste_etud Etud_num_tab := Etud_num_tab();
-	
+	n integer := 0;
 begin
 	--recuperation de la liste des etudiants
-	liste_etud := select numEtudiant
+	
+	for r in (
+	select numEtudiant
 	from Etudiant Etud, Etape et
-	where etud.codeetape = et.codeetape;
-
+	where etud.codeetape = et.codeetape
+	)
+	loop
+		liste_etud.extend;
+		n := n+1;
+		liste_etud(n) := Etud_num(r.numEtudiant);
+	end loop;
 	return liste_etud;
 end;
-
+/
 
 
 ---------get_liste_etud_semestre
