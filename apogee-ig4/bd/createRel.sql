@@ -92,7 +92,6 @@ create table Etudiant (
 	pointjuryannee number,
 	numINE varchar2(15),
 	scoreTOEIC number,
-	idpersonne number,
 	idprovenance number,
 	idstatut number,
 	idnationalite number,
@@ -110,7 +109,6 @@ create table VAE (
 	numEtudiant number	
 );
 
---C'est l'UE dans laquelle un étudiant est inscrit
 create table choixUE (
 	codeue varchar2(10),
 	numEtudiant number	

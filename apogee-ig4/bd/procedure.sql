@@ -7,6 +7,34 @@ create type Etud_num_tab is table of
 
 
 
+---------get_liste_etud_etape
+--in: codeEtape
+--out: [numEtudiant]
+
+--require:
+--	Le codeEtape correspond au code d'une etape
+--	existante
+--ensure:
+--	[numEtudiant] contient tous les numeros 
+--	d'etudiants qui sont inscrits a l'etape
+
+create or replace function get_liste_etud_etape
+( codeEtape_in IN Etape.codeEtape%type )
+return Etud_num_tab
+is
+	--pour stocker la liste des etudiants
+	liste_etud Etud_num_tab := Etud_num_tab();
+	
+begin
+	--recuperation de la liste des etudiants
+	liste_etud := select numEtudiant
+	from Etudiant Etud, Etape et
+	where etud.codeetape = et.codeetape;
+
+	return liste_etud;
+end;
+
+
 ---------get_liste_etud_ecue
 --in: codeMatiere
 --out: [numEtudiant]
