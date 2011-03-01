@@ -77,12 +77,11 @@ begin
 	where codeSemestre = codeSemestre_in;
 
 	--recuperation de la liste des etudiants
-	liste_etud := table(
-		get_liste_etud_etape(codeEtape_t)
-	);
+	liste_etud := get_liste_etud_etape(codeEtape_t);
 
 	return liste_etud;
 end;
+/
 
 
 ---------get_liste_etud_ue
@@ -123,7 +122,7 @@ begin
 			liste_etud.extend;
 			n := n + 1;
 			--on ajoute les etudiants a la liste_etud
-			liste_etud(n) := r;
+			liste_etud(n) := r.numetudiant;
 		end loop;
 		
 	else
@@ -135,12 +134,11 @@ begin
 
 		--on recupere la liste des etudiants
 		--a partir du semestre
-		liste_etud := table(
-			get_liste_etud_semestre(codeSemestre)
-		);
+		liste_etud := get_liste_etud_semestre(codeSemestre_t);
 	end if;
 	return liste_etud;
 end;
+/
 
 
 
