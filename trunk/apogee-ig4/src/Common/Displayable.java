@@ -3,12 +3,13 @@
  * and open the template in the editor.
  */
 
-package maquette;
+package Common;
 
 /**
  *
- * @author pierre
+ * @author Quentin
  */
-public class ManageECUE extends javax.swing.JFrame {
+public interface Displayable {
 
+    public abstract void display();
 }
