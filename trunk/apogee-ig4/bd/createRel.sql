@@ -15,7 +15,7 @@ create table ECUE (
 	libelleECUE varchar2(50),
 	nbheures number,
 	idenseignant number,
-	codeue number,
+	codeue varchar2(10),
 	constraint pkECUE primary key(codeMatiere)
 );
 
@@ -99,7 +99,7 @@ create table Etudiant (
 	codeEtape varchar2(10),
 	nom varchar2(20),
 	prenom varchar2(20),
-	mail varchar2(20),
+	mail varchar2(40),
 	constraint pkEtudiant primary key(numEtudiant)
 );
 
@@ -125,10 +125,9 @@ create table APDJ (
 create table Enseignant (
 	idenseignant number,
 	mdp varchar2(10),
-	login varchar2(20),
 	nom varchar2(20),
 	prenom varchar2(20),
-	mail varchar2(20),
+	mail varchar2(40),
 	constraint pkEnseignant primary key(idenseignant)
 );
 
@@ -136,10 +135,9 @@ create table Enseignant (
 create table Secretaire (
 	idsecretaire number,
 	mdp varchar2(10),
-	login varchar2(20),
 	nom varchar2(20),
 	prenom varchar2(20),
-	mail varchar2(20),
+	mail varchar2(40),
 	constraint pkSecretaire primary key(idsecretaire)
 );
 
