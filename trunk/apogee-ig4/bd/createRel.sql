@@ -95,7 +95,6 @@ create table Etudiant (
 	idprovenance number,
 	idstatut number,
 	idnationalite number,
-	codesemestre varchar2(10),
 	codeEtape varchar2(10),
 	nom varchar2(20),
 	prenom varchar2(20),

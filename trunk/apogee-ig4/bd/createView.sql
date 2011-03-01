@@ -40,6 +40,24 @@ select ec.codeMatiere, ec.libelleECUE, ec.nbheures, ec.idenseignant, ec.codeue, 
 from ECUE ec;
 /
 
+create or replace view VO_Etud of Tetud
+with object identifier(numEtudiant)
+as
+	select distinct e.numEtudiant, e.nom, e.prenom,
+		n.noteSession1, n.noteSession2
+	from Etudiant e, Note n
+	where n.numEtudiant(+)= e.numEtudiant
+	and e.numEtudiant in (
+		Select le.numEtudiant
+		from table(get_liste_etud_ecue(ec.codeMatiere)) le
+		)
+;
+/
+
+
+
+
+
 
 
 
