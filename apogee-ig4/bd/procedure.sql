@@ -168,9 +168,7 @@ begin
 	where codeMatiere = codeMatiere_in;
 
 	--recuperation de la liste des etudiants
-	liste_etud := table(
-		get_liste_etud_ue(codeUE_t)
-	);
+	liste_etud := get_liste_etud_ue(codeUE_t);
 
 	return liste_etud;
 end;
