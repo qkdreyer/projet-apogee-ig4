@@ -26,7 +26,7 @@ public class ConnectDB {
             //Création d'un objet Statement
             Statement state = conn.createStatement();
             //L'objet ResultSet contient le résultat de la requête SQL
-            ResultSet result = state.executeQuery("SELECT * FROM Etudiant");
+            ResultSet result = state.executeQuery("SELECT * FROM Etudiant;");
             //On récupère les MetaData
             ResultSetMetaData resultMeta = result.getMetaData();
 
