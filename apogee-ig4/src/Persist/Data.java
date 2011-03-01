@@ -5,7 +5,7 @@ package Persist;
  * and open the template in the editor.
  */
 
-import Common.Displayable;
+import Core.Displayable;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;

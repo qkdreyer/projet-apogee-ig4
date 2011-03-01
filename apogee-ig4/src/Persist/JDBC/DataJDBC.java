@@ -31,8 +31,8 @@ public class DataJDBC extends Data {
 	    while (i.hasNext()) {
 		EntryStudentList entry = (EntryStudentList)i.next();
 		Statement s = connDB.getConnection().createStatement();
-		s.executeUpdate("UPDATE ListEtud SET Note1 = " +
-			entry.getNote1() + ", Note2 = " + entry.getNote2() +
+		s.executeUpdate("UPDATE Tetud_nt SET NoteSession1 = " +
+			entry.getNote1() + ", NoteSession2 = " + entry.getNote2() +
 			" WHERE numEtudiant = " + entry.getNumEtud() + ";");
 	    }
 	} catch (Exception e) {
@@ -45,7 +45,7 @@ public class DataJDBC extends Data {
         try {
 	    Statement select = connDB.getConnection().createStatement();
 	    ResultSet result = select.executeQuery("SELECT numEtudiant, Nom,"
-		    + "Prenom, Note1, Note2 FROM ListEtud");
+		    + "Prenom, NoteSession1, NoteSession2 FROM ListEtud");
 
 	    while (result.next()) {
 		this.add(new EntryStudentList(result.getInt(1),
