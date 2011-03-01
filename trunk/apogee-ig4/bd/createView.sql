@@ -28,6 +28,9 @@ select ec.codeMatiere, ec.libelleECUE, ec.nbheures, ec.idenseignant, ec.codeue, 
 	select e.numEtudiant, e.nom, e.prenom,
 		n.noteSession1, n.noteSession2
 	from Etudiant e, Note n
-	where e.numEtudiant in get_
+	where n.numEtudiant = e.numEtudiant
+	and e.numEtudiant in
+		get_liste_etud_ecue(ec.codeMatiere)
 	)as TEtud_nt)
 from ECUE ec;
+
