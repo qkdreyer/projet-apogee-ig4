@@ -22,7 +22,7 @@ public class Main {
 	    if (args[1].equals("db")) { // c/g db passwd
 		if (args.length > 2) {
 		    JDBCKit kit = new JDBCKit();
-		    //DataJDBC d = new DataJDBC(args[2]);
+		    DataJDBC d = new DataJDBC(args[2]);
 		    System.out.println("Test");
 		} else {
 		    System.err.println("Mot de passe BD absent !");
