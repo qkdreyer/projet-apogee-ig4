@@ -1,0 +1,2 @@
+-- Remplissage de la table avec des etudiants, professeur,ECUE,
+-- UE, semestre, année, département
