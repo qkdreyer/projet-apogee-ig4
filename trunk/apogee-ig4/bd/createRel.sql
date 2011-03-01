@@ -11,7 +11,7 @@
 
 -- ECUE
 create table ECUE (
-	codeMatiere number,
+	codeMatiere varchar2(10),
 	libelleECUE varchar2(50),
 	nbheures number,
 	idenseignant number,
@@ -22,12 +22,12 @@ create table ECUE (
 
 -- UE
 create table UE (
-	codeUE number,
+	codeUE varchar2(10),
 	nbECTS number,
 	libelleUE varchar2(50),
 	optionnel char(1),
 	idenseignant number,
-	codesemestre number,
+	codesemestre varchar2(10),
 	constraint pkUE primary key(codeUE)
 );
 
@@ -36,10 +36,10 @@ create table UE (
 -- Semestre
 
 create table Semestre (
-	codesemestre number,
+	codesemestre varchar2(10),
 	libellesemestre varchar2(10),
 	nbUEFacultatives number,
-	codeEtape number,
+	codeEtape varchar2(10),
 	constraint pkSemestre primary key(codesemestre)	
 );
 
@@ -48,7 +48,7 @@ create table Semestre (
 
 -- mettre les deux semestre en clé étrangeres ici ?
 create table Etape (
-	codeEtape number,
+	codeEtape varchar2(10),
 	versionEtape varchar2(10), -- le chiffre de l'année ?
 	idenseignant number,
 	mnemo varchar2(10),
@@ -59,8 +59,8 @@ create table Etape (
 -- Departement
 
 create table Departement (
-	versionDiplome varchar2(10),
-	nomDepartement varchar2(10),
+	versionDiplome varchar2(20),
+	nomDepartement varchar2(100),
 	mnemo varchar2(10),
 	idenseignant number,
 	constraint pkDepartement primary key(mnemo)
@@ -96,8 +96,8 @@ create table Etudiant (
 	idprovenance number,
 	idstatut number,
 	idnationalite number,
-	codesemestre number,
-	codeEtape number,
+	codesemestre varchar2(10),
+	codeEtape varchar2(10),
 	nom varchar2(20),
 	prenom varchar2(20),
 	mail varchar2(20),
@@ -106,19 +106,19 @@ create table Etudiant (
 
 
 create table VAE (
-	codeue number,
+	codeue varchar2(10),
 	numEtudiant number	
 );
 
 --C'est l'UE dans laquelle un étudiant est inscrit
 create table choixUE (
-	codeue number,
+	codeue varchar2(10),
 	numEtudiant number	
 );
 
 
 create table APDJ (
-	codeue number,
+	codeue varchar2(10),
 	numEtudiant number	
 );
 
@@ -160,7 +160,7 @@ create table Note (
 	noteSession1 number,
 	noteSession2 number,
 	numEtudiant number,
-	codeMatiere number,
+	codeMatiere varchar2(10),
 	constraint pkNote primary key(idnote)	
 );
 
@@ -169,7 +169,7 @@ create table PointsJury (
 	idPointsJury number,
 	nbPoints number,
 	numEtudiant number,
-	codesemestre number,
+	codesemestre varchar2(10),
 	constraint pkPointJury primary key(idPointsJury)
 );
 
@@ -178,7 +178,7 @@ create table Redoublant (
 	idredoublant number,
 	moyenne number,
 	numEtudiant number,
-	codesemestre number,
+	codesemestre varchar2(10),
 	constraint pkRedoublant primary key(idredoublant)
 );
 
@@ -194,7 +194,7 @@ create table etranger (
 	idetranger number,
 	moyenne number,
 	numEtudiant number,
-	codesemestre number,
+	codesemestre varchar2(10),
 	constraint pkEtranger primary key(idetranger)
 );
 
