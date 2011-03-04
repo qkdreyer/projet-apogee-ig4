@@ -1,13 +1,11 @@
 package Core;
 
-import Persist.JDBC.*;
-import Persist.XML.*;
+import Console.ConsoleManageECUE;
 
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Quentin
@@ -16,25 +14,31 @@ public class Main {
 
     public static String invalidArguments = "Arguments invalides (Format : c/g db/xml [passwd])";
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         if (args.length > 1) {
-	    //if (args[0].equals("g"))
-	    if (args[1].equals("db")) { // c/g db passwd
-		if (args.length > 2) {
-		    JDBCKit kit = new JDBCKit();
-		    DataJDBC d = new DataJDBC(args[2]);
-		    System.out.println("Test");
-		} else {
-		    System.err.println("Mot de passe BD absent !");
-		}
-	    } else if (args[1].equals("xml")) { // c/g xml
-		XMLKit kit = new XMLKit();
-	    } else {
-		System.err.println(invalidArguments);
-	    }
+            if (args[0].equals("g")) {
+                if (args[1].equals("db")) { // g db
+                    //TODO
+                } else if (args[1].equals("xml")) { // g xml
+                    //TODO
+                } else {
+                    System.err.println(invalidArguments);
+                }
+            } else if (args[0].equals("c")) {
+                if (args[1].equals("db")) { // c db
+                    ConsoleManageECUE cmecue = new ConsoleManageECUE();
+                    cmecue.accept();
+                } else if (args[1].equals("xml")) { // c xml
+                    //TODO
+                } else {
+                    System.err.println(invalidArguments);
+                }
+            } else {
+                System.err.println(invalidArguments);
+            }
         } else {
             System.err.println(invalidArguments);
         }
+        
     }
-
 }

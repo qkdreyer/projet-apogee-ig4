@@ -19,8 +19,8 @@ public class DataJDBC extends Data {
 
     ConnectDB connDB;
 
-    public DataJDBC(String arg) {
-	connDB = new ConnectDB(arg);
+    public DataJDBC() {
+	connDB = new ConnectDB();
 	data = this; // singleton?
     }
     
@@ -57,7 +57,15 @@ public class DataJDBC extends Data {
 	}
     }
 
-    public void display() {
-	throw new UnsupportedOperationException("Not supported yet.");
+    public EntryStudentList getStudent(Integer i) {
+        return entriesStudentList.get(i+1);
+    }
+
+    public void setNoteSession1(Integer i, Float f) {
+        getStudent(i).setNote1(f);
+    }
+
+    public void setNoteSession2(Integer i, Float f) {
+        getStudent(i).setNote2(f);
     }
 }

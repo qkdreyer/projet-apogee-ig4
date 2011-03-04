@@ -11,5 +11,5 @@ package Core;
  */
 public interface Displayable {
 
-    public abstract void display();
+    public abstract void display(String msg);
 }

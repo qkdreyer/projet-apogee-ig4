@@ -16,10 +16,10 @@ public class EntryStudentList implements Serializable {
     private int numEtud;
     private String nom;
     private String prenom;
-    private int note1;
-    private int note2;
+    private float note1;
+    private float note2;
 
-    public EntryStudentList(int numEtud, String nom, String prenom, int note1, int note2) {
+    public EntryStudentList(int numEtud, String nom, String prenom, float note1, float note2) {
 	this.numEtud = numEtud;
 	this.nom = nom;
 	this.prenom = prenom;
@@ -39,12 +39,20 @@ public class EntryStudentList implements Serializable {
 	return prenom;
     }
 
-    public int getNote1() {
+    public float getNote1() {
 	return note1;
     }
 
-    public int getNote2() {
+    public float getNote2() {
 	return note2;
+    }
+
+    public void setNote1(float f) {
+        note1 = f;
+    }
+
+    public void setNote2(float f) {
+        note2 = f;
     }
 
 }

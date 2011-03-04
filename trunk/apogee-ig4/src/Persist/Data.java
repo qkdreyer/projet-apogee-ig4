@@ -5,7 +5,6 @@ package Persist;
  * and open the template in the editor.
  */
 
-import Core.Displayable;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -14,7 +13,7 @@ import java.util.Observable;
  *
  * @author Quentin
  */
-public abstract class Data extends Observable implements Serializable, Displayable {
+public abstract class Data extends Observable implements Serializable {
 
     protected static Data data = null;
     public ArrayList<EntryStudentList> entriesStudentList = new ArrayList<EntryStudentList>();
