@@ -5,6 +5,11 @@
 
 package Persist.JDBC;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
 
 /**
@@ -13,16 +18,25 @@ import java.sql.*;
  */
 public class ConnectDB {
 
-    Connection conn = null;
+    private Connection conn = null; //private/public?
 
-    public ConnectDB (String arg) {
+    public ConnectDB () {
         try {
 	    Class.forName("oracle.jdbc.driver.OracleDriver");
             String url = "jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ora10";
-	    
-            conn = DriverManager.getConnection(url, "pierre.nicolas", arg);
-            System.out.println("Connection effective !");
+            BufferedReader br = null;
 
+            try {
+                br = new BufferedReader(new FileReader(".htaccess"));
+                conn = DriverManager.getConnection(url, "pierre.nicolas", br.readLine());
+                System.out.println("Connection effective !");
+            } catch (FileNotFoundException ex) {
+                System.err.println("Fichier introuvable : " + ex);
+            } catch (IOException ex) {
+                System.err.println("Erreur de lecture/ecriture : " + ex);
+            }
+
+            /*
             //Création d'un objet Statement
             Statement state = conn.createStatement();
             //L'objet ResultSet contient le résultat de la requête SQL
@@ -46,7 +60,7 @@ public class ConnectDB {
             }
 
             result.close();
-            state.close();
+            state.close();*/
 
         } catch (SQLException e1) {
             System.err.println("Erreur lors de la connexion : " + e1);

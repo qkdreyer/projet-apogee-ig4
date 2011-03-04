@@ -35,9 +35,4 @@ public class DataXML extends Data {
         ObjectInputStream q = new ObjectInputStream(istream);
         DataXML d = (DataXML)q.readObject();
     }
-
-    public void display() {
-	throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 }
