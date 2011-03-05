@@ -40,6 +40,8 @@ select ec.codeMatiere, ec.libelleECUE, ec.nbheures, ec.idenseignant, ec.codeue, 
 from ECUE ec;
 /
 
+
+--TODO:vue etudiant, a supprimer?
 create or replace view VO_Etud of Tetud
 with object identifier(numEtudiant)
 as
