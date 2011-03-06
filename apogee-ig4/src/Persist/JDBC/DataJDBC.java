@@ -20,8 +20,7 @@ public class DataJDBC extends Data {
     ConnectDB connDB;
 
     public DataJDBC() {
-	connDB = new ConnectDB();
-	data = this; // singleton?
+	data = this; //TODO singleton?
     }
     
     @Override

@@ -57,6 +57,8 @@ public class Controller implements Observer {
                         + " : " + data.getStudent(Integer.parseInt(msg[1])).getNote1()
                         + " / " + data.getStudent(Integer.parseInt(msg[1])).getNote2());
             }
+        } else if (message.equals("#quit")) {
+            System.exit(0);
         }
     }
 }
