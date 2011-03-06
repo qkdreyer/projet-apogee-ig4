@@ -13,7 +13,7 @@ import java.util.Observable;
  *
  * @author Quentin
  */
-public abstract class Data extends Observable implements Serializable {
+public abstract class Data extends Observable {
 
     protected static Data data = null;
     public ArrayList<EntryStudentList> entriesStudentList = new ArrayList<EntryStudentList>();
@@ -33,9 +33,5 @@ public abstract class Data extends Observable implements Serializable {
 	}
 	return data;
     }
-
-    /*public Enumeration elements() {
-	return entries.elements();
-    }*/
 
 }

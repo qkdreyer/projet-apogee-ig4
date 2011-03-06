@@ -12,7 +12,7 @@ import java.io.*;
  *
  * @author Quentin
  */
-public class DataXML extends Data {
+public class DataXML extends Data implements Serializable {
 
     String filename = "data.xml";
 
