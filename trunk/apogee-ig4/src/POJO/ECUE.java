@@ -81,6 +81,15 @@ public class ECUE {
 
     }
 
+    public boolean isStudent(Integer i) {
+        if (i > 0 && i <= listeEtud.size()) {
+            return true;
+        } else {
+            System.err.println("Etudiant invalide !");
+            return false;
+        }
+    }
+
     public String getCodeMatiere() {
 	return codeMatiere;
     }
@@ -127,6 +136,21 @@ public class ECUE {
 
     public void setListeEtud(ArrayList<EtudiantECUE> listeEtud) {
 	this.listeEtud = listeEtud;
+    }
+
+    public String toString() {
+        String str = "Code matiere : " + this.codeMatiere + "\n"
+                + "libelle ECUE : " + this.libelleECUE + "\n"
+                + "idEnseignant : " + this.idEnseignant + "\n"
+                + "UE parente : " + this.codeUE + "\n"
+                + "nbHeures : " + this.nbHeures + "\n"
+                + "Liste etudiants : \n";
+
+        for(EtudiantECUE e : this.listeEtud) {
+            str += "\t" + e.getNom() + " " + e.getPrenom() + " "+ e.getNumEtud() + " " + e.getNote1() + " " + e.getNote2() + "\n";
+        }
+
+        return str;
     }
 
 }

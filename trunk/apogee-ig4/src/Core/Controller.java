@@ -4,6 +4,7 @@
  */
 package Core;
 
+import POJO.ECUE;
 import Persist.AbstractDAOFactory;
 import Persist.DAO;
 import java.util.Observable;
@@ -33,7 +34,7 @@ public class Controller implements Observer {
         String[] msg = message.split(" ");
 
         if (message.startsWith("#note1")) { // #note1 3 12.5
-            /*if (data.isStudent(Integer.parseInt(msg[1]))) {
+            if (msg[1]data.isStudent(Integer.parseInt(msg[1]))) {
                 data.setNoteSession1(Integer.parseInt(msg[1]), Float.parseFloat(msg[2]));
                 disp.display("Note de " + data.getStudent(Integer.parseInt(msg[1])).getNom()
                         + " " + data.getStudent(Integer.parseInt(msg[1])).getPrenom()
@@ -45,10 +46,13 @@ public class Controller implements Observer {
                 disp.display("Note de " + data.getStudent(Integer.parseInt(msg[1])).getNom()
                         + " " + data.getStudent(Integer.parseInt(msg[1])).getPrenom()
                         + " : " + data.getStudent(Integer.parseInt(msg[1])).getNote2());
-            }*/
-        } else if (message.equals("#find")) {
-	    try {
-		ecueDAO.find(msg[1]);
+            }
+        } else if (message.startsWith("#find")) {
+	    ECUE ec = new ECUE();
+            try {
+		ec = (ECUE) ecueDAO.find(msg[1]);
+                System.out.println("On echeck les resultats");
+                System.out.println(ec.toString());
 	    } catch (Exception ex) {
 		ex.printStackTrace();
 	    }
