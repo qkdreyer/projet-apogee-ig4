@@ -3,9 +3,7 @@
  * and open the template in the editor.
  */
 
-package Persist.XML;
-
-import Persist.PersistKit;
+package TODO;
 
 /**
  *

@@ -1,6 +1,7 @@
 package Core;
 
-import Console.ConsoleManageECUE;
+import UI.Console.ConsoleManageECUE;
+import Persist.AbstractDAOFactory;
 
 /*
  * To change this template, choose Tools | Templates
@@ -12,11 +13,12 @@ import Console.ConsoleManageECUE;
  */
 public class Main {
 
-    public static String invalidArguments = "Arguments invalides (Format : c/g db/xml [passwd])";
+    public static String invalidArguments = "Arguments invalides (Format : c/g db/xml)";
 
     public static void main(String[] args) {
         if (args.length > 1) {
-            if (args[0].equals("g")) {
+	    AbstractDAOFactory d = AbstractDAOFactory.getInstance(args[1]);
+            /*if (args[0].equals("g")) {
                 if (args[1].equals("db")) { // g db
                     //TODO
                 } else if (args[1].equals("xml")) { // g xml
@@ -35,7 +37,7 @@ public class Main {
                 }
             } else {
                 System.err.println(invalidArguments);
-            }
+            }*/
         } else {
             System.err.println(invalidArguments);
         }
