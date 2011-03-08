@@ -5,17 +5,30 @@ package Persist;
  * and open the template in the editor.
  */
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import Persist.DB.DBDAOFactory;
+import Persist.XML.XMLDAOFactory;
 import java.util.Observable;
 
 /**
  *
  * @author Quentin
  */
-public abstract class Data extends Observable {
+public abstract class AbstractDAOFactory extends Observable {
 
-    protected static Data data = null;
+    public abstract DAO getECUEDAO();
+    public abstract DAO getEleveDAO();
+
+    public static AbstractDAOFactory getInstance(String s) {
+	if (s.equals("db")) {
+	    return new DBDAOFactory();
+	} else if (s.equals("xml")) {
+	    return new XMLDAOFactory();
+	} else {
+	    return null;
+	}
+    }
+/*
+    protected static AbstractDAOFactory data = null;
     public ArrayList<EntryStudentList> entriesStudentList = new ArrayList<EntryStudentList>();
 
     public void add(EntryStudentList entry) {
@@ -27,11 +40,12 @@ public abstract class Data extends Observable {
     public abstract void save() throws Exception;
     public abstract void load() throws Exception;
 
-    public static Data getInstance() {
-	if (data == null) {
+
+*/
+	/*if (data == null) {
 	    System.err.println("No Persist Kit declared"); //new Error();
 	}
-	return data;
-    }
+	return data;*/
+    
 
 }

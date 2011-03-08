@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package TODO;
+package Core;
 
-import Core.Displayable;
-import Persist.JDBC.DataJDBC;
+import Persist.AbstractDAOFactory;
+import TODO.DataJDBC;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -16,9 +16,9 @@ import java.util.Observer;
 public class Controller implements Observer {
 
     private Displayable disp;
-    private DataJDBC data;
+    private AbstractDAOFactory factory;
 
-    public Controller(Displayable disp) {
+    public Controller(String ) {
         this.disp = disp;
         data = new DataJDBC();
     }

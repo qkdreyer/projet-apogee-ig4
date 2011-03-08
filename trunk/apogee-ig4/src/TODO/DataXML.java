@@ -1,18 +1,18 @@
-package Persist.XML;
+package TODO;
 
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import Persist.Data;
+import Persist.AbstractDAOFactory;
 import java.io.*;
 
 /**
  *
  * @author Quentin
  */
-public class DataXML extends Data implements Serializable {
+public class DataXML extends AbstractDAOFactory implements Serializable {
 
     String filename = "data.xml";
 
