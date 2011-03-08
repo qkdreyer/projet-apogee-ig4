@@ -17,7 +17,9 @@ public class Main {
 
     public static void main(String[] args) {
         if (args.length > 1) {
-	    AbstractDAOFactory d = AbstractDAOFactory.getInstance(args[1]);
+	    ConsoleManageECUE cmecue = new ConsoleManageECUE(args[1]);
+            cmecue.accept();
+	    //AbstractDAOFactory d = AbstractDAOFactory.getInstance(args[1]);
             /*if (args[0].equals("g")) {
                 if (args[1].equals("db")) { // g db
                     //TODO

@@ -21,8 +21,8 @@ public class ConsoleManageECUE implements Displayable {
      * This method waits for input from the console. Once it is received, it sends it to the client's message handler.
      */
 
-    public ConsoleManageECUE() {
-        contr = new Controller(this);
+    public ConsoleManageECUE(String s) {
+        contr = new Controller(this, s);
     }
 
     public void accept() {

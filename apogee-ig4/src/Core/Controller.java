@@ -5,9 +5,11 @@
 package Core;
 
 import Persist.AbstractDAOFactory;
-import TODO.DataJDBC;
+import Persist.DAO;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,11 +18,11 @@ import java.util.Observer;
 public class Controller implements Observer {
 
     private Displayable disp;
-    private AbstractDAOFactory factory;
+    private DAO ecueDAO;
 
-    public Controller(String ) {
+    public Controller(Displayable disp, String s) {
         this.disp = disp;
-        data = new DataJDBC();
+	ecueDAO = AbstractDAOFactory.getInstance(s).getECUEDAO();
     }
 
     public void update(Observable o, Object arg) {
@@ -31,7 +33,7 @@ public class Controller implements Observer {
         String[] msg = message.split(" ");
 
         if (message.startsWith("#note1")) { // #note1 3 12.5
-            if (data.isStudent(Integer.parseInt(msg[1]))) {
+            /*if (data.isStudent(Integer.parseInt(msg[1]))) {
                 data.setNoteSession1(Integer.parseInt(msg[1]), Float.parseFloat(msg[2]));
                 disp.display("Note de " + data.getStudent(Integer.parseInt(msg[1])).getNom()
                         + " " + data.getStudent(Integer.parseInt(msg[1])).getPrenom()
@@ -43,11 +45,15 @@ public class Controller implements Observer {
                 disp.display("Note de " + data.getStudent(Integer.parseInt(msg[1])).getNom()
                         + " " + data.getStudent(Integer.parseInt(msg[1])).getPrenom()
                         + " : " + data.getStudent(Integer.parseInt(msg[1])).getNote2());
-            }
-        } else if (message.equals("#load")) {
-            data.load();
+            }*/
+        } else if (message.equals("#find")) {
+	    try {
+		ecueDAO.find(msg[1]);
+	    } catch (Exception ex) {
+		ex.printStackTrace();
+	    }
             disp.display("Chargement des donnees effectuees.");
-        } else if (message.equals("#save")) {
+        }/* else if (message.equals("#save")) {
             data.save();
             disp.display("Sauvegarde des donnees effectuees.");
         } else if (message.startsWith("#get")) {
@@ -57,7 +63,7 @@ public class Controller implements Observer {
                         + " : " + data.getStudent(Integer.parseInt(msg[1])).getNote1()
                         + " / " + data.getStudent(Integer.parseInt(msg[1])).getNote2());
             }
-        } else if (message.equals("#quit")) {
+        } */else if (message.equals("#quit")) {
             System.exit(0);
         }
     }
