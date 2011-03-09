@@ -1,6 +1,6 @@
 package Core;
 
-import UI.Console.ConsoleManageECUE;
+import UI.Console.ConsoleECUE;
 
 /*
  * To change this template, choose Tools | Templates
@@ -16,11 +16,11 @@ public class Main {
 
     public static void main(String[] args) {
         if (args.length > 1) {
-	    ConsoleManageECUE cmecue = new ConsoleManageECUE(args[1]);
+	    ConsoleECUE cmecue = new ConsoleECUE(args[1]);
             cmecue.accept();
         } else {
             System.err.println(invalidArguments);
-        }
-        
+        }    
     }
+
 }

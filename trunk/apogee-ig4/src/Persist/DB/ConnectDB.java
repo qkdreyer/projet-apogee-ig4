@@ -19,7 +19,7 @@ public class ConnectDB {
 
     private static Connection conn = null;
     private String url = "jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ora10";
-    private String user = "pierre.nicolas";
+    private String user = "joris.puechlong";
 
     public ConnectDB() {
         try {
