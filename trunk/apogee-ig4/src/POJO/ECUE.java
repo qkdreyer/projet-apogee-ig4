@@ -46,19 +46,19 @@ public class ECUE {
 	    return nom;
 	}
 
-	public float getNote1() {
+	public float getNoteSession1() {
 	    return noteSession1;
 	}
 
-	public void setNote1(float note1) {
+	public void setNoteSession1(float note1) {
 	    this.noteSession1 = note1;
 	}
 
-	public float getNote2() {
+	public float getNoteSession2() {
 	    return noteSession2;
 	}
 
-	public void setNote2(float note2) {
+	public void setNoteSession2(float note2) {
 	    this.noteSession2 = note2;
 	}
 
@@ -69,6 +69,11 @@ public class ECUE {
 	public String getPrenom() {
 	    return prenom;
 	}
+
+        public String toString() {
+            String str = getPrenom() + " " + getNom() + "(" + getNumEtud() + ") : " + getNoteSession1() + " | " + getNoteSession2() + "\n";
+            return str;
+        }
     }
 
     public ECUE(String codeMatiere, String libelleECUE, int nbHeures, int idEnseignant, String codeUE, ArrayList<EtudiantECUE> listeEtud) {
@@ -82,12 +87,7 @@ public class ECUE {
     }
 
     public boolean isStudent(Integer i) {
-        if (i > 0 && i <= listeEtud.size()) {
-            return true;
-        } else {
-            System.err.println("Etudiant invalide !");
-            return false;
-        }
+        return (i > 0 && i <= listeEtud.size());
     }
 
     public String getCodeMatiere() {
@@ -147,7 +147,7 @@ public class ECUE {
                 + "Liste etudiants : \n";
 
         for(EtudiantECUE e : this.listeEtud) {
-            str += "\t" + e.getNom() + " " + e.getPrenom() + " "+ e.getNumEtud() + " " + e.getNote1() + " " + e.getNote2() + "\n";
+            str += "\t" + e.toString();
         }
 
         return str;

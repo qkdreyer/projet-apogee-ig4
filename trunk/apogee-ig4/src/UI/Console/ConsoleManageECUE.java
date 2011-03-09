@@ -5,7 +5,7 @@
 package UI.Console;
 
 import Core.Displayable;
-import Core.Controller;
+import Controller.ControllerECUE;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -15,14 +15,14 @@ import java.io.InputStreamReader;
  */
 public class ConsoleManageECUE implements Displayable {
 
-    public Controller contr;
+    public ControllerECUE contr;
     
     /**
      * This method waits for input from the console. Once it is received, it sends it to the client's message handler.
      */
 
     public ConsoleManageECUE(String s) {
-        contr = new Controller(this, s);
+        contr = new ControllerECUE(this, s);
     }
 
     public void accept() {

@@ -34,7 +34,7 @@ public class DBECUEDAO extends DBDAO<ECUE> {
 		Statement s = this.conn.createStatement();
 		s.executeUpdate("UPDATE VO_Ecue SET listeEtud = TEtud_NT("
 			+ "TEtud(" + etudiant.getNumEtud() + ", null, null, "
-			+ etudiant.getNote1() + ", " + etudiant.getNote2() + ")) "
+			+ etudiant.getNoteSession1() + ", " + etudiant.getNoteSession2() + ")) "
 			+ "WHERE codeMatiere = '" + ecue.getCodeMatiere() + "'");
 	    }
 	} catch (Exception e) {
@@ -73,11 +73,4 @@ public class DBECUEDAO extends DBDAO<ECUE> {
 	return ecue;
     }
 
-    public ArrayList<ECUE> load(Object parent) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void print() {
-
-    }
 }

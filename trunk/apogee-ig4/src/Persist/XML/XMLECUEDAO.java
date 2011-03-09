@@ -30,8 +30,4 @@ public class XMLECUEDAO extends XMLDAO<ECUE> {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public ArrayList<ECUE> load(Object parent) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 }
