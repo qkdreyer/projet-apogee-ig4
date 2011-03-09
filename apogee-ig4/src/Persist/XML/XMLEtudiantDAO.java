@@ -30,8 +30,4 @@ public class XMLEtudiantDAO extends XMLDAO<Etudiant> {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public ArrayList<Etudiant> load(Object parent) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 }
