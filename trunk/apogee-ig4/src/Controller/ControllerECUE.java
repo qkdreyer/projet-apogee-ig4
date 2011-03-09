@@ -38,11 +38,13 @@ public class ControllerECUE implements Observer {
             if (ecue.isStudent(Integer.parseInt(msg[1]))) {
                 ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession1(Float.parseFloat(msg[2]));
                 disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
+		handleMessage("#update");
             }
         } else if (message.startsWith("#note2")) {
             if (ecue.isStudent(Integer.parseInt(msg[1]))) {
                 ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession2(Float.parseFloat(msg[2]));
                 disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
+		handleMessage("#update");
             }
         } else if (message.startsWith("#find")) {
             try {
@@ -54,7 +56,7 @@ public class ControllerECUE implements Observer {
         } else if (message.equals("#update")) {
             try {
                 ecueDAO.update(ecue);
-                disp.display("Sauvegarde des donnees effectuees.");
+                //disp.display("Sauvegarde des donnees effectuees.");
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
