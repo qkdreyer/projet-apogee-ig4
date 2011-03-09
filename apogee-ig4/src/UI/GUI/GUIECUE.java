@@ -9,6 +9,6 @@ package UI.GUI;
  *
  * @author Quentin
  */
-public class GUIManageECUE {
+public class GUIECUE {
 
 }

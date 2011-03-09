@@ -15,37 +15,18 @@ import java.util.Observable;
  */
 public abstract class AbstractDAOFactory extends Observable {
 
+    protected static AbstractDAOFactory fact = null;
     public abstract DAO getECUEDAO();
     public abstract DAO getEleveDAO();
 
     public static AbstractDAOFactory getInstance(String s) {
 	if (s.equals("db")) {
-	    return new DBDAOFactory();
+	    fact = new DBDAOFactory();
 	} else if (s.equals("xml")) {
-	    return new XMLDAOFactory();
+	    fact = new XMLDAOFactory();
 	} else {
-	    return null;
+	    System.err.println("No factory declared");
 	}
+        return fact;
     }
-/*
-    protected static AbstractDAOFactory data = null;
-    public ArrayList<EntryStudentList> entriesStudentList = new ArrayList<EntryStudentList>();
-
-    public void add(EntryStudentList entry) {
-	entriesStudentList.add(entry);
-	this.setChanged();
-	this.notifyObservers();
-    }
-
-    public abstract void save() throws Exception;
-    public abstract void load() throws Exception;
-
-
-*/
-	/*if (data == null) {
-	    System.err.println("No Persist Kit declared"); //new Error();
-	}
-	return data;*/
-    
-
 }

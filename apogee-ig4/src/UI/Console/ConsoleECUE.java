@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  *
  * @author Quentin
  */
-public class ConsoleManageECUE implements Displayable {
+public class ConsoleECUE implements Displayable {
 
     public ControllerECUE contr;
     
@@ -21,7 +21,7 @@ public class ConsoleManageECUE implements Displayable {
      * This method waits for input from the console. Once it is received, it sends it to the client's message handler.
      */
 
-    public ConsoleManageECUE(String s) {
+    public ConsoleECUE(String s) {
         contr = new ControllerECUE(this, s);
     }
 
