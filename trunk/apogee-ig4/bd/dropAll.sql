@@ -24,4 +24,14 @@ drop table utilisateur;
 drop table enseignant;
 drop table secretaire;
 
+drop sequence note_pk_seq;
+drop view vo_ecue;
 
+--drop type TETUD_NT;
+--drop type TETUD;
+drop type ETUD_NUM_TAB;
+drop type ETUD_NUM;
+
+drop type tecue;
+drop type tetud_nt;
+drop type tetud;

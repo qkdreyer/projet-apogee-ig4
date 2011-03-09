@@ -34,8 +34,8 @@ add constraint fkstatut_etud foreign key(idstatut) references statut(idstatut);
 alter table Etudiant
 add constraint fknationalite_etud foreign key(idnationalite) references nationalite(idnationalite);
 
-alter table Etudiant
-add constraint fksemestreetud foreign key(codesemestre) references semestre(codesemestre);
+--alter table Etudiant
+--add constraint fksemestreetud foreign key(codesemestre) references semestre(codesemestre);
 
 alter table vae
 add constraint fkuevae foreign key(codeue) references ue(codeue);
