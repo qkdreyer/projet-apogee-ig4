@@ -1,9 +1,12 @@
 -- Remplissage de la avec des etudiants, professeur,ECUE,
 -- UE, semestre, année, département
 
-insert into Etape  values (10,3,1001,'IG3');
-insert into Etape  values (20,3,1223,'STIA3');
-insert into Etape  values (11,4,1001,'IG4');
+insert into Departement values ('PI01','Informatique et gestion','IG',1001);
+insert into Departement values ('PIO2','Sciences et Techniques des Industries Agroalimentaires','STIA',1223);
+
+insert into Etape  values ('10','3',1001,'IG3');
+insert into Etape  values ('20','3',1223,'STIA3');
+insert into Etape  values ('11','4',1001,'IG4');
 
 insert into Semestre values ('51','s05',0,10);
 insert into Semestre values ('61','s06',0,10);
@@ -11,10 +14,6 @@ insert into Semestre values ('52','s05',0,20);
 insert into Semestre values ('62','s06',0,20);
 insert into Semestre values ('71','s07',0,11);
 insert into Semestre values ('81','s08',0,11);
-
-insert into Departement values ('PI01','Informatique et gestion','IG',1001);
-insert into Departement values ('PIO2','Sciences et Techniques des Industries Agroalimentaires','STIA',1223);
-
 
 insert into ECUE values ('PIG501','algorithmique',100,1432,'PIGU51');
 insert into ECUE values ('PIG502','Unix',15,1569,'PIGU51');
