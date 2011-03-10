@@ -6,7 +6,6 @@
 package Persist.XML;
 
 import POJO.Etudiant;
-import java.util.ArrayList;
 
 /**
  *
