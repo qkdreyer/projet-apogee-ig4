@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.Controller.ControllerUtilisateur;
 import fr.GCAM.StudentManager.Core.Displayable;
+import fr.GCAM.StudentManager.Controller.ControllerECUE;
+import fr.GCAM.StudentManager.POJO.ECUE;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -14,17 +14,13 @@ import java.io.InputStreamReader;
  *
  * @author Quentin
  */
-public class ConsoleUIUtilisateur extends ConsoleUI implements Displayable {
+public class ConsoleECUE extends Console<ECUE> implements Displayable {
 
-    public ControllerUtilisateur contr;
-    
-    public ConsoleUIUtilisateur(String s) {
-	this.contr = new ControllerUtilisateur(this, s);
+    public ControllerECUE contr;
+
+    public ConsoleECUE(String s) {
+        contr = new ControllerECUE(this, s);
 	this.accept();
-    }
-
-    public void display(String msg) {
-	System.out.println(msg);
     }
 
      /**
@@ -44,5 +40,8 @@ public class ConsoleUIUtilisateur extends ConsoleUI implements Displayable {
         }
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
 
 }

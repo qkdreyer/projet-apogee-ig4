@@ -5,32 +5,33 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.POJO.Semestre;
 
 /**
  *
  * @author pierre
  */
-public class XMLEtapeDAO extends XMLDAO<Etape> {
+public class XMLSemestre extends XML<Semestre> {
 
-    public XMLEtapeDAO() {
+    public XMLSemestre() {
     }
-    
 
-    public void create(Etape obj) throws Exception {
+    public void create(Semestre obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void update(Etape obj) throws Exception {
+    public void update(Semestre obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void delete(Etape obj) throws Exception {
+    public void delete(Semestre obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Etape find(Object id) throws Exception {
+    public Semestre find(Object id) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
+
+
 
 }

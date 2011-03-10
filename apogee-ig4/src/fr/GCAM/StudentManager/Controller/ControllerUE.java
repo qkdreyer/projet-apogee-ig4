@@ -3,14 +3,12 @@
  * and open the template in the editor.
  */
 
-package fr.GCAM.StudentManager.UI.GUI;
-
-import fr.GCAM.StudentManager.UI.UI;
+package fr.GCAM.StudentManager.Controller;
 
 /**
  *
  * @author Quentin
  */
-public abstract class GUI<T> implements UI<T> {
+public class ControllerUE {
 
 }

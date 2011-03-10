@@ -5,12 +5,15 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.UI.UI;
+import fr.GCAM.StudentManager.POJO.Departement;
 
 /**
  *
  * @author Quentin
  */
-public class ConsoleUI implements UI {
+public class ConsoleDepartement extends Console<Departement> {
+
+    public ConsoleDepartement(String s) {
+    }
 
 }

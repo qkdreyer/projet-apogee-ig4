@@ -2,16 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package fr.GCAM.StudentManager.Persist.XML;
+package fr.GCAM.StudentManager.Persist.DB;
 
 import fr.GCAM.StudentManager.POJO.Etudiant;
+import java.sql.*;
 
 /**
  *
  * @author Quentin
  */
-public class XMLEtudiantDAO extends XMLDAO<Etudiant> {
+public class DBEtudiant extends DB<Etudiant> {
+
+    public DBEtudiant(Connection conn) {
+	super(conn);
+    }
 
     public void create(Etudiant obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");

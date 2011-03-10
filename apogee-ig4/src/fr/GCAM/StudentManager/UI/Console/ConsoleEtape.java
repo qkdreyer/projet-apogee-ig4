@@ -3,12 +3,15 @@
  * and open the template in the editor.
  */
 
-package fr.GCAM.StudentManager.Persist.XML;
+package fr.GCAM.StudentManager.UI.Console;
 
 /**
  *
  * @author Quentin
  */
-public class XMLUtilisateurDAO {
+public class ConsoleEtape extends Console {
+
+    public ConsoleEtape(String s) {
+    }
 
 }

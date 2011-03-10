@@ -5,33 +5,32 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.POJO.Semestre;
+import fr.GCAM.StudentManager.POJO.Departement;
 
 /**
  *
  * @author pierre
  */
-public class XMLSemestreDAO extends XMLDAO<Semestre> {
+public class XMLDepartement extends XML<Departement> {
 
-    public XMLSemestreDAO() {
+    public XMLDepartement() {
     }
+    
 
-    public void create(Semestre obj) throws Exception {
+    public void create(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void update(Semestre obj) throws Exception {
+    public void update(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void delete(Semestre obj) throws Exception {
+    public void delete(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Semestre find(Object id) throws Exception {
+    public Departement find(Object id) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
-
-
 
 }

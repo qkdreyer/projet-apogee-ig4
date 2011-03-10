@@ -18,12 +18,12 @@ import java.util.Observer;
 public class ControllerECUE implements Observer {
 
     private Displayable disp;
-    private DAO ecueDAO;
+    private DAO<ECUE> ecueDAO;
     private ECUE ecue;
 
     public ControllerECUE(Displayable disp, String s) {
         this.disp = disp;
-	ecueDAO = AbstractDAOFactory.getFactory(s).getECUEDAO();
+	ecueDAO = AbstractDAOFactory.getDAOFactory(s).getDAOECUE();
         ecue = new ECUE();
     }
 

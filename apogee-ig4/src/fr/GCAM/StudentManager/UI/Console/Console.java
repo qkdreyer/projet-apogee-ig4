@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package fr.GCAM.StudentManager.UI.GUI;
+package fr.GCAM.StudentManager.UI.Console;
 
 import fr.GCAM.StudentManager.UI.UI;
 
@@ -11,6 +11,6 @@ import fr.GCAM.StudentManager.UI.UI;
  *
  * @author Quentin
  */
-public abstract class GUI<T> implements UI<T> {
+public abstract class Console<T> implements UI<T> {
 
 }

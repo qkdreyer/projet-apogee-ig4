@@ -18,12 +18,12 @@ import java.util.ArrayList;
 public class ControllerUtilisateur {
 
     private Displayable disp;
-    private DAO userDAO;
+    private DAO<Utilisateur> userDAO;
     private Utilisateur user;
 
     public ControllerUtilisateur(Displayable disp, String s) {
 	this.disp = disp;
-        userDAO = AbstractDAOFactory.getFactory(s).getECUEDAO();
+        userDAO = AbstractDAOFactory.getDAOFactory(s).getDAOUtilisateur();
         user = new Utilisateur();
     }
 
@@ -33,11 +33,11 @@ public class ControllerUtilisateur {
 
 	if (s[0].equals("#login") && s.length == 3) {
 	    try {
-                userInformation.add(s[1].split(".")[0]); //TODO syntaxe
-                userInformation.add(s[1].split(".")[1]);
+                userInformation.add(s[1].split("\\.")[0]); //TODO syntaxe
+                userInformation.add(s[1].split("\\.")[1]);
                 userInformation.add(s[2]);
 		user = (Utilisateur) userDAO.find(userInformation);
-		disp.display(user.toString());
+		//disp.display(user.toString());
 		this.logUser();
 	    } catch (Exception ex) {
 		System.err.println("Erreur : " + ex);
@@ -46,16 +46,16 @@ public class ControllerUtilisateur {
     }
 
     public void logUser() {
-	if (user.getListeResponsabilites().get(0).getLibelle().equals("ECUE")) {
-            
-	} else if (user.getListeResponsabilites().get(0).getLibelle().equals("UE")) {
-
-	} else if (user.getListeResponsabilites().get(0).getLibelle().equals("Etape")) {
-
-	} else if (user.getListeResponsabilites().get(0).getLibelle().equals("Departement")) {
-
+        Utilisateur.Responsabilite r = user.getListeResponsabilites().get(0);
+	if (r.getLibelle().equals("ECUE")) {
+            disp.display("-> getECUEUI #find " + r.getCode());
+	} else if (r.getLibelle().equals("UE")) {
+            disp.display("-> getUEUI #find " + r.getCode());
+	} else if (r.getLibelle().equals("Etape")) {
+            disp.display("-> getEtapeUI #find " + r.getCode());
+	} else if (r.getLibelle().equals("Departement")) {
+            disp.display("-> getDepartementUI #find " + r.getCode());
 	}
     }
-
-
+    
 }

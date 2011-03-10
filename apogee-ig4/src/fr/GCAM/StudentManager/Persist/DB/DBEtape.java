@@ -5,33 +5,32 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.POJO.Semestre;
+import fr.GCAM.StudentManager.POJO.Etape;
 import java.sql.Connection;
 
 /**
  *
  * @author pierre
  */
-public class DBSemestreDAO extends DBDAO<Semestre> {
+public class DBEtape extends DB<Etape> {
 
-    public DBSemestreDAO(Connection conn) {
+    public DBEtape(Connection conn) {
 	super(conn);
     }
-    
 
-    public void create(Semestre obj) throws Exception {
+    public void create(Etape obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void update(Semestre obj) throws Exception {
+    public void update(Etape obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void delete(Semestre obj) throws Exception {
+    public void delete(Etape obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Semestre find(Object id) throws Exception {
+    public Etape find(Object id) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 

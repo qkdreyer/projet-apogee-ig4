@@ -15,9 +15,9 @@ import java.io.ObjectOutputStream;
  *
  * @author Quentin
  */
-public class XMLECUEDAO extends XMLDAO<ECUE> {
+public class XMLECUE extends XML<ECUE> {
 
-    public XMLECUEDAO() {
+    public XMLECUE() {
     }
 
     /**
