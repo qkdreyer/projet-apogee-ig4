@@ -1,6 +1,7 @@
 package Core;
 
-import UI.Console.ConsoleECUE;
+import UI.AbstractUIFactory;
+import UI.UI;
 
 /*
  * To change this template, choose Tools | Templates
@@ -12,14 +13,11 @@ import UI.Console.ConsoleECUE;
  */
 public class Main {
 
-    public static String invalidArguments = "Arguments invalides (Format : c/g db/xml)";
-
     public static void main(String[] args) {
         if (args.length > 1) {
-	    ConsoleECUE cmecue = new ConsoleECUE(args[1]);
-            cmecue.accept();
+	    UI ui = AbstractUIFactory.getFactory(args[0]).getECUEUI(args[1]);
         } else {
-            System.err.println(invalidArguments);
+            System.err.println("Arguments invalides (Format : c/g db/xml)");
         }    
     }
 
