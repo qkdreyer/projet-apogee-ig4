@@ -27,11 +27,18 @@ drop table secretaire;
 drop sequence note_pk_seq;
 drop view vo_ecue;
 
---drop type TETUD_NT;
---drop type TETUD;
+
 drop type ETUD_NUM_TAB;
 drop type ETUD_NUM;
 
 drop type tecue;
 drop type tetud_nt;
 drop type tetud;
+
+
+--drop 
+drop view VO_Utilisateur;
+drop type TUtilisateur;
+drop function get_liste_resp;
+drop type Resp_tab;
+drop type TResp;
