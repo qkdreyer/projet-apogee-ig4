@@ -8,7 +8,7 @@ import fr.GCAM.StudentManager.UI.AbstractUIFactory;
  */
 /**
  *
- * @author Quentin
+ * @author Quentin, non en fait c'est ben
  */
 public class Main {
 
