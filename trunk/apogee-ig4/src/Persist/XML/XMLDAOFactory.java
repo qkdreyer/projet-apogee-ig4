@@ -24,4 +24,9 @@ public class XMLDAOFactory extends AbstractDAOFactory {
 	return new XMLEtudiantDAO();
     }
 
+    @Override
+    public DAO getLoginDAO() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

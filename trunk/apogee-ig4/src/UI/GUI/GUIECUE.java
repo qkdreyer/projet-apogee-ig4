@@ -5,10 +5,19 @@
 
 package UI.GUI;
 
+import UI.UI;
+
 /**
  *
  * @author Quentin
  */
-public class GUIECUE {
+public class GUIECUE implements UI {
+
+    public GUIECUE() {
+    }
+
+    public GUIECUE(String s) {
+
+    }
 
 }
