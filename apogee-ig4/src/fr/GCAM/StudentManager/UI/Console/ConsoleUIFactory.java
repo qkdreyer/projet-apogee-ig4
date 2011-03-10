@@ -16,7 +16,7 @@ public class ConsoleUIFactory extends AbstractUIFactory {
 
     @Override
     public UI getECUEUI(String s) {
-	return new ConsoleUIECUE(s);
+	return new ConsoleUIUtilisateur(s);//ConsoleUIECUE(s);
     }
 
     @Override
