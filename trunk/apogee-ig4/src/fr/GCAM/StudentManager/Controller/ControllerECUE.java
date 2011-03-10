@@ -34,32 +34,32 @@ public class ControllerECUE implements Observer {
     public void handleMessage(String message) {
         String[] msg = message.split(" ");
 
-        if (message.startsWith("#note1") && msg.length == 3) { // #note1 3 12.5
+        if (msg[0].equals("#note1") && msg.length == 3) { // #note1 3 12.5
             if (ecue.isStudent(Integer.parseInt(msg[1]))) {
                 ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession1(Float.parseFloat(msg[2]));
                 disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
 		handleMessage("#update");
             }
-        } else if (message.startsWith("#note2") && msg.length == 3) { // #note1 3 12.5
+        } else if (msg[0].equals("#note2") && msg.length == 3) { // #note1 3 12.5
             if (ecue.isStudent(Integer.parseInt(msg[1]))) {
                 ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession2(Float.parseFloat(msg[2]));
                 disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
 		handleMessage("#update");
             }
-        } else if (message.startsWith("#find") && msg.length == 2) { // #find pstia602
+        } else if (msg[0].equals("#find") && msg.length == 2) { // #find pstia602
             try {
 		ecue = (ECUE) ecueDAO.find(msg[1]);
                 disp.display(ecue.toString());
 	    } catch (Exception ex) {
 		System.err.println("Erreur : " + ex);
 	    }
-        } else if (message.equals("#update")) {
+        } else if (msg[0].equals("#update")) {
             try {
                 ecueDAO.update(ecue);
             } catch (Exception ex) {
                 System.err.println("Erreur : " + ex);
             }
-        } else if (message.equals("#quit")) {
+        } else if (msg[0].equals("#quit")) {
             System.exit(0);
         }
     }

@@ -5,7 +5,7 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.Controller.ControllerLogin;
+import fr.GCAM.StudentManager.Controller.ControllerUtilisateur;
 import fr.GCAM.StudentManager.Core.Displayable;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -14,14 +14,14 @@ import java.io.InputStreamReader;
  *
  * @author Quentin
  */
-public class ConsoleUIUtilisateur implements Displayable {
+public class ConsoleUIUtilisateur extends ConsoleUI implements Displayable {
 
-    public ConsoleUIUtilisateur(ControllerLogin contr) {
-	this.contr = contr;
+    public ControllerUtilisateur contr;
+    
+    public ConsoleUIUtilisateur(String s) {
+	this.contr = new ControllerUtilisateur(this, s);
 	this.accept();
     }
-
-    public ControllerLogin contr;
 
     public void display(String msg) {
 	System.out.println(msg);
