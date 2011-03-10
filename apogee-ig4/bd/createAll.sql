@@ -201,12 +201,14 @@ create table nationalite (
 );
 
 
--- Sequence 
+------------ Sequence 
 --sequence pour les pk des notes
 create sequence note_pk_seq
 start with 1 
 increment by 1 
 nomaxvalue; 
+
+
 
 
 -- Procedure
@@ -451,6 +453,113 @@ from ECUE ec;
 --		)
 --;
 --/
+
+
+--type responsable
+create or replace type TResp as object (
+  codeResponsabilite varchar2(10),
+  libelle varchar2(20)
+);
+/
+
+create or replace type Resp_tab as table of TResp;
+/
+
+---------get_liste_resp
+--in: idEnseignant
+--out: [codeResponsabilite, libelle]
+
+--require:
+--	Le l'id enseignant référence un ensaignant
+--ensure:
+--	[codeResponsabilite, libelle] contient la liste de 
+--  toutes les responsabilités d'un enseignant
+
+create or replace function get_liste_resp
+( idEnseignant_in IN Enseignant.idEnseignant%type )
+return Resp_tab
+is
+    --pour stocker la liste responsabilites
+    liste_resp Resp_tab := Resp_tab();
+    n integer := 0;
+begin
+
+    --liste de l'ECUE
+    for r in (
+        select ec.codeMatiere
+        from ECUE ec
+        where ec.idEnseignant = idEnseignant_in
+    )
+    loop
+        liste_resp.extend;
+        n := n+1;
+        liste_resp(n) := TResp(r.codeMatiere, 'Departement');
+    end loop;
+    
+    --liste de l'UE
+    for r in (
+        select u.codeUE
+        from UE u
+        where u.idEnseignant = idEnseignant_in
+    )
+    loop
+        liste_resp.extend;
+        n := n+1;
+        liste_resp(n) := TResp(r.codeUE, 'UE');
+    end loop;
+    
+    --liste de l'Etape
+    for r in (
+        select e.codeEtape
+        from Etape e
+        where e.idEnseignant = idEnseignant_in
+    )
+    loop
+        liste_resp.extend;
+        n := n+1;
+        liste_resp(n) := TResp(r.codeEtape, 'Etape');
+    end loop;
+    
+    --liste du Departement
+    for r in (
+        select d.versionDiplome
+        from Departement d
+        where d.idEnseignant = idEnseignant_in
+    )
+    loop
+        liste_resp.extend;
+        n := n+1;
+        liste_resp(n) := TResp(r.versionDiplome, 'Diplome');
+    end loop;
+    
+    --renvoie le resultat
+    return liste_resp;
+end get_liste_resp;
+/
+
+
+--vue utilisateur
+create or replace type TUtilisateur as object(
+    idEnseignant number,
+    nom varchar2(20),
+    prenom varchar2(20),
+    mdp varchar2(10),
+    codeResponsabilite varchar2(10),
+    libelle varchar2(10)
+);
+/
+
+create or replace view VO_Utilisateur of TUtilisateur
+with object identifier(idEnseignant, codeResponsabilite)
+as
+select en.idEnseignant, en.nom, en.prenom, en.mdp,
+resp.codeResponsabilite, resp.libelle
+from Enseignant en, table(get_liste_resp(en.idEnseignant)) resp;
+/
+
+
+
+
 
 -- Triggers
 
