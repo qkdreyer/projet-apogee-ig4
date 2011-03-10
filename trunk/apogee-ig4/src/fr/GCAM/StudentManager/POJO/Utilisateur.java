@@ -34,7 +34,7 @@ public class Utilisateur {
 	private String libelle;
 	private String code;
 
-	public Responsabilite(String libelle, String code) {
+	public Responsabilite(String code, String libelle) {
 	    this.libelle = libelle;
 	    this.code = code;
 	}
@@ -96,7 +96,7 @@ public class Utilisateur {
 
     @Override
     public String toString() {
-	String str = this.getPrenom() + "." + this.getNom() + " (" + this.getIdEnseignant() + ")";
+	String str = this.getPrenom() + "." + this.getNom() + " (" + this.getIdEnseignant() + ")\n";
 
 	for (Responsabilite r : this.getListeResponsabilites()) {
 	    str += "\t" + r.toString();

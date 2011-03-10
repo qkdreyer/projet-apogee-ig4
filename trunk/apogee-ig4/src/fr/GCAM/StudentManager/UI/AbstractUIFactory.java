@@ -4,7 +4,7 @@
  */
 package fr.GCAM.StudentManager.UI;
 
-import fr.GCAM.StudentManager.UI.Console.ConsoleUIFactory;
+import fr.GCAM.StudentManager.UI.Console.ConsoleFactory;
 import fr.GCAM.StudentManager.UI.GUI.GUIFactory;
 
 /**
@@ -14,12 +14,18 @@ import fr.GCAM.StudentManager.UI.GUI.GUIFactory;
 public abstract class AbstractUIFactory {
 
     protected static AbstractUIFactory fact = null;
-    public abstract UI getECUEUI(String s);
-    public abstract UI getEtudiantUI(String s);
 
-    public static AbstractUIFactory getFactory(String s) {
+    public abstract UI getUIUtilisateur(String s);
+    public abstract UI getUIEtudiant(String s);
+    public abstract UI getUIECUE(String s);
+    public abstract UI getUIUE(String s);
+    public abstract UI getUIEtape(String s);
+    public abstract UI getUIDepartement(String s);
+    public abstract UI getUISemestre(String s);
+
+    public static AbstractUIFactory getUIFactory(String s) {
 	if (s.equals("c")) {
-	    fact = new ConsoleUIFactory();
+	    fact = new ConsoleFactory();
 	} else if (s.equals("g")) {
 	    fact = new GUIFactory();
 	} else {

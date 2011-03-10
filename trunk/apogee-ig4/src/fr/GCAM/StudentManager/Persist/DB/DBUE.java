@@ -12,9 +12,9 @@ import java.sql.Connection;
  *
  * @author pierre
  */
-public class DBUEDAO extends DBDAO<UE> {
+public class DBUE extends DB<UE> {
 
-    public DBUEDAO(Connection conn) {
+    public DBUE(Connection conn) {
         super(conn);
     }
 

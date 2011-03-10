@@ -5,31 +5,27 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.POJO.UE;
-import fr.GCAM.StudentManager.Persist.DAO;
+import fr.GCAM.StudentManager.POJO.Utilisateur;
 
 /**
  *
- * @author pierre
+ * @author Quentin
  */
-public class XMLUEDAO extends XMLDAO<UE> {
+public class XMLUtilisateur extends XML<Utilisateur> {
 
-    public XMLUEDAO() {
-    }    
-
-    public void create(UE obj) throws Exception {
+    public void create(Utilisateur obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void update(UE obj) throws Exception {
+    public void update(Utilisateur obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void delete(UE obj) throws Exception {
+    public void delete(Utilisateur obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public UE find(Object id) throws Exception {
+    public Utilisateur find(Object id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

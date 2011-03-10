@@ -12,11 +12,11 @@ import java.io.Serializable;
  *
  * @author Quentin
  */
-public abstract class XMLDAO<T> implements DAO<T>, Serializable {
+public abstract class XML<T> implements DAO<T>, Serializable {
 
     protected final String filename = "data.xml";
 
-    public XMLDAO() {
+    public XML() {
     }
 
 }

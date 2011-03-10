@@ -5,13 +5,13 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
-import fr.GCAM.StudentManager.UI.UI;
+import fr.GCAM.StudentManager.POJO.ECUE;
 
 /**
  *
  * @author Quentin
  */
-public class GUIECUE implements UI {
+public class GUIECUE extends GUI<ECUE> {
 
     public GUIECUE() {
     }

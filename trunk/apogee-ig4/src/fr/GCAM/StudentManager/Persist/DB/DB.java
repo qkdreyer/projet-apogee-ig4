@@ -12,11 +12,11 @@ import java.sql.Connection;
  *
  * @author Quentin
  */
-public abstract class DBDAO<T> implements DAO<T> {
+public abstract class DB<T> implements DAO<T> {
 
     protected Connection conn = null;
 
-    public DBDAO(Connection conn) {
+    public DB(Connection conn) {
 	this.conn = conn;
     }
 

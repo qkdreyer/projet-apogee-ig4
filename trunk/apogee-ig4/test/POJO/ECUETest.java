@@ -5,6 +5,7 @@
 
 package POJO;
 
+import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.ECUE.EtudiantECUE;
 import java.util.ArrayList;
 import org.junit.AfterClass;

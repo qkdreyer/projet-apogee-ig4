@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         if (args.length > 1) {
-	    AbstractUIFactory.getFactory(args[0]).getECUEUI(args[1]);
+	    AbstractUIFactory.getUIFactory(args[0]).getUIUtilisateur(args[1]);
         } else {
             System.err.println("Arguments invalides (Format : c/g db/xml)");
         }    

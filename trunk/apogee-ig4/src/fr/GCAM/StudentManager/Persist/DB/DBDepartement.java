@@ -2,34 +2,35 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.POJO.Etudiant;
-import java.sql.*;
+import fr.GCAM.StudentManager.POJO.Departement;
+import java.sql.Connection;
 
 /**
  *
- * @author Quentin
+ * @author pierre
  */
-public class DBEtudiantDAO extends DBDAO<Etudiant> {
+public class DBDepartement extends DB<Departement> {
 
-    public DBEtudiantDAO(Connection conn) {
+    public DBDepartement(Connection conn) {
 	super(conn);
     }
 
-    public void create(Etudiant obj) throws Exception {
+    public void create(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void update(Etudiant obj) throws Exception {
+    public void update(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void delete(Etudiant obj) throws Exception {
+    public void delete(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Etudiant find(Object id) throws Exception {
+    public Departement find(Object id) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 

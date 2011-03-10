@@ -14,9 +14,9 @@ import java.util.ArrayList;
  *
  * @author Quentin
  */
-public class DBUtilisateurDAO extends DBDAO<Utilisateur> {
+public class DBUtilisateur extends DB<Utilisateur> {
 
-    public DBUtilisateurDAO(Connection conn) {
+    public DBUtilisateur(Connection conn) {
 	super(conn);
     }
 
@@ -38,13 +38,13 @@ public class DBUtilisateurDAO extends DBDAO<Utilisateur> {
 
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
-		+ "where nom = '" + ((ArrayList) request).get(1) + "' and"
-		+ "prenom = '" + ((ArrayList) request).get(0) + "' and"
+		+ "where nom = '" + ((ArrayList) request).get(1) + "' and "
+		+ "prenom = '" + ((ArrayList) request).get(0) + "' and "
 		+ "mdp = '" + ((ArrayList) request).get(2) + "'");
 	if (result.first()) {
 	    util.setIdEnseignant(result.getInt(1));
-	    util.setPrenom(result.getString(2));
-	    util.setNom(result.getString(3));
+	    util.setNom(result.getString(2));
+            util.setPrenom(result.getString(3));
 	    util.setPassword(result.getString(4));
 
 	    listeResp = new ArrayList<Utilisateur.Responsabilite>();

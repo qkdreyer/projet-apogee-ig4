@@ -5,12 +5,15 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
-import fr.GCAM.StudentManager.UI.UI;
+import fr.GCAM.StudentManager.POJO.Etudiant;
 
 /**
  *
  * @author Quentin
  */
-public abstract class GUI<T> implements UI<T> {
+public class GUIEtudiant extends GUI<Etudiant> {
+
+    public GUIEtudiant(String s) {
+    }
 
 }

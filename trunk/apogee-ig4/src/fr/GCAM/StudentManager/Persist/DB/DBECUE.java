@@ -16,9 +16,9 @@ import java.util.Iterator;
  *
  * @author Quentin
  */
-public class DBECUEDAO extends DBDAO<ECUE> {
+public class DBECUE extends DB<ECUE> {
 
-    public DBECUEDAO(Connection conn) {
+    public DBECUE(Connection conn) {
 	super(conn);
     }
 

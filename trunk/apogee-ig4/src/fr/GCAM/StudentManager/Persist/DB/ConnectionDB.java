@@ -15,13 +15,13 @@ import java.sql.*;
  *
  * @author Quentin
  */
-public class ConnectDB {
+public class ConnectionDB {
 
     private static Connection conn = null;
     private String url = "jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ora10";
     private String user = "joris.puechlong";
 
-    public ConnectDB() {
+    public ConnectionDB() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(url, user, getPassword());
@@ -49,7 +49,7 @@ public class ConnectDB {
 
     public static Connection getConnection() {
         if (conn == null) {
-            new ConnectDB();
+            new ConnectionDB();
         }
         return conn;
     }
