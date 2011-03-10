@@ -138,6 +138,7 @@ public class ECUE {
 	this.listeEtud = listeEtud;
     }
 
+    @Override
     public String toString() {
         String str = "Code matiere : " + this.codeMatiere + "\n"
                 + "libelle ECUE : " + this.libelleECUE + "\n"

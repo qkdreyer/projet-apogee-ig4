@@ -16,6 +16,7 @@ import java.sql.Connection;
 public class DBDAOFactory extends AbstractDAOFactory {
 
     protected static final Connection conn = ConnectDB.getConnection();
+    
     @Override
     public DAO getECUEDAO() {
 	return new DBECUEDAO(conn);
