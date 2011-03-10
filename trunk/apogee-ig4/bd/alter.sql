@@ -17,7 +17,7 @@ alter table etape
 add constraint fkenseignant_etape foreign key(idenseignant) references enseignant(idenseignant);
 
 alter table etape
-add constraint fkdepartement_etape foreign key(mnemo) references departement(mnemo);
+add constraint fkdepartement_etape foreign key(versionDiplome) references departement(versionDiplome);
 
 alter table departement
 add constraint fkenseignant_departement foreign key(idenseignant) references enseignant(idenseignant);

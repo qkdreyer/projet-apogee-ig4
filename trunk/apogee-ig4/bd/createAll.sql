@@ -51,7 +51,7 @@ create table Etape (
 	codeEtape varchar2(10),
 	versionEtape varchar2(10), -- le chiffre de l'année ?
 	idenseignant number,
-	mnemo varchar2(10),
+	versionDiplome varchar2(10),
 	constraint pkEtape primary key(codeEtape)	
 );
 
@@ -59,11 +59,11 @@ create table Etape (
 -- Departement
 
 create table Departement (
-	versionDiplome varchar2(20),
+	versionDiplome varchar2(10),
 	nomDepartement varchar2(100),
 	mnemo varchar2(10),
 	idenseignant number,
-	constraint pkDepartement primary key(mnemo)
+	constraint pkDepartement primary key(versionDiplome)
 );
 
 
