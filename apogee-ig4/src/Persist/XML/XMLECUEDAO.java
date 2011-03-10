@@ -6,6 +6,10 @@
 package Persist.XML;
 
 import POJO.ECUE;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -13,12 +17,24 @@ import POJO.ECUE;
  */
 public class XMLECUEDAO extends XMLDAO<ECUE> {
 
+    public XMLECUEDAO() {
+    }
+
+    /**
+     *
+     * @param obj
+     * @throws Exception
+     */
     public void create(ECUE obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public void update(ECUE obj) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
+	FileOutputStream fos = new FileOutputStream(filename);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(obj); // Write the tree to the stream.
+        oos.flush();
+        fos.close(); // close the file.
     }
 
     public void delete(ECUE obj) throws Exception {
@@ -26,7 +42,11 @@ public class XMLECUEDAO extends XMLDAO<ECUE> {
     }
 
     public ECUE find(Object id) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
+	ECUE e = new ECUE();
+	FileInputStream fis = new FileInputStream(filename);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        e = (ECUE) ois.readObject();
+	return e;
     }
 
 }

@@ -14,6 +14,9 @@ import java.io.Serializable;
  */
 public abstract class XMLDAO<T> implements DAO<T>, Serializable {
 
-    String filename = "data.xml";
+    protected final String filename = "data.xml";
+
+    public XMLDAO() {
+    }
 
 }

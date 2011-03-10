@@ -1,6 +1,5 @@
 package Core;
 
-import Persist.AbstractDAOFactory;
 import UI.AbstractUIFactory;
 
 /*
