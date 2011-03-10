@@ -46,6 +46,15 @@ public class DBECUEDAO extends DBDAO<ECUE> {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
+
+    /**
+     * La fonction, renvoie un POJO ECUE, a partir de l'id passé en parametre.<br>
+     * Require : <br>
+     * Ensure : <br>
+     * @param id L'id de l'ecue,
+     * @return L'ECUE correspondant à la ligne trouvé dans la BD a partir de l'id
+     * @throws Exception
+     */
     public ECUE find(Object id) throws Exception {
 	ECUE ecue = new ECUE();
 	ArrayList<ECUE.EtudiantECUE> listeEtud;
