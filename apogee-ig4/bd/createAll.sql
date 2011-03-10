@@ -249,7 +249,7 @@ begin
 	
 	for r in (
 	select numEtudiant
-	from Etudiant Etud
+	from Etudiant etud
 	where etud.codeetape = codeEtape_in
 	)
 	loop
@@ -415,6 +415,11 @@ create or replace type TECUE as object (
 );
 /
 
+--TODO: Requete ne fonctionne que lorsque l'on
+--met un where pour séléctioner une unique ECUE
+--
+--@fix(10/03/11) : rajout de la condition sur la jointure entre l'ecue
+--et la note, sinon une note était valable pour toutes les ecue de l'etud
 create or replace view VO_ECUE of TECUE
 with object identifier(codeMatiere)
 as
@@ -422,7 +427,8 @@ select ec.codeMatiere, ec.libelleECUE, ec.nbheures, ec.idenseignant, ec.codeue, 
 	select distinct e.numEtudiant, e.nom, e.prenom,
 		n.noteSession1, n.noteSession2
 	from Etudiant e, Note n
-	where n.numEtudiant(+)= e.numEtudiant
+	where n.codeMatiere(+) = ec.codeMatiere
+	and n.numEtudiant(+)= e.numEtudiant
 	and e.numEtudiant in (
 		Select le.numEtudiant
 		from table(get_liste_etud_ecue(ec.codeMatiere)) le
@@ -430,6 +436,7 @@ select ec.codeMatiere, ec.libelleECUE, ec.nbheures, ec.idenseignant, ec.codeue, 
 	)as TEtud_nt)
 from ECUE ec;
 /
+
 --TODO:vue etudiant, a supprimer?
 --create or replace view VO_Etud of Tetud
 --with object identifier(numEtudiant)
