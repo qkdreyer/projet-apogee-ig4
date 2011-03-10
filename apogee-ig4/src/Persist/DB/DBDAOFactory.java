@@ -26,4 +26,9 @@ public class DBDAOFactory extends AbstractDAOFactory {
 	return new DBEtudiantDAO(conn);
     }
 
+    @Override
+    public DAO getLoginDAO() {
+	return new DBUtilisateurDAO(conn);
+    }
+
 }

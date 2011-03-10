@@ -18,8 +18,9 @@ public abstract class AbstractDAOFactory extends Observable {
     protected static AbstractDAOFactory fact = null;
     public abstract DAO getECUEDAO();
     public abstract DAO getEleveDAO();
+    public abstract DAO getLoginDAO();
 
-    public static AbstractDAOFactory getInstance(String s) {
+    public static AbstractDAOFactory getFactory(String s) {
 	if (s.equals("db")) {
 	    fact = new DBDAOFactory();
 	} else if (s.equals("xml")) {
