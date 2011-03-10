@@ -33,7 +33,11 @@ public class DBUtilisateurDAO extends DBDAO<Utilisateur> {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Utilisateur find(Object request) throws Exception {
+    public Utilisateur find(Object id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    /*public Utilisateur find(Object request) throws Exception {
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
 		+ "where nom = '" + ((ArrayList) request).get(1) + "' and"
@@ -42,6 +46,6 @@ public class DBUtilisateurDAO extends DBDAO<Utilisateur> {
 	if (result.first()) {
 	    
 	}
-    }
+    }*/
 
 }
