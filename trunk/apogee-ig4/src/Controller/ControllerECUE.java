@@ -23,7 +23,7 @@ public class ControllerECUE implements Observer {
 
     public ControllerECUE(Displayable disp, String s) {
         this.disp = disp;
-	ecueDAO = AbstractDAOFactory.getInstance(s).getECUEDAO();
+	ecueDAO = AbstractDAOFactory.getFactory(s).getECUEDAO();
         ecue = new ECUE();
     }
 
@@ -34,31 +34,30 @@ public class ControllerECUE implements Observer {
     public void handleMessage(String message) {
         String[] msg = message.split(" ");
 
-        if (message.startsWith("#note1")) { // #note1 3 12.5
+        if (message.startsWith("#note1") && msg.length == 3) { // #note1 3 12.5
             if (ecue.isStudent(Integer.parseInt(msg[1]))) {
                 ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession1(Float.parseFloat(msg[2]));
                 disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
 		handleMessage("#update");
             }
-        } else if (message.startsWith("#note2")) {
+        } else if (message.startsWith("#note2") && msg.length == 3) { // #note1 3 12.5
             if (ecue.isStudent(Integer.parseInt(msg[1]))) {
                 ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession2(Float.parseFloat(msg[2]));
                 disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
 		handleMessage("#update");
             }
-        } else if (message.startsWith("#find")) {
+        } else if (message.startsWith("#find") && msg.length == 2) { // #find pstia602
             try {
 		ecue = (ECUE) ecueDAO.find(msg[1]);
                 disp.display(ecue.toString());
 	    } catch (Exception ex) {
-		ex.printStackTrace();
+		System.err.println("Erreur : " + ex);
 	    }
         } else if (message.equals("#update")) {
             try {
                 ecueDAO.update(ecue);
-                //disp.display("Sauvegarde des donnees effectuees.");
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.err.println("Erreur : " + ex);
             }
         } else if (message.equals("#quit")) {
             System.exit(0);

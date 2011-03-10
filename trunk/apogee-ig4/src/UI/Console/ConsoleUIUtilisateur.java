@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package UI.Console;
 
+import Controller.ControllerLogin;
 import Core.Displayable;
-import Controller.ControllerECUE;
-import Persist.DAO;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -14,13 +14,17 @@ import java.io.InputStreamReader;
  *
  * @author Quentin
  */
-public class ConsoleUIECUE extends ConsoleUI implements Displayable {
+public class ConsoleUIUtilisateur implements Displayable {
 
-    public ControllerECUE contr;
-
-    public ConsoleUIECUE(String s) {
-        contr = new ControllerECUE(this, s);
+    public ConsoleUIUtilisateur(ControllerLogin contr) {
+	this.contr = contr;
 	this.accept();
+    }
+
+    public ControllerLogin contr;
+
+    public void display(String msg) {
+	System.out.println(msg);
     }
 
      /**
@@ -40,8 +44,5 @@ public class ConsoleUIECUE extends ConsoleUI implements Displayable {
         }
     }
 
-    public void display(String msg) {
-        System.out.println(msg);
-    }
 
 }
