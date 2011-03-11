@@ -5,6 +5,10 @@
 
 package fr.GCAM.StudentManager.ParserCSV;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author Jojo
@@ -12,14 +16,18 @@ package fr.GCAM.StudentManager.ParserCSV;
 public class LoadCSV {
 
     /*
-     * Recuperer un fichier xls (au format normalisé)
+     * Recuperer un fichier csv (au format normalisé)
      * recuperer toutes les donnes du fichier
      * les charger dans la vue
      */
 
-    public void loadXLS(String FileName){};
+    public void loadCSV(String FileName) throws FileNotFoundException{
+    FileInputStream f;
+    f = new FileInputStream(new File(FileName));
 
-    //public void GetMark&Student(String file){};
+    };
+
+    public void GetMarkStudent(String file){};
 
 
 
