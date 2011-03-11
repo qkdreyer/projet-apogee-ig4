@@ -9,6 +9,6 @@ package fr.GCAM.StudentManager.UI;
  *
  * @author Quentin
  */
-public interface ECUEUI {
+public interface ECUEUI<T> {
 
 }
