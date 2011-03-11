@@ -62,8 +62,7 @@ public class DBECUE extends DB<ECUE> {
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	ResultSet result = s.executeQuery("SELECT codeMatiere, libelleECUE, nbHeures, idEnseignant,"
 		+ "codeUE, numEtudiant, nom, prenom, noteSession1, noteSession2 from VO_Ecue e,"
-		+ "TABLE(e.listeEtud) where codeMatiere = '" 
-		+ (String) id + "'");
+		+ "TABLE(e.listeEtud) where codeMatiere = '" + (String) id + "'");
 	if (result.first()) {            
 	    ecue.setCodeMatiere(result.getString(1));
 	    ecue.setLibelleECUE(result.getString(2));

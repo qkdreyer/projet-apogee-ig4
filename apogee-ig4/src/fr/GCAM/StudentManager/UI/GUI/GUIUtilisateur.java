@@ -16,4 +16,7 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
     public GUIUtilisateur(String s) {
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
 }

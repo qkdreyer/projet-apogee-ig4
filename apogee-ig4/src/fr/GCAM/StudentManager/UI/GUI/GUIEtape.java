@@ -16,4 +16,8 @@ public class GUIEtape extends GUI<Etape> {
     public GUIEtape(String s) {
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
+
 }

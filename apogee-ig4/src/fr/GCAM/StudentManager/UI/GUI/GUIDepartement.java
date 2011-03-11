@@ -16,4 +16,7 @@ public class GUIDepartement extends GUI<Departement> {
     public GUIDepartement(String s) {
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
 }

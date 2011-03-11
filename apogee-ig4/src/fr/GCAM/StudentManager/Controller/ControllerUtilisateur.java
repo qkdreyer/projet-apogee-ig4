@@ -5,10 +5,10 @@
 
 package fr.GCAM.StudentManager.Controller;
 
-import fr.GCAM.StudentManager.Core.Displayable;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
+import fr.GCAM.StudentManager.UI.UI;
 import java.util.ArrayList;
 
 /**
@@ -17,11 +17,11 @@ import java.util.ArrayList;
  */
 public class ControllerUtilisateur {
 
-    private Displayable disp;
+    private UI disp;
     private DAO<Utilisateur> userDAO;
     private Utilisateur user;
 
-    public ControllerUtilisateur(Displayable disp, String s) {
+    public ControllerUtilisateur(UI disp, String s) {
 	this.disp = disp;
         userDAO = AbstractDAOFactory.getDAOFactory(s).getDAOUtilisateur();
         user = new Utilisateur();
@@ -41,6 +41,7 @@ public class ControllerUtilisateur {
 		this.logUser();
 	    } catch (Exception ex) {
 		System.err.println("Erreur : " + ex);
+		ex.printStackTrace();
 	    }
 	}
     }
@@ -48,13 +49,13 @@ public class ControllerUtilisateur {
     public void logUser() {
         Utilisateur.Responsabilite r = user.getListeResponsabilites().get(0);
 	if (r.getLibelle().equals("ECUE")) {
-            disp.display("-> getECUEUI #find " + r.getCode());
+            disp.display("-> getECUEUI #find " + r.getCodeResponsabilite());
 	} else if (r.getLibelle().equals("UE")) {
-            disp.display("-> getUEUI #find " + r.getCode());
+            disp.display("-> getUEUI #find " + r.getCodeResponsabilite());
 	} else if (r.getLibelle().equals("Etape")) {
-            disp.display("-> getEtapeUI #find " + r.getCode());
+            disp.display("-> getEtapeUI #find " + r.getCodeResponsabilite());
 	} else if (r.getLibelle().equals("Departement")) {
-            disp.display("-> getDepartementUI #find " + r.getCode());
+            disp.display("-> getDepartementUI #find " + r.getCodeResponsabilite());
 	}
     }
     

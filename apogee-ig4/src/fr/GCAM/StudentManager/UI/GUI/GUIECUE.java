@@ -13,11 +13,10 @@ import fr.GCAM.StudentManager.POJO.ECUE;
  */
 public class GUIECUE extends GUI<ECUE> {
 
-    public GUIECUE() {
-    }
-
     public GUIECUE(String s) {
-
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
 }

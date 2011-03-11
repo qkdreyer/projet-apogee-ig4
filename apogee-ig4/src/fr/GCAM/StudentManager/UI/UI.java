@@ -11,5 +11,6 @@ package fr.GCAM.StudentManager.UI;
  */
 public interface UI<T> {
 
-
+    public abstract void display(String msg);
+    
 }

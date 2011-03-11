@@ -16,4 +16,7 @@ public class ConsoleEtudiant extends Console<Etudiant> {
     public ConsoleEtudiant(String s) {
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
 }

@@ -16,4 +16,8 @@ public class GUIUE extends GUI<UE> {
     public GUIUE(String s) {
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
+
 }

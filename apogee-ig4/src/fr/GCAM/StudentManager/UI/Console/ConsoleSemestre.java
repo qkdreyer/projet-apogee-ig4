@@ -16,4 +16,7 @@ public class ConsoleSemestre extends Console<Semestre> {
     public ConsoleSemestre(String s) {
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
 }

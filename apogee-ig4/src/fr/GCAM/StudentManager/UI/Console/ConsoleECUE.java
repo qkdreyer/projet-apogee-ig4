@@ -4,7 +4,6 @@
  */
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.Core.Displayable;
 import fr.GCAM.StudentManager.Controller.ControllerECUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import java.io.BufferedReader;
@@ -14,7 +13,7 @@ import java.io.InputStreamReader;
  *
  * @author Quentin
  */
-public class ConsoleECUE extends Console<ECUE> implements Displayable {
+public class ConsoleECUE extends Console<ECUE> {
 
     public ControllerECUE contr;
 

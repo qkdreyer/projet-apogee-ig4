@@ -16,4 +16,7 @@ public class ConsoleUE extends Console<UE> {
     public ConsoleUE(String s) {
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
 }
