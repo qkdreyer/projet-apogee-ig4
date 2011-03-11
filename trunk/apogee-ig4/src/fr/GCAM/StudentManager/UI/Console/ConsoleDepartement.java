@@ -16,4 +16,8 @@ public class ConsoleDepartement extends Console<Departement> {
     public ConsoleDepartement(String s) {
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
+
 }

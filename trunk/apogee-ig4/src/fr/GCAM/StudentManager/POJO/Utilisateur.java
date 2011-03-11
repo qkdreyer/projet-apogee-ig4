@@ -15,32 +15,32 @@ public class Utilisateur {
     private int idEnseignant;
     private String prenom;
     private String nom;
-    private String password;
+    private String mdp;
     private ArrayList<Responsabilite> listeResponsabilites;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(int idEnseignant, String prenom, String nom, String password, ArrayList<Responsabilite> listeResponsabilites) {
+    public Utilisateur(int idEnseignant, String prenom, String nom, String mdp, ArrayList<Responsabilite> listeResponsabilites) {
 	this.idEnseignant = idEnseignant;
 	this.prenom = prenom;
 	this.nom = nom;
-	this.password = password;
+	this.mdp = mdp;
 	this.listeResponsabilites = listeResponsabilites;
     }
 
     public static class Responsabilite {
 
 	private String libelle;
-	private String code;
+	private String codeResponsabilite;
 
-	public Responsabilite(String code, String libelle) {
+	public Responsabilite(String codeResponsabilite, String libelle) {
 	    this.libelle = libelle;
-	    this.code = code;
+	    this.codeResponsabilite = codeResponsabilite;
 	}
 
-	public String getCode() {
-	    return code;
+	public String getCodeResponsabilite() {
+	    return codeResponsabilite;
 	}
 
 	public String getLibelle() {
@@ -49,7 +49,7 @@ public class Utilisateur {
 
 	@Override
 	public String toString() {
-	    String str = this.getLibelle() + " (" + this.getCode() + ")\n";
+	    String str = this.getLibelle() + " (" + this.getCodeResponsabilite() + ")\n";
 	    return str;
 	}
     }
@@ -62,8 +62,8 @@ public class Utilisateur {
 	return nom;
     }
 
-    public String getPassword() {
-	return password;
+    public String getMDP() {
+	return mdp;
     }
 
     public String getPrenom() {
@@ -87,7 +87,7 @@ public class Utilisateur {
     }
 
     public void setPassword(String password) {
-	this.password = password;
+	this.mdp = password;
     }
 
     public void setPrenom(String prenom) {

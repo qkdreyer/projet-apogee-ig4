@@ -16,4 +16,8 @@ public class GUIEtudiant extends GUI<Etudiant> {
     public GUIEtudiant(String s) {
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
+
 }

@@ -4,10 +4,10 @@
  */
 package fr.GCAM.StudentManager.Controller;
 
-import fr.GCAM.StudentManager.Core.Displayable;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
+import fr.GCAM.StudentManager.UI.UI;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -17,11 +17,11 @@ import java.util.Observer;
  */
 public class ControllerECUE implements Observer {
 
-    private Displayable disp;
+    private UI disp;
     private DAO<ECUE> ecueDAO;
     private ECUE ecue;
 
-    public ControllerECUE(Displayable disp, String s) {
+    public ControllerECUE(UI disp, String s) {
         this.disp = disp;
 	ecueDAO = AbstractDAOFactory.getDAOFactory(s).getDAOECUE();
         ecue = new ECUE();

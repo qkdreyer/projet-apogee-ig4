@@ -31,22 +31,22 @@ public class XMLFactory extends AbstractDAOFactory {
     }
 
     @Override
-    public DAO<UE> getDAOUE(String s) {
+    public DAO<UE> getDAOUE() {
         return new XMLUE();
     }
 
     @Override
-    public DAO<Etape> getDAOEtape(String s) {
+    public DAO<Etape> getDAOEtape() {
         return new XMLEtape();
     }
 
     @Override
-    public DAO<Departement> getDAODepartement(String s) {
+    public DAO<Departement> getDAODepartement() {
         return new XMLDepartement();
     }
 
     @Override
-    public DAO<Semestre> getDAOSemestre(String s) {
+    public DAO<Semestre> getDAOSemestre() {
         return new XMLSemestre();
     }
 

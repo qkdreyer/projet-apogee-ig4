@@ -16,4 +16,8 @@ public class GUISemestre extends GUI<Semestre> {
     public GUISemestre(String s) {
     }
 
+    public void display(String msg) {
+        System.out.println(msg);
+    }
+
 }

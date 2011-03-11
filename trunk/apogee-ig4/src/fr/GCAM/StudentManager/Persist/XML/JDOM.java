@@ -4,7 +4,14 @@
  */
 package fr.GCAM.StudentManager.Persist.XML;
 
+import fr.GCAM.StudentManager.POJO.Utilisateur;
+import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
+import fr.GCAM.StudentManager.Persist.DB.ConnectionDB;
+import fr.GCAM.StudentManager.Persist.DB.DBUtilisateur;
 import java.io.FileOutputStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import org.jdom.*;
 import org.jdom.output.*;
 
@@ -14,48 +21,99 @@ import org.jdom.output.*;
  */
 public class JDOM {
 
-    static Element racine = new Element("StudentManager");
+    static Element POJOUtilisateur = new Element("POJOUtilisateur");
     //On crée un nouveau Document JDOM basé sur la racine que l'on vient de créer
-    static org.jdom.Document document = new Document(racine);
+    static org.jdom.Document document = new Document(POJOUtilisateur);
 
-    public static void main(String[] args) {
-        //On crée un nouvel Element etudiant et on l'ajoute
-        //en tant qu'Element de racine
+    public static void main(String[] args) throws Exception {
 
-        Element etud = new Element("Etudiant");
-        Element ecue = new Element("ECUE");
-        Element ue = new Element("UE");
-        Element sem = new Element("Semestre");
-        Element etape = new Element("Etape");
-        Element dept = new Element("Departement");
+	Connection conn = ConnectionDB.getConnection();
 
-        racine.addContent(ecue);
-        racine.addContent(ue);
-        racine.addContent(sem);
-        racine.addContent(etape);
-        racine.addContent(dept);
+	// Elements composants la racine
+	Element ECUE = new Element("ECUE");
+	Element Utilisateur = new Element("Utilisateur");
 
+	// Elements composant une ECUE :
         Element codeMatiere = new Element("codeMatiere");
         Element libelleECUE = new Element("libelleECUE");
-    private int nbHeures;
-    private int idEnseignant;
-    private String codeUE;
-    private ArrayList<EtudiantECUE> listeEtud;
+	Element nbHeures = new Element("nbHeures");
+	Element idEnseignant = new Element("idEnseignant");
+	Element codeUE = new Element("codeUE");
+	Element listeEtud = new Element("listeEtud");
 
-        //On crée un nouvel Attribut classe et on l'ajoute à etudiant
-        //grâce à la méthode setAttribute
-        Attribute classe = new Attribute("classe", "P2");
-        ecue.setAttribute(classe);
+	// Elements composant une listeEtud :
+	Element numEtud = new Element("numEtud");
+	Element nom = new Element("nom");
+	Element prenom = new Element("prenom");
+	Element noteSession1 = new Element("noteSession1");
+	Element noteSession2 = new Element("noteSession2");
 
-        //On crée un nouvel Element nom, on lui assigne du texte
-        //et on l'ajoute en tant qu'Element de etudiant
-        Element nom = new Element("nom");
-        nom.setText("CynO");
-        ecue.addContent(nom);
+	// Elements composants un Utilisateur
+	Element mdp = new Element("mdp");
+	Element listeResponsabilites = new Element("listeResponsabilites");
+	Element responsabilite;
+	Element libelle = new Element("libelle");
+	Element codeResponsabilite = new Element("codeResponsabilite");
 
-        //Les deux méthodes qui suivent seront définies plus loin dans l'article
+	Utilisateur.addContent(idEnseignant);
+	Utilisateur.addContent(nom);
+	Utilisateur.addContent(prenom);
+	Utilisateur.addContent(mdp);
+	Utilisateur.addContent(listeResponsabilites);
+
+
+
+	try {
+	    ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct idEnseignant from VO_Utilisateur");
+	    DBUtilisateur utilDB = new DBUtilisateur(conn);
+	    Utilisateur util;
+	    System.out.println("Test");
+    
+	    while (result.next()) {
+		Utilisateur = new Element("Utilisateur");
+		idEnseignant = new Element("idEnseignant");
+		nom = new Element("nom");
+		prenom = new Element("prenom");
+		mdp = new Element("mdp");
+		listeResponsabilites = new Element("listeResponsabilites");
+
+		util = utilDB.find(result.getInt(1));
+		
+		idEnseignant.setText(Integer.toString(util.getIdEnseignant()));
+		nom.setText(util.getNom());
+		prenom.setText(util.getPrenom());
+		mdp.setText(util.getMDP());
+
+		for (Responsabilite resp : util.getListeResponsabilites()) {
+		    System.out.println("resp.toString() = " + resp.toString());
+		    
+		    responsabilite = new Element("responsabilite");
+		    libelle = new Element("libelle");
+		    codeResponsabilite = new Element("codeResponsabilite");
+
+		    libelle.setText(resp.getLibelle());
+		    codeResponsabilite.setText(resp.getCodeResponsabilite());
+
+		    responsabilite.addContent(libelle);
+		    responsabilite.addContent(codeResponsabilite);
+		    
+		    listeResponsabilites.addContent(responsabilite);
+		}
+
+		Utilisateur.addContent(idEnseignant);
+		Utilisateur.addContent(nom);
+		Utilisateur.addContent(prenom);
+		Utilisateur.addContent(mdp);
+		Utilisateur.addContent(listeResponsabilites);
+		
+		POJOUtilisateur.addContent(Utilisateur);
+	    }
+	} catch (SQLException ex) {
+	    
+	}
+
         affiche();
-        enregistre("Exercice1.xml");
+        enregistre("utilisateur.xml");
     }
 
     //Ajouter ces deux méthodes à notre classe JDOM1
