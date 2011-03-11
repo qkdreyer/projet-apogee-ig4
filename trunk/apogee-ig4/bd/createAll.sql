@@ -493,7 +493,7 @@ begin
     loop
         liste_resp.extend;
         n := n+1;
-        liste_resp(n) := TResp(r.codeMatiere, 'Departement');
+        liste_resp(n) := TResp(r.codeMatiere, 'ECUE');
     end loop;
     
     --liste de l'UE
@@ -529,7 +529,7 @@ begin
     loop
         liste_resp.extend;
         n := n+1;
-        liste_resp(n) := TResp(r.versionDiplome, 'Diplome');
+        liste_resp(n) := TResp(r.versionDiplome, 'Departement');
     end loop;
     
     --renvoie le resultat
