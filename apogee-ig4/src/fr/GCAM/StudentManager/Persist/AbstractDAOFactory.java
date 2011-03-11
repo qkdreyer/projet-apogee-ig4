@@ -18,14 +18,12 @@ public abstract class AbstractDAOFactory extends Observable {
     protected static AbstractDAOFactory fact = null;
 
     public abstract DAO<Utilisateur> getDAOUtilisateur();
-
-    public abstract DAO getDAOEtudiant();
-
-    public abstract DAO getDAOECUE();
-    public abstract DAO getDAOUE();
-    public abstract DAO getDAOSemestre();
-    public abstract DAO getDAOEtape();
-    public abstract DAO getDAODepartement();
+    public abstract DAO<Etudiant> getDAOEtudiant();
+    public abstract DAO<ECUE> getDAOECUE();
+    public abstract DAO<UE> getDAOUE();
+    public abstract DAO<Semestre> getDAOSemestre();
+    public abstract DAO<Etape> getDAOEtape();
+    public abstract DAO<Departement> getDAODepartement();
 
     public static AbstractDAOFactory getDAOFactory(String s) {
         if (fact == null) {

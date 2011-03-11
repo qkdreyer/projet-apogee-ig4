@@ -17,13 +17,13 @@ public abstract class AbstractUIFactory {
 
     protected static AbstractUIFactory fact = null;
 
-    public abstract UI getUIUtilisateur(String s);
-    public abstract UI getUIEtudiant(String s);
-    public abstract UI getUIECUE(String s);
-    public abstract UI getUIUE(String s);
+    public abstract UI<Utilisateur> getUIUtilisateur(String s);
+    public abstract UI<Etudiant> getUIEtudiant(String s);
+    public abstract UI<ECUE> getUIECUE(String s);
+    public abstract UI<UE> getUIUE(String s);
     public abstract UI<Etape> getUIEtape(String s);
-    public abstract UI getUIDepartement(String s);
-    public abstract UI getUISemestre(String s);
+    public abstract UI<Departement> getUIDepartement(String s);
+    public abstract UI<Semestre> getUISemestre(String s);
 
     public static AbstractUIFactory getUIFactory(String s) {
 	if (fact == null) {
