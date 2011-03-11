@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<POJOUtilisateur>
+<root>
   <Utilisateur>
     <idEnseignant>1569</idEnseignant>
     <nom>berry</nom>
@@ -180,5 +180,5 @@
       </responsabilite>
     </listeResponsabilites>
   </Utilisateur>
-</POJOUtilisateur>
+</root>
 
