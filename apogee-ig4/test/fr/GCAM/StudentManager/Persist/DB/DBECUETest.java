@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
+import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.ECUE.EtudiantECUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import java.sql.SQLException;
@@ -24,13 +25,13 @@ import static org.junit.Assert.*;
  *
  * @author pierre
  */
-public class DBECUEDAOTest {
+public class DBECUETest {
 
     private static Connection conn;
     private ECUE ecue;
     private EtudiantECUE ec;
 
-    public DBECUEDAOTest() {
+    public DBECUETest() {
     }
 
     @BeforeClass
@@ -47,7 +48,7 @@ public class DBECUEDAOTest {
 	conn = ConnectionDB.getConnection();
 	try {
 	    //On cré une ECUE, pour laquelle on va réaliser le test
-	    Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	    Statement s = conn.createStatement();
 
 	    s.executeQuery("insert into Enseignant values (9999,'testPass','testNom','testPrenom','testMail')");
 
@@ -65,9 +66,9 @@ public class DBECUEDAOTest {
 
 	    s.close();
 
-	    ecue = new ECUE();
 	    ec = new EtudiantECUE(99999, "netud","petud", (float)0.0, (float)0.0);
 
+	    ecue = new ECUE();
 	    ecue.setCodeMatiere("TEST001");
 	    ecue.setLibelleECUE("testlibelle");
 	    ecue.setNbHeures(99);
@@ -75,7 +76,7 @@ public class DBECUEDAOTest {
 	    ecue.setCodeUE("testCUE");
 
 	} catch (SQLException ex) {
-	    Logger.getLogger(DBECUEDAOTest.class.getName()).log(Level.SEVERE, null, ex);
+	    Logger.getLogger(DBECUETest.class.getName()).log(Level.SEVERE, null, ex);
 	}
 
     }
@@ -87,6 +88,8 @@ public class DBECUEDAOTest {
 	try {
 	    //On cré une ECUE, pour laquelle on va réaliser le test
 	    Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+	    //s.executeQuery("DELETE FROM ")
 
 	    s.executeQuery("DELETE FROM Etudiant WHERE numEtudiant=99999");
 
@@ -105,16 +108,17 @@ public class DBECUEDAOTest {
 	    s.close();
 
 	} catch (SQLException ex) {
-	    Logger.getLogger(DBECUEDAOTest.class.getName()).log(Level.SEVERE, null, ex);
+	    Logger.getLogger(DBECUETest.class.getName()).log(Level.SEVERE, null, ex);
 	}
     }
 
     /**
      * Test of create method, of class DBECUEDAO.
      */
+    @Ignore
     @Test
     public void testCreate() throws Exception {
-	System.out.println("create");
+	System.out.println("create DBECUE");
 	ECUE ecue = new ECUE();
 	DBECUE instance = null;
 
@@ -128,23 +132,52 @@ public class DBECUEDAOTest {
      */
     @Test
     public void testUpdate() throws Exception {
-	System.out.println("update");	
+	System.out.println("update DBECUE");
 	//on lui modif ses notes
-	DBECUE dbecuedao = new DBECUE(conn);
-	dbecuedao.update(ecue);
-	//recupere le resultat
+	DBECUE dbecue = new DBECUE(conn);
+	ecue.getListeEtud().add(ec);
 
+	ec.setNoteSession1((float) 12.8);
+	ec.setNoteSession2((float) 5.8);
+
+	//on update
+	dbecue.update(ecue);
+	//on recupere le resultat
+	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	ResultSet r = s.executeQuery("SELECT v.codematiere, v.libelleECUE, v.nbheures,"
+		+ "v.idenseignant, v.codeue,l.numetudiant, l.nom, l.prenom, l.notesession1,"
+		+ "l.notesession2 FROM vo_ecue v, table(v.listeetud) l "
+		+ "WHERE v.codematiere='TEST001' AND l.numetudiant=99999");
 	//on le compare avec ce qu'on a mis a la base
+	if(r.first()) {
+	    String codematiere = r.getString(1);
+	    String libelleECUE = r.getString(2);
+	    int nbheures = r.getInt(3);
+	    int idenseignant = r.getInt(4);
+	    String codeUE = r.getString(5);
 
-	//on supprime l'etud et l'ecue témoin
+	    int numetud = r.getInt(6);
+	    String nom = r.getString(7);
+	    String prenom = r.getString(8);
+	    float notes1 = r.getFloat(9);
+	    float notes2 = r.getFloat(10);
+
+	    assertEquals(numetud, 99999);
+	} else {
+	    fail("The query didn't return any results");
+	}
+
+	
+	
     }
 
     /**
      * Test of delete method, of class DBECUEDAO.
      */
+    @Ignore
     @Test
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete DBECUE");
 	ECUE obj = null;
 	DBECUE instance = null;
 	instance.delete(obj);
@@ -155,9 +188,10 @@ public class DBECUEDAOTest {
     /**
      * Test of find method, of class DBECUEDAO.
      */
+    @Ignore
     @Test
     public void testFind() throws Exception {
-	System.out.println("find");
+	System.out.println("find DBECUE");
 	Object id = null;
 	DBECUE instance = null;
 	ECUE expResult = null;

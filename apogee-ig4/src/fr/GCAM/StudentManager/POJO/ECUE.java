@@ -20,6 +20,7 @@ public class ECUE {
     private ArrayList<EtudiantECUE> listeEtud;
 
     public ECUE() {
+	listeEtud = new ArrayList<EtudiantECUE>();
     }
 
     public static class EtudiantECUE {
