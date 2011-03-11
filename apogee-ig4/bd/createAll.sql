@@ -591,6 +591,29 @@ begin
 end vo_ecue_up;
 /
 
+--Suppression de l'etudiant 
+--Lors de la suppression, toutes les notes de l'etudiant sont supprime
+create or replace trigger etudiant_del
+	before delete
+	on etudiant
+	for each row
+declare
+begin
+	delete from note where numetudiant = :old.numetudiant;
+		
+	--liaison a l'ue	
+	delete from vae where numetudiant = :old.numetudiant;
+	delete from choixUE where numetudiant = :old.numetudiant;
+	delete from apdj where numetudiant = :old.numetudiant;
+		
+	--Liaison au semestre	
+	delete from pointsjury where numetudiant = :old.numetudiant;
+	delete from redoublant where numetudiant = :old.numetudiant;
+	delete from etranger where numetudiant = :old.numetudiant;
+		
+end etudiant_del;
+/
+
 
 
 
