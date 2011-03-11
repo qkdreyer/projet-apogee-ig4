@@ -18,7 +18,7 @@ public class JDOM {
     //On crée un nouveau Document JDOM basé sur la racine que l'on vient de créer
     static org.jdom.Document document = new Document(racine);
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         //On crée un nouvel Element etudiant et on l'ajoute
         //en tant qu'Element de racine
 
@@ -37,7 +37,7 @@ public class JDOM {
 
         Element codeMatiere = new Element("codeMatiere");
         Element libelleECUE = new Element("libelleECUE");
-    /*private int nbHeures;
+    private int nbHeures;
     private int idEnseignant;
     private String codeUE;
     private ArrayList<EtudiantECUE> listeEtud;
@@ -77,5 +77,5 @@ public class JDOM {
             sortie.output(document, new FileOutputStream(fichier));
         } catch (java.io.IOException e) {
         }
-    }*/
+    }
 }

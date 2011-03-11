@@ -35,15 +35,15 @@ public class ControllerECUE implements Observer {
         String[] msg = message.split(" ");
 
         if (msg[0].equals("#note1") && msg.length == 3) { // #note1 3 12.5
-            note1(msg);
+            this.note1(msg);
         } else if (msg[0].equals("#note2") && msg.length == 3) { // #note1 3 12.5
-            note2(msg);
+            this.note2(msg);
         } else if (msg[0].equals("#find") && msg.length == 2) { // #find pstia602
-            find(msg);
+            this.find(msg);
         } else if (msg[0].equals("#update")) {
-            update(msg);
+            this.update(msg);
         } else if (msg[0].equals("#quit")) {
-            quit();
+            this.quit();
         }
     }
 
