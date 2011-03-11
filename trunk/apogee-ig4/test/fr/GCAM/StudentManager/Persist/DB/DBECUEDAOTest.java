@@ -3,14 +3,14 @@
  * and open the template in the editor.
  */
 
-package Persist.DB;
+package fr.GCAM.StudentManager.Persist.DB;
 
+import fr.GCAM.StudentManager.POJO.ECUE.EtudiantECUE;
+import fr.GCAM.StudentManager.POJO.ECUE;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import POJO.ECUE.EtudiantECUE;
 import java.sql.Connection;
-import POJO.ECUE;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.AfterClass;
@@ -44,7 +44,7 @@ public class DBECUEDAOTest {
     @Before
     public void setUp(){
 	//Creation de la connection à la BD
-	conn = ConnectDB.getConnection();
+	conn = ConnectionDB.getConnection();
 	try {
 	    //On cré une ECUE, pour laquelle on va réaliser le test
 	    Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -116,7 +116,7 @@ public class DBECUEDAOTest {
     public void testCreate() throws Exception {
 	System.out.println("create");
 	ECUE ecue = new ECUE();
-	DBECUEDAO instance = null;
+	DBECUE instance = null;
 
 
 
@@ -130,7 +130,7 @@ public class DBECUEDAOTest {
     public void testUpdate() throws Exception {
 	System.out.println("update");	
 	//on lui modif ses notes
-	DBECUEDAO dbecuedao = new DBECUEDAO(conn);
+	DBECUE dbecuedao = new DBECUE(conn);
 	dbecuedao.update(ecue);
 	//recupere le resultat
 
@@ -146,7 +146,7 @@ public class DBECUEDAOTest {
     public void testDelete() throws Exception {
 	System.out.println("delete");
 	ECUE obj = null;
-	DBECUEDAO instance = null;
+	DBECUE instance = null;
 	instance.delete(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -159,7 +159,7 @@ public class DBECUEDAOTest {
     public void testFind() throws Exception {
 	System.out.println("find");
 	Object id = null;
-	DBECUEDAO instance = null;
+	DBECUE instance = null;
 	ECUE expResult = null;
 	ECUE result = instance.find(id);
 	assertEquals(expResult, result);
