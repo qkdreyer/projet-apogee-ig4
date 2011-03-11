@@ -56,7 +56,7 @@ public class JDOM {
 	noteSession1 = new Element("noteSession1");
 	noteSession2 = new Element("noteSession2");
 
-	ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct idEnseignant from VO_Utilisateur");
+	ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct codeMatiere from VO_Ecue");
 	DBECUE ecueDB = new DBECUE(conn);
 	ECUE ecue;
 
@@ -69,7 +69,7 @@ public class JDOM {
 	    codeUE = new Element("codeUE");
 	    listeEtud = new Element("listeEtud");
 
-	    ecue = ecueDB.find(result.getInt(1));
+	    ecue = ecueDB.find(result.getString(1));
 
 	    codeMatiere.setText(ecue.getCodeMatiere());
 	    libelleECUE.setText(ecue.getLibelleECUE());

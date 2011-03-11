@@ -9,7 +9,6 @@ import fr.GCAM.StudentManager.POJO.ECUE.EtudiantECUE;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -19,33 +18,41 @@ import java.util.Iterator;
 public class DBECUE extends DB<ECUE> {
 
     public DBECUE(Connection conn) {
-	super(conn);
+        super(conn);
     }
 
     public void create(ECUE obj) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public void update(ECUE ecue) throws Exception {
-	try {
-	    Iterator i = ecue.getListeEtud().iterator();
-	    while (i.hasNext()) {
-		EtudiantECUE etudiant = (EtudiantECUE) i.next();
-		Statement s = this.conn.createStatement();
-		s.executeUpdate("UPDATE VO_Ecue SET listeEtud = TEtud_NT("
-			+ "TEtud(" + etudiant.getNumEtud() + ", null, null, "
-			+ etudiant.getNoteSession1() + ", " + etudiant.getNoteSession2() + ")) "
-			+ "WHERE codeMatiere = '" + ecue.getCodeMatiere() + "'");
-	    }
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
+        EtudiantECUE etudiant;
+        Iterator i = ecue.getListeEtud().iterator();
+        while (i.hasNext()) {
+            etudiant = (EtudiantECUE) i.next();
+            if (etudiant.isNoteSession1Changed()) {
+                updateNote1(etudiant.getNumEtud(), ecue.getCodeMatiere(), etudiant.getNoteSession1());
+            } else if (etudiant.isNoteSession2Changed()) {
+                updateNote2(etudiant.getNumEtud(), ecue.getCodeMatiere(), etudiant.getNoteSession2());
+            }
+        }
+    }
+
+    private void updateNote1(int numEtud, String codeMatiere, float noteSession1) throws Exception {
+        this.conn.createStatement().executeUpdate("UPDATE VO_Ecue SET noteSession1 = " + noteSession1
+                + " WHERE codeMatiere = '" + codeMatiere
+                + "' and numEtudiant = " + numEtud);
+    }
+
+    private void updateNote2(int numEtud, String codeMatiere, float noteSession2) throws Exception {
+        this.conn.createStatement().executeUpdate("UPDATE VO_Ecue SET noteSession2 = " + noteSession2
+                + " WHERE codeMatiere = '" + codeMatiere
+                + "' and numEtudiant = " + numEtud);
     }
 
     public void delete(ECUE obj) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-
 
     /**
      * La fonction, renvoie un POJO ECUE, a partir de l'id passé en parametre.<br>
@@ -56,29 +63,23 @@ public class DBECUE extends DB<ECUE> {
      * @throws Exception
      */
     public ECUE find(Object id) throws Exception {
-	ECUE ecue = new ECUE();
-	ArrayList<ECUE.EtudiantECUE> listeEtud;
+        ECUE ecue = new ECUE();
 
-	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	ResultSet result = s.executeQuery("SELECT codeMatiere, libelleECUE, nbHeures, idEnseignant,"
-		+ "codeUE, numEtudiant, nom, prenom, noteSession1, noteSession2 from VO_Ecue e,"
-		+ "TABLE(e.listeEtud) where codeMatiere = '" + (String) id + "'");
-	if (result.first()) {            
-	    ecue.setCodeMatiere(result.getString(1));
-	    ecue.setLibelleECUE(result.getString(2));
-	    ecue.setNbHeures(result.getInt(3));
-	    ecue.setIdEnseignant(result.getInt(4));
-	    ecue.setCodeUE(result.getString(5));
+        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet result = s.executeQuery("SELECT * from VO_Ecue where codeMatiere = '" + (String) id + "'");
+        if (result.first()) {
+            ecue.setCodeMatiere(result.getString(1));
+            ecue.setLibelleECUE(result.getString(2));
+            ecue.setNbHeures(result.getInt(3));
+            ecue.setIdEnseignant(result.getInt(4));
+            ecue.setCodeUE(result.getString(5));
 
-	    listeEtud = new ArrayList<ECUE.EtudiantECUE>();
-	    do {                
-		listeEtud.add(new EtudiantECUE(result.getInt(6),
-			result.getString(7), result.getString(8), 
-			result.getFloat(9), result.getFloat(10)));
-	    } while (result.next());
-	    ecue.setListeEtud(listeEtud);
-	}
-	return ecue;
+            do {
+                ecue.getListeEtud().add(new EtudiantECUE(result.getInt(6),
+                        result.getString(7), result.getString(8),
+                        result.getFloat(9), result.getFloat(10)));
+            } while (result.next());
+        }
+        return ecue;
     }
-
 }

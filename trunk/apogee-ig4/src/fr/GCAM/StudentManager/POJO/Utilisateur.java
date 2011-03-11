@@ -19,6 +19,7 @@ public class Utilisateur {
     private ArrayList<Responsabilite> listeResponsabilites;
 
     public Utilisateur() {
+        listeResponsabilites = new ArrayList<Responsabilite>();
     }
 
     public Utilisateur(int idEnseignant, String prenom, String nom, String mdp, ArrayList<Responsabilite> listeResponsabilites) {
@@ -86,8 +87,8 @@ public class Utilisateur {
 	this.nom = nom;
     }
 
-    public void setPassword(String password) {
-	this.mdp = password;
+    public void setMDP(String mdp) {
+	this.mdp = mdp;
     }
 
     public void setPrenom(String prenom) {

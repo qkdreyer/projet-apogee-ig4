@@ -25,10 +25,6 @@ public class ECUE {
 
     public static class EtudiantECUE {
 
-	public EtudiantECUE() {
-
-	}
-
 	public EtudiantECUE(int numEtud, String nom, String prenom, float noteSession1, float noteSession2) {
 	    this.numEtud = numEtud;
 	    this.nom = nom;
@@ -43,6 +39,17 @@ public class ECUE {
 	private float noteSession1;
 	private float noteSession2;
 
+        private boolean noteSession1Changed = false;
+        private boolean noteSession2Changed = false;
+
+        public boolean isNoteSession1Changed() {
+            return noteSession1Changed;
+        }
+
+        public boolean isNoteSession2Changed() {
+            return noteSession2Changed;
+        }
+
 	public String getNom() {
 	    return nom;
 	}
@@ -53,6 +60,7 @@ public class ECUE {
 
 	public void setNoteSession1(float note1) {
 	    this.noteSession1 = note1;
+            this.noteSession1Changed = true;
 	}
 
 	public float getNoteSession2() {
@@ -61,6 +69,7 @@ public class ECUE {
 
 	public void setNoteSession2(float note2) {
 	    this.noteSession2 = note2;
+            this.noteSession2Changed = true;
 	}
 
 	public int getNumEtud() {

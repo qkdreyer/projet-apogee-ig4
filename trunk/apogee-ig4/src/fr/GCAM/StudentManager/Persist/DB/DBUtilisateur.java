@@ -42,18 +42,18 @@ public class DBUtilisateur extends DB<Utilisateur> {
 	}
     }
 
-    public Utilisateur findWithID(Integer i) throws Exception {
+    public Utilisateur findWithID(Integer num) throws Exception {
 	Utilisateur util = new Utilisateur();
 	ArrayList<Utilisateur.Responsabilite> listeResp;
 
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
-		+ "where idEnseignant = " + i);
+		+ "where idEnseignant = " + num);
 	if (result.first()) {
 	    util.setIdEnseignant(result.getInt(1));
 	    util.setNom(result.getString(2));
 	    util.setPrenom(result.getString(3));
-	    util.setPassword(result.getString(4));
+	    util.setMDP(result.getString(4));
 
 	    listeResp = new ArrayList<Utilisateur.Responsabilite>();
 	    do {
@@ -79,7 +79,7 @@ public class DBUtilisateur extends DB<Utilisateur> {
 	    util.setIdEnseignant(result.getInt(1));
 	    util.setNom(result.getString(2));
 	    util.setPrenom(result.getString(3));
-	    util.setPassword(result.getString(4));
+	    util.setMDP(result.getString(4));
 
 	    listeResp = new ArrayList<Utilisateur.Responsabilite>();
 	    do {
