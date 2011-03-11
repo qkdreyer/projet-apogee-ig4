@@ -86,7 +86,7 @@ public class ECUE {
 
     }
 
-    public boolean isStudent(Integer i) {
+    public boolean hasStudent(Integer i) {
         return (i > 0 && i <= listeEtud.size());
     }
 
