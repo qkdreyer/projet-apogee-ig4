@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package POJO;
+package fr.GCAM.StudentManager.POJO;
 
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.ECUE.EtudiantECUE;
