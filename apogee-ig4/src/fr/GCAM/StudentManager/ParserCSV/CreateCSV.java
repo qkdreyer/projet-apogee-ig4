@@ -24,41 +24,39 @@ public class CreateCSV {
     /* Creation du fichier .xls vide
      * le nom du fichier serz fichierNotes.xls
      */
-    public void CreateEmptyFile(){
-        FileOutputStream file;
-        try{
-            file = new FileOutputStream("fichierNotes.csv");
-            file.close();
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
+    public static File CreateEmptyFile(){
+        File f;
+            f = new File("fichierNotes.csv");
+            return f;
+       
+      
     }
 
-    public void CompleteFile(File file, ECUE ecue){
-        FileOutputStream fos;
+    public static File CompleteFile(File f, ECUE ecue){
         try{
             //fos = new FileOutputStream(new File("fichierNotes.csv"));
             FileWriter fw;
-            fw = new FileWriter(file);
+            fw = new FileWriter(f);
 
-            fw.write(ecue.getLibelleECUE());
+            fw.write(ecue.getCodeMatiere());
             fw.write(",");
             fw.write("Note session 1");
             fw.write("Note session 2");
             fw.write("\n");
 
-        for(ECUE.EtudiantECUE etudiant : this.getListeEtud()) {
+        for(ECUE.EtudiantECUE etudiant : ecue.getListeEtud()) {
 
             fw.write(etudiant.getNom());
             fw.write(",");
             fw.write(etudiant.getPrenom());
             fw.write("\n");
             }
-        fos.close();
+        fw.close();
+        return f;
         }
         catch(IOException problewritingimpossible){
             System.out.println("impossible d'ouvrir le fichier");
+            return null;
         }
 
     };

@@ -19,7 +19,7 @@ public class LoadCSV {
 
     public void loadXLS(String FileName){};
 
-    public void GetMark&Student(String file){};
+    //public void GetMark&Student(String file){};
 
 
 
