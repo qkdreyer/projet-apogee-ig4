@@ -163,6 +163,10 @@ public class DBECUETest {
 	    float notes2 = r.getFloat(10);
 
 	    assertEquals(numetud, 99999);
+	    // 0.001 est le delta (ecart autorisé) par rapport à la note.
+	    assertEquals(notes1, 12.8, 0.001);
+	    assertEquals(notes2,5.8, 0.001);
+
 	} else {
 	    fail("The query didn't return any results");
 	}

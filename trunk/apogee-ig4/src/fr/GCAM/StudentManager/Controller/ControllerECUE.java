@@ -35,32 +35,53 @@ public class ControllerECUE implements Observer {
         String[] msg = message.split(" ");
 
         if (msg[0].equals("#note1") && msg.length == 3) { // #note1 3 12.5
-            if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
-                ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession1(Float.parseFloat(msg[2]));
-                disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
-		handleMessage("#update");
-            }
+            note1(msg);
         } else if (msg[0].equals("#note2") && msg.length == 3) { // #note1 3 12.5
-            if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
-                ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession2(Float.parseFloat(msg[2]));
-                disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
-		handleMessage("#update");
-            }
+            note2(msg);
         } else if (msg[0].equals("#find") && msg.length == 2) { // #find pstia602
-            try {
-		ecue = (ECUE) ecueDAO.find(msg[1]);
-                disp.display(ecue.toString());
-	    } catch (Exception ex) {
-		System.err.println("Erreur : " + ex);
-	    }
+            find(msg);
         } else if (msg[0].equals("#update")) {
-            try {
-                ecueDAO.update(ecue);
-            } catch (Exception ex) {
-                System.err.println("Erreur : " + ex);
-            }
+            update(msg);
         } else if (msg[0].equals("#quit")) {
-            System.exit(0);
+            quit();
         }
     }
+
+    public void note1(String[] msg) {
+	if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
+            ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession1(Float.parseFloat(msg[2]));
+            disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
+	    handleMessage("#update");
+        }
+    }
+
+    public void note2(String[] msg) {
+	if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
+            ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession2(Float.parseFloat(msg[2]));
+	    disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
+	    handleMessage("#update");
+	}
+    }
+
+    public void find(String[] msg) {
+	try {
+	    ecue = (ECUE) ecueDAO.find(msg[1]);
+            disp.display(ecue.toString());
+	} catch (Exception ex) {
+	    System.err.println("Erreur : " + ex);
+	}
+    }
+
+    public void update(String[] msg) {
+	try {
+	    ecueDAO.update(ecue);
+        } catch (Exception ex) {
+            System.err.println("Erreur : " + ex);
+        }
+    }
+	
+    public void quit() {
+	System.exit(0);
+    }
+
 }
