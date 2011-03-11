@@ -43,9 +43,8 @@ public class XMLECUE extends XML<ECUE> {
 
     public ECUE find(Object id) throws Exception {
 	ECUE e = new ECUE();
-	FileInputStream fis = new FileInputStream(filename);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        e = (ECUE) ois.readObject();
+
+
 	return e;
     }
 
