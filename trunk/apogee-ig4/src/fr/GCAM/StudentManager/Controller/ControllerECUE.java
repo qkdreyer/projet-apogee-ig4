@@ -35,13 +35,13 @@ public class ControllerECUE implements Observer {
         String[] msg = message.split(" ");
 
         if (msg[0].equals("#note1") && msg.length == 3) { // #note1 3 12.5
-            if (ecue.isStudent(Integer.parseInt(msg[1]))) {
+            if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
                 ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession1(Float.parseFloat(msg[2]));
                 disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
 		handleMessage("#update");
             }
         } else if (msg[0].equals("#note2") && msg.length == 3) { // #note1 3 12.5
-            if (ecue.isStudent(Integer.parseInt(msg[1]))) {
+            if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
                 ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession2(Float.parseFloat(msg[2]));
                 disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
 		handleMessage("#update");
