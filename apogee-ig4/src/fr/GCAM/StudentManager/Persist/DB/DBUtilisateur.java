@@ -68,7 +68,6 @@ public class DBUtilisateur extends DB<Utilisateur> {
 
     public Utilisateur findWithLogin(ArrayList a) throws Exception {
 	Utilisateur util = new Utilisateur();
-	ArrayList<Utilisateur.Responsabilite> listeResp;
 
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
@@ -81,13 +80,11 @@ public class DBUtilisateur extends DB<Utilisateur> {
 	    util.setPrenom(result.getString(3));
 	    util.setMDP(result.getString(4));
 
-	    listeResp = new ArrayList<Utilisateur.Responsabilite>();
 	    do {
-		listeResp.add(new Utilisateur.Responsabilite(
+		util.getListeResponsabilites().add(new Utilisateur.Responsabilite(
 			result.getString(5),
 			result.getString(6)));
 	    } while (result.next());
-	    util.setListeResponsabilites(listeResp);
 	}
 	return util;
     }

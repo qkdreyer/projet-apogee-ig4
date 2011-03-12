@@ -45,9 +45,9 @@ public class ConsoleFactory extends AbstractUIFactory {
         return new ConsoleDepartement(s);
     }
 
-    @Override
+    /*@Override
     public UI<Semestre> getUISemestre(String s) {
         return new ConsoleSemestre(s);
-    }
+    }*/
 
 }

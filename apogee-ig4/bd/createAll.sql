@@ -557,9 +557,66 @@ resp.codeResponsabilite, resp.libelle
 from Enseignant en, table(get_liste_resp(en.idEnseignant)) resp;
 /
 
+--vue ue
+create or replace type TUE as object (
+	codeUE varchar2(20),
+	nbECTS number,
+	libelleUE varchar2(20),
+	optionnel char(1),
+	nomResponsableUE varchar2(20),
+	prenomResponsableUE varchar2(20),
+	codeSemestre varchar2(20),
+	codeMatiere varchar2(20),
+	libelleECUE varchar2(20),
+	nomResponsableECUE varchar2(20),
+	prenomResponsableECUE varchar2(20)
+);
+/
 
+create or replace view VO_UE of TUE
+with object identifier(codeUE) as
+select codeUE, nbECTS, libelleUE, optionnel, nomResponsableUE, prenomResponsableUE, codeSemestre,
+codeMatiere, libelleECUE, nomResponsableECUE, prenomResponsableECUE
+from UE, table(getListeECUE(codeUE));
+/
 
+--vue etape
+create or replace type TEtape as object (
+	codeEtape varchar2(20),
+	libelleEtape varchar2(20),
+	versionDiplome varchar2(20),
+	nomResponsable varchar2(20),
+	prenomResponsable varchar2(20),
+	codeSemestre varchar2(20),
+	nbUEFacultatives number,
+	codeEtape varchar2(20),
+	codeUE varchar2(20),
+	libelleUE varchar2(20)
+);
+/
 
+create or replace view VO_Etape of TEtape
+with object identifier(codeEtape) as
+select codeEtape, libelleEtape, versionDiplome, nomResponsable, prenomResponsable, codeSemestre, nbUEFacultatives,
+codeEtape, codeUE, libelleUE
+from Etape, Semestre, table(getListeUE(codeSemestre));
+/
+
+--vue dept
+create or replace type TDepartement as object (
+	versionDiplome varchar2(20),
+	nomDepartement varchar2(20),
+	mnemo varchar2(20),
+	codeEtape varchar2(20),
+	libelleEtape varchar2(20),
+);
+/
+
+create or replace view VO_Departement of TDepartement
+with object identifier(versionDiplome) as
+select versionDiplome, nomDepartement, mnemo, codeEtape, libelleEtape
+from Departement, table(getListeEtape(versionDiplome));
+/
 
 -- Triggers
 

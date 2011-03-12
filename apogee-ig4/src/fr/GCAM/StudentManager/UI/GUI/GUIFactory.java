@@ -45,9 +45,9 @@ public class GUIFactory extends AbstractUIFactory {
         return new GUIDepartement(s);
     }
 
-    @Override
+    /*@Override
     public UI<Semestre> getUISemestre(String s) {
         return new GUISemestre(s);
-    }
+    }*/
 
 }

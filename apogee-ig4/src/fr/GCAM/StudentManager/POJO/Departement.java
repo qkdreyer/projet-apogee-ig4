@@ -5,6 +5,8 @@
 
 package fr.GCAM.StudentManager.POJO;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author pierre
@@ -12,21 +14,46 @@ package fr.GCAM.StudentManager.POJO;
 public class Departement {
 
     private String versionDiplome;
+    private String nomDepartement;
     private String mnemo;
-    private int idEnseignant;
+    private ArrayList<EtapeDepartement> listeEtape;
 
-    public Departement(String versionDiplome, String mnemo, int idEnseignant) {
-	this.versionDiplome = versionDiplome;
-	this.mnemo = mnemo;
-	this.idEnseignant = idEnseignant;
+    public Departement() {
+        listeEtape = new ArrayList<EtapeDepartement>();
     }
 
-    public int getIdEnseignant() {
-	return idEnseignant;
+    public static class EtapeDepartement {
+
+        private String codeEtape;
+        private String libelleEtape;
+
+        public EtapeDepartement(String codeEtape, String libelleEtape) {
+            this.codeEtape = codeEtape;
+        }
+
+        public String getLibelleEtape() {
+            return libelleEtape;
+        }
+
+        public void setLibelleEtape(String libelleEtape) {
+            this.libelleEtape = libelleEtape;
+        }
+
+        public String getCodeEtape() {
+            return codeEtape;
+        }
+
+        public void setCodeEtape(String codeEtape) {
+            this.codeEtape = codeEtape;
+        }
     }
 
-    public void setIdEnseignant(int idEnseignant) {
-	this.idEnseignant = idEnseignant;
+    public String getNomDepartement() {
+        return nomDepartement;
+    }
+
+    public void setNomDepartement(String nomDepartement) {
+        this.nomDepartement = nomDepartement;
     }
 
     public String getMnemo() {
@@ -45,6 +72,12 @@ public class Departement {
 	this.versionDiplome = versionDiplome;
     }
 
-    
+    public ArrayList<EtapeDepartement> getListeEtape() {
+        return listeEtape;
+    }
+
+    public void setListeEtape(ArrayList<EtapeDepartement> listeEtape) {
+        this.listeEtape = listeEtape;
+    }
 
 }

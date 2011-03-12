@@ -45,9 +45,9 @@ public class XMLFactory extends AbstractDAOFactory {
         return new XMLDepartement();
     }
 
-    @Override
+    /*@Override
     public DAO<Semestre> getDAOSemestre() {
         return new XMLSemestre();
-    }
+    }*/
 
 }

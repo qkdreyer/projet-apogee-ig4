@@ -48,9 +48,9 @@ public class DBFactory extends AbstractDAOFactory {
         return new DBDepartement(conn);
     }
 
-    @Override
+    /*@Override
     public DAO<Semestre> getDAOSemestre() {
         return new DBSemestre(conn);
-    }
+    }*/
 
 }

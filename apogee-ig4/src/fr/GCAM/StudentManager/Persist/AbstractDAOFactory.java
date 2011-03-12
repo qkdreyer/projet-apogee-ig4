@@ -21,7 +21,7 @@ public abstract class AbstractDAOFactory extends Observable {
     public abstract DAO<Etudiant> getDAOEtudiant();
     public abstract DAO<ECUE> getDAOECUE();
     public abstract DAO<UE> getDAOUE();
-    public abstract DAO<Semestre> getDAOSemestre();
+    //public abstract DAO<Etape.Semestre> getDAOSemestre();
     public abstract DAO<Etape> getDAOEtape();
     public abstract DAO<Departement> getDAODepartement();
 

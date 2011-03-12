@@ -4,9 +4,9 @@
 insert into Departement values ('PI01','Informatique et gestion','IG',1001);
 insert into Departement values ('PI02','Sciences et Techniques des Industries Agroalimentaires','STIA',2176);
 
-insert into Etape  values ('10','3',1001,'PI01');
-insert into Etape  values ('20','3',2176,'PI02');
-insert into Etape  values ('11','4',1001,'PI01');
+insert into Etape values ('10','3',1001,'PI01');
+insert into Etape values ('20','3',2176,'PI02');
+insert into Etape values ('11','4',1001,'PI01');
 
 insert into Semestre values ('51','s05',0,10);
 insert into Semestre values ('61','s06',0,10);
