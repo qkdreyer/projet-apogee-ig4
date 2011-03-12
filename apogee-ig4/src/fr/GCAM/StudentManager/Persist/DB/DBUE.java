@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
+ * Cette classe définit les methodes de l'interface DAO pour le type UE
+ * (POJO).
  *
  * @author pierre
  */

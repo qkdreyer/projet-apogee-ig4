@@ -6,8 +6,12 @@
 package fr.GCAM.StudentManager.POJO;
 
 /**
+ * Cette classe est un POJO(Plain Old Java Object), qui correspond à l'ensemble
+ * des données nécessaires pour réaliser la maquette de l'étudiant.
+ * L'ensemble de ses méthodes est donc composée uniquement d'accesseurs et de
+ * mutateurs.
  *
- * @author Quentin
+ * @author pierre
  */
 public class Etudiant {
 

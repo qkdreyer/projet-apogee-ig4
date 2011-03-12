@@ -7,8 +7,11 @@ import fr.GCAM.StudentManager.UI.AbstractUIFactory;
  * and open the template in the editor.
  */
 /**
+ * Classe principale du projet. C'est ici que l'on va regarder les deux arguments
+ * obligatoires qui doivent etre passés pour l'éxecution du programme.
+ * Le programme va ensuite lancer l'UI correspodant au premier argument.
  *
- * @author Quentin, non en fait c'est ben
+ * @author Quentin
  */
 public class Main {
 

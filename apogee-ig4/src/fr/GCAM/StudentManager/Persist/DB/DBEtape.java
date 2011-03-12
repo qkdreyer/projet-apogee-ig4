@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
+ * Cette classe définit les methodes de l'interface DAO pour le type Etape (POJO).
  *
  * @author pierre
  */

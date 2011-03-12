@@ -11,7 +11,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 
+
 /**
+ * Cette classe implémente la connection à la base de données oracle de v240.
  *
  * @author Quentin
  */
@@ -20,7 +22,7 @@ public class ConnectionDB {
     private static Connection conn = null;
     private String url = "jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ora10";
 
-    public ConnectionDB() {
+    private ConnectionDB() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(url, getUser(), getPassword());
@@ -32,6 +34,10 @@ public class ConnectionDB {
         }
     }
 
+    /**
+     * La fonction récupere le mot de passe qui est stocké dans un fichier local
+     * @return Le mot de passe lu dans le fichier est renvoyé.
+     */
     private String getPassword() {
         BufferedReader br = null;
         String pwd = null;
@@ -61,6 +67,11 @@ public class ConnectionDB {
         return usr;
     }
 
+    /**
+     * La fonction ets utilisée pour récuperer une connection à la base de
+     * données.
+     * @return La Connection (java.sql.Connection) est renvoyé.
+     */
     public static Connection getConnection() {
         if (conn == null) {
             new ConnectionDB();

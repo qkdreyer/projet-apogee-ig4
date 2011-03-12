@@ -8,6 +8,8 @@ import fr.GCAM.StudentManager.POJO.Etudiant;
 import java.sql.*;
 
 /**
+ * Cette classe définit les methodes de l'interface DAO pour le type Etudiant
+ * (POJO).
  *
  * @author Quentin
  */

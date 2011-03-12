@@ -8,6 +8,10 @@ package fr.GCAM.StudentManager.POJO;
 import java.util.ArrayList;
 
 /**
+ * Cette classe est un POJO(Plain Old Java Object), qui correspond à l'ensemble
+ * des données nécessaires pour réaliser la maquette du département.
+ * L'ensemble de ses méthodes est donc composée uniquement d'accesseurs et de 
+ * mutateurs.
  *
  * @author pierre
  */
