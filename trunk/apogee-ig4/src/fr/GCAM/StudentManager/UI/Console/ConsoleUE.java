@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
+import fr.GCAM.StudentManager.Controller.ControllerUE;
 import fr.GCAM.StudentManager.POJO.UE;
 
 /**
@@ -13,7 +14,10 @@ import fr.GCAM.StudentManager.POJO.UE;
  */
 public class ConsoleUE extends Console<UE> {
 
+    public ControllerUE contr;
+
     public ConsoleUE(String s) {
+        contr = new ControllerUE(this, s);
     }
 
     public void display(String msg) {
