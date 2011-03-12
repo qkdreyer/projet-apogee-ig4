@@ -19,12 +19,11 @@ public class ConnectionDB {
 
     private static Connection conn = null;
     private String url = "jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ora10";
-    private String user = "joris.puechlong";
 
     public ConnectionDB() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection(url, user, getPassword());
+            conn = DriverManager.getConnection(url, getUser(), getPassword());
             System.out.println("Connection effective !");
         } catch (SQLException ex) {
             System.err.println("Erreur lors de la connexion : " + ex);
@@ -38,6 +37,7 @@ public class ConnectionDB {
         String pwd = null;
         try {
             br = new BufferedReader(new FileReader(".htaccess"));
+            br.readLine();
             pwd = br.readLine();
         } catch (FileNotFoundException ex) {
             System.err.println("Fichier introuvable : " + ex);
@@ -45,6 +45,20 @@ public class ConnectionDB {
             System.err.println("Erreur de lecture/ecriture : " + ex);
         }
         return pwd;
+    }
+
+    public String getUser() {
+        BufferedReader br = null;
+        String usr = null;
+        try {
+            br = new BufferedReader(new FileReader(".htaccess"));
+            usr = br.readLine();
+        } catch (FileNotFoundException ex) {
+            System.err.println("Fichier introuvable : " + ex);
+        } catch (IOException ex) {
+            System.err.println("Erreur de lecture/ecriture : " + ex);
+        }
+        return usr;
     }
 
     public static Connection getConnection() {
