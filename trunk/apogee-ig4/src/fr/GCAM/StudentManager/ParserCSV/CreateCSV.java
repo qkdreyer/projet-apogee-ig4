@@ -8,6 +8,8 @@ import fr.GCAM.StudentManager.POJO.ECUE;
 import java.io.*;
 
 /**
+ * Cette classe définie les methodes liées à la création d'un fichier CSV au
+ * format qui permettra d'y inserer les notes des éléves pour une ECUE
  *
  * @author Jojo
  */

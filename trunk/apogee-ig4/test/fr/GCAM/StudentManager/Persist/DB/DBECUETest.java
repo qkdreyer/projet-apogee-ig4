@@ -71,7 +71,8 @@ public class DBECUETest {
             ecue.setCodeMatiere("TEST001");
             ecue.setLibelleECUE("testlibelle");
             ecue.setNbHeures(99);
-            ecue.setIdEnseignant(9999);
+            //ecue.setIdEnseignant(9999);
+
             ecue.setCodeUE("testCUE");
 
         } catch (SQLException ex) {

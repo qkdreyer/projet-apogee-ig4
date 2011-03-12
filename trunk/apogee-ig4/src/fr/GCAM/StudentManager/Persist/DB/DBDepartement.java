@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
+ * Cette classe définit les methodes de l'interface DAO pour le type Departement
+ * (POJO).
  *
  * @author pierre
  */
@@ -20,18 +22,39 @@ public class DBDepartement extends DB<Departement> {
 	super(conn);
     }
 
+    /**
+     *
+     * @param obj
+     * @throws Exception
+     */
     public void create(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param obj
+     * @throws Exception
+     */
     public void update(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param obj
+     * @throws Exception
+     */
     public void delete(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public Departement find(Object id) throws Exception {
 	Departement dept = new Departement();
 

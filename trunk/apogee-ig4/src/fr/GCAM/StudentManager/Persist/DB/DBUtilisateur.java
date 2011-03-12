@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
+ * Cette classe définit les methodes de l'interface DAO pour le type Utilsateur
+ * (POJO).
  *
  * @author Quentin
  */
