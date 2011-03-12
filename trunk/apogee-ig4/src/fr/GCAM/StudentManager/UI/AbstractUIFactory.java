@@ -23,7 +23,7 @@ public abstract class AbstractUIFactory {
     public abstract UI<UE> getUIUE(String s);
     public abstract UI<Etape> getUIEtape(String s);
     public abstract UI<Departement> getUIDepartement(String s);
-    public abstract UI<Semestre> getUISemestre(String s);
+    //public abstract UI<Etape.Semestre> getUISemestre(String s);
 
     public static AbstractUIFactory getUIFactory(String s) {
 	if (fact == null) {

@@ -15,7 +15,7 @@ public class ECUE {
     private String codeMatiere;
     private String libelleECUE;
     private int nbHeures;
-    private int idEnseignant;
+    private String responsable;
     private String codeUE;
     private ArrayList<EtudiantECUE> listeEtud;
 
@@ -86,16 +86,6 @@ public class ECUE {
         }
     }
 
-    public ECUE(String codeMatiere, String libelleECUE, int nbHeures, int idEnseignant, String codeUE, ArrayList<EtudiantECUE> listeEtud) {
-	this.codeMatiere = codeMatiere;
-	this.libelleECUE = libelleECUE;
-	this.nbHeures = nbHeures;
-	this.idEnseignant = idEnseignant;
-	this.codeUE = codeUE;
-	this.listeEtud = listeEtud;
-
-    }
-
     public boolean hasStudent(Integer i) {
         return (i > 0 && i <= listeEtud.size());
     }
@@ -116,12 +106,12 @@ public class ECUE {
 	this.codeUE = codeUE;
     }
 
-    public int getIdEnseignant() {
-	return idEnseignant;
+    public String getResponsable() {
+        return responsable;
     }
 
-    public void setIdEnseignant(int idEnseignant) {
-	this.idEnseignant = idEnseignant;
+    public void setResponsable(String responsable) {
+        this.responsable = responsable;
     }
 
     public String getLibelleECUE() {
@@ -150,17 +140,16 @@ public class ECUE {
 
     @Override
     public String toString() {
-        String str = "Code matiere : " + this.codeMatiere + "\n"
-                + "libelle ECUE : " + this.libelleECUE + "\n"
-                + "idEnseignant : " + this.idEnseignant + "\n"
-                + "UE parente : " + this.codeUE + "\n"
-                + "nbHeures : " + this.nbHeures + "\n"
+        String str = "Code Matiere : " + this.getCodeMatiere() + "\n"
+                + "Libelle ECUE : " + this.getLibelleECUE() + "\n"
+                + "Responsable : " + this.getResponsable() + "\n"
+                + "Code UE Parente : " + this.getCodeUE() + "\n"
+                + "Nombre d'heures : " + this.getNbHeures() + "\n"
                 + "Liste etudiants : \n";
 
-        for(EtudiantECUE e : this.listeEtud) {
+        for(EtudiantECUE e : this.getListeEtud()) {
             str += "\t" + e.toString();
         }
-
         return str;
     }
 

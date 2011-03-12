@@ -5,11 +5,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.POJO.*;
-import fr.GCAM.StudentManager.POJO.ECUE.EtudiantECUE;
-import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
-import fr.GCAM.StudentManager.Persist.DB.ConnectionDB;
-import fr.GCAM.StudentManager.Persist.DB.DBECUE;
-import fr.GCAM.StudentManager.Persist.DB.DBUtilisateur;
+import fr.GCAM.StudentManager.Persist.DB.*;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -25,167 +21,199 @@ public class JDOM {
     public static Connection conn = ConnectionDB.getConnection();
 
     public static void main(String[] args) {
-	try {
-	    createUtilisateurXML();
-	    createECUEXML();
-	} catch (Exception ex) {
-	    System.err.println("Erreur : " + ex);
-	    ex.printStackTrace();
-	}
+        try {
+            createUtilisateurXML("Utilisateur");
+            createECUEXML("ECUE");
+            createUEXML("UE");
+            createEtapeXML("Etape");
+            createDepartementXML("Departement");
+        } catch (Exception ex) {
+            System.err.println("Erreur : " + ex);
+            ex.printStackTrace();
+        }
     }
 
-    public static void createECUEXML() throws Exception {
-	Element root = new Element("root");
-	Document document = new Document(root);
+    public static void createECUEXML(String s) throws Exception {
+        Element root = new Element("root");
+        Document document = new Document(root);
+        Element ECUE, listeEtud, Etudiant;
+        ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct codeMatiere from VO_" + s);
+        ECUE ecue;
 
-	Element ECUE;
-	Element codeMatiere;
-	Element libelleECUE;
-	Element nbHeures;
-	Element idEnseignant;
-	Element codeUE;
-	Element listeEtud;
-	Element Etudiant;
-	Element numEtud;
-	Element nom;
-	Element prenom;
-	Element noteSession1;
-	Element noteSession2;
+        while (result.next()) {
+            ECUE = new Element(s);
+            ecue = new DBECUE(conn).find(result.getString(1));
 
-	numEtud = new Element("numEtud");
-	noteSession1 = new Element("noteSession1");
-	noteSession2 = new Element("noteSession2");
+            listeEtud = new Element("listeEtud");
+            for (ECUE.EtudiantECUE etud : ecue.getListeEtud()) {
+                Etudiant = new Element("Etudiant");
+                Etudiant.addContent(new Element("numEtud").setText(Integer.toString(etud.getNumEtud())));
+                Etudiant.addContent(new Element("nom").setText(etud.getNom()));
+                Etudiant.addContent(new Element("prenom").setText(etud.getPrenom()));
+                Etudiant.addContent(new Element("noteSession1").setText(Float.toString(etud.getNoteSession1())));
+                Etudiant.addContent(new Element("noteSession2").setText(Float.toString(etud.getNoteSession2())));
+                listeEtud.addContent(Etudiant);
+            }
 
-	ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct codeMatiere from VO_Ecue");
-	DBECUE ecueDB = new DBECUE(conn);
-	ECUE ecue;
-
-	while (result.next()) {
-	    ECUE = new Element("ECUE");
-	    codeMatiere = new Element("codeMatiere");
-	    libelleECUE = new Element("libelleECUE");
-	    nbHeures = new Element("nbHeures");
-	    idEnseignant = new Element("idEnseignant");
-	    codeUE = new Element("codeUE");
-	    listeEtud = new Element("listeEtud");
-
-	    ecue = ecueDB.find(result.getString(1));
-
-	    codeMatiere.setText(ecue.getCodeMatiere());
-	    libelleECUE.setText(ecue.getLibelleECUE());
-	    nbHeures.setText(Integer.toString(ecue.getNbHeures()));
-	    idEnseignant.setText(Integer.toString(ecue.getIdEnseignant()));
-	    codeUE.setText(ecue.getCodeUE());
-
-	    for (EtudiantECUE etud : ecue.getListeEtud()) {
-		Etudiant = new Element("Etudiant");
-		numEtud = new Element("numEtud");
-		nom = new Element("nom");
-		prenom = new Element("prenom");
-		noteSession1 = new Element("noteSession1");
-		noteSession2 = new Element("noteSession2");
-
-		numEtud.setText(Integer.toString(etud.getNumEtud()));
-		nom.setText(etud.getNom());
-		prenom.setText(etud.getPrenom());
-		noteSession1.setText(Float.toString(etud.getNoteSession1()));
-		noteSession2.setText(Float.toString(etud.getNoteSession2()));
-
-		Etudiant.addContent(numEtud);
-		Etudiant.addContent(nom);
-		Etudiant.addContent(prenom);
-		Etudiant.addContent(noteSession1);
-		Etudiant.addContent(noteSession2);
-		listeEtud.addContent(Etudiant);
-	    }
-
-	    ECUE.addContent(codeMatiere);
-	    ECUE.addContent(libelleECUE);
-	    ECUE.addContent(nbHeures);
-	    ECUE.addContent(idEnseignant);
-	    ECUE.addContent(codeUE);
-	    ECUE.addContent(listeEtud);
-	    root.addContent(ECUE);
-	}
-	save(document, "xml/ECUE.xml");
+            ECUE.addContent(new Element("codeMatiere").setText(ecue.getCodeMatiere()));
+            ECUE.addContent(new Element("libelleECUE").setText(ecue.getLibelleECUE()));
+            ECUE.addContent(new Element("nbHeures").setText(Integer.toString(ecue.getNbHeures())));
+            ECUE.addContent(new Element("responsable").setText(ecue.getResponsable()));
+            ECUE.addContent(new Element("codeUE").setText(ecue.getCodeUE()));
+            ECUE.addContent(listeEtud);
+            root.addContent(ECUE);
+        }
+        save(document, "xml/" + s + ".xml");
     }
 
-    public static void createUtilisateurXML() throws Exception {
-	Element root = new Element("root");
-	Document document = new Document(root);
-	
-	Element Utilisateur;
-	Element idEnseignant;
-	Element nom;
-	Element prenom;
-	Element mdp;
-	Element listeResponsabilites;
-	Element responsabilite;
-	Element libelle;
-	Element codeResponsabilite;
+    public static void createUtilisateurXML(String s) throws Exception {
+        Element root = new Element("root");
+        Document document = new Document(root);
+        Element Utilisateur, listeResponsabilites, responsabilite;
+        ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct idEnseignant from VO_" + s);
+        Utilisateur util;
 
-	ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct idEnseignant from VO_Utilisateur");
-	DBUtilisateur utilDB = new DBUtilisateur(conn);
-	Utilisateur util;
+        while (result.next()) {
+            Utilisateur = new Element(s);
+            util = new DBUtilisateur(conn).find(result.getInt(1));
 
-	while (result.next()) {
-	    Utilisateur = new Element("Utilisateur");
-	    idEnseignant = new Element("idEnseignant");
-	    nom = new Element("nom");
-	    prenom = new Element("prenom");
-	    mdp = new Element("mdp");
-	    listeResponsabilites = new Element("listeResponsabilites");
+            listeResponsabilites = new Element("listeResponsabilites");
+            for (Utilisateur.Responsabilite resp : util.getListeResponsabilites()) {
+                responsabilite = new Element("responsabilite");
+                responsabilite.addContent(new Element("libelle").setText(resp.getLibelle()));
+                responsabilite.addContent(new Element("codeResponsabilite").setText(resp.getCodeResponsabilite()));
+                listeResponsabilites.addContent(responsabilite);
+            }
 
-	    util = utilDB.find(result.getInt(1));
-
-	    idEnseignant.setText(Integer.toString(util.getIdEnseignant()));
-	    nom.setText(util.getNom());
-	    prenom.setText(util.getPrenom());
-	    mdp.setText(util.getMDP());
-
-	    for (Responsabilite resp : util.getListeResponsabilites()) {
-		responsabilite = new Element("responsabilite");
-		libelle = new Element("libelle");
-		codeResponsabilite = new Element("codeResponsabilite");
-
-		libelle.setText(resp.getLibelle());
-		codeResponsabilite.setText(resp.getCodeResponsabilite());
-
-		responsabilite.addContent(libelle);
-		responsabilite.addContent(codeResponsabilite);
-		listeResponsabilites.addContent(responsabilite);
-	    }
-
-	    Utilisateur.addContent(idEnseignant);
-	    Utilisateur.addContent(nom);
-	    Utilisateur.addContent(prenom);
-	    Utilisateur.addContent(mdp);
-	    Utilisateur.addContent(listeResponsabilites);
-	    root.addContent(Utilisateur);
-	}
-	save(document, "xml/Utilisateur.xml");
+            Utilisateur.addContent(new Element("idEnseignant").setText(Integer.toString(util.getIdEnseignant())));
+            Utilisateur.addContent(new Element("nom").setText(util.getNom()));
+            Utilisateur.addContent(new Element("prenom").setText(util.getPrenom()));
+            Utilisateur.addContent(new Element("mdp").setText(util.getMDP()));
+            Utilisateur.addContent(listeResponsabilites);
+            root.addContent(Utilisateur);
+        }
+        save(document, "xml/" + s + ".xml");
     }
 
     //Ajouter ces deux méthodes à notre classe JDOM1
-    static void print(Document d) {
-	try {
-	    //On utilise ici un affichage classique avec getPrettyFormat()
-	    XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
-	    sortie.output(d, System.out);
-	} catch (java.io.IOException e) {
-	    System.err.println("Erreur d'entrée/sortie : " + e);
-	}
+    public static void print(Document d) {
+        try {
+            //On utilise ici un affichage classique avec getPrettyFormat()
+            XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+            sortie.output(d, System.out);
+        } catch (java.io.IOException e) {
+            System.err.println("Erreur d'entrée/sortie : " + e);
+        }
     }
 
-    static void save(Document d, String fichier) {
-	try {
-	    //On utilise ici un affichage classique avec getPrettyFormat()
-	    XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
-	    //Remarquez qu'il suffit simplement de créer une instance de FileOutputStream
-	    //avec en argument le nom du fichier pour effectuer la sérialisation.
-	    sortie.output(d, new FileOutputStream(fichier));
-	} catch (java.io.IOException e) {
-	    System.err.println("Erreur d'entrée/sortie : " + e);
-	}
+    public static void save(Document d, String fichier) {
+        try {
+            //On utilise ici un affichage classique avec getPrettyFormat()
+            XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+            //Remarquez qu'il suffit simplement de créer une instance de FileOutputStream
+            //avec en argument le nom du fichier pour effectuer la sérialisation.
+            sortie.output(d, new FileOutputStream(fichier));
+        } catch (java.io.IOException e) {
+            System.err.println("Erreur d'entrée/sortie : " + e);
+        }
+    }
+
+    public static void createUEXML(String s) throws Exception {
+        Element root = new Element("root");
+        Document document = new Document(root);
+        Element UE, listeECUE, ECUE;
+        ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct codeMatiere from VO_" + s);
+        UE ue;
+
+        while (result.next()) {
+            UE = new Element(s);
+            ue = new DBUE(conn).find(result.getString(1));
+
+            listeECUE = new Element("listeECUE");
+            for (UE.ECUEUE ecue : ue.getListeECUE()) {
+                ECUE = new Element("ECUE");
+                ECUE.addContent(new Element("codeMatiere").setText(ecue.getCodeMatiere()));
+                ECUE.addContent(new Element("libelleECUE").setText(ecue.getLibelleECUE()));
+                ECUE.addContent(new Element("responsable").setText(ecue.getResponsable()));
+                listeECUE.addContent(ECUE);
+            }
+
+            UE.addContent(new Element("codeUE").setText(ue.getCodeUE()));
+            UE.addContent(new Element("nbECTS").setText(Integer.toString(ue.getNbECTS())));
+            UE.addContent(new Element("libelleUE").setText(ue.getLibelleUE()));
+            UE.addContent(new Element("optionnel").setText(Boolean.toString(ue.isOptionnel())));
+            UE.addContent(new Element("responsable").setText(ue.getResponsable()));
+            UE.addContent(new Element("codeSemestre").setText(ue.getCodeSemestre()));
+            UE.addContent(listeECUE);
+            root.addContent(UE);
+        }
+        save(document, "xml/" + s + ".xml");
+    }
+
+    public static void createEtapeXML(String s) throws Exception {
+        Element root = new Element("root");
+        Document document = new Document(root);
+        Element Etape, Semestre, listeUE, UE;
+        ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct codeEtape from VO_" + s);
+        Etape etape;
+
+        while (result.next()) {
+            Etape = new Element(s);
+            etape = new DBEtape(conn).find(result.getString(1));
+
+            Etape.addContent(new Element("codeEtape").setText(etape.getCodeEtape()));
+            Etape.addContent(new Element("libelleEtape").setText(etape.getLibelleEtape()));
+            Etape.addContent(new Element("versionDiplome").setText(etape.getVersionDiplome()));
+            Etape.addContent(new Element("responsable").setText(etape.getResponsable()));
+
+            for (int numSem = 1; numSem <= 2; numSem++) {
+                Semestre = new Element("semestre" + numSem);
+
+                listeUE = new Element("listeUE");
+                for (Etape.Semestre.UESemestre ue : etape.getSemestre(numSem).getListeUE()) {
+                    UE = new Element("UE");
+                    UE.addContent(new Element("codeUE").setText(ue.getCodeUE()));
+                    UE.addContent(new Element("libelleUE").setText(ue.getLibelleUE()));
+                    listeUE.addContent(UE);
+                }
+
+                Semestre.addContent(new Element("codeSemestre").setText(etape.getSemestre(numSem).getCodeSemestre()));
+                Semestre.addContent(new Element("nbUEFacultatives").setText(Integer.toString(etape.getSemestre(numSem).getNbUEFacultatives())));
+                Semestre.addContent(new Element("codeEtape").setText(etape.getSemestre(numSem).getCodeEtape()));
+                Semestre.addContent(listeUE);
+                Etape.addContent(Semestre);
+            }
+            
+            root.addContent(Etape);
+        }
+        save(document, "xml/" + s + ".xml");
+    }
+
+    public static void createDepartementXML(String s) throws Exception {
+        Element root = new Element("root");
+        Document document = new Document(root);
+        Element Departement, listeEtape, Etape;
+        ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct versionDiplome from VO_" + s);
+        Departement dept;
+
+        while (result.next()) {
+            Departement = new Element(s);
+            dept = new DBDepartement(conn).find(result.getString(1));
+
+            listeEtape = new Element("listeEtape");
+            for (Departement.EtapeDepartement etape : dept.getListeEtape()) {
+                Etape = new Element("Etape");
+                Etape.addContent(new Element("codeEtape").setText(etape.getCodeEtape()));
+                Etape.addContent(new Element("libelleEtape").setText(etape.getLibelleEtape()));
+                listeEtape.addContent(Etape);
+            }
+
+            Departement.addContent(new Element("versionDiplome").setText(dept.getVersionDiplome()));
+            Departement.addContent(new Element("nomDepartement").setText(dept.getNomDepartement()));
+            Departement.addContent(new Element("mNemo").setText(dept.getMnemo()));
+            Departement.addContent(listeEtape);
+            root.addContent(Departement);
+        }
+        save(document, "xml/" + s + ".xml");
     }
 }

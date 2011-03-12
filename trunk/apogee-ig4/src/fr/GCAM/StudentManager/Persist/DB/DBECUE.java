@@ -71,13 +71,16 @@ public class DBECUE extends DB<ECUE> {
             ecue.setCodeMatiere(result.getString(1));
             ecue.setLibelleECUE(result.getString(2));
             ecue.setNbHeures(result.getInt(3));
-            ecue.setIdEnseignant(result.getInt(4));
-            ecue.setCodeUE(result.getString(5));
+            ecue.setResponsable(result.getString(4) + " " + result.getString(5));
+            ecue.setCodeUE(result.getString(6));
 
             do {
-                ecue.getListeEtud().add(new EtudiantECUE(result.getInt(6),
-                        result.getString(7), result.getString(8),
-                        result.getFloat(9), result.getFloat(10)));
+                ecue.getListeEtud().add(new EtudiantECUE(
+                        result.getInt(7),
+                        result.getString(8),
+                        result.getString(9),
+                        result.getFloat(10),
+                        result.getFloat(11)));
             } while (result.next());
         }
         return ecue;

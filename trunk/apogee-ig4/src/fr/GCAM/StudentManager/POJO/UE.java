@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package fr.GCAM.StudentManager.POJO;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -15,19 +16,56 @@ public class UE {
     private int nbECTS;
     private String libelleUE;
     private boolean optionnel;
-    private int idEnseignant;
+    private String responsable;
     private String codeSemestre;
+    private ArrayList<ECUEUE> listeECUE;
 
     public UE() {
+        listeECUE = new ArrayList<ECUEUE>();
     }
 
-    public UE(String codeUE, int nbECTS, String libelleUE, boolean optionnel, int idEnseignant, String codeSemestre) {
-        this.codeUE = codeUE;
-        this.nbECTS = nbECTS;
-        this.libelleUE = libelleUE;
-        this.optionnel = optionnel;
-        this.idEnseignant = idEnseignant;
-        this.codeSemestre = codeSemestre;
+    public static class ECUEUE {
+
+        private String codeMatiere;
+        private String libelleECUE;
+        private String responsable;
+
+        public ECUEUE(String codeMatiere, String libelleECUE, String responsable) {
+            this.codeMatiere = codeMatiere;
+            this.libelleECUE = libelleECUE;
+            this.responsable = responsable;
+        }
+
+        public String getCodeMatiere() {
+            return codeMatiere;
+        }
+
+        public void setCodeMatiere(String codeMatiere) {
+            this.codeMatiere = codeMatiere;
+        }
+
+        public String getLibelleECUE() {
+            return libelleECUE;
+        }
+
+        public void setLibelleECUE(String libelleECUE) {
+            this.libelleECUE = libelleECUE;
+        }
+
+        public String getResponsable() {
+            return responsable;
+        }
+
+        public void setResponsable(String responsable) {
+            this.responsable = responsable;
+        }
+
+        public String toString() {
+            String str = this.getLibelleECUE() + " ("
+                    + this.getCodeMatiere() + ") : "
+                    + this.getResponsable() + "\n";
+            return str;
+        }
     }
 
     public String getCodeSemestre() {
@@ -44,14 +82,6 @@ public class UE {
 
     public void setCodeUE(String codeUE) {
         this.codeUE = codeUE;
-    }
-
-    public int getIdEnseignant() {
-        return idEnseignant;
-    }
-
-    public void setIdEnseignant(int idEnseignant) {
-        this.idEnseignant = idEnseignant;
     }
 
     public String getLibelleUE() {
@@ -78,6 +108,33 @@ public class UE {
         this.optionnel = optionnel;
     }
 
+    public String getResponsable() {
+        return responsable;
+    }
 
+    public void setResponsable(String responsable) {
+        this.responsable = responsable;
+    }
 
+    public ArrayList<ECUEUE> getListeECUE() {
+        return listeECUE;
+    }
+
+    public void setListeECUE(ArrayList<ECUEUE> listeECUE) {
+        this.listeECUE = listeECUE;
+    }
+
+    public String toString() {
+        String str = "Code UE : " + this.getCodeUE() + "\n"
+                + "libelle UE : " + this.getLibelleUE() + "\n"
+                + "Optionnel : " + this.isOptionnel() + "\n"
+                + "Responsable : " + this.getResponsable() + "\n"
+                + "Code Semestre Parent : " + this.getCodeSemestre() + "\n"
+                + "Liste etudiants : \n";
+
+        for (ECUEUE ecue : this.getListeECUE()) {
+            str += "\t" + ecue.toString();
+        }
+        return str;
+    }
 }

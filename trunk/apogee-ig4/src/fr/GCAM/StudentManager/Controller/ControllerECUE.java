@@ -23,7 +23,7 @@ public class ControllerECUE implements Observer {
 
     public ControllerECUE(UI disp, String s) {
         this.disp = disp;
-	ecueDAO = AbstractDAOFactory.getDAOFactory(s).getDAOECUE();
+        ecueDAO = AbstractDAOFactory.getDAOFactory(s).getDAOECUE();
         ecue = new ECUE();
     }
 
@@ -44,44 +44,56 @@ public class ControllerECUE implements Observer {
             this.update(msg);
         } else if (msg[0].equals("#quit")) {
             this.quit();
+        } else if (msg[0].equals("#createSpreadsheet")) {
+            this.createSpreadsheet();
+        } else if (msg[0].equals("#loadSpreadsheet")) {
+            this.loadSpreadsheet();
         }
     }
 
     public void note1(String[] msg) {
-	if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
-            ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession1(Float.parseFloat(msg[2]));
-            disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
-	    handleMessage("#update");
+        if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
+            ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession1(Float.parseFloat(msg[2]));
+            disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).toString());
+            handleMessage("#update");
         }
     }
 
     public void note2(String[] msg) {
-	if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
-            ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).setNoteSession2(Float.parseFloat(msg[2]));
-	    disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1])-1).toString());
-	    handleMessage("#update");
-	}
+        if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
+            ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession2(Float.parseFloat(msg[2]));
+            disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).toString());
+            handleMessage("#update");
+        }
     }
 
     public void find(String[] msg) {
-	try {
-	    ecue = (ECUE) ecueDAO.find(msg[1]);
+        try {
+            ecue = (ECUE) ecueDAO.find(msg[1]);
             disp.display(ecue.toString());
-	} catch (Exception ex) {
-	    System.err.println("Erreur : " + ex);
-	}
-    }
-
-    public void update(String[] msg) {
-	try {
-	    ecueDAO.update(ecue);
         } catch (Exception ex) {
             System.err.println("Erreur : " + ex);
         }
     }
-	
-    public void quit() {
-	System.exit(0);
+
+    public void update(String[] msg) {
+        try {
+            ecueDAO.update(ecue);
+        } catch (Exception ex) {
+            System.err.println("Erreur : " + ex);
+            ex.printStackTrace();
+        }
     }
 
+    public void quit() {
+        System.exit(0);
+    }
+
+    private void createSpreadsheet() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private void loadSpreadsheet() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }
