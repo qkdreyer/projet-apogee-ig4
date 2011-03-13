@@ -13,7 +13,7 @@ import org.jdom.input.SAXBuilder;
 /**
  * Cette classe définit les methodes de l'interface DAO pour le type UE
  * (POJO).
- *
+ * Le fichier utilisé par cette classe est "xml/UE.xml"
  * @author pierre
  */
 public class XMLUE extends XML<UE> {
@@ -21,18 +21,43 @@ public class XMLUE extends XML<UE> {
     public XMLUE() {
     }    
 
+    /**
+     * Methode permettant la création d'une UE
+     *
+     * @param obj le Departement qui doit être insérée dans le fichier xml
+     * @throws Exception
+     */
     public void create(UE obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant la modification d'une UE
+     *
+     * @param obj l'UI qui doit être modifiée dans le fichier XML
+     * @throws Exception
+     */
     public void update(UE obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant la suppression d'une UE
+     *
+     * @param obj l'UE qui doit être supprimée dans le fichier XML.
+     * @throws Exception
+     */
     public void delete(UE obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * La fonction, renvoie un POJO UE, a partir de l'id passé en parametre.<br>
+     *
+     * @param id(String) L'id de l'UE que l'on souhaite charger
+     * @return L'UE correspondant à la ligne trouvé dans le fichier XML a partir de l'id
+     * @throws Exception
+     */
     public UE find(Object id) throws Exception {
         UE ue = new UE();
 
@@ -63,6 +88,8 @@ public class XMLUE extends XML<UE> {
     }
 
     /**
+     * Methode renvoyant l'ensemble des clés primaires du fichier XML correspondant
+     * (ici UE.xml)
      *
      * @return L'ensemble des clés primaires (codeUE) des UE
      * @throws Exception

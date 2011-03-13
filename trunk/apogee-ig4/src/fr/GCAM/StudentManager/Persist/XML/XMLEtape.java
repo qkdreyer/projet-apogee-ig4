@@ -12,7 +12,7 @@ import org.jdom.input.SAXBuilder;
 /**
  * Cette classe définit les methodes de l'interface DAO pour le type Etape
  * (POJO).
- *
+ * Le fichier utilisé par cette classe est "xml/Etape.xml"
  * @author pierre
  */
 public class XMLEtape extends XML<Etape> {
@@ -20,18 +20,43 @@ public class XMLEtape extends XML<Etape> {
     public XMLEtape() {
     }
 
+    /**
+     * Methode permettant la création d'une Etape
+     *
+     * @param obj l'Etape qui doit être insérée dans le fichier XML
+     * @throws Exception
+     */
     public void create(Etape obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant la modification d'une Etape
+     *
+     * @param obj l'Etape qui doit être modifiée dans le fichier XML
+     * @throws Exception
+     */
     public void update(Etape obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant la suppression d'une Etape
+     *
+     * @param obj l'Etape qui doit être supprimée dans le fichier XML
+     * @throws Exception
+     */
     public void delete(Etape obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * La fonction, renvoie un POJO Etape, a partir de l'id passé en parametre.<br>
+     *
+     * @param id(String) L'id de l'Etape que l'on souhaite charger
+     * @return L'Etape correspondant à la ligne trouvé dans le fichier XML a partir de l'id
+     * @throws Exception
+     */
     public Etape find(Object id) throws Exception {
         Etape etape = new Etape();
 
@@ -65,6 +90,8 @@ public class XMLEtape extends XML<Etape> {
     }
 
     /**
+     * Methode renvoyant l'ensemble des clés primaires du fichier XML correspondant
+     * (ici Etape.xml)
      *
      * @return L'ensemble des clés primaires (codeEtape) des Etape
      * @throws Exception

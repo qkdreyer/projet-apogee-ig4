@@ -19,9 +19,14 @@ import java.sql.*;
  */
 public class ConnectionDB {
 
+    
     private static Connection conn = null;
     private String url = "jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ora10";
 
+    /**
+     * Constructeur par défaut
+     *
+     */
     private ConnectionDB() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");

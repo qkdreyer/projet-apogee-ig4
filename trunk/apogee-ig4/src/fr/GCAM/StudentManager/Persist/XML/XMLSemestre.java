@@ -12,7 +12,8 @@ import fr.GCAM.StudentManager.POJO.Semestre;
  * (POJO).
  *
  * @author pierre
- * @deprecated @see XMLEtape
+ * @deprecated
+ * @see XMLEtape
  */
 public class XMLSemestre extends XML<Semestre> {
 

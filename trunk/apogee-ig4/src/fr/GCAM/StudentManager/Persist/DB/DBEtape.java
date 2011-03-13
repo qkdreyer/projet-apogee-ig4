@@ -20,18 +20,43 @@ public class DBEtape extends DB<Etape> {
         super(conn);
     }
 
+    /**
+     * Methode permettant la création d'une Etape
+     *
+     * @param obj l'Etape qui doit être insérée dans la base de données
+     * @throws Exception
+     */
     public void create(Etape obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant la modification d'une Etape
+     *
+     * @param obj l'Etape qui doit être modifiée dans la base de données
+     * @throws Exception
+     */
     public void update(Etape obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant la suppression d'une Etape
+     *
+     * @param obj l'Etape qui doit être supprimée dans la base de données
+     * @throws Exception
+     */
     public void delete(Etape obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * La fonction, renvoie un POJO Etape, a partir de l'id passé en parametre.<br>
+     *
+     * @param id(String) L'id de l'Etape que l'on souhaite charger
+     * @return L'Etape correspondant à la ligne trouvé dans la BD a partir de l'id
+     * @throws Exception
+     */
     public Etape find(Object id) throws Exception {
         Etape etape = new Etape();
 
@@ -63,6 +88,8 @@ public class DBEtape extends DB<Etape> {
     }
 
     /**
+     * Methode renvoyant l'ensemble des clés primaires de la vue correspondante
+     * (ici vo_etape)
      *
      * @return L'ensemble des clés primaires (codeEtape) des Etape
      * @throws Exception

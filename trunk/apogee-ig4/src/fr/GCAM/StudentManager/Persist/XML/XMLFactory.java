@@ -10,42 +10,79 @@ import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 
 /**
+ * Cette classe est la fabrique concrete de DAO(Data Access Object) qui
+ * interagissent avec les fichiers XML.
  *
  * @author Quentin
  */
 public class XMLFactory extends AbstractDAOFactory {
 
-    @Override
+    /**
+     * Méthode utilisée pour obtenir un objet DAO<ECUE>.
+     *
+     * @return Renvoie un DAOECUE qui est un DAO concret instancié avec le POJO
+     * ECUE.
+     */
     public DAO<ECUE> getDAOECUE() {
 	return new XMLECUE();
     }
 
-    @Override
+    /**
+     * Méthode utilisée pour obtenir un objet DAO<Etudiant>.
+     *
+     * @return Renvoie un DAOEtudiant qui est un DAO concret instancié avec le POJO
+     * Etudiant.
+     */
     public DAO<Etudiant> getDAOEtudiant() {
 	return new XMLEtudiant();
     }
 
-    @Override
+    /**
+     * Méthode utilisée pour obtenir un objet DAO<Utilisateur>.
+     *
+     * @return Renvoie un DAOUtilisateur qui est un DAO concret instancié avec le POJO
+     * Utilisateur.
+     */
     public DAO<Utilisateur> getDAOUtilisateur() {
 	return new XMLUtilisateur();
     }
 
-    @Override
+    /**
+     * Méthode utilisée pour obtenir un objet DAO<UE>.
+     *
+     * @return Renvoie un DAOUE qui est un DAO concret instancié avec le POJO
+     * UE.
+     */
     public DAO<UE> getDAOUE() {
         return new XMLUE();
     }
 
-    @Override
+    /**
+     * Méthode utilisée pour obtenir un objet DAO<ECUE>.
+     *
+     * @return Renvoie un DAOECUE qui est un DAO concret instancié avec le POJO
+     * ECUE.
+     */
     public DAO<Etape> getDAOEtape() {
         return new XMLEtape();
     }
 
-    @Override
+    /**
+     * Méthode utilisée pour obtenir un objet DAO<Departement>.
+     *
+     * @return Renvoie un DAODepartement qui est un DAO concret instancié avec le POJO
+     * Departement.
+     */
     public DAO<Departement> getDAODepartement() {
         return new XMLDepartement();
     }
 
-    @Override
+    /**
+     * Méthode utilisée pour obtenir un objet DAO<Semestre>.
+     *
+     * @return Renvoie un DAOSemestre qui est un DAO concret instancié avec le POJO
+     * Semestre.
+     */
     public DAO<Semestre> getDAOSemestre() {
         return new XMLSemestre();
     }

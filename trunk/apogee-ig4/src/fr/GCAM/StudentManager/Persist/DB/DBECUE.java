@@ -111,7 +111,7 @@ public class DBECUE extends DB<ECUE> {
      * La fonction, renvoie un POJO ECUE, a partir de l'id passé en parametre.<br>
      * Require : <br>
      * Ensure : <br>
-     * @param id L'id de l'ecue,
+     * @param id(String) L'id de l'ecue que l'on souhaite charger
      * @return L'ECUE correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
@@ -140,6 +140,8 @@ public class DBECUE extends DB<ECUE> {
     }
 
     /**
+     * Methode renvoyant l'ensemble des clés primaires de la vue correspondante
+     * (ici vo_ecue)
      *
      * @return L'ensemble des clés primaires (codeMatiere) des ECUE
      * @throws Exception
