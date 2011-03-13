@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package fr.GCAM.StudentManager.POJO;
 
 import java.util.ArrayList;
@@ -29,18 +28,19 @@ public class Departement {
     public static class EtapeDepartement {
 
         private String codeEtape;
-        private String libelleEtape;
+        private String versionEtape;
 
-        public EtapeDepartement(String codeEtape, String libelleEtape) {
+        public EtapeDepartement(String codeEtape, String versionEtape) {
             this.codeEtape = codeEtape;
+            this.versionEtape = versionEtape;
         }
 
-        public String getLibelleEtape() {
-            return libelleEtape;
+        public String getVersionEtape() {
+            return versionEtape;
         }
 
-        public void setLibelleEtape(String libelleEtape) {
-            this.libelleEtape = libelleEtape;
+        public void setVersionEtape(String versionEtape) {
+            this.versionEtape = versionEtape;
         }
 
         public String getCodeEtape() {
@@ -49,6 +49,10 @@ public class Departement {
 
         public void setCodeEtape(String codeEtape) {
             this.codeEtape = codeEtape;
+        }
+
+        public String toString() {
+            return versionEtape + " (" + codeEtape + ")\n";
         }
     }
 
@@ -61,19 +65,19 @@ public class Departement {
     }
 
     public String getMnemo() {
-	return mnemo;
+        return mnemo;
     }
 
     public void setMnemo(String mnemo) {
-	this.mnemo = mnemo;
+        this.mnemo = mnemo;
     }
 
     public String getVersionDiplome() {
-	return versionDiplome;
+        return versionDiplome;
     }
 
     public void setVersionDiplome(String versionDiplome) {
-	this.versionDiplome = versionDiplome;
+        this.versionDiplome = versionDiplome;
     }
 
     public ArrayList<EtapeDepartement> getListeEtape() {
@@ -84,4 +88,13 @@ public class Departement {
         this.listeEtape = listeEtape;
     }
 
+    public String toString() {
+        String str = "Version diplome : " + versionDiplome + "\n"
+                + "Nom departement : " + nomDepartement
+                + " (" + mnemo + ")\n";
+        for (EtapeDepartement dept : listeEtape) {
+            str += "\t" + dept.toString();
+        }
+        return str;
+    }
 }

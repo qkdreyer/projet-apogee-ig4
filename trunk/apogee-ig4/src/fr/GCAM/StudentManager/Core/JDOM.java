@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.GCAM.StudentManager.Persist.XML;
+package fr.GCAM.StudentManager.Core;
 
 import fr.GCAM.StudentManager.POJO.*;
 import fr.GCAM.StudentManager.Persist.DB.*;
@@ -148,7 +148,7 @@ public class JDOM {
         Element root = new Element("root");
         Document document = new Document(root);
         Element UE, listeECUE, ECUE;
-        ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct codeMatiere from VO_" + s);
+        ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct codeUE from VO_" + s);
         UE ue;
 
         while (result.next()) {
@@ -160,7 +160,6 @@ public class JDOM {
                 ECUE = new Element("ECUE");
                 ECUE.addContent(new Element("codeMatiere").setText(ecue.getCodeMatiere()));
                 ECUE.addContent(new Element("libelleECUE").setText(ecue.getLibelleECUE()));
-                ECUE.addContent(new Element("responsable").setText(ecue.getResponsable()));
                 listeECUE.addContent(ECUE);
             }
 
@@ -191,16 +190,16 @@ public class JDOM {
         while (result.next()) {
             Etape = new Element(s);
             etape = new DBEtape(conn).find(result.getString(1));
+            System.out.println(etape.toString());
 
             Etape.addContent(new Element("codeEtape").setText(etape.getCodeEtape()));
             Etape.addContent(new Element("versionEtape").setText(etape.getVersionEtape()));
             Etape.addContent(new Element("versionDiplome").setText(etape.getVersionDiplome()));
             Etape.addContent(new Element("responsable").setText(etape.getResponsable()));
-
             for (int numSem = 1; numSem <= 2; numSem++) {
                 Semestre = new Element("semestre" + numSem);
-
                 listeUE = new Element("listeUE");
+                
                 for (Etape.Semestre.UESemestre ue : etape.getSemestre(numSem).getListeUE()) {
                     UE = new Element("UE");
                     UE.addContent(new Element("codeUE").setText(ue.getCodeUE()));
@@ -214,7 +213,6 @@ public class JDOM {
                 Semestre.addContent(listeUE);
                 Etape.addContent(Semestre);
             }
-            
             root.addContent(Etape);
         }
         save(document, "xml/" + s + ".xml");
@@ -240,7 +238,7 @@ public class JDOM {
             for (Departement.EtapeDepartement etape : dept.getListeEtape()) {
                 Etape = new Element("Etape");
                 Etape.addContent(new Element("codeEtape").setText(etape.getCodeEtape()));
-                Etape.addContent(new Element("libelleEtape").setText(etape.getLibelleEtape()));
+                Etape.addContent(new Element("versionEtape").setText(etape.getVersionEtape()));
                 listeEtape.addContent(Etape);
             }
 

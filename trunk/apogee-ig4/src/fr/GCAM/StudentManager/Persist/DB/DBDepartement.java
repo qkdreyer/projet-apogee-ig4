@@ -59,7 +59,7 @@ public class DBDepartement extends DB<Departement> {
 	Departement dept = new Departement();
 
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT * from VO_Ecue where codeMatiere = '" + (String) id + "'");
+        ResultSet result = s.executeQuery("SELECT * from VO_Departement where versionDiplome = '" + (String) id + "'");
         if (result.first()) {
             dept.setVersionDiplome(result.getString("versionDiplome"));
             dept.setNomDepartement(result.getString("nomDepartement"));
@@ -68,7 +68,7 @@ public class DBDepartement extends DB<Departement> {
             do {
                 dept.getListeEtape().add(new Departement.EtapeDepartement(
                         result.getString("codeEtape"),
-                        result.getString("libelleEtape")));
+                        result.getString("versionEtape")));
             } while (result.next());
         }
         return dept;
@@ -78,6 +78,7 @@ public class DBDepartement extends DB<Departement> {
      *
      * @return L'ensemble des clés primaires (versionDiplome) des Departement
      * @throws Exception
+     * @deprecated 
      */
     public String list() throws Exception {
         String str = "";

@@ -52,7 +52,7 @@ public class DBUtilisateur extends DB<Utilisateur> {
 	ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
 		+ "where idEnseignant = " + num);
 	if (result.first()) {
-	    util.setIdEnseignant(result.getInt(1));
+	    //util.setIdEnseignant(result.getInt(1));
 	    util.setNom(result.getString(2));
 	    util.setPrenom(result.getString(3));
 	    util.setMDP(result.getString(4));
@@ -77,7 +77,7 @@ public class DBUtilisateur extends DB<Utilisateur> {
 		+ "prenom = '" + ((String) ((ArrayList) a).get(0)).toLowerCase() + "' and "
 		+ "mdp = '" + ((String) ((ArrayList) a).get(2)).toLowerCase() + "'");
 	if (result.first()) {
-	    util.setIdEnseignant(result.getInt(1));
+	    //util.setIdEnseignant(result.getInt(1));
 	    util.setNom(result.getString(2));
 	    util.setPrenom(result.getString(3));
 	    util.setMDP(result.getString(4));

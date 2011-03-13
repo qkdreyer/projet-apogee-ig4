@@ -4,6 +4,7 @@
  */
 package fr.GCAM.StudentManager.Controller;
 
+import fr.GCAM.StudentManager.Core.SSParser;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
@@ -42,7 +43,7 @@ public class ControllerECUE extends AbstractController implements Observer {
      * @param message
      * @throws Exception
      */
-    public void handleMessage(String message) throws Exception {
+    public AbstractController handleMessage(String message) throws Exception {
         String[] msg = message.split(" ");
 
         if (msg[0].equals("#note1") && msg.length == 3) { // #note1 3 12.5
@@ -56,14 +57,13 @@ public class ControllerECUE extends AbstractController implements Observer {
         } else if (msg[0].equals("#quit")) {
             this.quit();
         } else if (msg[0].equalsIgnoreCase("#createSS")) {
-            //createSpreadsheet();
+            SSParser.createSS(ecue);
         } else if (msg[0].equalsIgnoreCase("#loadSS") && msg.length == 2) {
-            //loadSpreadsheet();
-        } else if (msg[0].equals("#list")) {
-            this.list();
+            SSParser.loadSS(ecue);
         } else if (msg[0].equals("#help")) {
             this.help();
         }
+        return this;
     }
 
     /**
@@ -127,7 +127,6 @@ public class ControllerECUE extends AbstractController implements Observer {
 
     private void help() {
         disp.display("\t #find 'codeECUE'");
-        disp.display("\t #list");
         disp.display("\t #update");
         disp.display("\t #note1 'etudiant' 'note'");
         disp.display("\t #note2 'etudiant' 'note'");

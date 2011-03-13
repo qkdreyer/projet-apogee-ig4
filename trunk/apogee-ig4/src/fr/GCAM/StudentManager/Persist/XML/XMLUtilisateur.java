@@ -55,7 +55,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
             if (courant.getChild("nom").getText().equals(((String) ((ArrayList) a).get(1)).toLowerCase())
                     && courant.getChild("prenom").getText().equals(((String) ((ArrayList) a).get(0)).toLowerCase())
                     && courant.getChild("mdp").getText().equals(((String) ((ArrayList) a).get(2)).toLowerCase())) {
-                util.setIdEnseignant(Integer.parseInt(courant.getChild("idEnseignant").getText()));
+                //util.setIdEnseignant(Integer.parseInt(courant.getChild("idEnseignant").getText()));
                 util.setNom(courant.getChild("nom").getText());
                 util.setPrenom(courant.getChild("prenom").getText());
                 util.setMDP(courant.getChild("mdp").getText());
@@ -81,7 +81,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
         while (i.hasNext()) {
             courant = (Element) i.next();
             if (courant.getChild("idEnseignant").getText().equals(Integer.toString(num))) {
-                util.setIdEnseignant(Integer.parseInt(courant.getChild("idEnseignant").getText()));
+                //util.setIdEnseignant(Integer.parseInt(courant.getChild("idEnseignant").getText()));
                 util.setNom(courant.getChild("nom").getText());
                 util.setPrenom(courant.getChild("prenom").getText());
                 util.setMDP(courant.getChild("mdp").getText());

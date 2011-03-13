@@ -1,15 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
   <Etape>
-    <codeEtape />
-    <versionEtape />
-    <versionDiplome />
-    <responsable />
+    <codeEtape>10</codeEtape>
+    <versionEtape>3</versionEtape>
+    <versionDiplome>PI01</versionDiplome>
+    <responsable>marie-catherine vilarem</responsable>
     <semestre1>
-      <codeSemestre />
+      <codeSemestre>51</codeSemestre>
       <nbUEFacultatives>0</nbUEFacultatives>
-      <codeEtape />
-      <listeUE />
+      <codeEtape>10</codeEtape>
+      <listeUE>
+        <UE>
+          <codeUE>PIGU51</codeUE>
+          <libelleUE>informatique imperative</libelleUE>
+        </UE>
+        <UE>
+          <codeUE>PIGU52</codeUE>
+          <libelleUE>base comptable</libelleUE>
+        </UE>
+      </listeUE>
+    </semestre1>
+    <semestre2>
+      <codeSemestre>61</codeSemestre>
+      <nbUEFacultatives>0</nbUEFacultatives>
+      <codeEtape>10</codeEtape>
+      <listeUE>
+        <UE>
+          <codeUE>PIGU61</codeUE>
+          <libelleUE>informatique sÃ©curitaire</libelleUE>
+        </UE>
+        <UE>
+          <codeUE>PIGU62</codeUE>
+          <libelleUE>langues et communication</libelleUE>
+        </UE>
+      </listeUE>
+    </semestre2>
+  </Etape>
+  <Etape>
+    <codeEtape>11</codeEtape>
+    <versionEtape>4</versionEtape>
+    <versionDiplome>PI01</versionDiplome>
+    <responsable>tiberiu stratulat</responsable>
+    <semestre1>
+      <codeSemestre>71</codeSemestre>
+      <nbUEFacultatives>0</nbUEFacultatives>
+      <codeEtape>11</codeEtape>
+      <listeUE>
+        <UE>
+          <codeUE>PIGU71</codeUE>
+          <libelleUE>informatique objet</libelleUE>
+        </UE>
+      </listeUE>
     </semestre1>
     <semestre2>
       <codeSemestre />
@@ -19,39 +60,35 @@
     </semestre2>
   </Etape>
   <Etape>
-    <codeEtape />
-    <versionEtape />
-    <versionDiplome />
-    <responsable />
+    <codeEtape>20</codeEtape>
+    <versionEtape>3</versionEtape>
+    <versionDiplome>PI02</versionDiplome>
+    <responsable>balle debombe</responsable>
     <semestre1>
-      <codeSemestre />
+      <codeSemestre>52</codeSemestre>
       <nbUEFacultatives>0</nbUEFacultatives>
-      <codeEtape />
-      <listeUE />
+      <codeEtape>20</codeEtape>
+      <listeUE>
+        <UE>
+          <codeUE>PSTIAU51</codeUE>
+          <libelleUE>pate a tartiner</libelleUE>
+        </UE>
+        <UE>
+          <codeUE>PSTIAU52</codeUE>
+          <libelleUE>mode amÃ©ricaine</libelleUE>
+        </UE>
+      </listeUE>
     </semestre1>
     <semestre2>
-      <codeSemestre />
+      <codeSemestre>62</codeSemestre>
       <nbUEFacultatives>0</nbUEFacultatives>
-      <codeEtape />
-      <listeUE />
-    </semestre2>
-  </Etape>
-  <Etape>
-    <codeEtape />
-    <versionEtape />
-    <versionDiplome />
-    <responsable />
-    <semestre1>
-      <codeSemestre />
-      <nbUEFacultatives>0</nbUEFacultatives>
-      <codeEtape />
-      <listeUE />
-    </semestre1>
-    <semestre2>
-      <codeSemestre />
-      <nbUEFacultatives>0</nbUEFacultatives>
-      <codeEtape />
-      <listeUE />
+      <codeEtape>20</codeEtape>
+      <listeUE>
+        <UE>
+          <codeUE>PSTIAU61</codeUE>
+          <libelleUE>pate a tartiner: concept avancÃ©s</libelleUE>
+        </UE>
+      </listeUE>
     </semestre2>
   </Etape>
 </root>

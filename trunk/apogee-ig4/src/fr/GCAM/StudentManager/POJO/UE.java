@@ -32,12 +32,10 @@ public class UE {
 
         private String codeMatiere;
         private String libelleECUE;
-        private String responsable;
 
-        public ECUEUE(String codeMatiere, String libelleECUE, String responsable) {
+        public ECUEUE(String codeMatiere, String libelleECUE) {
             this.codeMatiere = codeMatiere;
             this.libelleECUE = libelleECUE;
-            this.responsable = responsable;
         }
 
         public String getCodeMatiere() {
@@ -56,18 +54,9 @@ public class UE {
             this.libelleECUE = libelleECUE;
         }
 
-        public String getResponsable() {
-            return responsable;
-        }
-
-        public void setResponsable(String responsable) {
-            this.responsable = responsable;
-        }
-
         public String toString() {
             String str = this.getLibelleECUE() + " ("
-                    + this.getCodeMatiere() + ") : "
-                    + this.getResponsable() + "\n";
+                    + this.getCodeMatiere() + ")\n";
             return str;
         }
     }
@@ -142,7 +131,7 @@ public class UE {
                 + "Optionnel : " + this.isOptionnel() + "\n"
                 + "Responsable : " + this.getResponsable() + "\n"
                 + "Code Semestre Parent : " + this.getCodeSemestre() + "\n"
-                + "Liste etudiants : \n";
+                + "Liste ECUE : \n";
 
         for (ECUEUE ecue : this.getListeECUE()) {
             str += "\t" + ecue.toString();

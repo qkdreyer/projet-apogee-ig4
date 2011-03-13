@@ -46,9 +46,10 @@ public interface DAO<T> {
     public abstract T find(Object id) throws Exception;
 
     /**
-     * 
+     *
      * @return L'ensemble des clés primaires du POJO correspondant
      * @throws Exception
+     * @deprecated 
      */
     public abstract String list() throws Exception;
 
