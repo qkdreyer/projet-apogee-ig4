@@ -55,12 +55,14 @@ public class ControllerECUE extends AbstractController implements Observer {
             this.update(msg);
         } else if (msg[0].equals("#quit")) {
             this.quit();
-        } else if (msg[0].equals("#createSpreadsheet")) {
+        } else if (msg[0].equalsIgnoreCase("#createSS")) {
             //createSpreadsheet();
-        } else if (msg[0].equals("#loadSpreadsheet")) {
+        } else if (msg[0].equalsIgnoreCase("#loadSS") && msg.length == 2) {
             //loadSpreadsheet();
         } else if (msg[0].equals("#list")) {
             this.list();
+        } else if (msg[0].equals("#help")) {
+            this.help();
         }
     }
 
@@ -121,6 +123,17 @@ public class ControllerECUE extends AbstractController implements Observer {
      */
     public void list() throws Exception {
         disp.display(ecueDAO.list());
+    }
+
+    private void help() {
+        disp.display("\t #find 'codeECUE'");
+        disp.display("\t #list");
+        disp.display("\t #update");
+        disp.display("\t #note1 'etudiant' 'note'");
+        disp.display("\t #note2 'etudiant' 'note'");
+        disp.display("\t #createSS");
+        disp.display("\t #loadSS 'fichier'");
+        disp.display("\t #quit");
     }
 
 }
