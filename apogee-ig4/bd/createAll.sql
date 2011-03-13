@@ -395,29 +395,6 @@ end;
 
 -- Creation du type qui composera la vue;
 
-create or replace type TEtud as object (
-	numEtudiant number,
-	nom varchar2(20),
-	prenom varchar2(20),
-	noteSession1 number(4,2),
-	noteSession2 number(4,2)
-);
-/
-
-create or replace type TEtud_nt as table of TEtud;
-/
-
-create or replace type TECUE as object (
-	codeMatiere varchar2(10),
-	libelleECUE varchar2(50),
-	nbheures number,
-	nomResponsable varchar2(20),
-	prenomResponsable varchar2(20),
-	codeue varchar2(10),
-	listeEtud TEtud_nt
-);
-/
-
 create or replace type TECUE as object (
 	codeMatiere varchar2(10),
 	libelleECUE varchar2(50),
@@ -501,6 +478,32 @@ MINUS (
 --;
 --/
 
+create or replace type TEtudiant as object (
+	numEtudiant number,
+	pointJuryAnnee number,
+	numIne varchar2(15),
+	scoreToeic number,
+	libelleProvenance varchar2(20),
+	libelle varchar2(10),
+	libelleNationalite varchar2(20),
+	nom varchar2(20),
+	prenom varchar2(20),
+	mail varchar2(40),
+	noteSession1 number(4,2),
+	noteSession2 number(4,2)
+);
+/
+
+create or replace view VO_Etudiant of TEtudiant
+with object identifier(numEtudiant) as
+select e.numEtudiant, pointJuryAnnee, numIne, scoreToeic, libelleProvenance, libelle as libelleStatut, 
+libelleNationalite, nom, prenom, mail, noteSession1, noteSession2
+from Etudiant e, Note n, Provenance p, Statut s, Nationalite na
+where e.numEtudiant = n.numEtudiant (+)
+and e.idProvenance = p.idProvenance
+and e.idStatut = s.idStatut
+and e.idNationalite = na.idNationalite;
+/
 
 --type responsable
 create or replace type TResp as object (
@@ -591,6 +594,7 @@ create or replace type TUtilisateur as object(
     nom varchar2(20),
     prenom varchar2(20),
     mdp varchar2(10),
+	mail varchar2(40),
     codeResponsabilite varchar2(10),
     libelle varchar2(10)
 );
@@ -599,7 +603,7 @@ create or replace type TUtilisateur as object(
 create or replace view VO_Utilisateur of TUtilisateur
 with object identifier(idEnseignant, codeResponsabilite)
 as
-select en.idEnseignant, en.nom, en.prenom, en.mdp,
+select en.idEnseignant, en.nom, en.prenom, en.mdp, mail,
 resp.codeResponsabilite, resp.libelle
 from Enseignant en, table(get_liste_resp(en.idEnseignant)) resp;
 /

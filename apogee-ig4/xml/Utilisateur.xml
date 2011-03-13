@@ -3,7 +3,8 @@
   <Utilisateur>
     <nom>villaret</nom>
     <prenom>anne-laure</prenom>
-    <mdp>roux</mdp>
+    <mdp>3bb524dca2b466baa5a336772d79af65</mdp>
+    <mail>alv@crepuq.fr</mail>
     <listeResponsabilites>
       <responsabilite>
         <libelle>ECUE</libelle>
@@ -30,7 +31,8 @@
   <Utilisateur>
     <nom>dumas</nom>
     <prenom>marc</prenom>
-    <mdp>ihouse</mdp>
+    <mdp>f3f2407e1d869a13e5739fcf24e06f4a</mdp>
+    <mail>marc@cool.fr</mail>
     <listeResponsabilites>
       <responsabilite>
         <libelle>ECUE</libelle>
@@ -45,7 +47,8 @@
   <Utilisateur>
     <nom>stratulat</nom>
     <prenom>tiberiu</prenom>
-    <mdp>sr8</mdp>
+    <mdp>a3352ee597c4f2f083c4f742c812f</mdp>
+    <mail>tibi@pologne.ro</mail>
     <listeResponsabilites>
       <responsabilite>
         <libelle>ECUE</libelle>
@@ -60,7 +63,8 @@
   <Utilisateur>
     <nom>vilarem</nom>
     <prenom>marie-catherine</prenom>
-    <mdp>ada</mdp>
+    <mdp>8c8d357b5e872bbacd45197626bd5759</mdp>
+    <mail>mcv@lirmm.fr</mail>
     <listeResponsabilites>
       <responsabilite>
         <libelle>ECUE</libelle>
@@ -75,7 +79,8 @@
   <Utilisateur>
     <nom>berry</nom>
     <prenom>vincent</prenom>
-    <mdp>cheveux</mdp>
+    <mdp>82f8a73ddd9f35af176da0815da7cda0</mdp>
+    <mail>vberry@lirmm.fr</mail>
     <listeResponsabilites>
       <responsabilite>
         <libelle>ECUE</libelle>
@@ -94,7 +99,8 @@
   <Utilisateur>
     <nom>sala</nom>
     <prenom>michel</prenom>
-    <mdp>futurpierre</mdp>
+    <mdp>e03ad55701c9cf6d0a654dc12d1ae9b</mdp>
+    <mail>mimi@laposte.fr</mail>
     <listeResponsabilites>
       <responsabilite>
         <libelle>ECUE</libelle>
@@ -105,7 +111,8 @@
   <Utilisateur>
     <nom>crepin</nom>
     <prenom>ludivine</prenom>
-    <mdp>mcdo</mdp>
+    <mdp>8542c29a773a42de1f32903b9e2d74</mdp>
+    <mail>ludivine@crepin.fr</mail>
     <listeResponsabilites>
       <responsabilite>
         <libelle>ECUE</libelle>
@@ -116,7 +123,8 @@
   <Utilisateur>
     <nom>debombe</nom>
     <prenom>balle</prenom>
-    <mdp>ales</mdp>
+    <mdp>4a68745196c9260c1fbd06c867c8a66</mdp>
+    <mail>nutellepuissance1000@gmail.com</mail>
     <listeResponsabilites>
       <responsabilite>
         <libelle>ECUE</libelle>
@@ -139,7 +147,8 @@
   <Utilisateur>
     <nom>Donald</nom>
     <prenom>Mac</prenom>
-    <mdp>nut</mdp>
+    <mdp>18fc9c6baeabe5f323c9dab371901e31</mdp>
+    <mail>mcdo@quick.fr</mail>
     <listeResponsabilites>
       <responsabilite>
         <libelle>ECUE</libelle>
@@ -158,7 +167,8 @@
   <Utilisateur>
     <nom>white</nom>
     <prenom>walter</prenom>
-    <mdp>breakingbad</mdp>
+    <mdp>ed26e924fb522ca99a1925791fb795dd</mdp>
+    <mail>drogue@bang.com</mail>
     <listeResponsabilites>
       <responsabilite>
         <libelle>ECUE</libelle>
