@@ -4,8 +4,8 @@
  */
 package fr.GCAM.StudentManager.Persist.DB;
 
+import fr.GCAM.StudentManager.POJO.Etudiant;
 import org.junit.Ignore;
-import fr.GCAM.StudentManager.POJO.ECUE.EtudiantECUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,36 +21,22 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Classe de units test pour la classe ECUE.
+ * Classe de units test pour la classe DBECUE.
  *
  * @author pierre
  */
 public class DBECUETest {
 
     private static Connection conn;
-    private ECUE ecue;
-    private EtudiantECUE ec;
+    private static ECUE ecue;
+    private static Etudiant ec;
 
     public DBECUETest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    /**
-     * Fonction s'executant des l'instanciation de la classe
-     * On cré un ensemble d'élement témoins que l'on rajoute dans la base de données
-     * afin de pouvoir faire des tests.
-     *
-     */
-    @Before
-    public void setUp() {
-        //Creation de la connection à la BD
+	//Creation de la connection à la BD
         conn = ConnectionDB.getConnection();
         try {
             //On cré une ECUE, pour laquelle on va réaliser le test
@@ -72,7 +58,7 @@ public class DBECUETest {
 
             s.close();
 
-            ec = new EtudiantECUE(99999, "netud", "petud", (float) 0.0, (float) 0.0);
+            ec = new Etudiant(99999, "netud", "petud", (float) 0.0, (float) 0.0);
 
             ecue = new ECUE();
             ecue.setCodeMatiere("TEST001");
@@ -85,18 +71,11 @@ public class DBECUETest {
         } catch (SQLException ex) {
             Logger.getLogger(DBECUETest.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
-    /**
-     * Fonction s'executant apres tous les tests.
-     * On supprime tous nos élements témoins inséré au préalable afin de nettoyer la
-     * base de données.
-     *
-     */
-    @After
-    public void tearDown() {
-        //On supprime les insertions de la base
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+	//On supprime les insertions de la base
         try {
             //On cré une ECUE, pour laquelle on va réaliser le test
             Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -122,6 +101,29 @@ public class DBECUETest {
         } catch (SQLException ex) {
             Logger.getLogger(DBECUETest.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    /**
+     * Fonction s'executant des l'instanciation de la classe
+     * On cré un ensemble d'élement témoins que l'on rajoute dans la base de données
+     * afin de pouvoir faire des tests.
+     *
+     */
+    @Before
+    public void setUp() {
+        
+
+    }
+
+    /**
+     * Fonction s'executant apres tous les tests.
+     * On supprime tous nos élements témoins inséré au préalable afin de nettoyer la
+     * base de données.
+     *
+     */
+    @After
+    public void tearDown() {
+        
     }
 
     /**
@@ -156,28 +158,30 @@ public class DBECUETest {
         dbecue.update(ecue);
         //on recupere le resultat
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet r = s.executeQuery("SELECT v.codematiere, v.libelleECUE, v.nbheures,"
-                + "v.idenseignant, v.codeue,l.numetudiant, l.nom, l.prenom, l.notesession1,"
-                + "l.notesession2 FROM vo_ecue v, table(v.listeetud) l "
-                + "WHERE v.codematiere='TEST001' AND l.numetudiant=99999");
+        ResultSet r = s.executeQuery("SELECT v.codematiere, v.libelleECUE,"
+		+ "v.nbheures,v.nomresponsable, v.prenomresponsable,v.codeue,"
+		+ "v.numetudiant, v.nom, v.prenom, v.notesession1,v.notesession2 "
+		+ "FROM vo_ecue v "
+		+ "WHERE v.codematiere='TEST001' AND v.numetudiant=99999");
         //on le compare avec ce qu'on a mis a la base
         if (r.first()) {
-            String codematiere = r.getString(1);
-            String libelleECUE = r.getString(2);
-            int nbheures = r.getInt(3);
-            int idenseignant = r.getInt(4);
-            String codeUE = r.getString(5);
+            String codematiere = r.getString("codeMatiere");
+            String libelleECUE = r.getString("libelleECUE");
+            int nbheures = r.getInt("nbheures");
+            String prenomResp = r.getString("prenomResponsable");
+	    String nomResp = r.getString("nomResponsable");
+            String codeUE = r.getString("codeUE");
 
-            int numetud = r.getInt(6);
-            String nom = r.getString(7);
-            String prenom = r.getString(8);
-            float notes1 = r.getFloat(9);
-            float notes2 = r.getFloat(10);
+            int numetud = r.getInt("numetudiant");
+	    String nom = r.getString("nom");
+	    String prenom = r.getString("prenom");
+	    float notes1 = r.getFloat("notesession1");
+	    float notes2 = r.getFloat("notesession2");
 
-            assertEquals(numetud, 99999);
+	    assertEquals(numetud, 99999);
             // 0.001 est le delta (ecart autorisé) par rapport à la note.
-            assertEquals(notes1, 12.8, 0.001);
-            assertEquals(notes2, 5.8, 0.001);
+            assertEquals(12.8, notes1, 0.001);
+            assertEquals(5.8, notes2, 0.001);
 
         } else {
             fail("The query didn't return any results");
