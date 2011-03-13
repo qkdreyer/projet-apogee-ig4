@@ -41,6 +41,8 @@ public class ControllerUE implements Observer {
             this.update(msg);
         } else if (msg[0].equals("#quit")) {
             this.quit();
+        } else if (msg[0].equals("#list")) {
+            this.list();
         }
     }
 
@@ -55,5 +57,12 @@ public class ControllerUE implements Observer {
 
     public void quit() {
         System.exit(0);
+    }
+
+    /**
+     * Cette fonction affiche la liste des clés primaires (codeUE) des UE
+     */
+    public void list() throws Exception {
+        disp.display(ueDAO.list());
     }
 }

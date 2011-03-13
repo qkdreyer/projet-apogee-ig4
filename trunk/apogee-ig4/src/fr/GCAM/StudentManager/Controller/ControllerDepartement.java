@@ -39,6 +39,8 @@ public class ControllerDepartement implements Observer {
             this.update(msg);
         } else if (msg[0].equals("#quit")) {
             this.quit();
+        } else if (msg[0].equals("#list")) {
+            this.list();
         }
     }
 
@@ -59,4 +61,10 @@ public class ControllerDepartement implements Observer {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Cette fonction affiche la liste des clés primaires (versionDiplome) des Departement
+     */
+    public void list() throws Exception {
+        disp.display(deptDAO.list());
+    }
 }

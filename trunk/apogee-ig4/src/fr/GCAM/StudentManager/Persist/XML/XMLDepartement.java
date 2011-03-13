@@ -60,4 +60,20 @@ public class XMLDepartement extends XML<Departement> {
         return dept;
     }
 
+    /**
+     *
+     * @return L'ensemble des clés primaires (versionDiplome) des Departement
+     * @throws Exception
+     */
+    public String list() throws Exception {
+        String str = "";
+        Element courant;
+        Iterator i = new SAXBuilder().build("xml/Departement.xml").getRootElement().getChildren("Departement").iterator();
+
+        while (i.hasNext()) {
+            courant = (Element) i.next();
+            str = str + courant.getChild("versionDiplome").getText() + "\n";
+        }
+        return str;
+    }
 }

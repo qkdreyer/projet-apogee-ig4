@@ -98,7 +98,6 @@ public class JDOM {
                 listeResponsabilites.addContent(responsabilite);
             }
 
-            Utilisateur.addContent(new Element("idEnseignant").setText(Integer.toString(util.getIdEnseignant())));
             Utilisateur.addContent(new Element("nom").setText(util.getNom()));
             Utilisateur.addContent(new Element("prenom").setText(util.getPrenom()));
             Utilisateur.addContent(new Element("mdp").setText(util.getMDP()));

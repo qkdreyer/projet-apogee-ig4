@@ -118,6 +118,14 @@ public class ECUE {
         this.responsable = responsable;
     }
 
+    public String getPrenomResponsable() {
+        return responsable.split(" ")[0];
+    }
+
+    public String getNomResponsable() {
+        return responsable.split(" ")[1];
+    }
+
     public String getLibelleECUE() {
 	return libelleECUE;
     }

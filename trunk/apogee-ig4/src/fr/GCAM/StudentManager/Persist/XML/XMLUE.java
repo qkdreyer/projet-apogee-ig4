@@ -63,4 +63,21 @@ public class XMLUE extends XML<UE> {
         return ue;
     }
 
+    /**
+     *
+     * @return L'ensemble des clés primaires (codeUE) des UE
+     * @throws Exception
+     */
+    public String list() throws Exception {
+        String str = "";
+        Element courant;
+        Iterator i = new SAXBuilder().build("xml/UE.xml").getRootElement().getChildren("UE").iterator();
+        Iterator j;
+
+        while (i.hasNext()) {
+            courant = (Element) i.next();
+            str = str + courant.getChild("codeUE").getText() + "\n";
+        }
+        return str;
+    }
 }

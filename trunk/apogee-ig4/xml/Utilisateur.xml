@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
   <Utilisateur>
-    <idEnseignant>1001</idEnseignant>
     <nom>villaret</nom>
     <prenom>anne-laure</prenom>
     <mdp>roux</mdp>
@@ -29,7 +28,6 @@
     </listeResponsabilites>
   </Utilisateur>
   <Utilisateur>
-    <idEnseignant>1111</idEnseignant>
     <nom>dumas</nom>
     <prenom>marc</prenom>
     <mdp>ihouse</mdp>
@@ -45,7 +43,6 @@
     </listeResponsabilites>
   </Utilisateur>
   <Utilisateur>
-    <idEnseignant>1321</idEnseignant>
     <nom>stratulat</nom>
     <prenom>tiberiu</prenom>
     <mdp>sr8</mdp>
@@ -61,7 +58,6 @@
     </listeResponsabilites>
   </Utilisateur>
   <Utilisateur>
-    <idEnseignant>1432</idEnseignant>
     <nom>vilarem</nom>
     <prenom>marie-catherine</prenom>
     <mdp>ada</mdp>
@@ -77,7 +73,6 @@
     </listeResponsabilites>
   </Utilisateur>
   <Utilisateur>
-    <idEnseignant>1569</idEnseignant>
     <nom>berry</nom>
     <prenom>vincent</prenom>
     <mdp>cheveux</mdp>
@@ -97,7 +92,6 @@
     </listeResponsabilites>
   </Utilisateur>
   <Utilisateur>
-    <idEnseignant>1859</idEnseignant>
     <nom>sala</nom>
     <prenom>michel</prenom>
     <mdp>futurpierre</mdp>
@@ -109,7 +103,6 @@
     </listeResponsabilites>
   </Utilisateur>
   <Utilisateur>
-    <idEnseignant>1999</idEnseignant>
     <nom>crepin</nom>
     <prenom>ludivine</prenom>
     <mdp>mcdo</mdp>
@@ -121,7 +114,6 @@
     </listeResponsabilites>
   </Utilisateur>
   <Utilisateur>
-    <idEnseignant>2153</idEnseignant>
     <nom>debombe</nom>
     <prenom>balle</prenom>
     <mdp>ales</mdp>
@@ -145,7 +137,6 @@
     </listeResponsabilites>
   </Utilisateur>
   <Utilisateur>
-    <idEnseignant>2176</idEnseignant>
     <nom>Donald</nom>
     <prenom>Mac</prenom>
     <mdp>nut</mdp>
@@ -165,7 +156,6 @@
     </listeResponsabilites>
   </Utilisateur>
   <Utilisateur>
-    <idEnseignant>2384</idEnseignant>
     <nom>white</nom>
     <prenom>walter</prenom>
     <mdp>breakingbad</mdp>

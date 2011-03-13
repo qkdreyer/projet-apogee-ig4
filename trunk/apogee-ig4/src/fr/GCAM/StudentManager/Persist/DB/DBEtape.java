@@ -61,4 +61,21 @@ public class DBEtape extends DB<Etape> {
         }
         return etape;
     }
+
+    /**
+     *
+     * @return L'ensemble des clés primaires (codeEtape) des Etape
+     * @throws Exception
+     */
+    public String list() throws Exception {
+        String str = "";
+        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet result = s.executeQuery("SELECT distinct codeEtape from VO_Etape");
+        if (result.first()) {
+            do {
+                str = str + result.getString(1) + "\n";
+            } while (result.next());
+        }
+        return str;
+    }
 }

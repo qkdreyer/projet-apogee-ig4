@@ -74,4 +74,20 @@ public class DBDepartement extends DB<Departement> {
         return dept;
     }
 
+    /**
+     *
+     * @return L'ensemble des clés primaires (versionDiplome) des Departement
+     * @throws Exception
+     */
+    public String list() throws Exception {
+        String str = "";
+        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet result = s.executeQuery("SELECT distinct versionDiplome from VO_Departement");
+        if (result.first()) {
+            do {
+                str = str + result.getString(1) + "\n";
+            } while (result.next());
+        }
+        return str;
+    }
 }

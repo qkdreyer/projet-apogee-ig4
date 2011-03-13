@@ -5,14 +5,6 @@
 
 package fr.GCAM.StudentManager.Persist;
 
-import fr.GCAM.StudentManager.POJO.Departement;
-import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.Etape;
-import fr.GCAM.StudentManager.POJO.Etudiant;
-import fr.GCAM.StudentManager.POJO.Semestre;
-import fr.GCAM.StudentManager.POJO.UE;
-import fr.GCAM.StudentManager.POJO.Utilisateur;
-
 /**
  * Cette classe définit les 4 méthodes de base qui vont être redefinies par les
  * classes concretes.
@@ -52,6 +44,13 @@ public interface DAO<T> {
      * @throws Exception
      */
     public abstract T find(Object id) throws Exception;
+
+    /**
+     * 
+     * @return L'ensemble des clés primaires du POJO correspondant
+     * @throws Exception
+     */
+    public abstract String list() throws Exception;
 
 
 }
