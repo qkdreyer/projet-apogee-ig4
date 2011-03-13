@@ -35,7 +35,7 @@ public class DBECUE extends DB<ECUE> {
 
     /**
      * Méthode modifiant les données de la base par rapport à l'ecue passée en
-     * parametre. L'ECUE ecue est un POJO qui contient une liste d' EtudiantECUE.
+     * parametre. L'ECUE ecue est un POJO qui contient une liste d'Etudiant.
      * La méthode va parcourir cette liste et executer un update dans la base de
      * de données sur la table vo_ecue. Cet update va donc modifier les notes des
      * étudiants.

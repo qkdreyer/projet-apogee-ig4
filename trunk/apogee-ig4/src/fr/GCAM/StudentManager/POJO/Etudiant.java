@@ -86,6 +86,7 @@ public class Etudiant {
 
     public void setNoteSession1(Float noteSession1) {
         this.noteSession1 = noteSession1;
+        noteSession1Changed = true;
     }
 
     public Float getNoteSession2() {
@@ -94,6 +95,8 @@ public class Etudiant {
 
     public void setNoteSession2(Float noteSession2) {
         this.noteSession2 = noteSession2;
+        noteSession2Changed = true;
+
     }
 
     public int getNumEtudiant() {
@@ -145,6 +148,8 @@ public class Etudiant {
     }
 
     public String toString() {
-        return getPrenom() + " " + getNom() + "(" + getNumEtudiant() + ") : " + getNoteSession1() + " | " + getNoteSession2() + "\n";
+        return getPrenom() + " " + getNom() + "(" + getNumEtudiant() + ") : "
+                + getNoteSession1() + (isNoteSession1Changed() ? " (changed) " : " ")
+                + "| " + getNoteSession2() + (isNoteSession2Changed() ? " (changed) " : " ") + "\n";
     }
 }
