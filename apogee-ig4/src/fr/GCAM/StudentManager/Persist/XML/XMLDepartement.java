@@ -40,7 +40,6 @@ public class XMLDepartement extends XML<Departement> {
         Element courant;
         Iterator i = new SAXBuilder().build("xml/Departement.xml").getRootElement().getChildren("Departement").iterator();
         Iterator j;
-
         while (i.hasNext()) {
             courant = (Element) i.next();
             if (courant.getChild("versionDiplome").getText().equals((String) id)) {
@@ -53,7 +52,7 @@ public class XMLDepartement extends XML<Departement> {
                     courant = (Element) j.next();
                     dept.getListeEtape().add(new Departement.EtapeDepartement(
                             courant.getChild("codeEtape").getText(),
-                            courant.getChild("libelleEtape").getText()));
+                            courant.getChild("versionEtape").getText()));
                 }
             }
         }
@@ -64,6 +63,7 @@ public class XMLDepartement extends XML<Departement> {
      *
      * @return L'ensemble des clés primaires (versionDiplome) des Departement
      * @throws Exception
+     * @deprecated 
      */
     public String list() throws Exception {
         String str = "";

@@ -1,112 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
   <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
+    <codeUE>PIGU52</codeUE>
+    <nbECTS>3</nbECTS>
+    <libelleUE>base comptable</libelleUE>
     <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
+    <responsable>anne-laure villaret</responsable>
+    <codeSemestre>51</codeSemestre>
+    <listeECUE>
+      <ECUE>
+        <codeMatiere>PIG503</codeMatiere>
+        <libelleECUE>ComptabilitÃ©</libelleECUE>
+      </ECUE>
+    </listeECUE>
   </UE>
   <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
+    <codeUE>PIGU61</codeUE>
+    <nbECTS>5</nbECTS>
+    <libelleUE>informatique sÃ©curitaire</libelleUE>
     <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
+    <responsable>vincent berry</responsable>
+    <codeSemestre>61</codeSemestre>
+    <listeECUE>
+      <ECUE>
+        <codeMatiere>PIG601</codeMatiere>
+        <libelleECUE>ADA</libelleECUE>
+      </ECUE>
+      <ECUE>
+        <codeMatiere>PIG602</codeMatiere>
+        <libelleECUE>architecture</libelleECUE>
+      </ECUE>
+    </listeECUE>
   </UE>
   <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
+    <codeUE>PIGU62</codeUE>
+    <nbECTS>3</nbECTS>
+    <libelleUE>langues et communication</libelleUE>
     <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
+    <responsable>marc dumas</responsable>
+    <codeSemestre>61</codeSemestre>
+    <listeECUE>
+      <ECUE>
+        <codeMatiere>PIG603</codeMatiere>
+        <libelleECUE>communication</libelleECUE>
+      </ECUE>
+    </listeECUE>
   </UE>
   <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
+    <codeUE>PSTIAU52</codeUE>
+    <nbECTS>5</nbECTS>
+    <libelleUE>mode amÃ©ricaine</libelleUE>
     <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
+    <responsable>walter white</responsable>
+    <codeSemestre>52</codeSemestre>
+    <listeECUE>
+      <ECUE>
+        <codeMatiere>PSTIA601</codeMatiere>
+        <libelleECUE>beurre de cacahuÃ¨tes</libelleECUE>
+      </ECUE>
+    </listeECUE>
   </UE>
   <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
+    <codeUE>PIGU71</codeUE>
+    <nbECTS>8</nbECTS>
+    <libelleUE>informatique objet</libelleUE>
     <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
+    <responsable>tiberiu stratulat</responsable>
+    <codeSemestre>71</codeSemestre>
+    <listeECUE>
+      <ECUE>
+        <codeMatiere>PIG701</codeMatiere>
+        <libelleECUE>conception objet</libelleECUE>
+      </ECUE>
+      <ECUE>
+        <codeMatiere>PIG702</codeMatiere>
+        <libelleECUE>ingÃ©nierie objet</libelleECUE>
+      </ECUE>
+    </listeECUE>
   </UE>
   <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
+    <codeUE>PSTIAU61</codeUE>
+    <nbECTS>9</nbECTS>
+    <libelleUE>pate a tartiner: concept avancÃ©s</libelleUE>
     <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
+    <responsable>balle debombe</responsable>
+    <codeSemestre>62</codeSemestre>
+    <listeECUE>
+      <ECUE>
+        <codeMatiere>PSTIA602</codeMatiere>
+        <libelleECUE>malakoff avancÃ©e</libelleECUE>
+      </ECUE>
+    </listeECUE>
   </UE>
   <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
+    <codeUE>PSTIAU51</codeUE>
+    <nbECTS>8</nbECTS>
+    <libelleUE>pate a tartiner</libelleUE>
     <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
+    <responsable>balle debombe</responsable>
+    <codeSemestre>52</codeSemestre>
+    <listeECUE>
+      <ECUE>
+        <codeMatiere>PSTIA501</codeMatiere>
+        <libelleECUE>nutella</libelleECUE>
+      </ECUE>
+      <ECUE>
+        <codeMatiere>PSTIA502</codeMatiere>
+        <libelleECUE>malakoff</libelleECUE>
+      </ECUE>
+    </listeECUE>
   </UE>
   <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
+    <codeUE>PIGU51</codeUE>
+    <nbECTS>9</nbECTS>
+    <libelleUE>informatique imperative</libelleUE>
     <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
-  </UE>
-  <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
-    <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
-  </UE>
-  <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
-    <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
-  </UE>
-  <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
-    <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
-  </UE>
-  <UE>
-    <codeUE />
-    <nbECTS>0</nbECTS>
-    <libelleUE />
-    <optionnel>false</optionnel>
-    <responsable />
-    <codeSemestre />
-    <listeECUE />
+    <responsable>marie-catherine vilarem</responsable>
+    <codeSemestre>51</codeSemestre>
+    <listeECUE>
+      <ECUE>
+        <codeMatiere>PIG501</codeMatiere>
+        <libelleECUE>algorithmique</libelleECUE>
+      </ECUE>
+      <ECUE>
+        <codeMatiere>PIG502</codeMatiere>
+        <libelleECUE>Unix</libelleECUE>
+      </ECUE>
+    </listeECUE>
   </UE>
 </root>
 

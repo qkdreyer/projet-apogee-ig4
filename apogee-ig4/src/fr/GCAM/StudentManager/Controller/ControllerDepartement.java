@@ -17,7 +17,7 @@ import java.util.Observer;
  *
  * @author Quentin
  */
-public class ControllerDepartement implements Observer {
+public class ControllerDepartement extends AbstractController implements Observer {
 
 
     private UI disp;
@@ -30,7 +30,7 @@ public class ControllerDepartement implements Observer {
         dept = new Departement();
     }
 
-    public void handleMessage(String message) throws Exception {
+    public AbstractController handleMessage(String message) throws Exception {
         String[] msg = message.split(" ");
 
         if (msg[0].equals("#find") && msg.length == 2) { // #find pstia602
@@ -39,11 +39,10 @@ public class ControllerDepartement implements Observer {
             this.update(msg);
         } else if (msg[0].equals("#quit")) {
             this.quit();
-        } else if (msg[0].equals("#list")) {
-            this.list();
         } else if (msg[0].equals("#help")) {
             this.help();
         }
+        return this;
     }
 
     public void find(String[] msg) throws Exception {
@@ -65,6 +64,7 @@ public class ControllerDepartement implements Observer {
 
     /**
      * Cette fonction affiche la liste des clés primaires (versionDiplome) des Departement
+     * @deprecated 
      */
     public void list() throws Exception {
         disp.display(deptDAO.list());
@@ -72,7 +72,6 @@ public class ControllerDepartement implements Observer {
 
     private void help() {
         disp.display("\t #find 'versionDiplome'");
-        disp.display("\t #list");
         disp.display("\t #update");
         disp.display("\t #quit");
     }

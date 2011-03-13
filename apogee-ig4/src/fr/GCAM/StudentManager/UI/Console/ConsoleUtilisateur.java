@@ -45,7 +45,7 @@ public class ConsoleUtilisateur extends Console<Utilisateur> {
 
             while (true) {
                 message = fromConsole.readLine();
-                contr.handleMessage(message);
+                contr = contr.handleMessage(message);
             }
         } catch (Exception ex) {
             System.out.println("Erreur : " + ex);

@@ -68,6 +68,7 @@ public class XMLEtape extends XML<Etape> {
      *
      * @return L'ensemble des clés primaires (codeEtape) des Etape
      * @throws Exception
+     * @deprecated 
      */
     public String list() throws Exception {
         String str = "";

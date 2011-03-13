@@ -36,7 +36,7 @@ public class DBEtape extends DB<Etape> {
         Etape etape = new Etape();
 
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT * from VO_Ecue where codeMatiere = '" + (String) id + "'");
+        ResultSet result = s.executeQuery("SELECT * from VO_Etape where codeEtape = '" + (String) id + "'");
         if (result.first()) {
             etape.setCodeEtape(result.getString("codeEtape"));
             etape.setVersionEtape(result.getString("versionEtape"));
@@ -66,6 +66,7 @@ public class DBEtape extends DB<Etape> {
      *
      * @return L'ensemble des clés primaires (codeEtape) des Etape
      * @throws Exception
+     * @deprecated 
      */
     public String list() throws Exception {
         String str = "";

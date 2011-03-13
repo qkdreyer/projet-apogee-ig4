@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
   <Departement>
-    <versionDiplome />
-    <nomDepartement />
-    <mNemo />
-    <listeEtape />
+    <versionDiplome>PI01</versionDiplome>
+    <nomDepartement>Informatique et gestion</nomDepartement>
+    <mNemo>IG</mNemo>
+    <listeEtape>
+      <Etape>
+        <codeEtape>10</codeEtape>
+        <versionEtape>3</versionEtape>
+      </Etape>
+      <Etape>
+        <codeEtape>11</codeEtape>
+        <versionEtape>4</versionEtape>
+      </Etape>
+    </listeEtape>
   </Departement>
   <Departement>
-    <versionDiplome />
-    <nomDepartement />
-    <mNemo />
-    <listeEtape />
+    <versionDiplome>PI02</versionDiplome>
+    <nomDepartement>Sciences et Techniques des Industries Agroalimentaires</nomDepartement>
+    <mNemo>STIA</mNemo>
+    <listeEtape>
+      <Etape>
+        <codeEtape>20</codeEtape>
+        <versionEtape>3</versionEtape>
+      </Etape>
+    </listeEtape>
   </Departement>
 </root>
 

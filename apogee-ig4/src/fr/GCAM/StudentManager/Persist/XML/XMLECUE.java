@@ -127,6 +127,7 @@ public class XMLECUE extends XML<ECUE> {
      *
      * @return L'ensemble des clés primaires (codeMatiere) des ECUE
      * @throws Exception
+     * @deprecated 
      */
     public String list() throws Exception {
         String str = "";

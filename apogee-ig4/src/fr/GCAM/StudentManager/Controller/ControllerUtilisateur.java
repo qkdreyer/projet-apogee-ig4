@@ -30,16 +30,19 @@ public class ControllerUtilisateur extends AbstractController implements Observe
         this.user = new Utilisateur();
     }
 
-    public void handleMessage(String message) throws Exception {
+    public AbstractController handleMessage(String message) throws Exception {
         String[] msg = message.split(" ");
         ArrayList<String> userInformation = new ArrayList<String>();
+        AbstractController contr = this;
 
         if (msg[0].equals("#login") && msg.length == 3) {
-            userInformation.add(msg[1].split("\\.")[0]);
-            userInformation.add(msg[1].split("\\.")[1]);
-            userInformation.add(msg[2]);
-            user = (Utilisateur) userDAO.find(userInformation);
-            this.logUser();
+            if (msg[1].split("\\.").length == 2) {
+                userInformation.add(msg[1].split("\\.")[0]);
+                userInformation.add(msg[1].split("\\.")[1]);
+                userInformation.add(msg[2]);
+                user = (Utilisateur) userDAO.find(userInformation);
+                contr = this.logUser();
+            }
         } else if (msg[0].equals("#help")) {
             this.help();
         } else if (msg[0].equals("#quit")) {
@@ -47,6 +50,7 @@ public class ControllerUtilisateur extends AbstractController implements Observe
         } else if (msg[0].equals("#list")) {
             this.list();
         }
+        return contr;
     }
 
     public void help() {
@@ -55,18 +59,23 @@ public class ControllerUtilisateur extends AbstractController implements Observe
         disp.display("\t #quit");
     }
 
-    public void logUser() throws Exception {
-        Utilisateur.Responsabilite r = user.getListeResponsabilites().get(0);
-        if (r.getLibelle().equals("ECUE")) {
-            new ControllerECUE(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
-        } else if (r.getLibelle().equals("UE")) {
-            new ControllerUE(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
-        } else if (r.getLibelle().equals("Etape")) {
-            new ControllerEtape(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
-        } else if (r.getLibelle().equals("Departement")) {
-            new ControllerDepartement(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
+    public AbstractController logUser() throws Exception {
+        AbstractController contr = null;
+        if (user.getListeResponsabilites().size() > 0) {
+            Utilisateur.Responsabilite r = user.getListeResponsabilites().get(user.getListeResponsabilites().size()-1);
+            if (r.getLibelle().equals("ECUE")) {
+                contr = new ControllerECUE(disp, dao);
+            } else if (r.getLibelle().equals("UE")) {
+                contr = new ControllerUE(disp, dao);
+            } else if (r.getLibelle().equals("Etape")) {
+                contr = new ControllerEtape(disp, dao);
+            } else if (r.getLibelle().equals("Departement")) {
+                contr = new ControllerDepartement(disp, dao);
+            }
+            contr.handleMessage("#find " + r.getCodeResponsabilite());
+            disp.display("get" + r.getLibelle() + "UI #find " + r.getCodeResponsabilite());
         }
-        disp.display("-> get" + r.getLibelle() + "UI #find " + r.getCodeResponsabilite());
+        return contr;
     }
 
     public void update(Observable o, Object arg) {

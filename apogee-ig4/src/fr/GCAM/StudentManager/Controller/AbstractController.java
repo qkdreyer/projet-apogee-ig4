@@ -11,6 +11,6 @@ package fr.GCAM.StudentManager.Controller;
  */
 public abstract class AbstractController {
 
-    public abstract void handleMessage(String message) throws Exception;
+    public abstract AbstractController handleMessage(String message) throws Exception;
 
 }

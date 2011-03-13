@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Utilisateur {
 
-    private int idEnseignant;
+    //private int idEnseignant;
     private String prenom;
     private String nom;
     private String mdp;
@@ -26,8 +26,8 @@ public class Utilisateur {
         listeResponsabilites = new ArrayList<Responsabilite>();
     }
 
-    public Utilisateur(int idEnseignant, String prenom, String nom, String mdp, ArrayList<Responsabilite> listeResponsabilites) {
-	this.idEnseignant = idEnseignant;
+    public Utilisateur(String prenom, String nom, String mdp, ArrayList<Responsabilite> listeResponsabilites) {
+	//this.idEnseignant = idEnseignant;
 	this.prenom = prenom;
 	this.nom = nom;
 	this.mdp = mdp;
@@ -59,9 +59,9 @@ public class Utilisateur {
 	}
     }
 
-    public int getIdEnseignant() {
+    /*public int getIdEnseignant() {
 	return idEnseignant;
-    }
+    }*/
 
     public String getNom() {
 	return nom;
@@ -79,9 +79,9 @@ public class Utilisateur {
 	return listeResponsabilites;
     }
 
-    public void setIdEnseignant(int idEnseignant) {
+    /*public void setIdEnseignant(int idEnseignant) {
 	this.idEnseignant = idEnseignant;
-    }
+    }*/
 
     public void setListeResponsabilites(ArrayList<Responsabilite> listeResponsabilites) {
 	this.listeResponsabilites = listeResponsabilites;
@@ -101,7 +101,7 @@ public class Utilisateur {
 
     @Override
     public String toString() {
-	String str = this.getPrenom() + "." + this.getNom() + " (" + this.getIdEnseignant() + ")\n";
+	String str = this.getPrenom() + "." + this.getNom() + " (" + this.getMDP() + ")\n";
 
 	for (Responsabilite r : this.getListeResponsabilites()) {
 	    str += "\t" + r.toString();

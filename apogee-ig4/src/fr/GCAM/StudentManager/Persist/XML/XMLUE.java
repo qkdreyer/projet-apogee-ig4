@@ -55,8 +55,7 @@ public class XMLUE extends XML<UE> {
                     courant = (Element) j.next();
                     ue.getListeECUE().add(new UE.ECUEUE(
                             courant.getChild("codeMatiere").getText(),
-                            courant.getChild("libelleECUE").getText(),
-                            courant.getChild("responsable").getText()));
+                            courant.getChild("libelleECUE").getText()));
                 }
             }
         }
@@ -67,6 +66,7 @@ public class XMLUE extends XML<UE> {
      *
      * @return L'ensemble des clés primaires (codeUE) des UE
      * @throws Exception
+     * @deprecated
      */
     public String list() throws Exception {
         String str = "";

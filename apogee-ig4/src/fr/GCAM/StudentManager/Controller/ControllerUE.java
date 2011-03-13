@@ -16,7 +16,7 @@ import java.util.Observer;
  *
  * @author Quentin
  */
-public class ControllerUE implements Observer {
+public class ControllerUE extends AbstractController implements Observer {
 
     private UI disp;
     private DAO<UE> ueDAO;
@@ -32,7 +32,7 @@ public class ControllerUE implements Observer {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void handleMessage(String message) throws Exception {
+    public AbstractController handleMessage(String message) throws Exception {
         String[] msg = message.split(" ");
 
         if (msg[0].equals("#find") && msg.length == 2) { // #find pstia602
@@ -41,11 +41,10 @@ public class ControllerUE implements Observer {
             this.update(msg);
         } else if (msg[0].equals("#quit")) {
             this.quit();
-        } else if (msg[0].equals("#list")) {
-            this.list();
         } else if (msg[0].equals("#help")) {
             this.help();
         }
+        return this;
     }
 
     public void find(String[] msg) throws Exception {
@@ -63,6 +62,7 @@ public class ControllerUE implements Observer {
 
     /**
      * Cette fonction affiche la liste des clés primaires (codeUE) des UE
+     * @deprecated 
      */
     public void list() throws Exception {
         disp.display(ueDAO.list());
@@ -70,7 +70,6 @@ public class ControllerUE implements Observer {
 
     private void help() {
         disp.display("\t #find 'codeUE'");
-        disp.display("\t #list");
         disp.display("\t #update");
         disp.display("\t #quit");
     }

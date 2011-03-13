@@ -10,16 +10,11 @@ import fr.GCAM.StudentManager.UI.AbstractUIFactory;
  * @author Quentin
  */
 public class Main {
-
     public static void main(String[] args) {
         if (args.length > 1
                 && (args[0].equals("c") || args[0].equals("g"))
                 && (args[1].equals("db") || args[1].equals("xml"))) {
             AbstractUIFactory.getUIFactory(args[0]).getUIUtilisateur(args[1]);
-            //AbstractUIFactory.getUIFactory(args[0]).getUIECUE(args[1]);
-            //AbstractUIFactory.getUIFactory(args[0]).getUIUE(args[1]);
-            //AbstractUIFactory.getUIFactory(args[0]).getUIEtape(args[1]);
-            //AbstractUIFactory.getUIFactory(args[0]).getUIDepartement(args[1]);
         } else {
             System.err.println("Arguments invalides (Format : c/g db/xml)");
         }

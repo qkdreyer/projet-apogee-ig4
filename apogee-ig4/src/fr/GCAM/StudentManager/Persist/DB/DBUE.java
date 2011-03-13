@@ -43,15 +43,14 @@ public class DBUE extends DB<UE> {
             ue.setCodeUE(result.getString("codeUE"));
             ue.setNbECTS(result.getInt("nbECTS"));
             ue.setLibelleUE(result.getString("libelleUE"));
-            ue.setOptionnel(result.getBoolean("optionnel"));
-            ue.setResponsable(result.getString("prenomResponsableUE") + " " + result.getString("nomResponsableUE"));
+            ue.setOptionnel(result.getString("optionnel").equals("t") ? true : false);
+            ue.setResponsable(result.getString("prenomResponsable") + " " + result.getString("nomResponsable"));
             ue.setCodeSemestre(result.getString("codeSemestre"));
 
             do {
                 ue.getListeECUE().add(new UE.ECUEUE(
                         result.getString("codeMatiere"),
-                        result.getString("libelleECUE"),
-                        result.getString("prenomResponsableECUE") + " " + result.getString("nomResponsableECUE")));
+                        result.getString("libelleECUE")));
             } while (result.next());
         }
         return ue;
@@ -61,6 +60,7 @@ public class DBUE extends DB<UE> {
      *
      * @return L'ensemble des clés primaires (codeUE) des UE
      * @throws Exception
+     * @deprecated 
      */
     public String list() throws Exception {
         String str = "";
