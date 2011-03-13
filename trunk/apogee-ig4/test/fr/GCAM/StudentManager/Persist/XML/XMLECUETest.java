@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
+import fr.GCAM.StudentManager.POJO.Etudiant;
 import java.io.FileOutputStream;
 import org.jdom.output.XMLOutputter;
 import org.jdom.output.Format;
@@ -14,6 +15,7 @@ import org.jdom.Document;
 import org.jdom.Element;
 import java.io.File;
 import fr.GCAM.StudentManager.POJO.ECUE;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -29,7 +31,7 @@ import static org.junit.Assert.*;
 public class XMLECUETest {
 
     private static File file;
-    private static ECUE ecue;
+    private static ECUE ecue_m;
 
     public XMLECUETest() {
     }
@@ -44,36 +46,38 @@ public class XMLECUETest {
 	    Iterator i = d.getRootElement().getChildren("ECUE").iterator();
 	    Iterator j;
 	    Element ECUE, listeEtud, Etudiant;
+	    Etudiant etud = new Etudiant(99999, "netud", "petud", 0, 0);
 	    
 
 	    while (i.hasNext()) {
                 courant = (Element) i.next();
 	    }
 
-	    System.out.println("On est à la fin");
 	    ECUE = new Element("ECUE");
-            ecue = new ECUE();
-	    ecue.setCodeMatiere("TEST001");
-	    ecue.setCodeUE("testCUE");
-	    ecue.setLibelleECUE("testlibelle");
-	    ecue.setNbHeures(99);
-	    ecue.setResponsable("NRtest PRtest");
+            ecue_m = new ECUE();
+	    ecue_m.setCodeMatiere("TEST001");
+	    ecue_m.setCodeUE("testCUE");
+	    ecue_m.setLibelleECUE("testlibelle");
+	    ecue_m.setNbHeures(99);
+	    ecue_m.setResponsable("NRtest PRtest");
 
+	    ecue_m.getListeEtud().add(etud);
+	    
             listeEtud = new Element("listeEtud");
 	    Etudiant = new Element("Etudiant");
-	    Etudiant.addContent(new Element("numEtud").setText(Integer.toString(99999)));
-	    Etudiant.addContent(new Element("nom").setText("netud"));
-	    Etudiant.addContent(new Element("prenom").setText("petud"));
-	    Etudiant.addContent(new Element("noteSession1").setText(Integer.toString(0)));
-	    Etudiant.addContent(new Element("noteSession2").setText(Integer.toString(0)));
+	    Etudiant.addContent(new Element("numEtudiant").setText(Integer.toString(etud.getNumEtudiant())));
+	    Etudiant.addContent(new Element("nom").setText(etud.getNom()));
+	    Etudiant.addContent(new Element("prenom").setText(etud.getPrenom()));
+	    Etudiant.addContent(new Element("noteSession1").setText(Float.toString(etud.getNoteSession1())));
+	    Etudiant.addContent(new Element("noteSession2").setText(Float.toString(etud.getNoteSession2())));
 	    //s.executeQuery("insert into Etudiant values (99999,0,'INETEST',0,null,null,null,'testCEt','netud','petud','m@etud.com')");
 	    listeEtud.addContent(Etudiant);
 
-	    ECUE.addContent(new Element("codeMatiere").setText(ecue.getCodeMatiere()));
-	    ECUE.addContent(new Element("libelleECUE").setText(ecue.getLibelleECUE()));
-	    ECUE.addContent(new Element("nbHeures").setText(Integer.toString(ecue.getNbHeures())));
-	    ECUE.addContent(new Element("responsable").setText(ecue.getResponsable()));
-	    ECUE.addContent(new Element("codeUE").setText(ecue.getCodeUE()));
+	    ECUE.addContent(new Element("codeMatiere").setText(ecue_m.getCodeMatiere()));
+	    ECUE.addContent(new Element("libelleECUE").setText(ecue_m.getLibelleECUE()));
+	    ECUE.addContent(new Element("nbHeures").setText(Integer.toString(ecue_m.getNbHeures())));
+	    ECUE.addContent(new Element("responsable").setText(ecue_m.getResponsable()));
+	    ECUE.addContent(new Element("codeUE").setText(ecue_m.getCodeUE()));
 	    ECUE.addContent(listeEtud);
 	    d.getRootElement().addContent(ECUE);
 
@@ -111,8 +115,6 @@ public class XMLECUETest {
 	ECUE obj = null;
 	XMLECUE instance = new XMLECUE();
 	instance.create(obj);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
     }
 
     /**
@@ -121,11 +123,43 @@ public class XMLECUETest {
     @Test
     public void testUpdate() throws Exception {
 	System.out.println("update XMLECUE");
-	ECUE ecue = null;
 	XMLECUE instance = new XMLECUE();
-	instance.update(ecue);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
+	ecue_m.getListeEtud().get(0).setNoteSession1((float)12.9);
+	ecue_m.getListeEtud().get(0).setNoteSession2((float)7.9);
+	instance.update(ecue_m);
+	float note_r1 = 0;
+	float note_r2 = 0;
+
+	Element courant;
+        Iterator i = new SAXBuilder().build("xml/ECUE.xml").getRootElement().getChildren("ECUE").iterator();
+        Iterator j;
+        while (i.hasNext()) {
+            courant = (Element) i.next();
+            if (courant.getChild("codeMatiere").getText().equals((String) "TEST001")) {
+                //ecue_m.setCodeMatiere(courant.getChild("codeMatiere").getText());
+                //ecue_m.setLibelleECUE(courant.getChild("libelleECUE").getText());
+                //ecue_m.setNbHeures(Integer.parseInt(courant.getChild("nbHeures").getText()));
+                //ecue_m.setResponsable(courant.getChild("responsable").getText());
+                //ecue_m.setCodeUE(courant.getChild("codeUE").getText());
+
+                j = courant.getChild("listeEtud").getChildren("Etudiant").iterator();
+                while (j.hasNext()) {
+                    courant = (Element) j.next();
+//                    ecue_m.getListeEtud().add(new Etudiant(
+//                            Integer.parseInt(courant.getChild("numEtudiant").getText()),
+//                            courant.getChild("nom").getText(),
+//                            courant.getChild("prenom").getText(),
+//                            Float.parseFloat(courant.getChild("noteSession1").getText()),
+//                            Float.parseFloat(courant.getChild("noteSession2").getText())));
+		    note_r1 = Float.parseFloat(courant.getChild("noteSession1").getText());		    
+		    note_r2 = Float.parseFloat(courant.getChild("noteSession2").getText());
+                }
+            }
+        }
+
+	assertEquals(12.9, note_r1, 0.001);
+	assertEquals(7.9, note_r2, 0.001);
+
     }
 
     /**
@@ -137,8 +171,6 @@ public class XMLECUETest {
 	ECUE obj = null;
 	XMLECUE instance = new XMLECUE();
 	instance.delete(obj);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
     }
 
     /**
@@ -151,7 +183,7 @@ public class XMLECUETest {
 	XMLECUE instance = new XMLECUE();
 	
 	ECUE result = instance.find(id);
-	assertEquals(ecue.getLibelleECUE(), result.getLibelleECUE());
+	assertEquals(ecue_m.getLibelleECUE(), result.getLibelleECUE());
     }
 
     /**
@@ -164,8 +196,6 @@ public class XMLECUETest {
 	String expResult = "";
 	String result = instance.list();
 	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
     }
 
 }
