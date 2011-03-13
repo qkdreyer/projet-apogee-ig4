@@ -368,11 +368,11 @@
     <codeUE>testCUE</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>99999</numEtud>
+        <numEtudiant>99999</numEtudiant>
         <nom>netud</nom>
         <prenom>petud</prenom>
-        <noteSession1>0</noteSession1>
-        <noteSession2>0</noteSession2>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -384,11 +384,11 @@
     <codeUE>testCUE</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>99999</numEtud>
+        <numEtudiant>99999</numEtudiant>
         <nom>netud</nom>
         <prenom>petud</prenom>
-        <noteSession1>0</noteSession1>
-        <noteSession2>0</noteSession2>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -400,11 +400,235 @@
     <codeUE>testCUE</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>99999</numEtud>
+        <numEtudiant>99999</numEtudiant>
         <nom>netud</nom>
         <prenom>petud</prenom>
-        <noteSession1>0</noteSession1>
-        <noteSession2>0</noteSession2>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>netud</nom>
+        <prenom>petud</prenom>
+        <noteSession1>12.9</noteSession1>
+        <noteSession2>7.9</noteSession2>
       </Etudiant>
     </listeEtud>
   </ECUE>
