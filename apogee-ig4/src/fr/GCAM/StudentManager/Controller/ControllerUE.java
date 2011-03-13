@@ -28,10 +28,27 @@ public class ControllerUE extends AbstractController implements Observer {
         ue = new UE();
     }
 
+    /**
+     * Methodé de l'interface Observer
+     * @param o
+     * @param arg
+     */
     public void update(Observable o, Object arg) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * La classe définit les traitements associés au message<br>
+     * -#find<br>
+     * -#update<br>
+     * -#quit<br>
+     * -#help<br>
+     *
+     * @param message Le message qui sera traité, il doit faire parti de l'ensemble
+     * défini ci dessus
+     * @return
+     * @throws Exception
+     */
     public AbstractController handleMessage(String message) throws Exception {
         String[] msg = message.split(" ");
 
@@ -47,15 +64,32 @@ public class ControllerUE extends AbstractController implements Observer {
         return this;
     }
 
+    /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#find"
+     *
+     * @param msg(String) Le message contenant les informations à 'find'
+     * @throws Exception
+     */
     public void find(String[] msg) throws Exception {
         ue = (UE) ueDAO.find(msg[1]);
         disp.display(ue.toString());
     }
 
+    /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#update"
+     *
+     * @param msg(String) Le message contenant les informations à 'update'
+     * @throws Exception
+     */
     public void update(String[] msg) throws Exception {
         ueDAO.update(ue);
     }
 
+    /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#quit"
+     *
+     * @throws Exception
+     */
     public void quit() {
         System.exit(0);
     }
@@ -68,6 +102,11 @@ public class ControllerUE extends AbstractController implements Observer {
         disp.display(ueDAO.list());
     }
 
+    /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#help"
+     *
+     * @throws Exception
+     */
     private void help() {
         disp.display("\t #find 'codeUE'");
         disp.display("\t #update");

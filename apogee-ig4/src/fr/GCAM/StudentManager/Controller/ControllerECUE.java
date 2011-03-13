@@ -30,7 +30,7 @@ public class ControllerECUE extends AbstractController implements Observer {
     }
 
     /**
-     *
+     * Methodé de l'interface Observer
      * @param o
      * @param arg
      */
@@ -39,8 +39,19 @@ public class ControllerECUE extends AbstractController implements Observer {
     }
 
     /**
+     * La classe définit les traitements associés au message<br>
+     * -#find<br>
+     * -#update<br>
+     * -#quit<br>
+     * -#note1<br>
+     * -#note2<br>
+     * -#createSS<br>
+     * -#loadSS<br>
+     * -#help<br>
      *
-     * @param message
+     * @param message Le message qui sera traité, il doit faire parti de l'ensemble
+     * défini ci dessus
+     * @return
      * @throws Exception
      */
     public AbstractController handleMessage(String message) throws Exception {
@@ -67,11 +78,12 @@ public class ControllerECUE extends AbstractController implements Observer {
     }
 
     /**
+     * Methode permettant la modification de la note1 des etudiants d'une ECUE
      *
      * @param msg
      * @throws Exception
      */
-    public void note1(String[] msg) throws Exception {
+    private  void note1(String[] msg) throws Exception {
         if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
             ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession1(Float.parseFloat(msg[2]));
             disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).toString());
@@ -80,11 +92,12 @@ public class ControllerECUE extends AbstractController implements Observer {
     }
 
     /**
+     * Methode permettant la modification de la note1 des etudiants d'une ECUE
      *
      * @param msg
      * @throws Exception
      */
-    public void note2(String[] msg) throws Exception {
+    private  void note2(String[] msg) throws Exception {
         if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
             ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession2(Float.parseFloat(msg[2]));
             disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).toString());
@@ -93,38 +106,47 @@ public class ControllerECUE extends AbstractController implements Observer {
     }
 
     /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#find"
      *
-     * @param msg
+     * @param msg(String) Le message contenant les informations à 'find'
      * @throws Exception
      */
-    public void find(String[] msg) throws Exception {
+    private  void find(String[] msg) throws Exception {
         ecue = (ECUE) ecueDAO.find(msg[1]);
         disp.display(ecue.toString());
     }
 
     /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#update"
      *
-     * @param msg
+     * @param msg(String) Le message contenant les informations à 'update'
      * @throws Exception
      */
-    public void update(String[] msg) throws Exception {
+    private  void update(String[] msg) throws Exception {
         ecueDAO.update(ecue);
     }
 
     /**
-     * Cette fonction met fin à l'execution du programme.
+     * Méthode appelé par handleMessage lorsque le message vaut "#quit"
+     *
+     * @throws Exception
      */
-    public void quit() {
+    private void quit() {
         System.exit(0);
     }
 
     /**
      * Cette fonction affiche la liste des clés primaires (codeMatiere) des ECUE
      */
-    public void list() throws Exception {
+    private void list() throws Exception {
         disp.display(ecueDAO.list());
     }
 
+    /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#help"
+     *
+     * @throws Exception
+     */
     private void help() {
         disp.display("\t #find 'codeECUE'");
         disp.display("\t #update");

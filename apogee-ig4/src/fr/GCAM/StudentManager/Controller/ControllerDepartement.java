@@ -14,6 +14,7 @@ import java.util.Observer;
 
 
 /**
+ * Classe définissant la méthode handleMessage pour un Departement.
  *
  * @author Quentin
  */
@@ -30,6 +31,18 @@ public class ControllerDepartement extends AbstractController implements Observe
         dept = new Departement();
     }
 
+    /**
+     * La classe définit les traitements associés au message<br>
+     * -#find<br>
+     * -#update<br>
+     * -#quit<br>
+     * -#help<br>
+     *
+     * @param message Le message qui sera traité, il doit faire parti de l'ensemble
+     * défini ci dessus
+     * @return
+     * @throws Exception
+     */
     public AbstractController handleMessage(String message) throws Exception {
         String[] msg = message.split(" ");
 
@@ -45,19 +58,42 @@ public class ControllerDepartement extends AbstractController implements Observe
         return this;
     }
 
-    public void find(String[] msg) throws Exception {
+
+    /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#find"
+     *
+     * @param msg(String) Le message contenant les informations à 'find'
+     * @throws Exception
+     */
+    private void find(String[] msg) throws Exception {
         dept = (Departement) deptDAO.find(msg[1]);
         disp.display(dept.toString());
     }
 
-    public void update(String[] msg) throws Exception {
+    /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#update"
+     *
+     * @param msg(String) Le message contenant les informations à 'update'
+     * @throws Exception
+     */
+    private void update(String[] msg) throws Exception {
         deptDAO.update(dept);
     }
 
-    public void quit() {
+    /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#quit"
+     *
+     * @throws Exception
+     */
+    private void quit() {
         System.exit(0);
     }
 
+    /**
+     * Methodé de l'interface Observer
+     * @param o
+     * @param arg
+     */
     public void update(Observable o, Object arg) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -66,10 +102,15 @@ public class ControllerDepartement extends AbstractController implements Observe
      * Cette fonction affiche la liste des clés primaires (versionDiplome) des Departement
      * @deprecated 
      */
-    public void list() throws Exception {
+    private void list() throws Exception {
         disp.display(deptDAO.list());
     }
 
+    /**
+     * Méthode appelé par handleMessage lorsque le message vaut "#help"
+     *
+     * @throws Exception
+     */
     private void help() {
         disp.display("\t #find 'versionDiplome'");
         disp.display("\t #update");
