@@ -21,6 +21,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * Classe de units test pour la classe ECUE.
  *
  * @author pierre
  */
@@ -41,6 +42,12 @@ public class DBECUETest {
     public static void tearDownClass() throws Exception {
     }
 
+    /**
+     * Fonction s'executant des l'instanciation de la classe
+     * On cré un ensemble d'élement témoins que l'on rajoute dans la base de données
+     * afin de pouvoir faire des tests.
+     *
+     */
     @Before
     public void setUp() {
         //Creation de la connection à la BD
@@ -81,6 +88,12 @@ public class DBECUETest {
 
     }
 
+    /**
+     * Fonction s'executant apres tous les tests.
+     * On supprime tous nos élements témoins inséré au préalable afin de nettoyer la
+     * base de données.
+     *
+     */
     @After
     public void tearDown() {
         //On supprime les insertions de la base

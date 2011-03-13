@@ -11,7 +11,7 @@ import fr.GCAM.StudentManager.Persist.DAO;
 import java.sql.Connection;
 
 /**
- * Cette classe est la fabrique abstraite de DAO(Data Access Object) qui
+ * Cette classe est la fabrique concrete de DAO(Data Access Object) qui
  * interagissent avec la base de données.
  *
  * @author Quentin

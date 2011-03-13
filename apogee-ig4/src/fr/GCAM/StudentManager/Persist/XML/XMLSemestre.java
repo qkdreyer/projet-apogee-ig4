@@ -8,6 +8,8 @@ package fr.GCAM.StudentManager.Persist.XML;
 import fr.GCAM.StudentManager.POJO.Semestre;
 
 /**
+ * Cette classe définit les methodes de l'interface DAO pour le type Semestre
+ * (POJO).
  *
  * @author pierre
  */

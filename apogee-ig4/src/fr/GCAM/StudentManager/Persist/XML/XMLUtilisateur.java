@@ -12,8 +12,10 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.*;
 
 /**
+ * Cette classe définit les methodes de l'interface DAO pour le type Utilisateur
+ * (POJO).
  *
- * @author Quentin
+ * @author pierre
  */
 public class XMLUtilisateur extends XML<Utilisateur> {
 

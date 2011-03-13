@@ -10,37 +10,68 @@ import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import fr.GCAM.StudentManager.UI.UI;
 
 /**
+ * Cette classe est la fabrique concrete d'UI Console.
  *
  * @author Quentin
  */
 public class ConsoleFactory extends AbstractUIFactory {
 
-    @Override
+    /**
+     * Méthode permettant de créer une ConsoleECUE
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique ECUE(POJO)
+     */
     public UI<ECUE> getUIECUE(String s) {
 	return new ConsoleECUE(s);
     }
 
-    @Override
+    /**
+     * Méthode permettant de créer une ConsoleEtudiant
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique Etudiant(POJO)
+     */
     public UI<Etudiant> getUIEtudiant(String s) {
 	return new ConsoleEtudiant(s);
     }
 
-    @Override
+    /**
+     * Méthode permettant de créer une ConsoleUtilisateur
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
+     */
     public UI<Utilisateur> getUIUtilisateur(String s) {
         return new ConsoleUtilisateur(s);
     }
 
-    @Override
+    /**
+     * Méthode permettant de créer une ConsoleUE
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique UE(POJO)
+     */
     public UI<UE> getUIUE(String s) {
         return new ConsoleUE(s);
     }
 
-    @Override
+    /**
+     * Méthode permettant de créer une ConsoleEtape
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique Etape(POJO)
+     */
     public UI<Etape> getUIEtape(String s) {
         return new ConsoleEtape(s);
     }
 
-    @Override
+    /**
+     * Méthode permettant de créer une ConsoleDepartement
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique Departement(POJO)
+     */
     public UI<Departement> getUIDepartement(String s) {
         return new ConsoleDepartement(s);
     }

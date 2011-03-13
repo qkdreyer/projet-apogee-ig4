@@ -15,8 +15,10 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 /**
+ * Cette classe définit les methodes de l'interface DAO pour le type ECUE
+ * (POJO).
  *
- * @author Quentin
+ * @author pierre
  */
 public class XMLECUE extends XML<ECUE> {
 

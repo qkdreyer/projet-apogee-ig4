@@ -8,8 +8,10 @@ package fr.GCAM.StudentManager.Persist.XML;
 import fr.GCAM.StudentManager.POJO.Etudiant;
 
 /**
+ * Cette classe définit les methodes de l'interface DAO pour le type Etudiant
+ * (POJO).
  *
- * @author Quentin
+ * @author pierre
  */
 public class XMLEtudiant extends XML<Etudiant> {
 

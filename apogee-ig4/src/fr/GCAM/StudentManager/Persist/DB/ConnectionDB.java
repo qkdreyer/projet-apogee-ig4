@@ -53,6 +53,13 @@ public class ConnectionDB {
         return pwd;
     }
 
+    /**
+     * Fonction qui lit le fichier .htaccess afin d'y trouver le nom de l'utilisateur
+     * de la base de données.
+     *
+     * @return La chaine renvoyée contient le mot de passe écrit dans le fichier
+     * .htaccess
+     */
     public String getUser() {
         BufferedReader br = null;
         String usr = null;
