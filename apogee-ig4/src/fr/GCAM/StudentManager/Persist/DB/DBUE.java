@@ -22,18 +22,43 @@ public class DBUE extends DB<UE> {
         super(conn);
     }
 
+    /**
+     * Methode permettant la création d'une UE
+     *
+     * @param obj le Departement qui doit être insérée dans la base de données
+     * @throws Exception
+     */
     public void create(UE obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant la modification d'une UE
+     *
+     * @param obj l'UI qui doit être modifiée dans la base de données
+     * @throws Exception
+     */
     public void update(UE obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant la suppression d'une UE
+     *
+     * @param obj l'UE qui doit être supprimée dans la base de données
+     * @throws Exception
+     */
     public void delete(UE obj) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * La fonction, renvoie un POJO UE, a partir de l'id passé en parametre.<br>
+     *
+     * @param id(String) L'id de l'UE que l'on souhaite charger
+     * @return L'UE correspondant à la ligne trouvé dans la BD a partir de l'id
+     * @throws Exception
+     */
     public UE find(Object id) throws Exception {
         UE ue = new UE();
 
@@ -57,6 +82,8 @@ public class DBUE extends DB<UE> {
     }
 
     /**
+     * Methode renvoyant l'ensemble des clés primaires de la vue correspondante
+     * (ici vo_ue)
      *
      * @return L'ensemble des clés primaires (codeUE) des UE
      * @throws Exception

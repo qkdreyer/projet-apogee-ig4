@@ -23,8 +23,9 @@ public class DBDepartement extends DB<Departement> {
     }
 
     /**
+     * Methode permettant la création d'un Departement
      *
-     * @param obj
+     * @param obj le Departement qui doit être insérée dans la base de données
      * @throws Exception
      */
     public void create(Departement obj) throws Exception {
@@ -32,8 +33,9 @@ public class DBDepartement extends DB<Departement> {
     }
 
     /**
+     * Methode permettant la modification d'un Departement
      *
-     * @param obj
+     * @param obj le Departement qui doit être modifiée dans la base de données
      * @throws Exception
      */
     public void update(Departement obj) throws Exception {
@@ -41,8 +43,9 @@ public class DBDepartement extends DB<Departement> {
     }
 
     /**
+     * Methode permettant la suppression d'un Departement
      *
-     * @param obj
+     * @param obj le Departement qui doit être supprimée dans la base de données
      * @throws Exception
      */
     public void delete(Departement obj) throws Exception {
@@ -50,12 +53,16 @@ public class DBDepartement extends DB<Departement> {
     }
 
     /**
-     * 
-     * @param id
-     * @return
+     *
+     * REQUETE FAUSSE, La description concerne le fonctionnement théorique de la méthode
+     *
+     * La fonction, renvoie un POJO Departement, a partir de l'id passé en parametre.<br>
+     * @param id(String) L'id du département que l'on souhaite charger
+     * @return Le departement correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
     public Departement find(Object id) throws Exception {
+	//TODO : @fix : La requete SQL est fausse, elle va chercher les ECUE ...
 	Departement dept = new Departement();
 
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -75,6 +82,8 @@ public class DBDepartement extends DB<Departement> {
     }
 
     /**
+     * Methode renvoyant l'ensemble des clés primaires de la vue correspondante
+     * (ici vo_Departement)
      *
      * @return L'ensemble des clés primaires (versionDiplome) des Departement
      * @throws Exception

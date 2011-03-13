@@ -13,6 +13,7 @@ import org.jdom.input.SAXBuilder;
 /**
  * Cette classe définit les methodes de l'interface DAO pour le type Departement
  * (POJO).
+ * Le fichier XML utilisé par cette classe est "xml/Departement.xml"
  *
  * @author pierre
  */
@@ -20,20 +21,44 @@ public class XMLDepartement extends XML<Departement> {
 
     public XMLDepartement() {
     }
-    
 
+    /**
+     * Methode permettant la création d'un Departement
+     *
+     * @param obj le Departement qui doit être insérée dans le fichier XML
+     * @throws Exception
+     */
     public void create(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant la modification d'un Departement
+     *
+     * @param obj le Departement qui doit être modifiée dans le fichier XML
+     * @throws Exception
+     */
     public void update(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant la suppression d'un Departement
+     *
+     * @param obj le Departement qui doit être supprimée dans le fichier XML
+     * @throws Exception
+     */
     public void delete(Departement obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * La fonction, renvoie un POJO Departement, a partir de l'id passé en parametre.<br>
+     *
+     * @param id(String) L'id du département que l'on souhaite charger
+     * @return Le departement correspondant à l'élement trouvé dans le fichier XML a partir de l'id
+     * @throws Exception
+     */
     public Departement find(Object id) throws Exception {
         Departement dept = new Departement();
 
@@ -60,6 +85,8 @@ public class XMLDepartement extends XML<Departement> {
     }
 
     /**
+     * Methode renvoyant l'ensemble des clés primaires du fichier XML correspondant
+     * (ici Departement.xml)
      *
      * @return L'ensemble des clés primaires (versionDiplome) des Departement
      * @throws Exception
