@@ -11,6 +11,8 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
 /**
+ * Cette classe définit les methodes de l'interface DAO pour le type UE
+ * (POJO).
  *
  * @author pierre
  */

@@ -12,6 +12,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
+ * Cette classe implemente la partie Controlleur du MVC(Model View Controller).
  *
  * @author Quentin
  */
@@ -27,10 +28,20 @@ public class ControllerECUE implements Observer {
         ecue = new ECUE();
     }
 
+    /**
+     *
+     * @param o
+     * @param arg
+     */
     public void update(Observable o, Object arg) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param message
+     * @throws Exception
+     */
     public void handleMessage(String message) throws Exception {
         String[] msg = message.split(" ");
 
@@ -51,6 +62,11 @@ public class ControllerECUE implements Observer {
         }
     }
 
+    /**
+     *
+     * @param msg
+     * @throws Exception
+     */
     public void note1(String[] msg) throws Exception {
         if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
             ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession1(Float.parseFloat(msg[2]));
@@ -59,6 +75,11 @@ public class ControllerECUE implements Observer {
         }
     }
 
+    /**
+     *
+     * @param msg
+     * @throws Exception
+     */
     public void note2(String[] msg) throws Exception {
         if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
             ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession2(Float.parseFloat(msg[2]));
@@ -67,15 +88,28 @@ public class ControllerECUE implements Observer {
         }
     }
 
+    /**
+     *
+     * @param msg
+     * @throws Exception
+     */
     public void find(String[] msg) throws Exception {
         ecue = (ECUE) ecueDAO.find(msg[1]);
         disp.display(ecue.toString());
     }
 
+    /**
+     *
+     * @param msg
+     * @throws Exception
+     */
     public void update(String[] msg) throws Exception {
         ecueDAO.update(ecue);
     }
 
+    /**
+     * Cette fonction met fin à l'execution du programme.
+     */
     public void quit() {
         System.exit(0);
     }

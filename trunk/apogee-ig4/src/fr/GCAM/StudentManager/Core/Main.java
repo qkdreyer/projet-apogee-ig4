@@ -2,10 +2,6 @@ package fr.GCAM.StudentManager.Core;
 
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  * Classe principale du projet. C'est ici que l'on va regarder les deux arguments
  * obligatoires qui doivent etre passés pour l'éxecution du programme.

@@ -10,37 +10,68 @@ import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import fr.GCAM.StudentManager.UI.UI;
 
 /**
+ * Cette classe est la fabrique concrete d'UI.
  *
  * @author Quentin
  */
 public class GUIFactory extends AbstractUIFactory {
 
-    @Override
+    /**
+     * Méthode permettant de créer une GUIECUE
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique ECUE(POJO)
+     */
     public UI<ECUE> getUIECUE(String s) {
 	return new GUIECUE(s);
     }
 
-    @Override
+    /**
+     * Méthode permettant de créer une GUIEtudiant
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique Etudiant(POJO)
+     */
     public UI<Etudiant> getUIEtudiant(String s) {
 	return new GUIEtudiant(s);
     }
 
-    @Override
+    /**
+     * Méthode permettant de créer une GUIUtilisateur
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
+     */
     public UI<Utilisateur> getUIUtilisateur(String s) {
         return new GUIUtilisateur(s);
     }
 
-    @Override
+    /**
+     * Méthode permettant de créer une GUIUE
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique UE(POJO)
+     */
     public UI<UE> getUIUE(String s) {
         return new GUIUE(s);
     }
 
-    @Override
+    /**
+     * Méthode permettant de créer une GUIEtape
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique Etape(POJO)
+     */
     public UI<Etape> getUIEtape(String s) {
         return new GUIEtape(s);
     }
 
-    @Override
+    /**
+     * Méthode permettant de créer une GUIDepartement
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @return L'UI instancié avec le type spécifique Departement(POJO)
+     */
     public UI<Departement> getUIDepartement(String s) {
         return new GUIDepartement(s);
     }

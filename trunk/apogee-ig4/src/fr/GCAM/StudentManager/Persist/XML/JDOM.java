@@ -13,6 +13,9 @@ import org.jdom.*;
 import org.jdom.output.*;
 
 /**
+ * Classe qui permet la création des fichiers XML. On utilise JDOM afin de 
+ * transformet nos données stocker dans la DB dans des fichiers XML
+ * basés sur les POJO.
  *
  * @author Quentin
  */
@@ -33,6 +36,11 @@ public class JDOM {
         }
     }
 
+    /**
+     *
+     * @param s
+     * @throws Exception
+     */
     public static void createECUEXML(String s) throws Exception {
         Element root = new Element("root");
         Document document = new Document(root);
@@ -66,6 +74,11 @@ public class JDOM {
         save(document, "xml/" + s + ".xml");
     }
 
+    /**
+     *
+     * @param s
+     * @throws Exception
+     */
     public static void createUtilisateurXML(String s) throws Exception {
         Element root = new Element("root");
         Document document = new Document(root);
@@ -95,6 +108,10 @@ public class JDOM {
         save(document, "xml/" + s + ".xml");
     }
 
+    /**
+     *
+     * @param d
+     */
     //Ajouter ces deux méthodes à notre classe JDOM1
     public static void print(Document d) {
         try {
@@ -106,6 +123,11 @@ public class JDOM {
         }
     }
 
+    /**
+     *
+     * @param d
+     * @param fichier
+     */
     public static void save(Document d, String fichier) {
         try {
             //On utilise ici un affichage classique avec getPrettyFormat()
@@ -118,6 +140,11 @@ public class JDOM {
         }
     }
 
+    /**
+     *
+     * @param s
+     * @throws Exception
+     */
     public static void createUEXML(String s) throws Exception {
         Element root = new Element("root");
         Document document = new Document(root);
@@ -150,6 +177,11 @@ public class JDOM {
         save(document, "xml/" + s + ".xml");
     }
 
+    /**
+     *
+     * @param s
+     * @throws Exception
+     */
     public static void createEtapeXML(String s) throws Exception {
         Element root = new Element("root");
         Document document = new Document(root);
@@ -189,6 +221,11 @@ public class JDOM {
         save(document, "xml/" + s + ".xml");
     }
 
+    /**
+     * 
+     * @param s
+     * @throws Exception
+     */
     public static void createDepartementXML(String s) throws Exception {
         Element root = new Element("root");
         Document document = new Document(root);
