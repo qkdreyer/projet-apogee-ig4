@@ -42,3 +42,5 @@ drop type TUtilisateur;
 drop function get_liste_resp;
 drop type Resp_tab;
 drop type TResp;
+
+purge recyclebin;

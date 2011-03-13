@@ -89,16 +89,16 @@ public class DBUtilisateur extends DB<Utilisateur> {
 	ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
 		+ "where idEnseignant = " + num);
 	if (result.first()) {
-	    //util.setIdEnseignant(result.getInt(1));
-	    util.setNom(result.getString(2));
-	    util.setPrenom(result.getString(3));
-	    util.setMDP(result.getString(4));
+	    util.setNom(result.getString("nom"));
+	    util.setPrenom(result.getString("prenom"));
+	    util.setMDP(result.getString("mdp"));
+            util.setMail(result.getString("mail"));
 
 	    listeResp = new ArrayList<Utilisateur.Responsabilite>();
 	    do {
 		listeResp.add(new Utilisateur.Responsabilite(
-			result.getString(5),
-			result.getString(6)));
+			result.getString("codeResponsabilite"),
+			result.getString("libelle")));
 	    } while (result.next());
 	    util.setListeResponsabilites(listeResp);
 	}
@@ -123,15 +123,15 @@ public class DBUtilisateur extends DB<Utilisateur> {
 		+ "prenom = '" + ((String) ((ArrayList) a).get(0)).toLowerCase() + "' and "
 		+ "mdp = '" + ((String) ((ArrayList) a).get(2)).toLowerCase() + "'");
 	if (result.first()) {
-	    //util.setIdEnseignant(result.getInt(1));
-	    util.setNom(result.getString(2));
-	    util.setPrenom(result.getString(3));
-	    util.setMDP(result.getString(4));
+	    util.setNom(result.getString("nom"));
+	    util.setPrenom(result.getString("prenom"));
+	    util.setMDP(result.getString("mdp"));
+            util.setMail(result.getString("mail"));
 
 	    do {
 		util.getListeResponsabilites().add(new Utilisateur.Responsabilite(
-			result.getString(5),
-			result.getString(6)));
+			result.getString("codeResponsabilite"),
+			result.getString("libelle")));
 	    } while (result.next());
 	}
 	return util;

@@ -99,6 +99,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
                 util.setNom(courant.getChild("nom").getText());
                 util.setPrenom(courant.getChild("prenom").getText());
                 util.setMDP(courant.getChild("mdp").getText());
+                util.setMail(courant.getChild("mail").getText());
 
                 j = courant.getChild("listeResponsabilites").getChildren("responsabilite").iterator();
                 while (j.hasNext()) {

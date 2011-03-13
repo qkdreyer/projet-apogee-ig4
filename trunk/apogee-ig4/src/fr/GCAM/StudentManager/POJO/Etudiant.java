@@ -12,30 +12,116 @@ package fr.GCAM.StudentManager.POJO;
  * mutateurs.
  *
  * @author pierre
- * @deprecated 
  */
 public class Etudiant {
 
     private int numEtud;
+    private int pointJuryAnnee;
+    private String numIne;
+    private int scoreToeic;
+    private String libelleProvenance;
+    private String libelleStatut;
+    private String libelleNationalite;
     private String nom;
     private String prenom;
+    private String mail;
+    private Float noteSession1;
+    private Float noteSession2;
 
-    public Etudiant(int numEtud, String nom, String prenom) {
-	this.numEtud = numEtud;
-	this.nom = nom;
-	this.prenom = prenom;
+    public String getLibelleNationalite() {
+        return libelleNationalite;
     }
 
-    public int getNumEtud() {
-	return numEtud;
+    public void setLibelleNationalite(String libelleNationalite) {
+        this.libelleNationalite = libelleNationalite;
+    }
+
+    public String getLibelleProvenance() {
+        return libelleProvenance;
+    }
+
+    public void setLibelleProvenance(String libelleProvenance) {
+        this.libelleProvenance = libelleProvenance;
+    }
+
+    public String getLibelleStatut() {
+        return libelleStatut;
+    }
+
+    public void setLibelleStatut(String libelleStatut) {
+        this.libelleStatut = libelleStatut;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getNom() {
-	return nom;
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Float getNoteSession1() {
+        return noteSession1;
+    }
+
+    public void setNoteSession1(Float noteSession1) {
+        this.noteSession1 = noteSession1;
+    }
+
+    public Float getNoteSession2() {
+        return noteSession2;
+    }
+
+    public void setNoteSession2(Float noteSession2) {
+        this.noteSession2 = noteSession2;
+    }
+
+    public int getNumEtud() {
+        return numEtud;
+    }
+
+    public void setNumEtud(int numEtud) {
+        this.numEtud = numEtud;
+    }
+
+    public String getNumIne() {
+        return numIne;
+    }
+
+    public void setNumIne(String numIne) {
+        this.numIne = numIne;
+    }
+
+    public int getPointJuryAnnee() {
+        return pointJuryAnnee;
+    }
+
+    public void setPointJuryAnnee(int pointJuryAnnee) {
+        this.pointJuryAnnee = pointJuryAnnee;
     }
 
     public String getPrenom() {
-	return prenom;
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public int getScoreToeic() {
+        return scoreToeic;
+    }
+
+    public void setScoreToeic(int scoreToeic) {
+        this.scoreToeic = scoreToeic;
     }
 
 }

@@ -59,7 +59,7 @@ public class ControllerECUE extends AbstractController implements Observer {
         } else if (msg[0].equalsIgnoreCase("#createSS")) {
             SSParser.createSS(ecue);
         } else if (msg[0].equalsIgnoreCase("#loadSS") && msg.length == 2) {
-            SSParser.loadSS(ecue);
+            SSParser.loadSS(ecue, msg[1]);
         } else if (msg[0].equals("#help")) {
             this.help();
         }

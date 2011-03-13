@@ -52,7 +52,7 @@ public class Departement {
         }
 
         public String toString() {
-            return versionEtape + " (" + codeEtape + ")\n";
+            return "Version etape : " + versionEtape + " - Code etape : " + codeEtape + "\n";
         }
     }
 

@@ -30,6 +30,7 @@ public class JDOM {
             createUEXML("UE");
             createEtapeXML("Etape");
             createDepartementXML("Departement");
+            createEtudiantXML("Etudiant");
         } catch (Exception ex) {
             System.err.println("Erreur : " + ex);
             ex.printStackTrace();
@@ -100,7 +101,8 @@ public class JDOM {
 
             Utilisateur.addContent(new Element("nom").setText(util.getNom()));
             Utilisateur.addContent(new Element("prenom").setText(util.getPrenom()));
-            Utilisateur.addContent(new Element("mdp").setText(util.getMDP()));
+            Utilisateur.addContent(new Element("mdp").setText(MD5.getMD5(util.getMDP())));
+            Utilisateur.addContent(new Element("mail").setText(util.getMail()));
             Utilisateur.addContent(listeResponsabilites);
             root.addContent(Utilisateur);
         }
@@ -190,7 +192,6 @@ public class JDOM {
         while (result.next()) {
             Etape = new Element(s);
             etape = new DBEtape(conn).find(result.getString(1));
-            System.out.println(etape.toString());
 
             Etape.addContent(new Element("codeEtape").setText(etape.getCodeEtape()));
             Etape.addContent(new Element("versionEtape").setText(etape.getVersionEtape()));
@@ -199,7 +200,7 @@ public class JDOM {
             for (int numSem = 1; numSem <= 2; numSem++) {
                 Semestre = new Element("semestre" + numSem);
                 listeUE = new Element("listeUE");
-                
+
                 for (Etape.Semestre.UESemestre ue : etape.getSemestre(numSem).getListeUE()) {
                     UE = new Element("UE");
                     UE.addContent(new Element("codeUE").setText(ue.getCodeUE()));
@@ -247,6 +248,34 @@ public class JDOM {
             Departement.addContent(new Element("mNemo").setText(dept.getMnemo()));
             Departement.addContent(listeEtape);
             root.addContent(Departement);
+        }
+        save(document, "xml/" + s + ".xml");
+    }
+
+    private static void createEtudiantXML(String s) throws Exception {
+        Element root = new Element("root");
+        Document document = new Document(root);
+        Element Etudiant;
+        ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct numEtudiant from VO_" + s);
+        Etudiant etud;
+
+        while (result.next()) {
+            Etudiant = new Element(s);
+            etud = new DBEtudiant(conn).find(result.getString(1));
+
+            Etudiant.addContent(new Element("numEtudiant").setText(Integer.toString(etud.getNumEtud())));
+            Etudiant.addContent(new Element("pointJuryAnnee").setText(Integer.toString(etud.getPointJuryAnnee())));
+            Etudiant.addContent(new Element("numIne").setText(etud.getNumIne()));
+            Etudiant.addContent(new Element("scoreToeic").setText(Integer.toString(etud.getScoreToeic())));
+            Etudiant.addContent(new Element("libelleProvenance").setText(etud.getLibelleProvenance()));
+            Etudiant.addContent(new Element("libelleStatut").setText(etud.getLibelleStatut()));
+            Etudiant.addContent(new Element("libelleNationalite").setText(etud.getLibelleNationalite()));
+            Etudiant.addContent(new Element("nom").setText(etud.getNom()));
+            Etudiant.addContent(new Element("prenom").setText(etud.getPrenom()));
+            Etudiant.addContent(new Element("mail").setText(etud.getMail()));
+            Etudiant.addContent(new Element("noteSession1").setText(Float.toString(etud.getNoteSession1())));
+            Etudiant.addContent(new Element("noteSession2").setText(Float.toString(etud.getNoteSession2())));
+            root.addContent(Etudiant);
         }
         save(document, "xml/" + s + ".xml");
     }

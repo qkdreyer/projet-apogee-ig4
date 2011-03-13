@@ -20,6 +20,7 @@ public class Utilisateur {
     private String prenom;
     private String nom;
     private String mdp;
+    private String mail;
     private ArrayList<Responsabilite> listeResponsabilites;
 
     public Utilisateur() {
@@ -40,8 +41,8 @@ public class Utilisateur {
 	private String codeResponsabilite;
 
 	public Responsabilite(String codeResponsabilite, String libelle) {
-	    this.libelle = libelle;
 	    this.codeResponsabilite = codeResponsabilite;
+	    this.libelle = libelle;
 	}
 
 	public String getCodeResponsabilite() {
@@ -75,6 +76,22 @@ public class Utilisateur {
 	return prenom;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
     public ArrayList<Responsabilite> getListeResponsabilites() {
 	return listeResponsabilites;
     }
@@ -101,8 +118,9 @@ public class Utilisateur {
 
     @Override
     public String toString() {
-	String str = this.getPrenom() + "." + this.getNom() + " (" + this.getMDP() + ")\n";
-
+	String str = this.getPrenom() + "." + this.getNom()
+                + " (" + this.getMDP() + ")\n"
+                + mail + "\n";
 	for (Responsabilite r : this.getListeResponsabilites()) {
 	    str += "\t" + r.toString();
 	}
