@@ -4,6 +4,7 @@
  */
 package fr.GCAM.StudentManager.Persist.XML;
 
+import fr.GCAM.StudentManager.Core.MD5;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
 import java.util.ArrayList;
@@ -92,9 +93,9 @@ public class XMLUtilisateur extends XML<Utilisateur> {
         Iterator j;
         while (i.hasNext()) {
             courant = (Element) i.next();
-            if (courant.getChild("nom").getText().equals(((String) ((ArrayList) a).get(1)).toLowerCase())
-                    && courant.getChild("prenom").getText().equals(((String) ((ArrayList) a).get(0)).toLowerCase())
-                    && courant.getChild("mdp").getText().equals(((String) ((ArrayList) a).get(2)).toLowerCase())) {
+            if (courant.getChild("nom").getText().equals(((String) a.get(1)).toLowerCase())
+                    && courant.getChild("prenom").getText().equals(((String) a.get(0)).toLowerCase())
+                    && courant.getChild("mdp").getText().equals(MD5.getHash((String) a.get(2)))) {
                 //util.setIdEnseignant(Integer.parseInt(courant.getChild("idEnseignant").getText()));
                 util.setNom(courant.getChild("nom").getText());
                 util.setPrenom(courant.getChild("prenom").getText());

@@ -101,7 +101,8 @@ public class JDOM {
 
             Utilisateur.addContent(new Element("nom").setText(util.getNom()));
             Utilisateur.addContent(new Element("prenom").setText(util.getPrenom()));
-            Utilisateur.addContent(new Element("mdp").setText(MD5.getMD5(util.getMDP())));
+            //Utilisateur.addContent(new Element("mdp").setText(util.getMDP()));
+            Utilisateur.addContent(new Element("mdp").setText(MD5.getHash(util.getMDP())));
             Utilisateur.addContent(new Element("mail").setText(util.getMail()));
             Utilisateur.addContent(listeResponsabilites);
             root.addContent(Utilisateur);
@@ -252,7 +253,7 @@ public class JDOM {
         save(document, "xml/" + s + ".xml");
     }
 
-    private static void createEtudiantXML(String s) throws Exception {
+    public static void createEtudiantXML(String s) throws Exception {
         Element root = new Element("root");
         Document document = new Document(root);
         Element Etudiant;
