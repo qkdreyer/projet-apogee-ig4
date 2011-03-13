@@ -65,6 +65,13 @@ public abstract class AbstractDAOFactory extends Observable {
     public abstract DAO<Departement> getDAODepartement();
 
     /**
+     * Methode renvoyant un DAO(Data Access Object) pour un Admin
+     *
+     * @return Renvoie le DAO instancié avec le POJO Admin
+     */
+    public abstract DAO<Admin> getDAOAdmin();
+
+    /**
      * Methode statique utilisée pour renvouer une AbstractDAOFactoru qui servira
      * à creer des DAO concrets
      *

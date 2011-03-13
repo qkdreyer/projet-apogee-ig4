@@ -57,7 +57,26 @@ public class DBEtudiant extends DB<Etudiant> {
      * @throws Exception
      */
     public Etudiant find(Object id) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
+        Etudiant e = new Etudiant();
+
+        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet result = s.executeQuery("SELECT * from VO_Etudiant where numEtudiant = '" + (String) id + "'");
+        if (result.first()) {
+
+                e.setNumEtudiant(result.getInt("numEtudiant"));
+                e.setPointJuryAnnee(result.getInt("pointJuryAnnee"));
+                e.setNumIne(result.getString("numIne"));
+                e.setScoreToeic(result.getInt("scoreToeic"));
+                e.setLibelleProvenance(result.getString("libelleProvenance"));
+                e.setLibelleStatut(result.getString("libelleStatut"));
+                e.setLibelleNationalite(result.getString("libelleNationalite"));
+                e.setNom(result.getString("nom"));
+                e.setPrenom(result.getString("prenom"));
+                e.setMail(result.getString("mail"));
+                e.setNoteSession1(result.getFloat("noteSession1"));
+                e.setNoteSession2(result.getFloat("noteSession2"));
+        }
+        return e;
     }
 
     /**

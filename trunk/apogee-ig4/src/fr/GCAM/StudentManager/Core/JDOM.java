@@ -56,7 +56,7 @@ public class JDOM {
             listeEtud = new Element("listeEtud");
             for (Etudiant etud : ecue.getListeEtud()) {
                 Etudiant = new Element("Etudiant");
-                Etudiant.addContent(new Element("numEtud").setText(Integer.toString(etud.getNumEtud())));
+                Etudiant.addContent(new Element("numEtudiant").setText(Integer.toString(etud.getNumEtudiant())));
                 Etudiant.addContent(new Element("nom").setText(etud.getNom()));
                 Etudiant.addContent(new Element("prenom").setText(etud.getPrenom()));
                 Etudiant.addContent(new Element("noteSession1").setText(Float.toString(etud.getNoteSession1())));
@@ -264,7 +264,7 @@ public class JDOM {
             Etudiant = new Element(s);
             etud = new DBEtudiant(conn).find(result.getString(1));
 
-            Etudiant.addContent(new Element("numEtudiant").setText(Integer.toString(etud.getNumEtud())));
+            Etudiant.addContent(new Element("numEtudiant").setText(Integer.toString(etud.getNumEtudiant())));
             Etudiant.addContent(new Element("pointJuryAnnee").setText(Integer.toString(etud.getPointJuryAnnee())));
             Etudiant.addContent(new Element("numIne").setText(etud.getNumIne()));
             Etudiant.addContent(new Element("scoreToeic").setText(Integer.toString(etud.getScoreToeic())));

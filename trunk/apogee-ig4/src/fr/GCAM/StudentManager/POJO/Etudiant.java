@@ -14,7 +14,7 @@ package fr.GCAM.StudentManager.POJO;
  */
 public class Etudiant {
 
-    private int numEtud;
+    private int numEtudiant;
     private int pointJuryAnnee;
     private String numIne;
     private int scoreToeic;
@@ -30,11 +30,14 @@ public class Etudiant {
     private boolean noteSession2Changed = false;
 
     public Etudiant(int numEtud, String nom, String prenom, float noteSession1, float noteSession2) {
-        this.numEtud = numEtud;
+        this.numEtudiant = numEtud;
         this.nom = nom;
         this.prenom = prenom;
         this.noteSession1 = noteSession1;
         this.noteSession2 = noteSession2;
+    }
+
+    public Etudiant() {
     }
 
     public String getLibelleNationalite() {
@@ -93,12 +96,12 @@ public class Etudiant {
         this.noteSession2 = noteSession2;
     }
 
-    public int getNumEtud() {
-        return numEtud;
+    public int getNumEtudiant() {
+        return numEtudiant;
     }
 
-    public void setNumEtud(int numEtud) {
-        this.numEtud = numEtud;
+    public void setNumEtudiant(int numEtud) {
+        this.numEtudiant = numEtud;
     }
 
     public String getNumIne() {
@@ -142,6 +145,6 @@ public class Etudiant {
     }
 
     public String toString() {
-        return getPrenom() + " " + getNom() + "(" + getNumEtud() + ") : " + getNoteSession1() + " | " + getNoteSession2() + "\n";
+        return getPrenom() + " " + getNom() + "(" + getNumEtudiant() + ") : " + getNoteSession1() + " | " + getNoteSession2() + "\n";
     }
 }

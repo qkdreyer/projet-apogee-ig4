@@ -8,21 +8,21 @@
     <codeUE>PIGU51</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070006</numEtud>
+        <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070007</numEtud>
+        <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070008</numEtud>
+        <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
         <noteSession1>0.0</noteSession1>
@@ -38,14 +38,14 @@
     <codeUE>PSTIAU51</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070009</numEtud>
+        <numEtudiant>20070009</numEtudiant>
         <nom>meyer</nom>
         <prenom>lisa</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070010</numEtud>
+        <numEtudiant>20070010</numEtudiant>
         <nom>asse</nom>
         <prenom>bomb</prenom>
         <noteSession1>0.0</noteSession1>
@@ -61,35 +61,35 @@
     <codeUE>PIGU71</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070001</numEtud>
+        <numEtudiant>20070001</numEtudiant>
         <nom>puechlong</nom>
         <prenom>joris</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070002</numEtud>
+        <numEtudiant>20070002</numEtudiant>
         <nom>jambet</nom>
         <prenom>pierre</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070003</numEtud>
+        <numEtudiant>20070003</numEtudiant>
         <nom>dreyer</nom>
         <prenom>quentin</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070004</numEtud>
+        <numEtudiant>20070004</numEtudiant>
         <nom>michel</nom>
         <prenom>benjamin</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070005</numEtud>
+        <numEtudiant>20070005</numEtudiant>
         <nom>coudsi</nom>
         <prenom>julien</prenom>
         <noteSession1>0.0</noteSession1>
@@ -105,14 +105,14 @@
     <codeUE>PSTIAU52</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070009</numEtud>
+        <numEtudiant>20070009</numEtudiant>
         <nom>meyer</nom>
         <prenom>lisa</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070010</numEtud>
+        <numEtudiant>20070010</numEtudiant>
         <nom>asse</nom>
         <prenom>bomb</prenom>
         <noteSession1>0.0</noteSession1>
@@ -128,21 +128,21 @@
     <codeUE>PIGU52</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070006</numEtud>
+        <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070007</numEtud>
+        <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070008</numEtud>
+        <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
         <noteSession1>0.0</noteSession1>
@@ -158,35 +158,35 @@
     <codeUE>PIGU71</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070001</numEtud>
+        <numEtudiant>20070001</numEtudiant>
         <nom>puechlong</nom>
         <prenom>joris</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070002</numEtud>
+        <numEtudiant>20070002</numEtudiant>
         <nom>jambet</nom>
         <prenom>pierre</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070003</numEtud>
+        <numEtudiant>20070003</numEtudiant>
         <nom>dreyer</nom>
         <prenom>quentin</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070004</numEtud>
+        <numEtudiant>20070004</numEtudiant>
         <nom>michel</nom>
         <prenom>benjamin</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070005</numEtud>
+        <numEtudiant>20070005</numEtudiant>
         <nom>coudsi</nom>
         <prenom>julien</prenom>
         <noteSession1>0.0</noteSession1>
@@ -202,14 +202,14 @@
     <codeUE>PSTIAU61</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070009</numEtud>
+        <numEtudiant>20070009</numEtudiant>
         <nom>meyer</nom>
         <prenom>lisa</prenom>
         <noteSession1>15.0</noteSession1>
         <noteSession2>5.5</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070010</numEtud>
+        <numEtudiant>20070010</numEtudiant>
         <nom>asse</nom>
         <prenom>bomb</prenom>
         <noteSession1>0.0</noteSession1>
@@ -225,21 +225,21 @@
     <codeUE>PIGU51</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070006</numEtud>
+        <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070007</numEtud>
+        <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070008</numEtud>
+        <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
         <noteSession1>0.0</noteSession1>
@@ -255,21 +255,21 @@
     <codeUE>PIGU61</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070006</numEtud>
+        <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070007</numEtud>
+        <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070008</numEtud>
+        <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
         <noteSession1>0.0</noteSession1>
@@ -285,21 +285,21 @@
     <codeUE>PIGU61</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070006</numEtud>
+        <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070007</numEtud>
+        <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070008</numEtud>
+        <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
         <noteSession1>0.0</noteSession1>
@@ -315,21 +315,21 @@
     <codeUE>PIGU62</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070006</numEtud>
+        <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070007</numEtud>
+        <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070008</numEtud>
+        <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
         <noteSession1>0.0</noteSession1>
@@ -345,14 +345,14 @@
     <codeUE>PSTIAU51</codeUE>
     <listeEtud>
       <Etudiant>
-        <numEtud>20070009</numEtud>
+        <numEtudiant>20070009</numEtudiant>
         <nom>meyer</nom>
         <prenom>lisa</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
-        <numEtud>20070010</numEtud>
+        <numEtudiant>20070010</numEtudiant>
         <nom>asse</nom>
         <prenom>bomb</prenom>
         <noteSession1>0.0</noteSession1>
