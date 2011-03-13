@@ -155,7 +155,6 @@ public class XMLECUE extends XML<ECUE> {
         Element courant;
         Iterator i = new SAXBuilder().build("xml/ECUE.xml").getRootElement().getChildren("ECUE").iterator();
         Iterator j;
-
         while (i.hasNext()) {
             courant = (Element) i.next();
             if (courant.getChild("codeMatiere").getText().equals((String) id)) {
