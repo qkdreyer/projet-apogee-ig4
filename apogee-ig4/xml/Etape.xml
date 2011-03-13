@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <Etape>
+    <codeEtape />
+    <versionEtape />
+    <versionDiplome />
+    <responsable />
+    <semestre1>
+      <codeSemestre />
+      <nbUEFacultatives>0</nbUEFacultatives>
+      <codeEtape />
+      <listeUE />
+    </semestre1>
+    <semestre2>
+      <codeSemestre />
+      <nbUEFacultatives>0</nbUEFacultatives>
+      <codeEtape />
+      <listeUE />
+    </semestre2>
+  </Etape>
+  <Etape>
+    <codeEtape />
+    <versionEtape />
+    <versionDiplome />
+    <responsable />
+    <semestre1>
+      <codeSemestre />
+      <nbUEFacultatives>0</nbUEFacultatives>
+      <codeEtape />
+      <listeUE />
+    </semestre1>
+    <semestre2>
+      <codeSemestre />
+      <nbUEFacultatives>0</nbUEFacultatives>
+      <codeEtape />
+      <listeUE />
+    </semestre2>
+  </Etape>
+  <Etape>
+    <codeEtape />
+    <versionEtape />
+    <versionDiplome />
+    <responsable />
+    <semestre1>
+      <codeSemestre />
+      <nbUEFacultatives>0</nbUEFacultatives>
+      <codeEtape />
+      <listeUE />
+    </semestre1>
+    <semestre2>
+      <codeSemestre />
+      <nbUEFacultatives>0</nbUEFacultatives>
+      <codeEtape />
+      <listeUE />
+    </semestre2>
+  </Etape>
+</root>
+

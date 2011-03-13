@@ -48,6 +48,7 @@ public class ConsoleUtilisateur extends Console<Utilisateur> {
             }
         } catch (Exception ex) {
             System.out.println("Erreur : " + ex);
+            ex.printStackTrace();
         }
     }
 

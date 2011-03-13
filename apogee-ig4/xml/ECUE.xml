@@ -4,7 +4,7 @@
     <codeMatiere>PIG502</codeMatiere>
     <libelleECUE>Unix</libelleECUE>
     <nbHeures>15</nbHeures>
-    <idEnseignant>1569</idEnseignant>
+    <responsable>vincent berry</responsable>
     <codeUE>PIGU51</codeUE>
     <listeEtud>
       <Etudiant>
@@ -34,7 +34,7 @@
     <codeMatiere>PSTIA502</codeMatiere>
     <libelleECUE>malakoff</libelleECUE>
     <nbHeures>5</nbHeures>
-    <idEnseignant>2153</idEnseignant>
+    <responsable>balle debombe</responsable>
     <codeUE>PSTIAU51</codeUE>
     <listeEtud>
       <Etudiant>
@@ -57,7 +57,7 @@
     <codeMatiere>PIG701</codeMatiere>
     <libelleECUE>conception objet</libelleECUE>
     <nbHeures>55</nbHeures>
-    <idEnseignant>1859</idEnseignant>
+    <responsable>michel sala</responsable>
     <codeUE>PIGU71</codeUE>
     <listeEtud>
       <Etudiant>
@@ -101,7 +101,7 @@
     <codeMatiere>PSTIA601</codeMatiere>
     <libelleECUE>beurre de cacahuÃ¨tes</libelleECUE>
     <nbHeures>2</nbHeures>
-    <idEnseignant>2384</idEnseignant>
+    <responsable>walter white</responsable>
     <codeUE>PSTIAU52</codeUE>
     <listeEtud>
       <Etudiant>
@@ -124,7 +124,7 @@
     <codeMatiere>PIG503</codeMatiere>
     <libelleECUE>ComptabilitÃ©</libelleECUE>
     <nbHeures>65</nbHeures>
-    <idEnseignant>1001</idEnseignant>
+    <responsable>anne-laure villaret</responsable>
     <codeUE>PIGU52</codeUE>
     <listeEtud>
       <Etudiant>
@@ -154,7 +154,7 @@
     <codeMatiere>PIG702</codeMatiere>
     <libelleECUE>ingÃ©nierie objet</libelleECUE>
     <nbHeures>125</nbHeures>
-    <idEnseignant>1321</idEnseignant>
+    <responsable>tiberiu stratulat</responsable>
     <codeUE>PIGU71</codeUE>
     <listeEtud>
       <Etudiant>
@@ -198,7 +198,7 @@
     <codeMatiere>PSTIA602</codeMatiere>
     <libelleECUE>malakoff avancÃ©e</libelleECUE>
     <nbHeures>7</nbHeures>
-    <idEnseignant>2153</idEnseignant>
+    <responsable>balle debombe</responsable>
     <codeUE>PSTIAU61</codeUE>
     <listeEtud>
       <Etudiant>
@@ -212,7 +212,7 @@
         <numEtud>20070010</numEtud>
         <nom>asse</nom>
         <prenom>bomb</prenom>
-        <noteSession1>5.8</noteSession1>
+        <noteSession1>0.0</noteSession1>
         <noteSession2>3.2</noteSession2>
       </Etudiant>
     </listeEtud>
@@ -221,7 +221,7 @@
     <codeMatiere>PIG501</codeMatiere>
     <libelleECUE>algorithmique</libelleECUE>
     <nbHeures>100</nbHeures>
-    <idEnseignant>1432</idEnseignant>
+    <responsable>marie-catherine vilarem</responsable>
     <codeUE>PIGU51</codeUE>
     <listeEtud>
       <Etudiant>
@@ -251,7 +251,7 @@
     <codeMatiere>PIG602</codeMatiere>
     <libelleECUE>architecture</libelleECUE>
     <nbHeures>28</nbHeures>
-    <idEnseignant>1999</idEnseignant>
+    <responsable>ludivine crepin</responsable>
     <codeUE>PIGU61</codeUE>
     <listeEtud>
       <Etudiant>
@@ -281,7 +281,7 @@
     <codeMatiere>PIG601</codeMatiere>
     <libelleECUE>ADA</libelleECUE>
     <nbHeures>85</nbHeures>
-    <idEnseignant>1569</idEnseignant>
+    <responsable>vincent berry</responsable>
     <codeUE>PIGU61</codeUE>
     <listeEtud>
       <Etudiant>
@@ -311,7 +311,7 @@
     <codeMatiere>PIG603</codeMatiere>
     <libelleECUE>communication</libelleECUE>
     <nbHeures>10</nbHeures>
-    <idEnseignant>1111</idEnseignant>
+    <responsable>marc dumas</responsable>
     <codeUE>PIGU62</codeUE>
     <listeEtud>
       <Etudiant>
@@ -341,7 +341,7 @@
     <codeMatiere>PSTIA501</codeMatiere>
     <libelleECUE>nutella</libelleECUE>
     <nbHeures>3</nbHeures>
-    <idEnseignant>2176</idEnseignant>
+    <responsable>Mac Donald</responsable>
     <codeUE>PSTIAU51</codeUE>
     <listeEtud>
       <Etudiant>

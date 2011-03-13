@@ -194,7 +194,7 @@ public class JDOM {
             etape = new DBEtape(conn).find(result.getString(1));
 
             Etape.addContent(new Element("codeEtape").setText(etape.getCodeEtape()));
-            Etape.addContent(new Element("libelleEtape").setText(etape.getLibelleEtape()));
+            Etape.addContent(new Element("versionEtape").setText(etape.getVersionEtape()));
             Etape.addContent(new Element("versionDiplome").setText(etape.getVersionDiplome()));
             Etape.addContent(new Element("responsable").setText(etape.getResponsable()));
 

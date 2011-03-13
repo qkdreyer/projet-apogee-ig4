@@ -43,7 +43,7 @@ public class XMLEtape extends XML<Etape> {
             courant = (Element) i.next();
             if (courant.getChild("codeEtape").getText().equals((String) id)) {
                 etape.setCodeEtape(courant.getChild("codeEtape").getText());
-                etape.setLibelleEtape(courant.getChild("libelleEtape").getText());
+                etape.setVersionEtape(courant.getChild("versionEtape").getText());
                 etape.setResponsable(courant.getChild("responsable").getText());
                 etape.setVersionDiplome(courant.getChild("versionDiplome").getText());
 

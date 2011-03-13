@@ -39,7 +39,7 @@ public class DBEtape extends DB<Etape> {
         ResultSet result = s.executeQuery("SELECT * from VO_Ecue where codeMatiere = '" + (String) id + "'");
         if (result.first()) {
             etape.setCodeEtape(result.getString("codeEtape"));
-            etape.setLibelleEtape(result.getString("libelleEtape"));
+            etape.setVersionEtape(result.getString("versionEtape"));
             etape.setVersionDiplome(result.getString("versionDiplome"));
             etape.setResponsable(result.getString("prenomResponsable") + " " + result.getString("nomResponsable"));
 

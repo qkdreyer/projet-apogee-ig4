@@ -13,8 +13,8 @@ public class Main {
 
     public static void main(String[] args) {
         if (args.length > 1) {
-            //AbstractUIFactory.getUIFactory(args[0]).getUIUtilisateur(args[1]);
-	    AbstractUIFactory.getUIFactory(args[0]).getUIECUE(args[1]);
+            AbstractUIFactory.getUIFactory(args[0]).getUIUtilisateur(args[1]);
+	    //AbstractUIFactory.getUIFactory(args[0]).getUIECUE(args[1]);
             //AbstractUIFactory.getUIFactory(args[0]).getUIUE(args[1]);
             //AbstractUIFactory.getUIFactory(args[0]).getUIEtape(args[1]);
             //AbstractUIFactory.getUIFactory(args[0]).getUIDepartement(args[1]);

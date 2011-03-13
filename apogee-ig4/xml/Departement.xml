@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <Departement>
+    <versionDiplome />
+    <nomDepartement />
+    <mNemo />
+    <listeEtape />
+  </Departement>
+  <Departement>
+    <versionDiplome />
+    <nomDepartement />
+    <mNemo />
+    <listeEtape />
+  </Departement>
+</root>
+
