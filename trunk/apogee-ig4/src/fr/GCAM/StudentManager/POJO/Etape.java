@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Etape {
 
     private String codeEtape;
-    private String libelleEtape;
+    private String versionEtape;
     private String responsable;
     private String versionDiplome;
     private Semestre semestre1;
@@ -109,12 +109,12 @@ public class Etape {
         }
     }
 
-    public String getLibelleEtape() {
-        return libelleEtape;
+    public String getVersionEtape() {
+        return versionEtape;
     }
 
-    public void setLibelleEtape(String libelleEtape) {
-        this.libelleEtape = libelleEtape;
+    public void setVersionEtape(String versionEtape) {
+        this.versionEtape = versionEtape;
     }
 
     public String getCodeEtape() {
@@ -143,9 +143,9 @@ public class Etape {
 
     public Semestre getSemestre(int i) {
         if (i == 1) {
-            return semestre1;
+            return semestre1 = new Semestre();
         } else if (i == 2) {
-            return semestre2;
+            return semestre2 = new Semestre();
         } else {
             return null;
         }
@@ -153,6 +153,7 @@ public class Etape {
 
     public String toString() {
         return "Code Etape : " + this.getCodeEtape() + "\n"
+                + "Version etape : " + this.getVersionEtape() + "\n"
                 + "Responsable : " + this.getResponsable() + "\n"
                 + "Version diplome : " + this.getVersionDiplome() + "\n"
                 + "Semestre 1 : " + this.getSemestre(1).toString() + "\n"

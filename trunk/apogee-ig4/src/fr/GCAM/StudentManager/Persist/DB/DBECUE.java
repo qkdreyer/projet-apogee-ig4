@@ -121,19 +121,19 @@ public class DBECUE extends DB<ECUE> {
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet result = s.executeQuery("SELECT * from VO_Ecue where codeMatiere = '" + (String) id + "'");
         if (result.first()) {
-            ecue.setCodeMatiere(result.getString(1));
-            ecue.setLibelleECUE(result.getString(2));
-            ecue.setNbHeures(result.getInt(3));
-            ecue.setResponsable(result.getString(4) + " " + result.getString(5));
-            ecue.setCodeUE(result.getString(6));
+            ecue.setCodeMatiere(result.getString("codeMatiere"));
+            ecue.setLibelleECUE(result.getString("libelleECUE"));
+            ecue.setNbHeures(result.getInt("nbHeures"));
+            ecue.setResponsable(result.getString("prenomResponsable") + " " + result.getString("nomResponsable"));
+            ecue.setCodeUE(result.getString("codeUE"));
 
             do {
                 ecue.getListeEtud().add(new EtudiantECUE(
-                        result.getInt(7),
-                        result.getString(8),
-                        result.getString(9),
-                        result.getFloat(10),
-                        result.getFloat(11)));
+                        result.getInt("numEtudiant"),
+                        result.getString("nom"),
+                        result.getString("prenom"),
+                        result.getFloat("noteSession1"),
+                        result.getFloat("noteSession2")));
             } while (result.next());
         }
         return ecue;
