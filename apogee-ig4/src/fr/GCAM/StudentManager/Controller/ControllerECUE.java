@@ -83,7 +83,7 @@ public class ControllerECUE extends AbstractController implements Observer {
      * @param msg
      * @throws Exception
      */
-    private  void note1(String[] msg) throws Exception {
+    private void note1(String[] msg) throws Exception {
         if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
             ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession1(Float.parseFloat(msg[2]));
             disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).toString());
@@ -97,7 +97,7 @@ public class ControllerECUE extends AbstractController implements Observer {
      * @param msg
      * @throws Exception
      */
-    private  void note2(String[] msg) throws Exception {
+    private void note2(String[] msg) throws Exception {
         if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
             ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession2(Float.parseFloat(msg[2]));
             disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).toString());

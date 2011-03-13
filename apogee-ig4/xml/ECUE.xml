@@ -258,7 +258,7 @@
         <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
-        <noteSession1>0.0</noteSession1>
+        <noteSession1>3.5</noteSession1>
         <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
@@ -357,22 +357,6 @@
         <prenom>bomb</prenom>
         <noteSession1>0.0</noteSession1>
         <noteSession2>0.0</noteSession2>
-      </Etudiant>
-    </listeEtud>
-  </ECUE>
-  <ECUE>
-    <codeMatiere>TEST001</codeMatiere>
-    <libelleECUE>testlibelle</libelleECUE>
-    <nbHeures>99</nbHeures>
-    <responsable>NRtest PRtest</responsable>
-    <codeUE>testCUE</codeUE>
-    <listeEtud>
-      <Etudiant>
-        <numEtud>99999</numEtud>
-        <nom>netud</nom>
-        <prenom>petud</prenom>
-        <noteSession1>0</noteSession1>
-        <noteSession2>0</noteSession2>
       </Etudiant>
     </listeEtud>
   </ECUE>

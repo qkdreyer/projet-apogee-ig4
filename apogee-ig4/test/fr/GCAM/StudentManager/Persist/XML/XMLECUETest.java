@@ -5,7 +5,6 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.Persist.DB.DBECUE;
 import java.io.FileOutputStream;
 import org.jdom.output.XMLOutputter;
 import org.jdom.output.Format;

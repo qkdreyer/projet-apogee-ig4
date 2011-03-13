@@ -38,7 +38,7 @@ public class XMLECUE extends XML<ECUE> {
 
     /**
      * Méthode modifiant les données du fichier XML par rapport à l'ecue passée en
-     * parametre. L'ECUE ecue est un POJO qui contient une liste d' EtudiantECUE.
+     * parametre. L'ECUE ecue est un POJO qui contient une liste d'Etudiant.
      * La méthode va parcourir cette liste et executer un update dans le fichier XML.
      * Cet update va donc modifier les notes des étudiants.
      * La méthode délègue le travail aux méthodes updateNote1() et updateNote2()
@@ -168,7 +168,7 @@ public class XMLECUE extends XML<ECUE> {
                 while (j.hasNext()) {
                     courant = (Element) j.next();
                     ecue.getListeEtud().add(new Etudiant(
-                            Integer.parseInt(courant.getChild("numEtud").getText()),
+                            Integer.parseInt(courant.getChild("numEtudiant").getText()),
                             courant.getChild("nom").getText(),
                             courant.getChild("prenom").getText(),
                             Float.parseFloat(courant.getChild("noteSession1").getText()),
