@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
+import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.UE;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -73,7 +74,8 @@ public class DBUE extends DB<UE> {
             ue.setCodeSemestre(result.getString("codeSemestre"));
 
             do {
-                ue.getListeECUE().add(new UE.ECUEUE(
+                //ue.getListeECUE().add(new UE.ECUEUE(
+                ue.getListeECUE().add(new ECUE(
                         result.getString("codeMatiere"),
                         result.getString("libelleECUE")));
             } while (result.next());

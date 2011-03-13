@@ -54,7 +54,7 @@ public class JDOM {
             ecue = new DBECUE(conn).find(result.getString(1));
 
             listeEtud = new Element("listeEtud");
-            for (ECUE.EtudiantECUE etud : ecue.getListeEtud()) {
+            for (Etudiant etud : ecue.getListeEtud()) {
                 Etudiant = new Element("Etudiant");
                 Etudiant.addContent(new Element("numEtud").setText(Integer.toString(etud.getNumEtud())));
                 Etudiant.addContent(new Element("nom").setText(etud.getNom()));
@@ -159,7 +159,7 @@ public class JDOM {
             ue = new DBUE(conn).find(result.getString(1));
 
             listeECUE = new Element("listeECUE");
-            for (UE.ECUEUE ecue : ue.getListeECUE()) {
+            for (ECUE ecue : ue.getListeECUE()) {
                 ECUE = new Element("ECUE");
                 ECUE.addContent(new Element("codeMatiere").setText(ecue.getCodeMatiere()));
                 ECUE.addContent(new Element("libelleECUE").setText(ecue.getLibelleECUE()));
@@ -202,7 +202,7 @@ public class JDOM {
                 Semestre = new Element("semestre" + numSem);
                 listeUE = new Element("listeUE");
 
-                for (Etape.Semestre.UESemestre ue : etape.getSemestre(numSem).getListeUE()) {
+                for (UE ue : etape.getSemestre(numSem).getListeUE()) {
                     UE = new Element("UE");
                     UE.addContent(new Element("codeUE").setText(ue.getCodeUE()));
                     UE.addContent(new Element("libelleUE").setText(ue.getLibelleUE()));
@@ -237,7 +237,7 @@ public class JDOM {
             dept = new DBDepartement(conn).find(result.getString(1));
 
             listeEtape = new Element("listeEtape");
-            for (Departement.EtapeDepartement etape : dept.getListeEtape()) {
+            for (Etape etape : dept.getListeEtape()) {
                 Etape = new Element("Etape");
                 Etape.addContent(new Element("codeEtape").setText(etape.getCodeEtape()));
                 Etape.addContent(new Element("versionEtape").setText(etape.getVersionEtape()));

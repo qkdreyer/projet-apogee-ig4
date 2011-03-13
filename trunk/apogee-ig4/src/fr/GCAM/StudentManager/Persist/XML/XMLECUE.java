@@ -5,7 +5,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.ECUE.EtudiantECUE;
+import fr.GCAM.StudentManager.POJO.Etudiant;
 import java.io.FileOutputStream;
 import java.util.Iterator;
 import org.jdom.Document;
@@ -52,10 +52,10 @@ public class XMLECUE extends XML<ECUE> {
      * @see fr.GCAM.StudentManager.Persist.XML.XMLECUE.updateNote2
      */
     public void update(ECUE ecue) throws Exception {
-        EtudiantECUE etudiant;
+        Etudiant etudiant;
         Iterator i = ecue.getListeEtud().iterator();
         while (i.hasNext()) {
-            etudiant = (EtudiantECUE) i.next();
+            etudiant = (Etudiant) i.next();
             if (etudiant.isNoteSession1Changed()) {
                 updateNote1(etudiant.getNumEtud(), ecue.getCodeMatiere(), etudiant.getNoteSession1());
             } else if (etudiant.isNoteSession2Changed()) {
@@ -168,7 +168,7 @@ public class XMLECUE extends XML<ECUE> {
                 j = courant.getChild("listeEtud").getChildren("Etudiant").iterator();
                 while (j.hasNext()) {
                     courant = (Element) j.next();
-                    ecue.getListeEtud().add(new EtudiantECUE(
+                    ecue.getListeEtud().add(new Etudiant(
                             Integer.parseInt(courant.getChild("numEtud").getText()),
                             courant.getChild("nom").getText(),
                             courant.getChild("prenom").getText(),

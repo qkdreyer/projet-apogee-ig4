@@ -12,7 +12,6 @@ import java.sql.*;
  * (POJO).
  *
  * @author Quentin
- * @deprecated 
  */
 public class DBEtudiant extends DB<Etudiant> {
 

@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
+import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.UE;
 import java.util.Iterator;
 import org.jdom.Element;
@@ -78,7 +79,7 @@ public class XMLUE extends XML<UE> {
                 j = courant.getChild("listeECUE").getChildren("ECUE").iterator();
                 while (j.hasNext()) {
                     courant = (Element) j.next();
-                    ue.getListeECUE().add(new UE.ECUEUE(
+                    ue.getListeECUE().add(new ECUE(
                             courant.getChild("codeMatiere").getText(),
                             courant.getChild("libelleECUE").getText()));
                 }

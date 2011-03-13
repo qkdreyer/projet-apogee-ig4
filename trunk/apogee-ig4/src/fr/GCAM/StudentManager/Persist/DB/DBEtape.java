@@ -5,6 +5,7 @@
 package fr.GCAM.StudentManager.Persist.DB;
 
 import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.POJO.UE;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -79,7 +80,8 @@ public class DBEtape extends DB<Etape> {
                 semestre.setCodeEtape(result.getString("codeEtape"));
                 semestre.setCodeSemestre(result.getString("codeSemestre"));
                 semestre.setNbUEFacultatives(result.getInt("nbUEFacultatives"));
-                semestre.getListeUE().add(new Etape.Semestre.UESemestre(
+                //semestre.getListeUE().add(new Etape.Semestre.UESemestre(
+                semestre.getListeUE().add(new UE(
                         result.getString("codeUE"),
                         result.getString("libelleUE")));
             } while (result.next());

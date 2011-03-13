@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package fr.GCAM.StudentManager.POJO;
 
 /**
@@ -27,6 +26,16 @@ public class Etudiant {
     private String mail;
     private Float noteSession1;
     private Float noteSession2;
+    private boolean noteSession1Changed = false;
+    private boolean noteSession2Changed = false;
+
+    public Etudiant(int numEtud, String nom, String prenom, float noteSession1, float noteSession2) {
+        this.numEtud = numEtud;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.noteSession1 = noteSession1;
+        this.noteSession2 = noteSession2;
+    }
 
     public String getLibelleNationalite() {
         return libelleNationalite;
@@ -124,4 +133,15 @@ public class Etudiant {
         this.scoreToeic = scoreToeic;
     }
 
+    public boolean isNoteSession1Changed() {
+        return noteSession1Changed;
+    }
+
+    public boolean isNoteSession2Changed() {
+        return noteSession2Changed;
+    }
+
+    public String toString() {
+        return getPrenom() + " " + getNom() + "(" + getNumEtud() + ") : " + getNoteSession1() + " | " + getNoteSession2() + "\n";
+    }
 }

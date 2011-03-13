@@ -28,48 +28,22 @@ public class Etape {
         semestre2 = new Semestre();
     }
 
+    public Etape(String codeEtape, String versionEtape) {
+        this.codeEtape = codeEtape;
+        this.versionEtape = versionEtape;
+    }
+
     public static class Semestre {
 
         private String codeSemestre;
         private int nbUEFacultatives;
         private String codeEtape;
-        private ArrayList<UESemestre> listeUE;
+        private ArrayList<UE> listeUE;
 
         public Semestre() {
-            listeUE = new ArrayList<UESemestre>();
+            listeUE = new ArrayList<UE>();
         }
-
-        public static class UESemestre {
-
-            private String codeUE;
-            private String libelleUE;
-
-            public UESemestre(String codeUE, String libelleUE) {
-                this.codeUE = codeUE;
-                this.libelleUE = libelleUE;
-            }
-
-            public String getCodeUE() {
-                return codeUE;
-            }
-
-            public void setCodeUE(String codeUE) {
-                this.codeUE = codeUE;
-            }
-
-            public String getLibelleUE() {
-                return libelleUE;
-            }
-
-            public void setLibelleUE(String libelleUE) {
-                this.libelleUE = libelleUE;
-            }
-
-            public String toString() {
-                return getLibelleUE() + "\n";
-            }
-        }
-
+   
         public String getCodeEtape() {
             return codeEtape;
         }
@@ -86,11 +60,11 @@ public class Etape {
             this.codeSemestre = codeSemestre;
         }
 
-        public ArrayList<UESemestre> getListeUE() {
+        public ArrayList<UE> getListeUE() {
             return listeUE;
         }
 
-        public void setListeUE(ArrayList<UESemestre> listeUE) {
+        public void setListeUE(ArrayList<UE> listeUE) {
             this.listeUE = listeUE;
         }
 
@@ -107,7 +81,7 @@ public class Etape {
                     + "Nombre d'UE facultatives : " + this.getNbUEFacultatives() + "\n"
                     + "Code Etape Parente " + this.getCodeEtape() + "\n";
 
-            for (UESemestre ue : this.getListeUE()) {
+            for (UE ue : listeUE) {
                 str += "\t" + ue.toString();
             }
             return str;
