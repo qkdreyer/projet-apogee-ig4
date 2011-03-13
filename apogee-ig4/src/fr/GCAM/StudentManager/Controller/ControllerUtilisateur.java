@@ -9,12 +9,14 @@ import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 import fr.GCAM.StudentManager.UI.UI;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author Quentin
  */
-public class ControllerUtilisateur {
+public class ControllerUtilisateur extends AbstractController implements Observer {
 
     private UI disp;
     private DAO<Utilisateur> userDAO;
@@ -28,20 +30,22 @@ public class ControllerUtilisateur {
         this.user = new Utilisateur();
     }
 
-    public void handleMessage(String msg) throws Exception {
-        String[] s = msg.split(" ");
+    public void handleMessage(String message) throws Exception {
+        String[] msg = message.split(" ");
         ArrayList<String> userInformation = new ArrayList<String>();
 
-        if (s[0].equals("#login") && s.length == 3) {
-            userInformation.add(s[1].split("\\.")[0]);
-            userInformation.add(s[1].split("\\.")[1]);
-            userInformation.add(s[2]);
+        if (msg[0].equals("#login") && msg.length == 3) {
+            userInformation.add(msg[1].split("\\.")[0]);
+            userInformation.add(msg[1].split("\\.")[1]);
+            userInformation.add(msg[2]);
             user = (Utilisateur) userDAO.find(userInformation);
             this.logUser();
-        } else if (s[0].equals("#help")) {
+        } else if (msg[0].equals("#help")) {
             this.help();
-        } else if (s[0].equals("#quit")) {
+        } else if (msg[0].equals("#quit")) {
             System.exit(0);
+        } else if (msg[0].equals("#list")) {
+            this.list();
         }
     }
 
@@ -62,5 +66,16 @@ public class ControllerUtilisateur {
             new ControllerDepartement(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
         }
         disp.display("-> get" + r.getLibelle() + "UI #find " + r.getCodeResponsabilite());
+    }
+
+    public void update(Observable o, Object arg) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    /**
+     * Cette fonction affiche la liste des clés primaires (prenom.nom) des Enseignants
+     */
+    public void list() throws Exception {
+        disp.display(userDAO.list());
     }
 }

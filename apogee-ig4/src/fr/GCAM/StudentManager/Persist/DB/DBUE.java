@@ -57,4 +57,20 @@ public class DBUE extends DB<UE> {
         return ue;
     }
 
+    /**
+     *
+     * @return L'ensemble des clés primaires (codeUE) des UE
+     * @throws Exception
+     */
+    public String list() throws Exception {
+        String str = "";
+        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet result = s.executeQuery("SELECT distinct codeUE from VO_UE");
+        if (result.first()) {
+            do {
+                str = str + result.getString(1) + "\n";
+            } while (result.next());
+        }
+        return str;
+    }
 }

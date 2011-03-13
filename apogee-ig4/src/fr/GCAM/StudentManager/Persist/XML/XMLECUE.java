@@ -122,4 +122,21 @@ public class XMLECUE extends XML<ECUE> {
         }
         return ecue;
     }
+
+    /**
+     *
+     * @return L'ensemble des clés primaires (codeMatiere) des ECUE
+     * @throws Exception
+     */
+    public String list() throws Exception {
+        String str = "";
+        Element courant;
+        Iterator i = new SAXBuilder().build("xml/ECUE.xml").getRootElement().getChildren("ECUE").iterator();
+
+        while (i.hasNext()) {
+            courant = (Element) i.next();
+            str = str + courant.getChild("codeMatiere").getText() + "\n";
+        }
+        return str;
+    }
 }

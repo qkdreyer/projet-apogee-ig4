@@ -23,6 +23,11 @@ public class Etape {
     private Semestre semestre1;
     private Semestre semestre2;
 
+    public Etape() {
+        semestre1 = new Semestre();
+        semestre2 = new Semestre();
+    }
+
     public static class Semestre {
 
         private String codeSemestre;
@@ -133,6 +138,14 @@ public class Etape {
         this.responsable = responsable;
     }
 
+    public String getPrenomResponsable() {
+        return responsable.split(" ")[0];
+    }
+
+    public String getNomResponsable() {
+        return responsable.split(" ")[1];
+    }
+
     public String getVersionDiplome() {
         return versionDiplome;
     }
@@ -143,9 +156,9 @@ public class Etape {
 
     public Semestre getSemestre(int i) {
         if (i == 1) {
-            return semestre1 = new Semestre();
+            return semestre1;
         } else if (i == 2) {
-            return semestre2 = new Semestre();
+            return semestre2;
         } else {
             return null;
         }
@@ -156,7 +169,7 @@ public class Etape {
                 + "Version etape : " + this.getVersionEtape() + "\n"
                 + "Responsable : " + this.getResponsable() + "\n"
                 + "Version diplome : " + this.getVersionDiplome() + "\n"
-                + "Semestre 1 : " + this.getSemestre(1).toString() + "\n"
-                + "Semestre 2 : " + this.getSemestre(2).toString() + "\n";
+                + "Semestre 1 : " + semestre1.toString() + "\n"
+                + "Semestre 2 : " + semestre2.toString() + "\n";
     }
 }

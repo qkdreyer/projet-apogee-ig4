@@ -63,4 +63,21 @@ public class XMLEtape extends XML<Etape> {
         }
         return etape;
     }
+
+    /**
+     *
+     * @return L'ensemble des clés primaires (codeEtape) des Etape
+     * @throws Exception
+     */
+    public String list() throws Exception {
+        String str = "";
+        Element courant;
+        Iterator i = new SAXBuilder().build("xml/Etape.xml").getRootElement().getChildren("Etape").iterator();
+
+        while (i.hasNext()) {
+            courant = (Element) i.next();
+            str = str + courant.getChild("codeEtape").getText() + "\n";
+        }
+        return str;
+    }
 }

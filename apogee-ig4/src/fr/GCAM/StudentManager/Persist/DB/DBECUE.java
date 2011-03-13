@@ -138,4 +138,21 @@ public class DBECUE extends DB<ECUE> {
         }
         return ecue;
     }
+
+    /**
+     *
+     * @return L'ensemble des clés primaires (codeMatiere) des ECUE
+     * @throws Exception
+     */
+    public String list() throws Exception {
+        String str = "";
+        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet result = s.executeQuery("SELECT distinct codeMatiere from VO_ECUE");
+        if (result.first()) {
+            do {
+                str = str + result.getString(1) + "\n";
+            } while (result.next());
+        }
+        return str;
+    }
 }

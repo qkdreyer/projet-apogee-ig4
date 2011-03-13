@@ -16,7 +16,7 @@ import java.util.Observer;
  *
  * @author Quentin
  */
-public class ControllerECUE implements Observer {
+public class ControllerECUE extends AbstractController implements Observer {
 
     private UI disp;
     private DAO<ECUE> ecueDAO;
@@ -59,6 +59,8 @@ public class ControllerECUE implements Observer {
             //createSpreadsheet();
         } else if (msg[0].equals("#loadSpreadsheet")) {
             //loadSpreadsheet();
+        } else if (msg[0].equals("#list")) {
+            this.list();
         }
     }
 
@@ -113,4 +115,12 @@ public class ControllerECUE implements Observer {
     public void quit() {
         System.exit(0);
     }
+
+    /**
+     * Cette fonction affiche la liste des clés primaires (codeMatiere) des ECUE
+     */
+    public void list() throws Exception {
+        disp.display(ecueDAO.list());
+    }
+
 }

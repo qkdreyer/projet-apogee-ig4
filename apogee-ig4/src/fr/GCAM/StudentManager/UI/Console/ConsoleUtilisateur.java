@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
+import fr.GCAM.StudentManager.Controller.AbstractController;
 import fr.GCAM.StudentManager.Controller.ControllerUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.io.BufferedReader;
@@ -17,7 +18,7 @@ import java.io.InputStreamReader;
  */
 public class ConsoleUtilisateur extends Console<Utilisateur> {
 
-    public ControllerUtilisateur contr;
+    public AbstractController contr;
     
     public ConsoleUtilisateur(String s) {
 	this.contr = new ControllerUtilisateur(this, s);

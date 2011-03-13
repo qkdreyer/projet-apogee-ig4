@@ -97,4 +97,22 @@ public class XMLUtilisateur extends XML<Utilisateur> {
         }
         return util;
     }
+
+    /**
+     *
+     * @return L'ensemble des clés primaires (prenom.nom) des Enseignants
+     * @throws Exception
+     */
+    public String list() throws Exception {
+        String str = "";
+        Element courant;
+        Iterator i = new SAXBuilder().build("xml/Utilisateur.xml").getRootElement().getChildren("Utilisateur").iterator();
+        Iterator j;
+
+        while (i.hasNext()) {
+            courant = (Element) i.next();
+            str = str + courant.getChild("prenom").getText() + "." + courant.getChild("nom").getText() + "\n";
+        }
+        return str;
+    }
 }

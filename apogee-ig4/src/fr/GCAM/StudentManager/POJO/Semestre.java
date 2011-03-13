@@ -12,6 +12,7 @@ package fr.GCAM.StudentManager.POJO;
  * mutateurs.
  *
  * @author pierre
+ * @deprecated 
  */
 public class Semestre {
   

@@ -41,6 +41,8 @@ public class ControllerEtape implements Observer {
             this.update(msg);
         } else if (msg[0].equals("#quit")) {
             this.quit();
+        } else if (msg[0].equals("#list")) {
+            this.list();
         }
     }
 
@@ -57,4 +59,10 @@ public class ControllerEtape implements Observer {
         System.exit(0);
     }
 
+    /**
+     * Cette fonction affiche la liste des clés primaires (codeEtape) des Etape
+     */
+    public void list() throws Exception {
+        disp.display(etapeDAO.list());
+    }
 }

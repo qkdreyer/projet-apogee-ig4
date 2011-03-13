@@ -12,6 +12,7 @@ import fr.GCAM.StudentManager.POJO.Semestre;
  * (POJO).
  *
  * @author pierre
+ * @deprecated @see XMLEtape
  */
 public class XMLSemestre extends XML<Semestre> {
 
@@ -29,6 +30,10 @@ public class XMLSemestre extends XML<Semestre> {
 
     public Semestre find(Object id) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public String list() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

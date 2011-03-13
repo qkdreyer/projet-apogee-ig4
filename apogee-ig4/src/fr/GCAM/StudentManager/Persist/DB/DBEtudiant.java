@@ -12,6 +12,7 @@ import java.sql.*;
  * (POJO).
  *
  * @author Quentin
+ * @deprecated 
  */
 public class DBEtudiant extends DB<Etudiant> {
 
@@ -33,6 +34,10 @@ public class DBEtudiant extends DB<Etudiant> {
 
     public Etudiant find(Object id) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public String list() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

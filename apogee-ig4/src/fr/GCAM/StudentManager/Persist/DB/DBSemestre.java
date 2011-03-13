@@ -12,6 +12,7 @@ import java.sql.Connection;
  * Cette classe définit les methodes de l'interface DAO pour le type Semestre
  * (POJO).
  *
+ * @deprecated @see DBEtape
  * @author pierre
  */
 public class DBSemestre extends DB<Semestre> {
@@ -35,6 +36,10 @@ public class DBSemestre extends DB<Semestre> {
 
     public Semestre find(Object id) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public String list() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
