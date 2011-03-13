@@ -51,6 +51,7 @@ public class ControllerUtilisateur extends AbstractController implements Observe
 
     public void help() {
         disp.display("\t #login username password");
+        disp.display("\t #list");
         disp.display("\t #quit");
     }
 

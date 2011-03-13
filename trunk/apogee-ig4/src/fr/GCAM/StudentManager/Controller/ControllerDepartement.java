@@ -41,6 +41,8 @@ public class ControllerDepartement implements Observer {
             this.quit();
         } else if (msg[0].equals("#list")) {
             this.list();
+        } else if (msg[0].equals("#help")) {
+            this.help();
         }
     }
 
@@ -66,5 +68,12 @@ public class ControllerDepartement implements Observer {
      */
     public void list() throws Exception {
         disp.display(deptDAO.list());
+    }
+
+    private void help() {
+        disp.display("\t #find 'versionDiplome'");
+        disp.display("\t #list");
+        disp.display("\t #update");
+        disp.display("\t #quit");
     }
 }
