@@ -484,7 +484,7 @@ create or replace type TEtudiant as object (
 	numIne varchar2(15),
 	scoreToeic number,
 	libelleProvenance varchar2(20),
-	libelle varchar2(10),
+	libelleStatut varchar2(10),
 	libelleNationalite varchar2(20),
 	nom varchar2(20),
 	prenom varchar2(20),

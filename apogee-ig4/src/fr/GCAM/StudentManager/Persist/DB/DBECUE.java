@@ -55,9 +55,9 @@ public class DBECUE extends DB<ECUE> {
         while (i.hasNext()) {
             etudiant = (Etudiant) i.next();
             if (etudiant.isNoteSession1Changed()) {
-                updateNote1(etudiant.getNumEtud(), ecue.getCodeMatiere(), etudiant.getNoteSession1());
+                updateNote1(etudiant.getNumEtudiant(), ecue.getCodeMatiere(), etudiant.getNoteSession1());
             } else if (etudiant.isNoteSession2Changed()) {
-                updateNote2(etudiant.getNumEtud(), ecue.getCodeMatiere(), etudiant.getNoteSession2());
+                updateNote2(etudiant.getNumEtudiant(), ecue.getCodeMatiere(), etudiant.getNoteSession2());
             }
         }
     }

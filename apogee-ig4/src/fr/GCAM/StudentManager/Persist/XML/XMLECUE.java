@@ -57,9 +57,9 @@ public class XMLECUE extends XML<ECUE> {
         while (i.hasNext()) {
             etudiant = (Etudiant) i.next();
             if (etudiant.isNoteSession1Changed()) {
-                updateNote1(etudiant.getNumEtud(), ecue.getCodeMatiere(), etudiant.getNoteSession1());
+                updateNote1(etudiant.getNumEtudiant(), ecue.getCodeMatiere(), etudiant.getNoteSession1());
             } else if (etudiant.isNoteSession2Changed()) {
-                updateNote2(etudiant.getNumEtud(), ecue.getCodeMatiere(), etudiant.getNoteSession2());
+                updateNote2(etudiant.getNumEtudiant(), ecue.getCodeMatiere(), etudiant.getNoteSession2());
             }
         }
 
@@ -87,7 +87,7 @@ public class XMLECUE extends XML<ECUE> {
                 j = courant.getChild("listeEtud").getChildren("Etudiant").iterator();
                 while (j.hasNext()) {
                     courant = (Element) j.next();
-                    if (courant.getChild("numEtud").getText().equals(Integer.toString(numEtud))) {
+                    if (courant.getChild("numEtudiant").getText().equals(Integer.toString(numEtud))) {
                         courant.getChild("noteSession1").setText(Float.toString(noteSession1));
                     }
                 }
