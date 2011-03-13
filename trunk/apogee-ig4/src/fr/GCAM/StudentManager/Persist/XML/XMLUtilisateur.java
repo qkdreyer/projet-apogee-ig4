@@ -84,7 +84,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * Prenom a[1] et mot de passe [2].
      * @throws Exception
      */
-    public Utilisateur findWithLogin(ArrayList a) throws Exception {
+    private Utilisateur findWithLogin(ArrayList a) throws Exception {
         Utilisateur util = new Utilisateur();
         Element courant;
 
@@ -120,7 +120,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * @return Renvoie l'utilisateur correspondant ayant comme id 'num'.
      * @throws Exception
      */
-    public Utilisateur findWithID(Integer num) throws Exception {
+    private Utilisateur findWithID(Integer num) throws Exception {
         Utilisateur util = new Utilisateur();
         Element courant;
 
