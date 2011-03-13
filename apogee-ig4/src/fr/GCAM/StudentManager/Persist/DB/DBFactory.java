@@ -80,15 +80,4 @@ public class DBFactory extends AbstractDAOFactory {
         return new DBDepartement(conn);
     }
 
-    /**
-     * Méthode utilisée pour obtenir un objet DAO<Semestre>.
-     *
-     * @return Renvoie un DAOSemestre qui est un DAO concret instancié avec le POJO
-     * Semestre.
-     */
-    public DAO<Semestre> getDAOSemestre() {
-	return new DBSemestre(conn);
-    }
-
-
 }

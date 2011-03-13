@@ -22,43 +22,16 @@ public class UE {
     private boolean optionnel;
     private String responsable;
     private String codeSemestre;
-    private ArrayList<ECUEUE> listeECUE;
+    private ArrayList<ECUE> listeECUE;
 
     public UE() {
-        listeECUE = new ArrayList<ECUEUE>();
+        listeECUE = new ArrayList<ECUE>();
     }
 
-    public static class ECUEUE {
-
-        private String codeMatiere;
-        private String libelleECUE;
-
-        public ECUEUE(String codeMatiere, String libelleECUE) {
-            this.codeMatiere = codeMatiere;
-            this.libelleECUE = libelleECUE;
-        }
-
-        public String getCodeMatiere() {
-            return codeMatiere;
-        }
-
-        public void setCodeMatiere(String codeMatiere) {
-            this.codeMatiere = codeMatiere;
-        }
-
-        public String getLibelleECUE() {
-            return libelleECUE;
-        }
-
-        public void setLibelleECUE(String libelleECUE) {
-            this.libelleECUE = libelleECUE;
-        }
-
-        public String toString() {
-            String str = this.getLibelleECUE() + " ("
-                    + this.getCodeMatiere() + ")\n";
-            return str;
-        }
+    public UE(String codeUE, String libelleUE) {
+        this.codeUE = codeUE;
+        this.libelleUE = libelleUE;
+        listeECUE = new ArrayList<ECUE>();
     }
 
     public String getCodeSemestre() {
@@ -117,11 +90,11 @@ public class UE {
         return responsable.split(" ")[1];
     }
 
-    public ArrayList<ECUEUE> getListeECUE() {
+    public ArrayList<ECUE> getListeECUE() {
         return listeECUE;
     }
 
-    public void setListeECUE(ArrayList<ECUEUE> listeECUE) {
+    public void setListeECUE(ArrayList<ECUE> listeECUE) {
         this.listeECUE = listeECUE;
     }
 
@@ -133,7 +106,7 @@ public class UE {
                 + "Code Semestre Parent : " + this.getCodeSemestre() + "\n"
                 + "Liste ECUE : \n";
 
-        for (ECUEUE ecue : this.getListeECUE()) {
+        for (ECUE ecue : this.getListeECUE()) {
             str += "\t" + ecue.toString();
         }
         return str;

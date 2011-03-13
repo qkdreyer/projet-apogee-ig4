@@ -6,6 +6,7 @@
 package fr.GCAM.StudentManager.Persist.DB;
 
 import fr.GCAM.StudentManager.POJO.Departement;
+import fr.GCAM.StudentManager.POJO.Etape;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -62,7 +63,6 @@ public class DBDepartement extends DB<Departement> {
      * @throws Exception
      */
     public Departement find(Object id) throws Exception {
-	//TODO : @fix : La requete SQL est fausse, elle va chercher les ECUE ...
 	Departement dept = new Departement();
 
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -73,7 +73,7 @@ public class DBDepartement extends DB<Departement> {
             dept.setMnemo(result.getString("mnemo"));
 
             do {
-                dept.getListeEtape().add(new Departement.EtapeDepartement(
+                dept.getListeEtape().add(new Etape(
                         result.getString("codeEtape"),
                         result.getString("versionEtape")));
             } while (result.next());

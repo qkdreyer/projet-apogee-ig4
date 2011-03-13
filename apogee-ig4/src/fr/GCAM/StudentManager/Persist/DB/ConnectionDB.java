@@ -43,7 +43,7 @@ public class ConnectionDB {
      * La fonction récupere le mot de passe qui est stocké dans un fichier local
      * @return Le mot de passe lu dans le fichier est renvoyé.
      */
-    private String getPassword() {
+    private static String getPassword() {
         BufferedReader br = null;
         String pwd = null;
         try {
@@ -65,7 +65,7 @@ public class ConnectionDB {
      * @return La chaine renvoyée contient le mot de passe écrit dans le fichier
      * .htaccess
      */
-    public String getUser() {
+    public static String getUser() {
         BufferedReader br = null;
         String usr = null;
         try {

@@ -12,7 +12,6 @@ import fr.GCAM.StudentManager.POJO.Etudiant;
  * (POJO).
  *
  * @author pierre
- * @deprecated
  */
 public class XMLEtudiant extends XML<Etudiant> {
 

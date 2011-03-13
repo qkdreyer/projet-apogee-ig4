@@ -18,4 +18,12 @@ public class MD5 {
     public static String getHash(String value) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         return String.format("%1$032X", new BigInteger(1, MessageDigest.getInstance("MD5").digest(value.getBytes())));
     }
+
+    public static void main(String[] args) {
+        try {
+            System.out.println(getHash("password"));
+        } catch (NoSuchAlgorithmException ex) {
+        } catch (UnsupportedEncodingException ex) {
+        }
+    }
 }

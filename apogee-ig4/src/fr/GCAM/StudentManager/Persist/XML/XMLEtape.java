@@ -5,6 +5,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.POJO.UE;
 import java.util.Iterator;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -79,7 +80,7 @@ public class XMLEtape extends XML<Etape> {
                     j = courant.getChild("listeUE").getChildren("UE").iterator();
                     while (j.hasNext()) {
                         courant = (Element) j.next();
-                        etape.getSemestre(numSem).getListeUE().add(new Etape.Semestre.UESemestre(
+                        etape.getSemestre(numSem).getListeUE().add(new UE(
                                 courant.getChild("codeMatiere").getText(),
                                 courant.getChild("responsable").getText()));
                     }

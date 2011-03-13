@@ -51,13 +51,6 @@ public abstract class AbstractDAOFactory extends Observable {
     public abstract DAO<UE> getDAOUE();
 
     /**
-     * Methode renvoyant un DAO(Data Access Object) pour un semestre
-     *
-     * @return Renvoie le DAO instancié avec le POJO semestre
-     */
-    public abstract DAO<Semestre> getDAOSemestre();
-
-    /**
      * Methode renvoyant un DAO(Data Access Object) pour une Etape
      *
      * @return Renvoie le DAO instancié avec le POJO Etape

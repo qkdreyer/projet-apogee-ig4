@@ -5,6 +5,7 @@
 package fr.GCAM.StudentManager.ParserCSV;
 
 import fr.GCAM.StudentManager.POJO.ECUE;
+import fr.GCAM.StudentManager.POJO.Etudiant;
 import java.io.*;
 
 /**
@@ -45,7 +46,7 @@ public class CreateCSV {
 	    fw.write("Note session 2");
 	    fw.write("\n");
 
-	    for (ECUE.EtudiantECUE etudiant : ecue.getListeEtud()) {
+	    for (/*ECUE.*/Etudiant/*ECUE*/ etudiant : ecue.getListeEtud()) {
 
 		fw.write(etudiant.getNom());
 		fw.write(",");

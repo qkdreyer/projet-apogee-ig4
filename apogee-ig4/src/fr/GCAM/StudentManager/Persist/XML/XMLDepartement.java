@@ -6,6 +6,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.POJO.Departement;
+import fr.GCAM.StudentManager.POJO.Etape;
 import java.util.Iterator;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -75,7 +76,7 @@ public class XMLDepartement extends XML<Departement> {
                 j = courant.getChild("listeEtape").getChildren("Etape").iterator();
                 while (j.hasNext()) {
                     courant = (Element) j.next();
-                    dept.getListeEtape().add(new Departement.EtapeDepartement(
+                    dept.getListeEtape().add(new Etape(
                             courant.getChild("codeEtape").getText(),
                             courant.getChild("versionEtape").getText()));
                 }

@@ -19,43 +19,12 @@ public class Departement {
     private String versionDiplome;
     private String nomDepartement;
     private String mnemo;
-    private ArrayList<EtapeDepartement> listeEtape;
+    private ArrayList<Etape> listeEtape;
 
     public Departement() {
-        listeEtape = new ArrayList<EtapeDepartement>();
+        listeEtape = new ArrayList<Etape>();
     }
-
-    public static class EtapeDepartement {
-
-        private String codeEtape;
-        private String versionEtape;
-
-        public EtapeDepartement(String codeEtape, String versionEtape) {
-            this.codeEtape = codeEtape;
-            this.versionEtape = versionEtape;
-        }
-
-        public String getVersionEtape() {
-            return versionEtape;
-        }
-
-        public void setVersionEtape(String versionEtape) {
-            this.versionEtape = versionEtape;
-        }
-
-        public String getCodeEtape() {
-            return codeEtape;
-        }
-
-        public void setCodeEtape(String codeEtape) {
-            this.codeEtape = codeEtape;
-        }
-
-        public String toString() {
-            return "Version etape : " + versionEtape + " - Code etape : " + codeEtape + "\n";
-        }
-    }
-
+ 
     public String getNomDepartement() {
         return nomDepartement;
     }
@@ -80,11 +49,11 @@ public class Departement {
         this.versionDiplome = versionDiplome;
     }
 
-    public ArrayList<EtapeDepartement> getListeEtape() {
+    public ArrayList<Etape> getListeEtape() {
         return listeEtape;
     }
 
-    public void setListeEtape(ArrayList<EtapeDepartement> listeEtape) {
+    public void setListeEtape(ArrayList<Etape> listeEtape) {
         this.listeEtape = listeEtape;
     }
 
@@ -92,8 +61,8 @@ public class Departement {
         String str = "Version diplome : " + versionDiplome + "\n"
                 + "Nom departement : " + nomDepartement
                 + " (" + mnemo + ")\n";
-        for (EtapeDepartement dept : listeEtape) {
-            str += "\t" + dept.toString();
+        for (Etape e : listeEtape) {
+            str += "\t" + e.toString();
         }
         return str;
     }
