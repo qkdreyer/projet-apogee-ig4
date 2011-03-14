@@ -81,9 +81,7 @@ public class DBEtape extends DB<Etape> {
                 semestre.setCodeSemestre(result.getString("codeSemestre"));
                 semestre.setNbUEFacultatives(result.getInt("nbUEFacultatives"));
                 //semestre.getListeUE().add(new Etape.Semestre.UESemestre(
-                semestre.getListeUE().add(new UE(
-                        result.getString("codeUE"),
-                        result.getString("libelleUE")));
+                semestre.getListeUE().add( new DBUE(conn).find(result.getString("codeUE")));
             } while (result.next());
         }
         return etape;
