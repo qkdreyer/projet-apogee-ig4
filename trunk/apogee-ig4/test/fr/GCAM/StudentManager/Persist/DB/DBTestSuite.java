@@ -43,7 +43,7 @@ public class DBTestSuite {
         conn = ConnectionDB.getConnection();
         try {
             //On cré une ECUE, pour laquelle on va réaliser le test
-            Statement s = conn.createStatement();
+            Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             s.executeQuery("insert into Enseignant values (9999,'testPass','testNom','testPrenom','testMail')");
             s.executeQuery("insert into Departement values ('testVDip','testNomDep','testMnemo',9999)");
