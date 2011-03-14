@@ -20,8 +20,8 @@ public class DBAdmin extends DB<Admin> {
         super(conn);
     }
 
-    public void create(Admin obj) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void create(Admin a) throws Exception {
+        //TODO a.getListeUtil().add(new DBUtilisateur(conn).)
     }
 
     public void update(Admin obj) throws Exception {
@@ -33,7 +33,7 @@ public class DBAdmin extends DB<Admin> {
     }
 
     /**
-     * La fonction, renvoie un POJO Admin, a partir de l'id passé en parametre.<br>
+     * La fonction, renvoie un POJO Admin.<br>
      * Require : <br>
      * Ensure : <br>
      * @param id null
@@ -47,7 +47,7 @@ public class DBAdmin extends DB<Admin> {
         ResultSet result = s.executeQuery("select distinct idenseignant from VO_Utilisateur");
         if (result.first()) {
             do {
-                //TODO a.getListeUtil().add(new ());
+                a.getListeUtil().add(new DBUtilisateur(conn).find(result.getInt("idEnseignant")));
             } while (result.next());
         }
 	

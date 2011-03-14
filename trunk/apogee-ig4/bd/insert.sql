@@ -37,17 +37,17 @@ insert into UE values ('PSTIAU51',8,'pate a tartiner','f',2153,52);
 insert into UE values ('PSTIAU52',5,'mode américaine','f',2384,52);
 insert into UE values ('PSTIAU61',9,'pate a tartiner: concept avancés','f',2153,62);
 
-insert into Enseignant values (1001,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('roux'), :sh1),'villaret','anne-laure','alv@crepuq.fr');
-insert into Enseignant values (1432,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('ada'),'vilarem','marie-catherine','mcv@lirmm.fr');
-insert into Enseignant values (1569,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('cheveux'),'berry','vincent','vberry@lirmm.fr');
-insert into Enseignant values (1999,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('mcdo'),'crepin','ludivine','ludivine@crepin.fr');
-insert into Enseignant values (1111,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('ihouse'),'dumas','marc','marc@cool.fr');
-insert into Enseignant values (1321,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('sr8'),'stratulat','tiberiu','tibi@pologne.ro');
-insert into Enseignant values (1859,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('futurpierre'),'sala','michel','mimi@laposte.fr');
-insert into Enseignant values (2176,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('nut'),'Donald','Mac','mcdo@quick.fr');
-insert into Enseignant values (2153,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('ales'),'debombe','balle','nutellepuissance1000@gmail.com');
-insert into Enseignant values (2384,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('breakingbad'),'white','walter','drogue@bang.com');
-insert into Secretaire values (1000,DBMS_CRYPTO.HASH (utl_raw.cast_to_raw('pausecafe'),'tortosa','helene','helene@tortue.fr');
+insert into Enseignant values (1001,getHash('roux'),'villaret','anne-laure','alv@crepuq.fr');
+insert into Enseignant values (1432,getHash('ada'),'vilarem','marie-catherine','mcv@lirmm.fr');
+insert into Enseignant values (1569,getHash('cheveux'),'berry','vincent','vberry@lirmm.fr');
+insert into Enseignant values (1999,getHash('mcdo'),'crepin','ludivine','ludivine@crepin.fr');
+insert into Enseignant values (1111,getHash('ihouse'),'dumas','marc','marc@cool.fr');
+insert into Enseignant values (1321,getHash('sr8'),'stratulat','tiberiu','tibi@pologne.ro');
+insert into Enseignant values (1859,getHash('futurpierre'),'sala','michel','mimi@laposte.fr');
+insert into Enseignant values (2176,getHash('nut'),'Donald','Mac','mcdo@quick.fr');
+insert into Enseignant values (2153,getHash('ales'),'debombe','balle','nutellepuissance1000@gmail.com');
+insert into Enseignant values (2384,getHash('breakingbad'),'white','walter','drogue@bang.com');
+insert into Secretaire values (1000,getHash('pausecafe'),'tortosa','helene','helene@tortue.fr');
 
 insert into Provenance values (01,'prepa intégré');
 insert into Provenance values (02,'IUT');

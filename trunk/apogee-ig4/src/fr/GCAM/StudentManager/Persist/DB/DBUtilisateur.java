@@ -30,7 +30,7 @@ public class DBUtilisateur extends DB<Utilisateur> {
      * @throws Exception
      */
     public void create(Utilisateur obj) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
+	
     }
 
     /**
