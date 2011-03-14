@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
+import fr.GCAM.StudentManager.Core.JDOM;
 import fr.GCAM.StudentManager.POJO.Etudiant;
 import java.io.FileOutputStream;
 import org.jdom.output.XMLOutputter;
@@ -82,7 +83,8 @@ public class XMLECUETest {
 	    d.getRootElement().addContent(ECUE);
 
 	    //Sauvegarde du fichier
-	    new XMLOutputter(Format.getPrettyFormat()).output(d, new FileOutputStream("xml/ECUE.xml"));
+    	JDOM.save(d, "xml/ECUE.xml");
+//	    new XMLOutputter(Format.getPrettyFormat()).output(d, new FileOutputStream("xml/ECUE.xml"));
 	} else {
 	    System.out.println("Le fichier n'existe pas, tant pis");
 	}
@@ -90,12 +92,14 @@ public class XMLECUETest {
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+	System.out.println("tearDownClass");
 	//TODO : supprimer les données rajoutées
 	Document d = new SAXBuilder().build("xml/ECUE.xml");
-	Iterator i = d.getRootElement().getChildren("ECUE").iterator();
-//	while (((Element)i.next()).) {
-//                courant = (Element) i.next();
-//	    }
+	d.getRootElement().getChildren("ECUE").remove( d.getRootElement().getChildren("ECUE").size() - 1 );	
+
+	JDOM.save(d, "xml/ECUE.xml");
+	//new XMLOutputter(Format.getPrettyFormat()).output(d, new FileOutputStream("xml/ECUE.xml"));
+
     }
 
     @Before
@@ -191,7 +195,7 @@ public class XMLECUETest {
      */
     @Test
     public void testList() throws Exception {
-	System.out.println("list");
+	System.out.println("list XMLECUE");
 	XMLECUE instance = new XMLECUE();
 	String expResult = "";
 	String result = instance.list();

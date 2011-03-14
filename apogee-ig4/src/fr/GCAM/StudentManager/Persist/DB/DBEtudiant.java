@@ -60,7 +60,7 @@ public class DBEtudiant extends DB<Etudiant> {
         Etudiant e = new Etudiant();
 
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT * from VO_Etudiant where numEtudiant = '" + (String) id + "'");
+        ResultSet result = s.executeQuery("SELECT * from VO_Etudiant where numEtudiant = '" + id + "'");
         if (result.first()) {
 
                 e.setNumEtudiant(result.getInt("numEtudiant"));

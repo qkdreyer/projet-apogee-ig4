@@ -24,6 +24,14 @@ public class Departement {
     public Departement() {
         listeEtape = new ArrayList<Etape>();
     }
+
+    public Departement(String versionDiplome, String nomDepartement, String mnemo, ArrayList<Etape> listeEtape) {
+	this.versionDiplome = versionDiplome;
+	this.nomDepartement = nomDepartement;
+	this.mnemo = mnemo;
+	this.listeEtape = listeEtape;
+    }
+    
  
     public String getNomDepartement() {
         return nomDepartement;
