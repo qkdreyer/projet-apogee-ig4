@@ -123,7 +123,7 @@ create table APDJ (
 -- Qu'est ce que l'enseignant a en plus de la secretaire ?
 create table Enseignant (
 	idenseignant number,
-	mdp varchar2(20),
+	mdp varchar2(40),
 	nom varchar2(20),
 	prenom varchar2(20),
 	mail varchar2(40),
@@ -719,15 +719,5 @@ begin
 end etudiant_del;
 /
 
-create or replace function getHash (hash IN varchar2(100))
-return varchar2(32) is
-DECLARE 
-op raw(100);
-r raw(100); 
-s varchar2(20); 
-BEGIN 
-	r:=utl_i18n.string_to_raw(hash,'utf8'); 
-	op:= dbms_crypto.Hash(src => r, typ => dbms_crypto.HASH_SH1);
-	return (rawtohex(op)); 
-end;
-/ 
+var sh1 number;
+:sh1 := DBMS_CRYPTO.hash_sh1;
