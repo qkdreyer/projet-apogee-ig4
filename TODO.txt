@@ -1,0 +1,10 @@
+- VAE / APDJ / ChoixUE / PJ / moyenne etape ?
+- Gestion controller
+- oid vue
+- Implementer statistiques / admin (jdom admin, pojo admin, vue admin)
+- Triggers sur vues
+- md5 oracle
+
+GUI :
+- Ajouter Resp UE (prenom nom) dans ManageUE.java + Optionnel
+- Virer details de ManageUE.java
