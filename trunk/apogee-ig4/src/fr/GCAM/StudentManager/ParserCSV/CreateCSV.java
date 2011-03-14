@@ -23,8 +23,8 @@ public class CreateCSV {
      *
      */
 
-    /* Creation du fichier .xls vide
-     * le nom du fichier serz fichierNotes.xls
+    /* Creation du fichier .csv vide
+     * le nom du fichier serz fichierNotes.csv
      */
     public static File CreateEmptyFile() {
 	File f;
@@ -42,7 +42,7 @@ public class CreateCSV {
 
 	    fw.write(ecue.getCodeMatiere());
 	    fw.write(",");
-	    fw.write("Note session 1");
+	    fw.write("Note session 1 , ");
 	    fw.write("Note session 2");
 	    fw.write("\n");
 
