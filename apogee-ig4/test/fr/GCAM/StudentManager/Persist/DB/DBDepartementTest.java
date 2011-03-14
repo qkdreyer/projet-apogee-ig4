@@ -100,7 +100,7 @@ public class DBDepartementTest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find");
+	System.out.println("find DBDepartement");
 	Object id = null;
 	DBDepartement instance = new DBDepartement(conn);
 	Departement result = instance.find("testVDip");

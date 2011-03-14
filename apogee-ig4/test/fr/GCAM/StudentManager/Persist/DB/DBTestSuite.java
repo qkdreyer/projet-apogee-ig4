@@ -26,6 +26,10 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
     fr.GCAM.StudentManager.Persist.DB.DBDepartementTest.class,
     fr.GCAM.StudentManager.Persist.DB.DBECUETest.class,
+    fr.GCAM.StudentManager.Persist.DB.DBEtapeTest.class,
+    fr.GCAM.StudentManager.Persist.DB.DBEtudiantTest.class,
+    fr.GCAM.StudentManager.Persist.DB.DBUETest.class,
+    fr.GCAM.StudentManager.Persist.DB.DBUtilisateurTest.class,
     fr.GCAM.StudentManager.Persist.DB.DBFactoryTest.class
 })
 public class DBTestSuite {
@@ -47,7 +51,11 @@ public class DBTestSuite {
             s.executeQuery("insert into Semestre values ('99','s99',9,'testCEt')");
             s.executeQuery("insert into UE values ('testCUE',99,'testLib','f',9999,'99')");
             s.executeQuery("insert into ECUE values('TEST001','testlibelle', 99, 9999, 'testCUE')");
-            s.executeQuery("insert into Etudiant values (99999,0,'INETEST',0,null,null,null,'testCEt','netud','petud','m@etud.com')");
+
+	    s.executeQuery("insert into Provenance values(0, 'testProv')");
+	    s.executeQuery("insert into Statut values(0, 'testStat')");
+	    s.executeQuery("insert into nationalite values(0, 'testNat')");
+            s.executeQuery("insert into Etudiant values (99999,0,'INETEST',0,0,0,0,'testCEt','netud','petud','m@etud.com')");
 
             s.close();
 
@@ -66,17 +74,14 @@ public class DBTestSuite {
             //s.executeQuery("DELETE FROM ")
 
             s.executeQuery("DELETE FROM Etudiant WHERE numEtudiant=99999");
-
+	    s.executeQuery("DELETE FROM Provenance WHERE idprovenance=0");
+	    s.executeQuery("DELETE FROM Statut WHERE idstatut=0");
+	    s.executeQuery("DELETE FROM Nationalite WHERE idnationalite=0");
             s.executeQuery("DELETE FROM ECUE WHERE codeMatiere='TEST001'");
-
             s.executeQuery("DELETE FROM UE WHERE codeUE='testCUE'");
-
             s.executeQuery("DELETE FROM Semestre WHERE codeSemestre='99'");
-
             s.executeQuery("DELETE FROM Etape WHERE codeEtape='testCEt'");
-
             s.executeQuery("DELETE FROM Departement WHERE versionDiplome='testVDip'");
-
             s.executeQuery("DELETE FROM Enseignant WHERE idenseignant=9999");
 
             s.close();
