@@ -79,7 +79,7 @@ public class DBEtapeTest {
     @Ignore
     @Test
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete DBEtape");
 	Etape obj = null;
 	DBEtape instance = null;
 	instance.delete(obj);
@@ -92,9 +92,9 @@ public class DBEtapeTest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find");
+	System.out.println("find Etape");
 	Object id = null;
-	DBEtape instance = null;
+	DBEtape instance = new DBEtape(conn);
 	Etape result = instance.find("testCEt");
 	assertEquals("9", result.getVersionEtape());
     }
