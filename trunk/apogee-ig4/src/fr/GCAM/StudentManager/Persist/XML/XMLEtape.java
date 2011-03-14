@@ -54,7 +54,7 @@ public class XMLEtape extends XML<Etape> {
     /**
      * La fonction, renvoie un POJO Etape, a partir de l'id passé en parametre.<br>
      *
-     * @param id(String) L'id de l'Etape que l'on souhaite charger
+     * @param id(String) Le codeEtape de l'Etape que l'on souhaite charger
      * @return L'Etape correspondant à la ligne trouvé dans le fichier XML a partir de l'id
      * @throws Exception
      */
@@ -80,9 +80,7 @@ public class XMLEtape extends XML<Etape> {
                     j = courant.getChild("listeUE").getChildren("UE").iterator();
                     while (j.hasNext()) {
                         courant = (Element) j.next();
-                        etape.getSemestre(numSem).getListeUE().add(new UE(
-                                courant.getChild("codeMatiere").getText(),
-                                courant.getChild("responsable").getText()));
+                        etape.getSemestre(numSem).getListeUE().add(new XMLUE().find(courant.getChildText("codeUE")));
                     }
                 }
             }

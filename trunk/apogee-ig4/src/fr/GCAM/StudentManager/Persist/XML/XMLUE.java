@@ -55,7 +55,7 @@ public class XMLUE extends XML<UE> {
     /**
      * La fonction, renvoie un POJO UE, a partir de l'id passé en parametre.<br>
      *
-     * @param id(String) L'id de l'UE que l'on souhaite charger
+     * @param id(String) Le codeUE de l'UE que l'on souhaite charger
      * @return L'UE correspondant à la ligne trouvé dans le fichier XML a partir de l'id
      * @throws Exception
      */
@@ -79,9 +79,7 @@ public class XMLUE extends XML<UE> {
                 j = courant.getChild("listeECUE").getChildren("ECUE").iterator();
                 while (j.hasNext()) {
                     courant = (Element) j.next();
-                    ue.getListeECUE().add(new ECUE(
-                            courant.getChild("codeMatiere").getText(),
-                            courant.getChild("libelleECUE").getText()));
+                    ue.getListeECUE().add(new XMLECUE().find(courant.getChildText("codeECUE")));
                 }
             }
         }

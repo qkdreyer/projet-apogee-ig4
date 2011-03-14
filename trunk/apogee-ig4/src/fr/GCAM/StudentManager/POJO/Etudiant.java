@@ -24,10 +24,12 @@ public class Etudiant {
     private String nom;
     private String prenom;
     private String mail;
-    private Float noteSession1;
-    private Float noteSession2;
+    private float noteSession1;
+    private float noteSession2;
     private boolean noteSession1Changed = false;
     private boolean noteSession2Changed = false;
+    private boolean VAE = false;
+    private boolean APDJ = false;
 
     public Etudiant(int numEtud, String nom, String prenom, float noteSession1, float noteSession2) {
         this.numEtudiant = numEtud;
@@ -80,25 +82,6 @@ public class Etudiant {
         this.nom = nom;
     }
 
-    public Float getNoteSession1() {
-        return noteSession1;
-    }
-
-    public void setNoteSession1(Float noteSession1) {
-        this.noteSession1 = noteSession1;
-        noteSession1Changed = true;
-    }
-
-    public Float getNoteSession2() {
-        return noteSession2;
-    }
-
-    public void setNoteSession2(Float noteSession2) {
-        this.noteSession2 = noteSession2;
-        noteSession2Changed = true;
-
-    }
-
     public int getNumEtudiant() {
         return numEtudiant;
     }
@@ -145,6 +128,40 @@ public class Etudiant {
 
     public boolean isNoteSession2Changed() {
         return noteSession2Changed;
+    }
+
+    public boolean isAPDJ() {
+	return APDJ;
+    }
+
+    public void setAPDJ(boolean APDJ) {
+	this.APDJ = APDJ;
+    }
+
+    public boolean isVAE() {
+	return VAE;
+    }
+
+    public void setVAE(boolean VAE) {
+	this.VAE = VAE;
+    }
+
+    public float getNoteSession1() {
+	return noteSession1;
+    }
+
+    public void setNoteSession1(float noteSession1) {
+	this.noteSession1 = noteSession1;
+	noteSession1Changed = true;
+    }
+
+    public float getNoteSession2() {
+	return noteSession2;
+    }
+
+    public void setNoteSession2(float noteSession2) {
+	this.noteSession2 = noteSession2;
+	noteSession2Changed = true;
     }
 
     public String toString() {

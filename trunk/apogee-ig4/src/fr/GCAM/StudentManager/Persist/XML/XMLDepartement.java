@@ -7,6 +7,7 @@ package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.POJO.Departement;
 import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.Persist.DB.DBEtape;
 import java.util.Iterator;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -56,7 +57,7 @@ public class XMLDepartement extends XML<Departement> {
     /**
      * La fonction, renvoie un POJO Departement, a partir de l'id passé en parametre.<br>
      *
-     * @param id(String) L'id du département que l'on souhaite charger
+     * @param id(String) La versionEtape du département que l'on souhaite charger
      * @return Le departement correspondant à l'élement trouvé dans le fichier XML a partir de l'id
      * @throws Exception
      */
@@ -76,9 +77,7 @@ public class XMLDepartement extends XML<Departement> {
                 j = courant.getChild("listeEtape").getChildren("Etape").iterator();
                 while (j.hasNext()) {
                     courant = (Element) j.next();
-                    dept.getListeEtape().add(new Etape(
-                            courant.getChild("codeEtape").getText(),
-                            courant.getChild("versionEtape").getText()));
+                    dept.getListeEtape().add(new XMLEtape().find(courant.getChildText("codeEtape")));
                 }
             }
         }

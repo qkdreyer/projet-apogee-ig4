@@ -433,7 +433,7 @@ and e.numEtudiant in (
 );
 
 create or replace view VO_Ecue of TECUE
-with object identifier(codeMatiere) as
+with object identifier(codeMatiere, numEtudiant) as
 select ec.codeMatiere, ec.libelleECUE, ec.nbheures, ens.nom as nomResponsable, ens.prenom as prenomResponsable, ec.codeue, e.numetudiant, e.nom, e.prenom, n.noteSession1, n.noteSession2
 from etudiant e, note n, ecue ec, enseignant ens
 where ec.idenseignant = ens.idenseignant
@@ -623,7 +623,7 @@ create or replace type TUE as object (
 /
 
 create or replace view VO_UE of TUE
-with object identifier(codeUE) as
+with object identifier(codeUE, codeMatiere) as
 select ue.codeUE, nbECTS, libelleUE, optionnel, ens.nom as nomResponsable, ens.prenom as prenomResponsable, codeSemestre,
 codeMatiere, libelleECUE 
 from UE ue, ECUE ecue, Enseignant ens
@@ -646,7 +646,7 @@ create or replace type TEtape as object (
 /
 
 create or replace view VO_Etape of TEtape
-with object identifier(codeEtape) as
+with object identifier(codeEtape, codeUE) as
 select e.codeEtape, versionEtape, versionDiplome,
 ens.nom as nomResponsable, ens.prenom as prenomResponsable,
 s.codeSemestre, nbUEFacultatives,
@@ -668,7 +668,7 @@ create or replace type TDepartement as object (
 /
 
 create or replace view VO_Departement of TDepartement
-with object identifier(versionDiplome) as
+with object identifier(versionDiplome, codeEtape) as
 select d.versionDiplome, nomDepartement, mnemo, codeEtape, versionEtape
 from Departement d, Etape e
 where d.versionDiplome = e.versionDiplome;
@@ -719,6 +719,15 @@ begin
 end etudiant_del;
 /
 
-
-
-
+create or replace function getHash (hash IN varchar2(100))
+return varchar2(32) is
+DECLARE 
+op raw(100);
+r raw(100); 
+s varchar2(20); 
+BEGIN 
+	r:=utl_i18n.string_to_raw(hash,'utf8'); 
+	op:= dbms_crypto.Hash(src => r, typ => dbms_crypto.HASH_SH1);
+	return (rawtohex(op)); 
+end;
+/ 
