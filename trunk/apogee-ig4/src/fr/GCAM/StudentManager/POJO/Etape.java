@@ -28,11 +28,14 @@ public class Etape {
 	semestre2 = new Semestre();
     }
 
-    public Etape(String codeEtape, String versionEtape) {
+    public Etape(String codeEtape, String versionEtape, String responsable, String versionDiplome) {
 	this.codeEtape = codeEtape;
 	this.versionEtape = versionEtape;
+	this.responsable = responsable;
+	this.versionDiplome = versionDiplome;
     }
 
+    
     public static class Semestre {
 
 	private String codeSemestre;

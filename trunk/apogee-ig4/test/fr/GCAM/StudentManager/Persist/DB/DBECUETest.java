@@ -28,79 +28,31 @@ import static org.junit.Assert.*;
 public class DBECUETest {
 
     private static Connection conn;
+
     private static ECUE ecue;
-    private static Etudiant ec;
+    private static Etudiant etud;
 
     public DBECUETest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-	//Creation de la connection à la BD
-        conn = ConnectionDB.getConnection();
-        try {
-            //On cré une ECUE, pour laquelle on va réaliser le test
-            Statement s = conn.createStatement();
 
-            s.executeQuery("insert into Enseignant values (9999,'testPass','testNom','testPrenom','testMail')");
+	conn = ConnectionDB.getConnection();
 
-            s.executeQuery("insert into Departement values ('testVDip','testLibelle','testMnemo',9999)");
+	etud = new Etudiant(99999, "netud", "petud", (float) 0.0, (float) 0.0);
 
-            s.executeQuery("insert into Etape  values ('testCEt','9',9999,'testVDip')");
+	ecue = new ECUE();
+	ecue.setCodeMatiere("TEST001");
+	ecue.setLibelleECUE("testlibelle");
+	ecue.setNbHeures(99);
+	//ecue.setIdEnseignant(9999);
 
-            s.executeQuery("insert into Semestre values ('99','s99',9,'testCEt')");
-
-            s.executeQuery("insert into UE values ('testCUE',99,'testLib','f',9999,'99')");
-
-            s.executeQuery("INSERT INTO ECUE values('TEST001','testlibelle', 99, 9999, 'testCUE')");
-
-            s.executeQuery("insert into Etudiant values (99999,0,'INETEST',0,null,null,null,'testCEt','netud','petud','m@etud.com')");
-
-            s.close();
-
-            ec = new Etudiant(99999, "netud", "petud", (float) 0.0, (float) 0.0);
-
-            ecue = new ECUE();
-            ecue.setCodeMatiere("TEST001");
-            ecue.setLibelleECUE("testlibelle");
-            ecue.setNbHeures(99);
-            //ecue.setIdEnseignant(9999);
-
-            ecue.setCodeUE("testCUE");
-
-        } catch (SQLException ex) {
-            Logger.getLogger(DBECUETest.class.getName()).log(Level.SEVERE, null, ex);
-        }
+	ecue.setCodeUE("testCUE");
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
-	//On supprime les insertions de la base
-        try {
-            //On cré une ECUE, pour laquelle on va réaliser le test
-            Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-
-            //s.executeQuery("DELETE FROM ")
-
-            s.executeQuery("DELETE FROM Etudiant WHERE numEtudiant=99999");
-
-            s.executeQuery("DELETE FROM ECUE WHERE codeMatiere='TEST001'");
-
-            s.executeQuery("DELETE FROM UE WHERE codeUE='testCUE'");
-
-            s.executeQuery("DELETE FROM Semestre WHERE codeSemestre='99'");
-
-            s.executeQuery("DELETE FROM Etape WHERE codeEtape='testCEt'");
-
-            s.executeQuery("DELETE FROM Departement WHERE versionDiplome='testVDip'");
-
-            s.executeQuery("DELETE FROM Enseignant WHERE idenseignant=9999");
-
-            s.close();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(DBECUETest.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public static void tearDownClass() throws Exception {	
     }
 
     /**
@@ -135,10 +87,6 @@ public class DBECUETest {
         System.out.println("create DBECUE");
         ECUE ecue = new ECUE();
         DBECUE instance = null;
-
-
-
-
     }
 
     /**
@@ -149,10 +97,10 @@ public class DBECUETest {
         System.out.println("update DBECUE");
         //on lui modif ses notes
         DBECUE dbecue = new DBECUE(conn);
-        ecue.getListeEtud().add(ec);
+        ecue.getListeEtud().add(etud);
 
-        ec.setNoteSession1((float) 12.8);
-        ec.setNoteSession2((float) 5.8);
+        etud.setNoteSession1((float) 12.8);
+        etud.setNoteSession2((float) 5.8);
 
         //on update
         dbecue.update(ecue);
@@ -186,9 +134,6 @@ public class DBECUETest {
         } else {
             fail("The query didn't return any results");
         }
-
-
-
     }
 
     /**
@@ -208,16 +153,12 @@ public class DBECUETest {
     /**
      * Test of find method, of class DBECUEDAO.
      */
-    @Ignore
     @Test
     public void testFind() throws Exception {
         System.out.println("find DBECUE");
         Object id = null;
-        DBECUE instance = null;
-        ECUE expResult = null;
-        ECUE result = instance.find(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        DBECUE instance = new DBECUE(conn);
+        ECUE result = instance.find("TEST001");
+        assertEquals("testlibelle", result.getLibelleECUE());
     }
 }
