@@ -145,7 +145,7 @@ public class XMLECUE extends XML<ECUE> {
      * La fonction, renvoie un POJO ECUE, a partir de l'id passé en parametre.<br>
      * Require : <br>
      * Ensure : <br>
-     * @param id(String) L'id de l'ecue que l'on souhaite charger
+     * @param id(String) Le codeECUE de l'ecue que l'on souhaite charger
      * @return L'ECUE correspondant à l'élement trouvé dans le fichier XML a partir
      * de l'id : id
      * @throws Exception
@@ -168,12 +168,7 @@ public class XMLECUE extends XML<ECUE> {
                 j = courant.getChild("listeEtud").getChildren("Etudiant").iterator();
                 while (j.hasNext()) {
                     courant = (Element) j.next();
-                    ecue.getListeEtud().add(new Etudiant(
-                            Integer.parseInt(courant.getChild("numEtudiant").getText()),
-                            courant.getChild("nom").getText(),
-                            courant.getChild("prenom").getText(),
-                            Float.parseFloat(courant.getChild("noteSession1").getText()),
-                            Float.parseFloat(courant.getChild("noteSession2").getText())));
+                    ecue.getListeEtud().add(new XMLEtudiant().find(courant.getChildText("numEtudiant")));
                 }
             }
         }

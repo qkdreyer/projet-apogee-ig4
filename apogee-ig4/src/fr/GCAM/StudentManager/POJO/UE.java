@@ -111,4 +111,22 @@ public class UE {
         }
         return str;
     }
+
+    public ArrayList<Etudiant> getListeEtudiant() {
+	return listeECUE.get(0).getListeEtud();
+    }
+    
+    public float getMoyenne(Etudiant e) {
+	float noteTotal = 0;
+	float nbHeures = 0;
+	Etudiant et;
+	for (ECUE ecue : listeECUE) {
+	    et = ecue.getListeEtud().get(ecue.getListeEtud().indexOf(e));
+	    nbHeures += ecue.getNbHeures();
+	    noteTotal += et.getNoteSession1()*nbHeures;
+	}
+	return noteTotal/nbHeures;
+    }
+
+
 }

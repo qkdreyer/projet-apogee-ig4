@@ -24,126 +24,138 @@ public class Etape {
     private Semestre semestre2;
 
     public Etape() {
-        semestre1 = new Semestre();
-        semestre2 = new Semestre();
+	semestre1 = new Semestre();
+	semestre2 = new Semestre();
     }
 
     public Etape(String codeEtape, String versionEtape) {
-        this.codeEtape = codeEtape;
-        this.versionEtape = versionEtape;
+	this.codeEtape = codeEtape;
+	this.versionEtape = versionEtape;
     }
 
     public static class Semestre {
 
-        private String codeSemestre;
-        private int nbUEFacultatives;
-        private String codeEtape;
-        private ArrayList<UE> listeUE;
+	private String codeSemestre;
+	private int nbUEFacultatives;
+	private String codeEtape;
+	private ArrayList<UE> listeUE;
 
-        public Semestre() {
-            listeUE = new ArrayList<UE>();
-        }
-   
-        public String getCodeEtape() {
-            return codeEtape;
-        }
+	public Semestre() {
+	    listeUE = new ArrayList<UE>();
+	}
 
-        public void setCodeEtape(String codeEtape) {
-            this.codeEtape = codeEtape;
-        }
+	public String getCodeEtape() {
+	    return codeEtape;
+	}
 
-        public String getCodeSemestre() {
-            return codeSemestre;
-        }
+	public void setCodeEtape(String codeEtape) {
+	    this.codeEtape = codeEtape;
+	}
 
-        public void setCodeSemestre(String codeSemestre) {
-            this.codeSemestre = codeSemestre;
-        }
+	public String getCodeSemestre() {
+	    return codeSemestre;
+	}
 
-        public ArrayList<UE> getListeUE() {
-            return listeUE;
-        }
+	public void setCodeSemestre(String codeSemestre) {
+	    this.codeSemestre = codeSemestre;
+	}
 
-        public void setListeUE(ArrayList<UE> listeUE) {
-            this.listeUE = listeUE;
-        }
+	public ArrayList<UE> getListeUE() {
+	    return listeUE;
+	}
 
-        public int getNbUEFacultatives() {
-            return nbUEFacultatives;
-        }
+	public void setListeUE(ArrayList<UE> listeUE) {
+	    this.listeUE = listeUE;
+	}
 
-        public void setNbUEFacultatives(int nbUEFacultatives) {
-            this.nbUEFacultatives = nbUEFacultatives;
-        }
+	public int getNbUEFacultatives() {
+	    return nbUEFacultatives;
+	}
 
-        public String toString() {
-            String str = "Code Semestre : " + this.getCodeSemestre() + "\n"
-                    + "Nombre d'UE facultatives : " + this.getNbUEFacultatives() + "\n"
-                    + "Code Etape Parente " + this.getCodeEtape() + "\n";
+	public void setNbUEFacultatives(int nbUEFacultatives) {
+	    this.nbUEFacultatives = nbUEFacultatives;
+	}
 
-            for (UE ue : listeUE) {
-                str += "\t" + ue.toString();
-            }
-            return str;
-        }
+	public String toString() {
+	    String str = "Code Semestre : " + this.getCodeSemestre() + "\n"
+		    + "Nombre d'UE facultatives : " + this.getNbUEFacultatives() + "\n"
+		    + "Code Etape Parente " + this.getCodeEtape() + "\n";
+
+	    for (UE ue : listeUE) {
+		str += "\t" + ue.toString();
+	    }
+	    return str;
+	}
+
+	public float getMoyenne(Etudiant e) {
+	    float moyenne = 0;
+	    float nbCredit = 0;
+	    Etudiant et;
+	    for (UE ue : listeUE) {
+		//et = ue.getListeECUE().eUE().get(ecue.getListeEtud().indexOf(e));
+		//nbHeures += ecue.getNbHeures();
+		//noteTotal += et.getNoteSession1() * nbHeures;
+	    }
+	    return moyenne;
+	}
     }
 
     public String getVersionEtape() {
-        return versionEtape;
+	return versionEtape;
     }
 
     public void setVersionEtape(String versionEtape) {
-        this.versionEtape = versionEtape;
+	this.versionEtape = versionEtape;
     }
 
     public String getCodeEtape() {
-        return codeEtape;
+	return codeEtape;
     }
 
     public void setCodeEtape(String codeEtape) {
-        this.codeEtape = codeEtape;
+	this.codeEtape = codeEtape;
     }
 
     public String getResponsable() {
-        return responsable;
+	return responsable;
     }
 
     public void setResponsable(String responsable) {
-        this.responsable = responsable;
+	this.responsable = responsable;
     }
 
     public String getPrenomResponsable() {
-        return responsable.split(" ")[0];
+	return responsable.split(" ")[0];
     }
 
     public String getNomResponsable() {
-        return responsable.split(" ")[1];
+	return responsable.split(" ")[1];
     }
 
     public String getVersionDiplome() {
-        return versionDiplome;
+	return versionDiplome;
     }
 
     public void setVersionDiplome(String versionDiplome) {
-        this.versionDiplome = versionDiplome;
+	this.versionDiplome = versionDiplome;
     }
 
     public Semestre getSemestre(int i) {
-        if (i == 1) {
-            return semestre1;
-        } else if (i == 2) {
-            return semestre2;
-        } else {
-            return null;
-        }
+	if (i == 1) {
+	    return semestre1;
+	} else if (i == 2) {
+	    return semestre2;
+	} else {
+	    return null;
+	}
     }
 
     public String toString() {
-        return "Code Etape : " + this.getCodeEtape() + "\n"
-                + "Version etape : " + this.getVersionEtape() + "\n"
-                + "Responsable : " + this.getResponsable() + "\n"
-                + "Version diplome : " + this.getVersionDiplome() + "\n"
-                + "Semestre 1 : " + semestre1.toString() + "\n"
-                + "Semestre 2 : " + semestre2.toString() + "\n";
+	return "Code Etape : " + this.getCodeEtape() + "\n"
+		+ "Version etape : " + this.getVersionEtape() + "\n"
+		+ "Responsable : " + this.getResponsable() + "\n"
+		+ "Version diplome : " + this.getVersionDiplome() + "\n"
+		+ "Semestre 1 : " + semestre1.toString() + "\n"
+		+ "Semestre 2 : " + semestre2.toString() + "\n";
     }
 }
