@@ -719,5 +719,13 @@ begin
 end etudiant_del;
 /
 
-var sh1 number;
-:sh1 := DBMS_CRYPTO.hash_sh1;
+    CREATE OR REPLACE FUNCTION getHash (p_in varchar2)
+       RETURN RAW
+    IS
+       l_hash   RAW (4000);
+    BEGIN
+       l_hash := DBMS_CRYPTO.HASH (src => UTL_RAW.cast_to_raw(p_in), typ => DBMS_CRYPTO.hash_sh1);
+       RETURN l_hash;
+    END;
+    /
+
