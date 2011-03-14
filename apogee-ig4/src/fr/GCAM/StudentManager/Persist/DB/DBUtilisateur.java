@@ -66,6 +66,7 @@ public class DBUtilisateur extends DB<Utilisateur> {
      * @throws Exception
      */
     public Utilisateur find(Object request) throws Exception {
+	System.out.println("request = " + request);
 	if (request instanceof ArrayList) {
 	    return this.findWithLogin((ArrayList) request);
 	} else if (request instanceof Integer) {
@@ -119,11 +120,24 @@ public class DBUtilisateur extends DB<Utilisateur> {
 	Utilisateur util = new Utilisateur();
 	System.out.println("a.toString() = " + a.toString());
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
-		+ "where nom = '" + ((String) a.get(1)).toLowerCase() + "' and "
-		+ "prenom = '" + ((String) a.get(0)).toLowerCase() + "' and "
-		+ "mdp = '" + (SHA1.getHash((String) a.get(0))) + "'");
+	String str = "SELECT lower(nom) as nom, lower(prenom) as prenom, mdp, mail, coderesponsabilite, libelle from VO_Utilisateur "
+		+ "where lower(nom) = '" + ((String) a.get(1)).toLowerCase() + "' and "
+		+ "lower(prenom) = '" + ((String) a.get(0)).toLowerCase() + "' and "
+		+ "mdp = getHash('" + (String) a.get(2) + "')";
+	System.out.println("str = " + str);
+	ResultSet result = s.executeQuery(str);
+
+//	ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
+//		+ "where nom = 'testNom' and "
+//		+ "prenom = 'testPrenom' and "
+//		+ "mdp = getHash('testPass')");
+
+
+	System.out.println("((String) a.get(1)).toLowerCase() = " + ((String) a.get(1)).toLowerCase());
+	System.out.println("((String) a.get(0)).toLowerCase() = " + ((String) a.get(0)).toLowerCase());
+	System.out.println("(String) a.get(2) = " + (String) a.get(2));
 	if (result.first()) {
+	    System.out.println("qd");
 	    util.setNom(result.getString("nom"));
 	    util.setPrenom(result.getString("prenom"));
 	    util.setMDP(result.getString("mdp"));
