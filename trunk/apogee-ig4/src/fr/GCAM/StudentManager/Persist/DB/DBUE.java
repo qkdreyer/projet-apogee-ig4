@@ -56,7 +56,7 @@ public class DBUE extends DB<UE> {
     /**
      * La fonction, renvoie un POJO UE, a partir de l'id passé en parametre.<br>
      *
-     * @param id(String) L'id de l'UE que l'on souhaite charger
+     * @param id(String) Le codeUE de l'UE que l'on souhaite charger
      * @return L'UE correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
