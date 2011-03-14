@@ -1,6 +1,5 @@
-- VAE / APDJ / ChoixUE / PJ / moyenne etape ?
+- ChoixUE / PJ / moyenne etape ?
 - Gestion controller
-- oid vue
 - Implementer statistiques / admin (jdom admin, pojo admin, vue admin)
 - Triggers sur vues
 - md5 oracle
