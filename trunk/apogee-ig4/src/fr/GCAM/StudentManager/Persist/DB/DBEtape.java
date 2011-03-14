@@ -54,7 +54,7 @@ public class DBEtape extends DB<Etape> {
     /**
      * La fonction, renvoie un POJO Etape, a partir de l'id passé en parametre.<br>
      *
-     * @param id(String) L'id de l'Etape que l'on souhaite charger
+     * @param id(String) Le codeEtape de l'Etape que l'on souhaite charger
      * @return L'Etape correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
