@@ -74,10 +74,7 @@ public class DBUE extends DB<UE> {
             ue.setCodeSemestre(result.getString("codeSemestre"));
 
             do {
-                //ue.getListeECUE().add(new UE.ECUEUE(
-                ue.getListeECUE().add(new ECUE(
-                        result.getString("codeMatiere"),
-                        result.getString("libelleECUE")));
+                ue.getListeECUE().add(new DBECUE(conn).find(result.getString("codeMatiere")));
             } while (result.next());
         }
         return ue;

@@ -112,7 +112,7 @@ public class DBECUE extends DB<ECUE> {
      * La fonction, renvoie un POJO ECUE, a partir de l'id passé en parametre.<br>
      * Require : <br>
      * Ensure : <br>
-     * @param id(String) L'id de l'ecue que l'on souhaite charger
+     * @param id(String) Le codeMatière de l'ecue que l'on souhaite charger
      * @return L'ECUE correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
