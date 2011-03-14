@@ -117,7 +117,7 @@ public class DBUtilisateur extends DB<Utilisateur> {
      */
     private Utilisateur findWithLogin(ArrayList a) throws Exception {
 	Utilisateur util = new Utilisateur();
-
+	System.out.println("a.toString() = " + a.toString());
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
 		+ "where nom = '" + ((String) a.get(1)).toLowerCase() + "' and "
