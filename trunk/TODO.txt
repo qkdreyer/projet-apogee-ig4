@@ -1,6 +1,6 @@
 - ChoixUE / PJ / moyenne etape ?
 - Gestion controller
-- Implementer statistiques / admin (jdom admin, pojo admin, vue admin)
+- Implementer statistiques / finir admin
 - Triggers sur vues
 - md5 oracle
 
