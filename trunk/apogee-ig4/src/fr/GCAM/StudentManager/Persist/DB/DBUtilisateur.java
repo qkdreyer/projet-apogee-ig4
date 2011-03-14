@@ -4,7 +4,7 @@
  */
 package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.Core.MD5;
+import fr.GCAM.StudentManager.Core.SHA1;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -122,7 +122,7 @@ public class DBUtilisateur extends DB<Utilisateur> {
 	ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
 		+ "where nom = '" + ((String) a.get(1)).toLowerCase() + "' and "
 		+ "prenom = '" + ((String) a.get(0)).toLowerCase() + "' and "
-		+ "mdp = '" + (MD5.getHash((String) a.get(0))) + "'");
+		+ "mdp = '" + (SHA1.getHash((String) a.get(0))) + "'");
 	if (result.first()) {
 	    util.setNom(result.getString("nom"));
 	    util.setPrenom(result.getString("prenom"));

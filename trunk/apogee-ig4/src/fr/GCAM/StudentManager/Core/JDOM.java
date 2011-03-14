@@ -110,8 +110,8 @@ public class JDOM {
 
 	    Utilisateur.addContent(new Element("nom").setText(util.getNom()));
 	    Utilisateur.addContent(new Element("prenom").setText(util.getPrenom()));
-	    //Utilisateur.addContent(new Element("mdp").setText(util.getMDP()));
-	    Utilisateur.addContent(new Element("mdp").setText(MD5.getHash(util.getMDP())));
+	    Utilisateur.addContent(new Element("mdp").setText(util.getMDP()));
+	    //Utilisateur.addContent(new Element("mdp").setText(MD5.getHash(util.getMDP())));
 	    Utilisateur.addContent(new Element("mail").setText(util.getMail()));
 	    Utilisateur.addContent(listeResponsabilites);
 	    root.addContent(Utilisateur);

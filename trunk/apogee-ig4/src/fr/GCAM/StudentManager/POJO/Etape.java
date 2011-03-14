@@ -93,13 +93,13 @@ public class Etape {
 	public float getMoyenne(Etudiant e) {
 	    float moyenne = 0;
 	    float nbCredit = 0;
-	    Etudiant et;
 	    for (UE ue : listeUE) {
-		//et = ue.getListeECUE().eUE().get(ecue.getListeEtud().indexOf(e));
-		//nbHeures += ecue.getNbHeures();
-		//noteTotal += et.getNoteSession1() * nbHeures;
+		if (!e.isAPDJ() && !e.isVAE()) {
+		    moyenne = moyenne + ue.getMoyenne(e);
+		    nbCredit = nbCredit + ue.getNbECTS();
+		}
 	    }
-	    return moyenne;
+	    return moyenne/nbCredit;
 	}
     }
 
@@ -151,6 +151,12 @@ public class Etape {
 	} else {
 	    return null;
 	}
+    }
+
+    public float getMoyenne(Etudiant e) {
+	float moyenne = 0;
+
+	return moyenne;
     }
 
     public String toString() {

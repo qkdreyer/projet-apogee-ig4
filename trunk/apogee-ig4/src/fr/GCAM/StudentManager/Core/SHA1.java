@@ -13,15 +13,14 @@ import java.security.NoSuchAlgorithmException;
  *
  * @author Quentin
  */
-public class MD5 {
+public class SHA1 {
 
     public static String getHash(String value) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        return String.format("%1$032X", new BigInteger(1, MessageDigest.getInstance("MD5").digest(value.getBytes())));
-    }
+        return String.format("%1$032X", new BigInteger(1, MessageDigest.getInstance("SHA").digest(value.getBytes())));    }
 
     public static void main(String[] args) {
         try {
-            System.out.println(getHash("password"));
+            System.out.println(getHash("tada"));
         } catch (NoSuchAlgorithmException ex) {
         } catch (UnsupportedEncodingException ex) {
         }
