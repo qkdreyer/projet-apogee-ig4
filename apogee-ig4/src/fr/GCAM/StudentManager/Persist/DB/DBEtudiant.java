@@ -52,7 +52,7 @@ public class DBEtudiant extends DB<Etudiant> {
     /**
      * La fonction, renvoie un POJO Etudiant, a partir de l'id passé en parametre.<br>
      *
-     * @param id(int) L'id de l'Etudiant que l'on souhaite charger
+     * @param id(int) L'idEtudiant de l'Etudiant que l'on souhaite charger
      * @return L'Etudiant correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */

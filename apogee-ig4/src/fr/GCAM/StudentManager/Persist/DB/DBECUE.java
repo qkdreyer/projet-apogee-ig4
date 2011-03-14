@@ -129,12 +129,7 @@ public class DBECUE extends DB<ECUE> {
             ecue.setCodeUE(result.getString("codeUE"));
 
             do {
-                ecue.getListeEtud().add(new Etudiant(
-                        result.getInt("numEtudiant"),
-                        result.getString("nom"),
-                        result.getString("prenom"),
-                        result.getFloat("noteSession1"),
-                        result.getFloat("noteSession2")));
+                ecue.getListeEtud().add(new DBEtudiant(conn).find(result.getInt("numEtudiant")));
             } while (result.next());
         }
         return ecue;

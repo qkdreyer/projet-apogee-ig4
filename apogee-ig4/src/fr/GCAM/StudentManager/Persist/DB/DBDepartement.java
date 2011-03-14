@@ -58,7 +58,7 @@ public class DBDepartement extends DB<Departement> {
      * REQUETE FAUSSE, La description concerne le fonctionnement théorique de la méthode
      *
      * La fonction, renvoie un POJO Departement, a partir de l'id passé en parametre.<br>
-     * @param id(String) L'id du département que l'on souhaite charger
+     * @param id(String) La versionDiplome du département que l'on souhaite charger
      * @return Le departement correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
@@ -73,9 +73,7 @@ public class DBDepartement extends DB<Departement> {
             dept.setMnemo(result.getString("mnemo"));
 
             do {
-                dept.getListeEtape().add(new Etape(
-                        result.getString("codeEtape"),
-                        result.getString("versionEtape")));
+                dept.getListeEtape().add(new DBEtape(conn).find(result.getString("codeEtape")));
             } while (result.next());
         }
         return dept;
