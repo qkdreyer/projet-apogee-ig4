@@ -4,7 +4,7 @@
  */
 package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import java.sql.SQLException;
@@ -30,7 +30,7 @@ public class DBECUETest {
     private static Connection conn;
 
     private static ECUE ecue;
-    private static Etudiant etud;
+    private static AbstractEtudiant etud;
 
     public DBECUETest() {
     }
@@ -40,7 +40,7 @@ public class DBECUETest {
 
 	conn = ConnectionDB.getConnection();
 
-	etud = new Etudiant(99999, "netud", "petud", (float) 0.0, (float) 0.0);
+	etud = new AbstractEtudiant(99999, "netud", "petud", (float) 0.0, (float) 0.0);
 
 	ecue = new ECUE();
 	ecue.setCodeMatiere("TEST001");

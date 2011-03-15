@@ -4,8 +4,9 @@
  */
 package fr.GCAM.StudentManager.Persist.DB;
 
+import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -51,10 +52,10 @@ public class DBECUE extends DB<ECUE> {
      * @see fr.GCAM.StudentManager.Persist.DB.DBECUE.updateNote2
      */
     public void update(ECUE ecue) throws Exception {
-        Etudiant etudiant;
+        EtudiantECUE etudiant;
         Iterator i = ecue.getListeEtud().iterator();
         while (i.hasNext()) {
-            etudiant = (Etudiant) i.next();
+            etudiant = (EtudiantECUE) i.next();
             if (etudiant.isNoteSession1Changed()) {
                 updateNote1(etudiant.getNumEtudiant(), ecue.getCodeMatiere(), etudiant.getNoteSession1());
             }
@@ -130,7 +131,7 @@ public class DBECUE extends DB<ECUE> {
             ecue.setCodeUE(result.getString("codeUE"));
 
             do {
-                ecue.getListeEtud().add(new DBEtudiant(conn).find(result.getInt("numEtudiant")));
+                ecue.getListeEtud().add(new DBEtudiantECUE(conn).find(result.getInt("numEtudiant")));
             } while (result.next());
         }
         return ecue;

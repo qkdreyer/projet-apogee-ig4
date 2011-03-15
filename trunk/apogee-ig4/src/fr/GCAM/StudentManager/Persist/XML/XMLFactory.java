@@ -5,7 +5,9 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
+import fr.GCAM.StudentManager.Persist.XML.Etudiant.XMLEtudiantECUE;
 import fr.GCAM.StudentManager.POJO.*;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 
@@ -33,8 +35,8 @@ public class XMLFactory extends AbstractDAOFactory {
      * @return Renvoie un DAOEtudiant qui est un DAO concret instancié avec le POJO
      * Etudiant.
      */
-    public DAO<Etudiant> getDAOEtudiant() {
-	return new XMLEtudiant();
+    public DAO<EtudiantECUE> getDAOEtudiantECUE() {
+	return new XMLEtudiantECUE();
     }
 
     /**

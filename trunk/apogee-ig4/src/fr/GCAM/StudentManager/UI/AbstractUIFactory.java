@@ -4,6 +4,7 @@
  */
 package fr.GCAM.StudentManager.UI;
 
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.POJO.*;
 import fr.GCAM.StudentManager.UI.Console.ConsoleFactory;
 import fr.GCAM.StudentManager.UI.GUI.GUIFactory;
@@ -35,7 +36,7 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI Etudiant, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<Etudiant> getUIEtudiant(String s);
+    public abstract UI<AbstractEtudiant> getUIEtudiant(String s);
 
     /**
      * Methode renvoyant une UI(User Interface) pour une ECUE

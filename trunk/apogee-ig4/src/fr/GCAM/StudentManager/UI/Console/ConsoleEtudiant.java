@@ -5,14 +5,14 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 
 /**
  * Classe de l'UI Console du departement
  *
  * @author Quentin
  */
-public class ConsoleEtudiant extends Console<Etudiant> {
+public class ConsoleEtudiant extends Console<AbstractEtudiant> {
 
     public ConsoleEtudiant(String s) {
     }

@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.POJO.*;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import fr.GCAM.StudentManager.UI.UI;
@@ -32,7 +33,7 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Etudiant(POJO)
      */
-    public UI<Etudiant> getUIEtudiant(String s) {
+    public UI<AbstractEtudiant> getUIEtudiant(String s) {
 	return new GUIEtudiant(s);
     }
 

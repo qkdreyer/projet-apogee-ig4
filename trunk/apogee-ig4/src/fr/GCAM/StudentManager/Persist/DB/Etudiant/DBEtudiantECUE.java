@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.GCAM.StudentManager.Persist.DB;
+package fr.GCAM.StudentManager.Persist.DB.Etudiant;
 
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Persist.DB.DB;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -16,9 +17,9 @@ import java.util.ArrayList;
  *
  * @author Quentin
  */
-public class DBEtudiant extends DB<Etudiant> {
+public class DBEtudiantECUE extends DB<EtudiantECUE> {
 
-    public DBEtudiant(Connection conn) {
+    public DBEtudiantECUE(Connection conn) {
 	super(conn);
     }
 
@@ -28,7 +29,7 @@ public class DBEtudiant extends DB<Etudiant> {
      * @param obj l'Etudiant qui doit être insérée dans la base de données
      * @throws Exception
      */
-    public void create(Etudiant obj) throws Exception {
+    public void create(EtudiantECUE obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -38,7 +39,7 @@ public class DBEtudiant extends DB<Etudiant> {
      * @param obj l'Etudiant qui doit être modifiée dans la base de données
      * @throws Exception
      */
-    public void update(Etudiant obj) throws Exception {
+    public void update(EtudiantECUE obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -48,7 +49,7 @@ public class DBEtudiant extends DB<Etudiant> {
      * @param obj le Departement qui doit être supprimée dans la base de données
      * @throws Exception
      */
-    public void delete(Etudiant obj) throws Exception {
+    public void delete(EtudiantECUE obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -59,16 +60,14 @@ public class DBEtudiant extends DB<Etudiant> {
      * @return L'Etudiant correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
-    public Etudiant find(Object id) throws Exception {
-        Etudiant e = new Etudiant();
+    public EtudiantECUE find(Object id) throws Exception {
+        EtudiantECUE e = new EtudiantECUE();
 
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT * from VO_Etudiant where numEtudiant = " + id);
+        ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where numEtudiant = " + id);
         if (result.first()) {
 	    e.setNumEtudiant(result.getInt("numEtudiant"));
-	    e.setPointJuryAnnee(result.getInt("pointJuryAnnee"));
 	    e.setNumIne(result.getString("numIne"));
-	    e.setScoreToeic(result.getInt("scoreToeic"));
 	    e.setLibelleProvenance(result.getString("libelleProvenance"));
 	    e.setLibelleStatut(result.getString("libelleStatut"));
 	    e.setLibelleNationalite(result.getString("libelleNationalite"));
@@ -87,8 +86,8 @@ public class DBEtudiant extends DB<Etudiant> {
      * @return L'ensemble des etudiants
      * @throws Exception
      */
-    public ArrayList<Etudiant> list() throws Exception {
-        ArrayList<Etudiant> listeEtud = new ArrayList<Etudiant>();
+    public ArrayList<EtudiantECUE> list() throws Exception {
+        ArrayList<EtudiantECUE> listeEtud = new ArrayList<EtudiantECUE>();
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet result = s.executeQuery("select * from Etudiant order by numEtudiant");
         if (result.first()) {
