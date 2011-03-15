@@ -5,8 +5,8 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.UE;
+import java.util.ArrayList;
 import java.util.Iterator;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -86,24 +86,8 @@ public class XMLUE extends XML<UE> {
         return ue;
     }
 
-    /**
-     * Methode renvoyant l'ensemble des clés primaires du fichier XML correspondant
-     * (ici UE.xml)
-     *
-     * @return L'ensemble des clés primaires (codeUE) des UE
-     * @throws Exception
-     * @deprecated
-     */
-    public String list() throws Exception {
-        String str = "";
-        Element courant;
-        Iterator i = new SAXBuilder().build("xml/UE.xml").getRootElement().getChildren("UE").iterator();
-        Iterator j;
-
-        while (i.hasNext()) {
-            courant = (Element) i.next();
-            str = str + courant.getChild("codeUE").getText() + "\n";
-        }
-        return str;
+    public ArrayList<UE> list() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }

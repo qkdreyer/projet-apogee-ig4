@@ -9,32 +9,20 @@ import fr.GCAM.StudentManager.POJO.Etape;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 import fr.GCAM.StudentManager.UI.UI;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  *
  * @author Quentin
  */
-public class ControllerEtape extends AbstractController implements Observer {
+public class ControllerEtape extends AbstractController {
 
     private UI disp;
     private DAO<Etape> etapeDAO;
-    private Etape etape;
+    private Etape etape = null;
 
     public ControllerEtape(UI disp, String s) {
         this.disp = disp;
         etapeDAO = AbstractDAOFactory.getDAOFactory(s).getDAOEtape();
-        etape = new Etape();
-    }
-
-    /**
-     * Methodé de l'interface Observer
-     * @param o
-     * @param arg
-     */
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -92,13 +80,6 @@ public class ControllerEtape extends AbstractController implements Observer {
      */
     public void quit() {
         System.exit(0);
-    }
-
-    /**
-     * Cette fonction affiche la liste des clés primaires (codeEtape) des Etape
-     */
-    public void list() throws Exception {
-        disp.display(etapeDAO.list());
     }
 
     /**

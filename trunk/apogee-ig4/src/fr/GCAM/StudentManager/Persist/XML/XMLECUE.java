@@ -7,6 +7,7 @@ package fr.GCAM.StudentManager.Persist.XML;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.Etudiant;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -175,23 +176,8 @@ public class XMLECUE extends XML<ECUE> {
         return ecue;
     }
 
-    /**
-     * Methode renvoyant l'ensemble des clés primaires du fichier XML correspondant
-     * (ici ECUE.xml)
-     *
-     * @return L'ensemble des clés primaires (codeMatiere) des ECUE
-     * @throws Exception
-     * @deprecated 
-     */
-    public String list() throws Exception {
-        String str = "";
-        Element courant;
-        Iterator i = new SAXBuilder().build("xml/ECUE.xml").getRootElement().getChildren("ECUE").iterator();
-
-        while (i.hasNext()) {
-            courant = (Element) i.next();
-            str = str + courant.getChild("codeMatiere").getText() + "\n";
-        }
-        return str;
+    public ArrayList<ECUE> list() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }

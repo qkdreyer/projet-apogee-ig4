@@ -6,8 +6,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.POJO.Departement;
-import fr.GCAM.StudentManager.POJO.Etape;
-import fr.GCAM.StudentManager.Persist.DB.DBEtape;
+import java.util.ArrayList;
 import java.util.Iterator;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -84,23 +83,8 @@ public class XMLDepartement extends XML<Departement> {
         return dept;
     }
 
-    /**
-     * Methode renvoyant l'ensemble des clés primaires du fichier XML correspondant
-     * (ici Departement.xml)
-     *
-     * @return L'ensemble des clés primaires (versionDiplome) des Departement
-     * @throws Exception
-     * @deprecated 
-     */
-    public String list() throws Exception {
-        String str = "";
-        Element courant;
-        Iterator i = new SAXBuilder().build("xml/Departement.xml").getRootElement().getChildren("Departement").iterator();
-
-        while (i.hasNext()) {
-            courant = (Element) i.next();
-            str = str + courant.getChild("versionDiplome").getText() + "\n";
-        }
-        return str;
+    public ArrayList<Departement> list() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }

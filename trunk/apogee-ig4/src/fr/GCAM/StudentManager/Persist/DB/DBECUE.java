@@ -9,6 +9,7 @@ import fr.GCAM.StudentManager.POJO.Etudiant;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -135,23 +136,9 @@ public class DBECUE extends DB<ECUE> {
         return ecue;
     }
 
-    /**
-     * Methode renvoyant l'ensemble des clés primaires de la vue correspondante
-     * (ici vo_ecue)
-     *
-     * @return L'ensemble des clés primaires (codeMatiere) des ECUE
-     * @throws Exception
-     * @deprecated 
-     */
-    public String list() throws Exception {
-        String str = "";
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT distinct codeMatiere from VO_ECUE");
-        if (result.first()) {
-            do {
-                str = str + result.getString(1) + "\n";
-            } while (result.next());
-        }
-        return str;
+    public ArrayList<ECUE> list() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
+
 }

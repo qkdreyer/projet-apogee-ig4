@@ -9,6 +9,7 @@ import fr.GCAM.StudentManager.POJO.UE;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Cette classe définit les methodes de l'interface DAO pour le type Etape (POJO).
@@ -87,23 +88,9 @@ public class DBEtape extends DB<Etape> {
         return etape;
     }
 
-    /**
-     * Methode renvoyant l'ensemble des clés primaires de la vue correspondante
-     * (ici vo_etape)
-     *
-     * @return L'ensemble des clés primaires (codeEtape) des Etape
-     * @throws Exception
-     * @deprecated 
-     */
-    public String list() throws Exception {
-        String str = "";
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT distinct codeEtape from VO_Etape");
-        if (result.first()) {
-            do {
-                str = str + result.getString(1) + "\n";
-            } while (result.next());
-        }
-        return str;
+    public ArrayList<Etape> list() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
+
 }

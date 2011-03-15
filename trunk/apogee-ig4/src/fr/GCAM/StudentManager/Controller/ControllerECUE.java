@@ -9,33 +9,21 @@ import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 import fr.GCAM.StudentManager.UI.UI;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Cette classe implemente la partie Controlleur du MVC(Model View Controller).
  *
  * @author Quentin
  */
-public class ControllerECUE extends AbstractController implements Observer {
+public class ControllerECUE extends AbstractController {
 
     private UI disp;
     private DAO<ECUE> ecueDAO;
-    private ECUE ecue;
+    private ECUE ecue = null;
 
     public ControllerECUE(UI disp, String s) {
         this.disp = disp;
         ecueDAO = AbstractDAOFactory.getDAOFactory(s).getDAOECUE();
-        ecue = new ECUE();
-    }
-
-    /**
-     * Methodé de l'interface Observer
-     * @param o
-     * @param arg
-     */
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -111,7 +99,7 @@ public class ControllerECUE extends AbstractController implements Observer {
      * @param msg(String) Le message contenant les informations à 'find'
      * @throws Exception
      */
-    private  void find(String[] msg) throws Exception {
+    private void find(String[] msg) throws Exception {
         ecue = (ECUE) ecueDAO.find(msg[1]);
         disp.display(ecue.toString());
     }
@@ -122,7 +110,7 @@ public class ControllerECUE extends AbstractController implements Observer {
      * @param msg(String) Le message contenant les informations à 'update'
      * @throws Exception
      */
-    private  void update(String[] msg) throws Exception {
+    private void update(String[] msg) throws Exception {
         ecueDAO.update(ecue);
     }
 
@@ -133,13 +121,6 @@ public class ControllerECUE extends AbstractController implements Observer {
      */
     private void quit() {
         System.exit(0);
-    }
-
-    /**
-     * Cette fonction affiche la liste des clés primaires (codeMatiere) des ECUE
-     */
-    private void list() throws Exception {
-        disp.display(ecueDAO.list());
     }
 
     /**

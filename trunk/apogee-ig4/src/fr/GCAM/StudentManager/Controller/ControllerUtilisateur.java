@@ -5,29 +5,27 @@
 package fr.GCAM.StudentManager.Controller;
 
 import fr.GCAM.StudentManager.POJO.Utilisateur;
+import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 import fr.GCAM.StudentManager.UI.UI;
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  *
  * @author Quentin
  */
-public class ControllerUtilisateur extends AbstractController implements Observer {
+public class ControllerUtilisateur extends AbstractController {
 
     private UI disp;
     private DAO<Utilisateur> userDAO;
-    private Utilisateur user;
+    private Utilisateur user = null;
     private String dao;
 
     public ControllerUtilisateur(UI disp, String s) {
         this.disp = disp;
         this.dao = s;
         this.userDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUtilisateur();
-        this.user = new Utilisateur();
     }
 
     /**
@@ -53,12 +51,12 @@ public class ControllerUtilisateur extends AbstractController implements Observe
                 userInformation.add(msg[1].split("\\.")[1]);
                 userInformation.add(msg[2]);
                 user = (Utilisateur) userDAO.find(userInformation);
-                contr = this.logUser();
+                contr = this.login();
             }
         } else if (msg[0].equals("#help")) {
             this.help();
         } else if (msg[0].equals("#quit")) {
-	    this.quit();
+            this.quit();
         } else if (msg[0].equals("#list")) {
             this.list();
         }
@@ -70,7 +68,7 @@ public class ControllerUtilisateur extends AbstractController implements Observe
      *
      * @throws Exception
      */
-    private  void help() {
+    private void help() {
         disp.display("\t #login username password");
         disp.display("\t #list");
         disp.display("\t #quit");
@@ -82,32 +80,32 @@ public class ControllerUtilisateur extends AbstractController implements Observe
      * @return
      * @throws Exception
      */
-    public AbstractController logUser() throws Exception {
-        AbstractController contr = null;
-        if (user.getListeResponsabilites().size() > 0) {
-            Utilisateur.Responsabilite r = user.getListeResponsabilites().get(user.getListeResponsabilites().size()-1);
-            if (r.getLibelle().equals("ECUE")) {
-                contr = new ControllerECUE(disp, dao);
-            } else if (r.getLibelle().equals("UE")) {
-                contr = new ControllerUE(disp, dao);
-            } else if (r.getLibelle().equals("Etape")) {
-                contr = new ControllerEtape(disp, dao);
-            } else if (r.getLibelle().equals("Departement")) {
-                contr = new ControllerDepartement(disp, dao);
-            }
-            contr.handleMessage("#find " + r.getCodeResponsabilite());
-            disp.display("get" + r.getLibelle() + "UI #find " + r.getCodeResponsabilite());
+    public AbstractController login() throws Exception {
+        if (user.getPrenom().equals("root")) {
+            return loginAdmin();
+        } else if (user.getListeResponsabilites().size() > 0) {
+            return loginUser(user.getListeResponsabilites().get(user.getListeResponsabilites().size() - 1));
+        } else {
+            return null;
         }
-        return contr;
     }
 
-    /**
-     * Methodé de l'interface Observer
-     * @param o
-     * @param arg
-     */
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private AbstractController loginAdmin() {
+        return new ControllerAdmin(disp, dao);
+    }
+
+    private AbstractController loginUser(Responsabilite r) throws Exception {
+        if (r.getLibelle().equals("ECUE")) {
+            return new ControllerECUE(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
+        } else if (r.getLibelle().equals("UE")) {
+            return new ControllerUE(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
+        } else if (r.getLibelle().equals("Etape")) {
+            return new ControllerEtape(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
+        } else if (r.getLibelle().equals("Departement")) {
+            return new ControllerDepartement(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -115,14 +113,17 @@ public class ControllerUtilisateur extends AbstractController implements Observe
      *
      * @throws Exception
      */
-    private void quit(){
-	System.exit(0);
+    private void quit() {
+        System.exit(0);
     }
 
     /**
      * Cette fonction affiche la liste des clés primaires (prenom.nom) des Enseignants
      */
-    private  void list() throws Exception {
-        disp.display(userDAO.list());
+    private void list() throws Exception {
+        for (Utilisateur u : userDAO.list()) {
+            disp.display(u.getPrenom() + "." + u.getNom());
+        }
     }
+
 }
