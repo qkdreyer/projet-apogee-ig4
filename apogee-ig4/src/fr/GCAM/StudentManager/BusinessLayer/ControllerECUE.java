@@ -72,8 +72,7 @@ public class ControllerECUE extends AbstractController {
      */
     private void note1(String[] msg) throws Exception {
         if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
-            ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession1(Float.parseFloat(msg[2]));
-            ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession1Changed(true);
+            ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).modifyNoteSession1(Float.parseFloat(msg[2]));
             disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).toString());
             handleMessage("#update");
         }
@@ -87,8 +86,7 @@ public class ControllerECUE extends AbstractController {
      */
     private void note2(String[] msg) throws Exception {
         if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
-            ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession2(Float.parseFloat(msg[2]));
-            ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession2Changed(true);
+            ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).modifyNoteSession2(Float.parseFloat(msg[2]));
             disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).toString());
             handleMessage("#update");
         }

@@ -121,13 +121,14 @@ public class DBUtilisateurTest {
 //	ArrayList<Utilisateur> expResult = new ArrayList<Utilisateur>();
 
 	ArrayList<Utilisateur> result = dbu.list();
+	System.out.println("result.toString() = " + result.toString());
 
 	 //on recupere le resultat
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet r = s.executeQuery("SELECT distinct(idenseignant) from vo_utilisateur");
 	if (r.first()) {
 	    do {
-		util.setIdEnseignant(r.getInt("idenseignant"));;
+		util.setIdEnseignant(r.getInt("idenseignant"));
 		System.out.println("util.getIdEnseignant() = " + util.getIdEnseignant());
                 assertTrue(result.contains(util));
             } while (r.next());

@@ -76,8 +76,8 @@ public class XMLECUETest {
     public void testUpdate() throws Exception {
 	System.out.println("update XMLECUE");
 	XMLECUE instance = new XMLECUE();
-	ecue_m.getListeEtud().get(0).setNoteSession1((float)12.9);
-	ecue_m.getListeEtud().get(0).setNoteSession2((float)7.9);
+	ecue_m.getListeEtud().get(0).modifyNoteSession1((float)12.9);
+	ecue_m.getListeEtud().get(0).modifyNoteSession2((float)7.9);
 	instance.update(ecue_m);
 	float note_r1 = 0;
 	float note_r2 = 0;

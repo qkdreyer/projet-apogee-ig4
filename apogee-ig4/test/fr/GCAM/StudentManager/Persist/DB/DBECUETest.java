@@ -97,8 +97,8 @@ public class DBECUETest {
         DBECUE dbecue = new DBECUE(conn);
         ecue_m.getListeEtud().add(etud);
 
-        etud.setNoteSession1((float) 12.8);
-        etud.setNoteSession2((float) 5.8);
+        etud.modifyNoteSession1((float) 12.8);
+        etud.modifyNoteSession2((float) 5.8);
 
         //on update
         dbecue.update(ecue_m);
