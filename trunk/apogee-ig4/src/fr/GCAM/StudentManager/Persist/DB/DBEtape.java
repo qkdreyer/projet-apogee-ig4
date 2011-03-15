@@ -6,6 +6,7 @@ package fr.GCAM.StudentManager.Persist.DB;
 
 import fr.GCAM.StudentManager.POJO.Etape;
 import fr.GCAM.StudentManager.POJO.UE;
+import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantEtape;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -74,6 +75,18 @@ public class DBEtape extends DB<Etape> {
                     + result.getString("nomResponsable"));
 
             String codeSemestre1 = result.getString("codeSemestre");
+
+            //TODO: obtenir la liste des étudiants de l'étape A vérifier
+            ResultSet resultEtudiant = s.executeQuery("SELECT codeEtudiant FROM Etudiant"
+                    + "WHERE codeEtape = '" + (String)id + "'");
+
+            if (resultEtudiant.first()){
+                do {
+                    etape.getListeEtud().add(new DBEtudiantEtape(conn).find(result.getString("codeEtudiant")));
+                }while(resultEtudiant.next());
+            }
+
+
             Etape.Semestre semestre;
             do {
                 if (codeSemestre1.equals(result.getString("codeSemestre"))) {
@@ -88,6 +101,7 @@ public class DBEtape extends DB<Etape> {
                 semestre.getListeUE().add( new DBUE(conn).find(result.getString("codeUE")));
             } while (result.next());
         }
+
         return etape;
     }
 

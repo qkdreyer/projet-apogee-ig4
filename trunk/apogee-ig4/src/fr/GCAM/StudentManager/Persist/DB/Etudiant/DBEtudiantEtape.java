@@ -74,7 +74,8 @@ public class DBEtudiantEtape extends DB<EtudiantEtape> {
 	    e.setNom(result.getString("nom"));
 	    e.setPrenom(result.getString("prenom"));
 	    e.setMail(result.getString("mail"));
-	    //TODO
+	    e.setPointJuryAnnee(result.getInt("pointJuryAnnee"));
+            e.setScoreToeic(result.getInt("scoreToeic"));
         }
         return e;
     }
