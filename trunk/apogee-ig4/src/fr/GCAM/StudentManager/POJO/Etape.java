@@ -94,6 +94,7 @@ public class Etape {
             this.listeEtud = listeEtud;
         }
 
+	@Override
 	public String toString() {
 	    String str = "Code Semestre : " + this.getCodeSemestre() + "\n"
 		    + "Nombre d'UE facultatives : " + this.getNbUEFacultatives() + "\n"
@@ -105,16 +106,19 @@ public class Etape {
 	    return str;
 	}
 
-	public float getMoyenne(Etudiant e) { //TODO ajoute pj sem ?
+	public float getMoyenne(int numEtud) {
 	    float moyenne = 0;
 	    float nbCredit = 0;
 	    for (UE ue : listeUE) {
-		if (!e.isAPDJ() && !e.isVAE()) {
-		    moyenne = moyenne + ue.getMoyenne(e);
 		    nbCredit = nbCredit + ue.getNbECTS();
+		    moyenne += ue.getMoyenne(numEtud)*ue.getNbECTS();
+	    }
+	    for (EtudiantSemestre e : listeEtud) {
+		if (e.getNumEtudiant() == numEtud) {
+		    return moyenne/nbCredit + e.getPointJurySemestre();
 		}
 	    }
-	    return moyenne/nbCredit;
+	    return 0;
 	}
     }
 
@@ -178,8 +182,13 @@ public class Etape {
 	}
     }
 
-    public float getMoyenne(Etudiant e) {
-	return semestre1.getMoyenne(e)+semestre2.getMoyenne(e)+e.getPointJuryAnnee();
+    public float getMoyenne(int numEtud) {
+	for (EtudiantEtape e : listeEtud) {
+	    if (e.getNumEtudiant() == numEtud) {
+		return semestre1.getMoyenne(numEtud) + semestre2.getMoyenne(numEtud) + e.getPointJuryAnnee();
+	    }
+	}
+	return 0;
     }
 
     public String toString() {
