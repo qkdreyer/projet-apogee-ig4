@@ -4,6 +4,8 @@
  */
 package fr.GCAM.StudentManager.POJO;
 
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantEtape;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantSemestre;
 import java.util.ArrayList;
 
 /**
@@ -22,10 +24,12 @@ public class Etape {
     private String versionDiplome;
     private Semestre semestre1;
     private Semestre semestre2;
+    private ArrayList<EtudiantEtape> listeEtud;
 
     public Etape() {
 	semestre1 = new Semestre();
 	semestre2 = new Semestre();
+        listeEtud = new ArrayList<EtudiantEtape>();
     }
 
     public Etape(String codeEtape, String versionEtape, String responsable, String versionDiplome) {
@@ -33,6 +37,7 @@ public class Etape {
 	this.versionEtape = versionEtape;
 	this.responsable = responsable;
 	this.versionDiplome = versionDiplome;
+        listeEtud = new ArrayList<EtudiantEtape>();
     }
 
     
@@ -42,9 +47,11 @@ public class Etape {
 	private int nbUEFacultatives;
 	private String codeEtape;
 	private ArrayList<UE> listeUE;
+        private ArrayList<EtudiantSemestre> listeEtud;
 
 	public Semestre() {
 	    listeUE = new ArrayList<UE>();
+            this.listeEtud = new ArrayList<EtudiantSemestre>();
 	}
 
 	public String getCodeEtape() {
@@ -78,6 +85,14 @@ public class Etape {
 	public void setNbUEFacultatives(int nbUEFacultatives) {
 	    this.nbUEFacultatives = nbUEFacultatives;
 	}
+        
+        public ArrayList<EtudiantSemestre> getListeEtud() {
+            return listeEtud;
+        }
+
+        public void setListeEtud(ArrayList<EtudiantSemestre> listeEtud) {
+            this.listeEtud = listeEtud;
+        }
 
 	public String toString() {
 	    String str = "Code Semestre : " + this.getCodeSemestre() + "\n"
@@ -101,6 +116,16 @@ public class Etape {
 	    }
 	    return moyenne/nbCredit;
 	}
+    }
+
+
+
+    public ArrayList<EtudiantEtape> getListeEtud() {
+        return listeEtud;
+    }
+
+    public void setListeEtud(ArrayList<EtudiantEtape> listeEtud) {
+        this.listeEtud = listeEtud;
     }
 
     public String getVersionEtape() {
