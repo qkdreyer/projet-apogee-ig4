@@ -8,7 +8,7 @@ package fr.GCAM.StudentManager.POJO.Etudiant;
  *
  * @author Quentin
  */
-public class EtudiantECUE extends Etudiant {
+public class EtudiantECUE extends AbstractEtudiant {
 
     private float noteSession1;
     private float noteSession2;

@@ -9,7 +9,7 @@ package fr.GCAM.StudentManager.POJO.Etudiant;
  *
  * @author Quentin
  */
-    public class EtudiantSemestre extends Etudiant {
+    public class EtudiantSemestre extends AbstractEtudiant {
 
 	private int pointJurySemestre;
 	private boolean etranger;

@@ -8,7 +8,7 @@ package fr.GCAM.StudentManager.POJO.Etudiant;
  *
  * @author Quentin
  */
-public class EtudiantUE extends Etudiant {
+public class EtudiantUE extends AbstractEtudiant {
 
     private boolean VAE = false;
     private boolean APDJ = false;

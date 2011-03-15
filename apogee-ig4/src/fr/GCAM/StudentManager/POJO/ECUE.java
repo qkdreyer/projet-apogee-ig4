@@ -4,6 +4,8 @@
  */
 package fr.GCAM.StudentManager.POJO;
 
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import java.util.ArrayList;
 
 /**
@@ -21,16 +23,16 @@ public class ECUE {
     private int nbHeures;
     private String responsable;
     private String codeUE;
-    private ArrayList<Etudiant> listeEtud;
+    private ArrayList<EtudiantECUE> listeEtud;
 
     public ECUE() {
-        listeEtud = new ArrayList<Etudiant>();
+        listeEtud = new ArrayList<EtudiantECUE>();
     }
 
     public ECUE(String codeMatiere, String libelleECUE) {
         this.codeMatiere = codeMatiere;
         this.libelleECUE = libelleECUE;
-        listeEtud = new ArrayList<Etudiant>();
+        listeEtud = new ArrayList<EtudiantECUE>();
     }
 
     public boolean hasStudent(Integer i) {
@@ -85,11 +87,11 @@ public class ECUE {
 	this.nbHeures = nbHeures;
     }
 
-    public ArrayList<Etudiant> getListeEtud() {
+    public ArrayList<EtudiantECUE> getListeEtud() {
 	return listeEtud;
     }
 
-    public void setListeEtud(ArrayList<Etudiant> listeEtud) {
+    public void setListeEtud(ArrayList<EtudiantECUE> listeEtud) {
 	this.listeEtud = listeEtud;
     }
 
@@ -102,10 +104,18 @@ public class ECUE {
                 + "Nombre d'heures : " + this.getNbHeures() + "\n"
                 + "Liste etudiants : \n";
 
-        for(Etudiant e : this.getListeEtud()) {
+        for(AbstractEtudiant e : this.getListeEtud()) {
             str += "\t" + e.toString();
         }
         return str;
     }
 
+    public float getNote(int numEtudiant) {
+	for (EtudiantECUE e: listeEtud) {
+	    if (e.getNumEtudiant() == numEtudiant)
+		return e.getNoteSession1();
+	}
+	return 0;
+    }
+	
 }
