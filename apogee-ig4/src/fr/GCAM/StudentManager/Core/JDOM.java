@@ -5,7 +5,6 @@
 package fr.GCAM.StudentManager.Core;
 
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.POJO.*;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.DB.*;
