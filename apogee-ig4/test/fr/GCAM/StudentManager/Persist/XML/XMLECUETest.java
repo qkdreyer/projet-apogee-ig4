@@ -6,7 +6,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.Core.JDOM;
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import java.io.FileOutputStream;
 import org.jdom.output.XMLOutputter;
 import org.jdom.output.Format;
@@ -47,7 +47,7 @@ public class XMLECUETest {
 	    Iterator i = d.getRootElement().getChildren("ECUE").iterator();
 	    Iterator j;
 	    Element ECUE, listeEtud, Etudiant;
-	    Etudiant etud = new Etudiant(99999, "netud", "petud", 0, 0);
+	    AbstractEtudiant etud = new AbstractEtudiant(99999, "netud", "petud", 0, 0);
 	    
 
 	    while (i.hasNext()) {

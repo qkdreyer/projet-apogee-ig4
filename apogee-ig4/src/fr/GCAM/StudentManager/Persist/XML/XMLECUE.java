@@ -4,8 +4,9 @@
  */
 package fr.GCAM.StudentManager.Persist.XML;
 
+import fr.GCAM.StudentManager.Persist.XML.Etudiant.XMLEtudiantECUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -53,10 +54,10 @@ public class XMLECUE extends XML<ECUE> {
      * @see fr.GCAM.StudentManager.Persist.XML.XMLECUE.updateNote2
      */
     public void update(ECUE ecue) throws Exception {
-        Etudiant etudiant;
+        EtudiantECUE etudiant;
         Iterator i = ecue.getListeEtud().iterator();
         while (i.hasNext()) {
-            etudiant = (Etudiant) i.next();
+            etudiant = (EtudiantECUE) i.next();
             if (etudiant.isNoteSession1Changed()) {
                 updateNote1(etudiant.getNumEtudiant(), ecue.getCodeMatiere(), etudiant.getNoteSession1());
             }
@@ -169,7 +170,7 @@ public class XMLECUE extends XML<ECUE> {
                 j = courant.getChild("listeEtud").getChildren("Etudiant").iterator();
                 while (j.hasNext()) {
                     courant = (Element) j.next();
-                    ecue.getListeEtud().add(new XMLEtudiant().find(courant.getChildText("numEtudiant")));
+                    ecue.getListeEtud().add(new XMLEtudiantECUE().find(courant.getChildText("numEtudiant")));
                 }
             }
         }

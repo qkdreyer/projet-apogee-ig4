@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.sql.SQLException;
 import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import java.sql.Statement;
 import java.sql.Connection;
 import org.junit.Ignore;

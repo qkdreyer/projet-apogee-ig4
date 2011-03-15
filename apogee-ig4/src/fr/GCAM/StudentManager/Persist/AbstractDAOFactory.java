@@ -5,6 +5,7 @@ package fr.GCAM.StudentManager.Persist;
  * and open the template in the editor.
  */
 import fr.GCAM.StudentManager.POJO.*;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.DB.DBFactory;
 import fr.GCAM.StudentManager.Persist.XML.XMLFactory;
 import java.util.Observable;
@@ -34,7 +35,7 @@ public abstract class AbstractDAOFactory extends Observable {
      *
      * @return Renvoie le DAO instancié avec le POJO etudiant
      */
-    public abstract DAO<Etudiant> getDAOEtudiant();
+    public abstract DAO<EtudiantECUE> getDAOEtudiantECUE();
 
     /**
      * Methode renvoyant un DAO(Data Access Object) pour une ECUE

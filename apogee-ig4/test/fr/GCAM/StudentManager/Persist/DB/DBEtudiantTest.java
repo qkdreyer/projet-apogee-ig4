@@ -5,9 +5,10 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
+import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
 import org.junit.Ignore;
 import java.sql.Connection;
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -50,8 +51,8 @@ public class DBEtudiantTest {
     @Ignore
     public void testCreate() throws Exception {
 	System.out.println("create");
-	Etudiant obj = null;
-	DBEtudiant instance = null;
+	AbstractEtudiant obj = null;
+	DBEtudiantECUE instance = null;
 	instance.create(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -64,8 +65,8 @@ public class DBEtudiantTest {
     @Ignore
     public void testUpdate() throws Exception {
 	System.out.println("update");
-	Etudiant obj = null;
-	DBEtudiant instance = null;
+	AbstractEtudiant obj = null;
+	DBEtudiantECUE instance = null;
 	instance.update(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -78,8 +79,8 @@ public class DBEtudiantTest {
     @Ignore
     public void testDelete() throws Exception {
 	System.out.println("delete");
-	Etudiant obj = null;
-	DBEtudiant instance = null;
+	AbstractEtudiant obj = null;
+	DBEtudiantECUE instance = null;
 	instance.delete(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -92,7 +93,7 @@ public class DBEtudiantTest {
     public void testFind() throws Exception {
 	System.out.println("find DBEtudiant");
 
-	Etudiant result = new DBEtudiant(conn).find(99999);
+	AbstractEtudiant result = new DBEtudiantECUE(conn).find(99999);
 	assertEquals("INETEST", result.getNumIne());
     }
 
@@ -103,7 +104,7 @@ public class DBEtudiantTest {
     @Test
     public void testList() throws Exception {
 	System.out.println("list");
-	DBEtudiant instance = null;
+	DBEtudiantECUE instance = null;
 	String expResult = "";
 	String result = instance.list();
 	assertEquals(expResult, result);

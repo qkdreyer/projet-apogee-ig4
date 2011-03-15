@@ -5,7 +5,9 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
+import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
 import fr.GCAM.StudentManager.POJO.*;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 import java.sql.Connection;
@@ -36,8 +38,8 @@ public class DBFactory extends AbstractDAOFactory {
      * @return Renvoie un DAOEtudiant qui est un DAO concret instancié avec le POJO
      * Etudiant.
      */
-    public DAO<Etudiant> getDAOEtudiant() {
-	return new DBEtudiant(conn);
+    public DAO<EtudiantECUE> getDAOEtudiantECUE() {
+	return new DBEtudiantECUE(conn);
     }
 
     /**

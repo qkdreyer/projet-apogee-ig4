@@ -4,7 +4,10 @@
  */
 package fr.GCAM.StudentManager.Core;
 
+import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.POJO.*;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.DB.*;
 import java.io.FileOutputStream;
 import java.sql.Connection;
@@ -30,7 +33,7 @@ public class JDOM {
 	    createUEXML("UE");
 	    createEtapeXML("Etape");
 	    createDepartementXML("Departement");
-	    createEtudiantXML("Etudiant");
+	    createEtudiantECUEXML("EtudiantECUE");
 	} catch (Exception ex) {
 	    System.err.println("Erreur : " + ex);
 	    ex.printStackTrace();
@@ -63,7 +66,7 @@ public class JDOM {
 	    ecue = new DBECUE(conn).find(result.getString(1));
 
 	    listeEtud = new Element("listeEtud");
-	    for (Etudiant etud : ecue.getListeEtud()) {
+	    for (EtudiantECUE etud : ecue.getListeEtud()) {
 		Etudiant = new Element("Etudiant");
 		Etudiant.addContent(new Element("numEtudiant").setText(Integer.toString(etud.getNumEtudiant())));
 		Etudiant.addContent(new Element("nom").setText(etud.getNom()));
@@ -119,7 +122,6 @@ public class JDOM {
 	    Utilisateur.addContent(new Element("nom").setText(util.getNom()));
 	    Utilisateur.addContent(new Element("prenom").setText(util.getPrenom()));
 	    Utilisateur.addContent(new Element("mdp").setText(util.getMDP()));
-	    //Utilisateur.addContent(new Element("mdp").setText(MD5.getHash(util.getMDP())));
 	    Utilisateur.addContent(new Element("mail").setText(util.getMail()));
 	    Utilisateur.addContent(listeResponsabilites);
 	    root.addContent(Utilisateur);
@@ -238,21 +240,19 @@ public class JDOM {
 	save(document, "xml/" + s + ".xml");
     }
 
-    private static void createEtudiantXML(String s) throws Exception {
+    private static void createEtudiantECUEXML(String s) throws Exception {
 	Element root = new Element("root");
 	Document document = new Document(root);
 	Element Etudiant;
 	ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT distinct numEtudiant from VO_" + s);
-	Etudiant etud;
+	EtudiantECUE etud;
 
 	while (result.next()) {
 	    Etudiant = new Element(s);
-	    etud = new DBEtudiant(conn).find(result.getString(1));
+	    etud = new DBEtudiantECUE(conn).find(result.getString(1));
 
 	    Etudiant.addContent(new Element("numEtudiant").setText(Integer.toString(etud.getNumEtudiant())));
-	    Etudiant.addContent(new Element("pointJuryAnnee").setText(Integer.toString(etud.getPointJuryAnnee())));
 	    Etudiant.addContent(new Element("numIne").setText(etud.getNumIne()));
-	    Etudiant.addContent(new Element("scoreToeic").setText(Integer.toString(etud.getScoreToeic())));
 	    Etudiant.addContent(new Element("libelleProvenance").setText(etud.getLibelleProvenance()));
 	    Etudiant.addContent(new Element("libelleStatut").setText(etud.getLibelleStatut()));
 	    Etudiant.addContent(new Element("libelleNationalite").setText(etud.getLibelleNationalite()));

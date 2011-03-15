@@ -5,7 +5,8 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.Persist.XML.Etudiant.XMLEtudiantECUE;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,8 +45,8 @@ public class XMLEtudiantTest {
     @Test
     public void testCreate() throws Exception {
 	System.out.println("create");
-	Etudiant obj = null;
-	XMLEtudiant instance = new XMLEtudiant();
+	AbstractEtudiant obj = null;
+	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	instance.create(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -57,8 +58,8 @@ public class XMLEtudiantTest {
     @Test
     public void testUpdate() throws Exception {
 	System.out.println("update");
-	Etudiant obj = null;
-	XMLEtudiant instance = new XMLEtudiant();
+	AbstractEtudiant obj = null;
+	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	instance.update(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -70,8 +71,8 @@ public class XMLEtudiantTest {
     @Test
     public void testDelete() throws Exception {
 	System.out.println("delete");
-	Etudiant obj = null;
-	XMLEtudiant instance = new XMLEtudiant();
+	AbstractEtudiant obj = null;
+	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	instance.delete(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -84,9 +85,9 @@ public class XMLEtudiantTest {
     public void testFind() throws Exception {
 	System.out.println("find");
 	Object id = null;
-	XMLEtudiant instance = new XMLEtudiant();
-	Etudiant expResult = null;
-	Etudiant result = instance.find(id);
+	XMLEtudiantECUE instance = new XMLEtudiantECUE();
+	AbstractEtudiant expResult = null;
+	AbstractEtudiant result = instance.find(id);
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -98,7 +99,7 @@ public class XMLEtudiantTest {
     @Test
     public void testList() throws Exception {
 	System.out.println("list");
-	XMLEtudiant instance = new XMLEtudiant();
+	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	String expResult = "";
 	String result = instance.list();
 	assertEquals(expResult, result);

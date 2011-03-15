@@ -5,14 +5,14 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 
 /**
  * Classe de l'UI GUI de l'Etudiant
  *
  * @author Quentin
  */
-public class GUIEtudiant extends GUI<Etudiant> {
+public class GUIEtudiant extends GUI<AbstractEtudiant> {
 
     public GUIEtudiant(String s) {
     }

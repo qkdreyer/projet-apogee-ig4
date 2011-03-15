@@ -3,9 +3,10 @@
  * and open the template in the editor.
  */
 
-package fr.GCAM.StudentManager.Persist.XML;
+package fr.GCAM.StudentManager.Persist.XML.Etudiant;
 
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantEtape;
+import fr.GCAM.StudentManager.Persist.XML.XML;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.jdom.Element;
@@ -17,22 +18,22 @@ import org.jdom.input.SAXBuilder;
  *
  * @author pierre
  */
-public class XMLEtudiant extends XML<Etudiant> {
+public class XMLEtudiantEtape extends XML<EtudiantEtape> {
 
-    public void create(Etudiant obj) throws Exception {
+    public void create(EtudiantEtape obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void update(Etudiant obj) throws Exception {
+    public void update(EtudiantEtape obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void delete(Etudiant obj) throws Exception {
+    public void delete(EtudiantEtape obj) throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Etudiant find(Object id) throws Exception {
-	Etudiant e = new Etudiant();
+    public EtudiantEtape find(Object id) throws Exception { //TODO findEtEtape
+	EtudiantEtape e = new EtudiantEtape();
 
         Element courant;
         Iterator i = new SAXBuilder().build("xml/Etudiant.xml").getRootElement().getChildren("Etudiant").iterator();
@@ -41,24 +42,20 @@ public class XMLEtudiant extends XML<Etudiant> {
             courant = (Element) i.next();
             if (courant.getChild("numEtudiant").getText().equals((String) id)) {
                 e.setNumEtudiant(Integer.parseInt(courant.getChildText("numEtudiant")));
-                e.setPointJuryAnnee(Integer.parseInt(courant.getChildText("pointJuryAnnee")));
                 e.setNumIne(courant.getChildText("numIne"));
-                e.setScoreToeic(Integer.parseInt(courant.getChildText("scoreToeic")));
                 e.setLibelleProvenance(courant.getChildText("libelleProvenance"));
                 e.setLibelleStatut(courant.getChildText("libelleStatut"));
                 e.setLibelleNationalite(courant.getChildText("libelleNationalite"));
                 e.setNom(courant.getChildText("nom"));
                 e.setPrenom(courant.getChildText("prenom"));
                 e.setMail(courant.getChildText("mail"));
-                e.setNoteSession1(Float.parseFloat(courant.getChildText("noteSession1")));
-                e.setNoteSession2(Float.parseFloat(courant.getChildText("noteSession2")));
             }
         }
         return e;
     }
 
-    public ArrayList<Etudiant> list() throws Exception {
-        //TODO listXMLEtud
+    public ArrayList<EtudiantEtape> list() throws Exception {
+        //TODO listXMLEtudEtape
         return null;
     }
 
