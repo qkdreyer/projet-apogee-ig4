@@ -88,42 +88,23 @@ public class DBUtilisateur extends DB<Utilisateur> {
      * @param obj l'Utilisateur qui doit être supprimée dans la base de données
      * @throws Exception
      */
-    public void delete(Utilisateur obj) throws Exception { //TODO delete DBUtil
+    public void delete(Utilisateur obj) throws Exception {
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        s.execute("delete from Enseignant where nom = '" + obj.getNom() + "' and prenom = '" + obj.getPrenom() + "'");
+	int id = s.executeQuery("select idEnseignant from Enseignant where nom = '" +
+		obj.getNom() + "' and prenom = '" +
+		obj.getPrenom() + "'").getInt("idEnseignant");
         for (Responsabilite r : obj.getListeResponsabilites()) {
             if (r.getLibelle().equals("ECUE")) {
-                ECUE e = new DBECUE(conn).find(r.getCodeResponsabilite());
-                s.execute("insert into ECUE values("
-                        + r.getCodeResponsabilite() + ", '"
-                        + e.getLibelleECUE() + "', "
-                        + e.getNbHeures() + ", "
-                        + "utilSeq.currval, '"
-                        + e.getCodeUE() + "'");
+                s.execute("update ECUE set idEnseignant = null where idEnseignant = " + id);
             } else if (r.getLibelle().equals("UE")) {
-                UE u = new DBUE(conn).find(r.getCodeResponsabilite());
-                s.execute("insert into UE values("
-                        + r.getCodeResponsabilite() + ", "
-                        + u.getNbECTS() + ", '"
-                        + u.getLibelleUE() + "', "
-                        + (u.isOptionnel() ? 't' : 'f') + ", "
-                        + "utilSeq.currval, '"
-                        + u.getCodeSemestre() + "'");
+		s.execute("update UE set idEnseignant = null where idEnseignant = " + id);
             } else if (r.getLibelle().equals("Etape")) {
-                Etape e = new DBEtape(conn).find(r.getCodeResponsabilite());
-                s.execute("insert into Etape values("
-                        + r.getCodeResponsabilite() + ", '"
-                        + "utilSeq.currval, '"
-                        + e.getVersionDiplome() + "'");
+		s.execute("update Etape set idEnseignant = null where idEnseignant = " + id);
             } else if (r.getLibelle().equals("Departement")) {
-                Departement d = new DBDepartement(conn).find(r.getCodeResponsabilite());
-                s.execute("insert into Departement values("
-                        + r.getCodeResponsabilite() + ", '"
-                        + d.getNomDepartement() + "', '"
-                        + d.getMnemo() + "', "
-                        + "utilSeq.currval");
+		s.execute("update Departement set idEnseignant = null where idEnseignant = " + id);
             }
         }
+	s.execute("delete from Enseignant where idEnseignant = " + id);
     }
 
     /**
