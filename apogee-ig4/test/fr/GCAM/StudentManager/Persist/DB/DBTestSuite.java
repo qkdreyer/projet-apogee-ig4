@@ -27,7 +27,7 @@ import org.junit.runners.Suite;
     fr.GCAM.StudentManager.Persist.DB.DBDepartementTest.class,
     fr.GCAM.StudentManager.Persist.DB.DBECUETest.class,
     fr.GCAM.StudentManager.Persist.DB.DBEtapeTest.class,
-    fr.GCAM.StudentManager.Persist.DB.DBEtudiantTest.class,
+    fr.GCAM.StudentManager.Persist.DB.DBEtudiantECUETest.class,
     fr.GCAM.StudentManager.Persist.DB.DBUETest.class,
     fr.GCAM.StudentManager.Persist.DB.DBUtilisateurTest.class,
     fr.GCAM.StudentManager.Persist.DB.DBFactoryTest.class
@@ -42,6 +42,7 @@ public class DBTestSuite {
 	//Creation de la connection à la BD
         conn = ConnectionDB.getConnection();
         try {
+	    System.out.println("Creation des temoins");
             //On cré une ECUE, pour laquelle on va réaliser le test
             Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
@@ -57,11 +58,14 @@ public class DBTestSuite {
 	    s.executeQuery("insert into nationalite values(0, 'testNat')");
             s.executeQuery("insert into Etudiant values (99999,0,'INETEST',0,0,0,0,'testCEt','netud','petud','m@etud.com')");
 
+	    System.out.println("Fin des temoins");
+
             s.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(DBECUETest.class.getName()).log(Level.SEVERE, null, ex);
         }
+	System.out.println("Début des tests BD");
     }
 
     @AfterClass

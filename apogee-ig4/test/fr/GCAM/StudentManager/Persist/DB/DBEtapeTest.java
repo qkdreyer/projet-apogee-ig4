@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
+import java.util.ArrayList;
 import org.junit.Ignore;
 import java.sql.Connection;
 import fr.GCAM.StudentManager.POJO.Etape;
@@ -108,7 +109,7 @@ public class DBEtapeTest {
 	System.out.println("list");
 	DBEtape instance = null;
 	String expResult = "";
-	String result = instance.list();
+	ArrayList<Etape> result = instance.list();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");

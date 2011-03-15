@@ -23,6 +23,20 @@ public abstract class AbstractEtudiant {
     private String prenom;
     private String mail;
 
+    public AbstractEtudiant() {
+    }
+
+    public AbstractEtudiant(int numEtudiant, String numIne, String libelleProvenance, String libelleStatut, String libelleNationalite, String nom, String prenom, String mail) {
+	this.numEtudiant = numEtudiant;
+	this.numIne = numIne;
+	this.libelleProvenance = libelleProvenance;
+	this.libelleStatut = libelleStatut;
+	this.libelleNationalite = libelleNationalite;
+	this.nom = nom;
+	this.prenom = prenom;
+	this.mail = mail;
+    }
+
     public String getLibelleNationalite() {
 	return libelleNationalite;
     }

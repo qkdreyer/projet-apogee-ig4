@@ -13,6 +13,16 @@ public class EtudiantEtape extends AbstractEtudiant {
     private int scoreToeic;
     private float pointJuryAnnee;
 
+    public EtudiantEtape() {
+    }
+    
+
+    public EtudiantEtape(int numEtudiant, String numIne, String libelleProvenance, String libelleStatut, String libelleNationalite, String nom, String prenom, String mail, int scoreToeic, float pointJuryAnnee) {
+	super(numEtudiant, numIne, libelleProvenance, libelleStatut, libelleNationalite, nom, prenom, mail);
+	this.scoreToeic = scoreToeic;
+	this.pointJuryAnnee = pointJuryAnnee;
+    }
+
     public float getPointJuryAnnee() {
 	return pointJuryAnnee;
     }

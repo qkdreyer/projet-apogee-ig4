@@ -15,6 +15,15 @@ public class EtudiantECUE extends AbstractEtudiant {
     private boolean noteSession1Changed = false;
     private boolean noteSession2Changed = false;
 
+    public EtudiantECUE() {
+    }
+
+    public EtudiantECUE(int numEtud, String numIne, String libProv, String libStat, String nom, String Prenom, String mail, float noteSession1, float noteSession2) {
+	super(numEtud, numIne, libProv, libStat, libStat, nom, Prenom, mail);
+	this.noteSession1 = noteSession1;
+	this.noteSession2 = noteSession2;
+    }
+
     public boolean isNoteSession1Changed() {
 	return noteSession1Changed;
     }

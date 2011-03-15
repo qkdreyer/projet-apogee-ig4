@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author pierre
  */
-public class Utilisateur {
+public class Utilisateur implements Comparable {
 
     private int idEnseignant; //TODO add IdEns ou il faut
     private String prenom;
@@ -33,6 +33,16 @@ public class Utilisateur {
 	this.nom = nom;
 	this.mdp = mdp;
 	this.listeResponsabilites = listeResponsabilites;
+    }
+
+    public int compareTo(Object o) {
+	if (this.idEnseignant == ((Utilisateur)o).getIdEnseignant() ) {
+	    return 0;
+	} else if ( this.idEnseignant < ((Utilisateur)o).getIdEnseignant() ) {
+	    return 1;
+	} else {
+	    return -1;
+	}
     }
 
     public static class Responsabilite {

@@ -6,6 +6,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.POJO.Utilisateur;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -100,7 +101,7 @@ public class XMLUtilisateurTest {
 	System.out.println("list");
 	XMLUtilisateur instance = new XMLUtilisateur();
 	String expResult = "";
-	String result = instance.list();
+	ArrayList<Utilisateur> result = instance.list();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");

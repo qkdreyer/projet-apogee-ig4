@@ -62,11 +62,11 @@ public class DBFactoryTest {
      */
     @Ignore
     @Test
-    public void testGetDAOEtudiant() {
+    public void testGetDAOEtudiantECUE() {
 	System.out.println("getDAOEtudiant");
 	DBFactory instance = new DBFactory();
 	DAO expResult = null;
-	DAO result = instance.getDAOEtudiant();
+	DAO result = instance.getDAOEtudiantECUE();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -105,6 +105,7 @@ public class DBFactoryTest {
     /**
      * Test of getDAOEtape method, of class DBFactory.
      */
+    @Ignore
     @Test
     public void testGetDAOEtape() {
 	System.out.println("getDAOEtape");
@@ -119,6 +120,7 @@ public class DBFactoryTest {
     /**
      * Test of getDAODepartement method, of class DBFactory.
      */
+    @Ignore
     @Test
     public void testGetDAODepartement() {
 	System.out.println("getDAODepartement");
@@ -130,18 +132,5 @@ public class DBFactoryTest {
 	fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getDAOAdmin method, of class DBFactory.
-     */
-    @Test
-    public void testGetDAOAdmin() {
-	System.out.println("getDAOAdmin");
-	DBFactory instance = new DBFactory();
-	DAO expResult = null;
-	DAO result = instance.getDAOAdmin();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
-    }
 
 }

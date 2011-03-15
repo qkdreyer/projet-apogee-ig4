@@ -3,9 +3,13 @@
  * and open the template in the editor.
  */
 
-package fr.GCAM.StudentManager.Persist.XML;
+package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.Persist.XML.Etudiant.XMLEtudiantECUE;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
+import java.util.ArrayList;
+import org.junit.Ignore;
+import java.sql.Connection;
 import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,13 +22,16 @@ import static org.junit.Assert.*;
  *
  * @author pierre
  */
-public class XMLEtudiantTest {
+public class DBEtudiantECUETest {
 
-    public XMLEtudiantTest() {
+    private static Connection conn;
+
+    public DBEtudiantECUETest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+	conn = ConnectionDB.getConnection();
     }
 
     @AfterClass
@@ -40,68 +47,68 @@ public class XMLEtudiantTest {
     }
 
     /**
-     * Test of create method, of class XMLEtudiant.
+     * Test of create method, of class DBEtudiant.
      */
     @Test
+    @Ignore
     public void testCreate() throws Exception {
 	System.out.println("create");
 	AbstractEtudiant obj = null;
-	XMLEtudiantECUE instance = new XMLEtudiantECUE();
-	instance.create(obj);
+	DBEtudiantECUE instance = null;
+	instance.create((EtudiantECUE) obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
     }
 
     /**
-     * Test of update method, of class XMLEtudiant.
+     * Test of update method, of class DBEtudiant.
      */
     @Test
+    @Ignore
     public void testUpdate() throws Exception {
 	System.out.println("update");
-	AbstractEtudiant obj = null;
-	XMLEtudiantECUE instance = new XMLEtudiantECUE();
+	EtudiantECUE obj = null;
+	DBEtudiantECUE instance = null;
 	instance.update(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
     }
 
     /**
-     * Test of delete method, of class XMLEtudiant.
+     * Test of delete method, of class DBEtudiant.
      */
     @Test
+    @Ignore
     public void testDelete() throws Exception {
 	System.out.println("delete");
-	AbstractEtudiant obj = null;
-	XMLEtudiantECUE instance = new XMLEtudiantECUE();
+	EtudiantECUE obj = null;
+	DBEtudiantECUE instance = null;
 	instance.delete(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
     }
 
     /**
-     * Test of find method, of class XMLEtudiant.
+     * Test of find method, of class DBEtudiant.
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find");
-	Object id = null;
-	XMLEtudiantECUE instance = new XMLEtudiantECUE();
-	AbstractEtudiant expResult = null;
-	AbstractEtudiant result = instance.find(id);
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
+	System.out.println("find DBEtudiant");
+
+	AbstractEtudiant result = new DBEtudiantECUE(conn).find(99999);
+	assertEquals("INETEST", result.getNumIne());
     }
 
     /**
-     * Test of list method, of class XMLEtudiant.
+     * Test of list method, of class DBEtudiant.
      */
+    @Ignore
     @Test
     public void testList() throws Exception {
 	System.out.println("list");
-	XMLEtudiantECUE instance = new XMLEtudiantECUE();
+	DBEtudiantECUE instance = null;
 	String expResult = "";
-	String result = instance.list();
+	ArrayList<EtudiantECUE> result = instance.list();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
