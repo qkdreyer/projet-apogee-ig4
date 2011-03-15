@@ -5,6 +5,8 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
+import java.sql.Statement;
+import java.sql.ResultSet;
 import fr.GCAM.StudentManager.Core.SHA1;
 import org.junit.Ignore;
 import java.sql.Connection;
@@ -22,6 +24,8 @@ import static org.junit.Assert.*;
  * @author pierre
  */
 public class DBUtilisateurTest {
+
+    private Utilisateur util;
 
     private static Connection conn;
 
@@ -112,12 +116,28 @@ public class DBUtilisateurTest {
     @Test
     public void testList() throws Exception {
 	System.out.println("list Utilisateur");
-	DBUtilisateur instance = null;
-	String expResult = "";
-	String result = instance.list();
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
+	DBUtilisateur dbu = new DBUtilisateur(conn);
+	util = new Utilisateur();
+//	ArrayList<Utilisateur> expResult = new ArrayList<Utilisateur>();
+
+	ArrayList<Utilisateur> result = dbu.list();
+
+	 //on recupere le resultat
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet r = s.executeQuery("SELECT distinct(idenseignant) from vo_utilisateur");
+	if (r.first()) {
+	    do {
+		util.setIdEnseignant(r.getInt("idenseignant"));;
+		System.out.println("util.getIdEnseignant() = " + util.getIdEnseignant());
+                assertTrue(result.contains(util));
+            } while (r.next());
+
+//	    assertEquals(expResult, result);
+	} else {
+	    fail("Aucun résultats du find Utilisateur");
+	}
+
+	
     }
 
 }

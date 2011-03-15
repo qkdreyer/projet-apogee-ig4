@@ -6,6 +6,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.POJO.Departement;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -100,7 +101,7 @@ public class XMLDepartementTest {
 	System.out.println("list");
 	XMLDepartement instance = new XMLDepartement();
 	String expResult = "";
-	String result = instance.list();
+	ArrayList<Departement> result = instance.list();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");

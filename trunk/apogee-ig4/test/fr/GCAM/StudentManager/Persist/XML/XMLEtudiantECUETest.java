@@ -5,7 +5,10 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.POJO.Admin;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Persist.XML.Etudiant.XMLEtudiantECUE;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,9 +20,9 @@ import static org.junit.Assert.*;
  *
  * @author pierre
  */
-public class XMLAdminTest {
+public class XMLEtudiantECUETest {
 
-    public XMLAdminTest() {
+    public XMLEtudiantECUETest() {
     }
 
     @BeforeClass
@@ -39,68 +42,68 @@ public class XMLAdminTest {
     }
 
     /**
-     * Test of create method, of class XMLAdmin.
+     * Test of create method, of class XMLEtudiant.
      */
     @Test
     public void testCreate() throws Exception {
 	System.out.println("create");
-	Admin obj = null;
-	XMLAdmin instance = new XMLAdmin();
+	EtudiantECUE obj = null;
+	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	instance.create(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
     }
 
     /**
-     * Test of update method, of class XMLAdmin.
+     * Test of update method, of class XMLEtudiant.
      */
     @Test
     public void testUpdate() throws Exception {
 	System.out.println("update");
-	Admin obj = null;
-	XMLAdmin instance = new XMLAdmin();
+	EtudiantECUE obj = null;
+	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	instance.update(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
     }
 
     /**
-     * Test of delete method, of class XMLAdmin.
+     * Test of delete method, of class XMLEtudiant.
      */
     @Test
     public void testDelete() throws Exception {
 	System.out.println("delete");
-	Admin obj = null;
-	XMLAdmin instance = new XMLAdmin();
+	EtudiantECUE obj = null;
+	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	instance.delete(obj);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
     }
 
     /**
-     * Test of find method, of class XMLAdmin.
+     * Test of find method, of class XMLEtudiant.
      */
     @Test
     public void testFind() throws Exception {
 	System.out.println("find");
 	Object id = null;
-	XMLAdmin instance = new XMLAdmin();
-	Admin expResult = null;
-	Admin result = instance.find(id);
+	XMLEtudiantECUE instance = new XMLEtudiantECUE();
+	EtudiantECUE expResult = null;
+	EtudiantECUE result = instance.find(id);
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
     }
 
     /**
-     * Test of list method, of class XMLAdmin.
+     * Test of list method, of class XMLEtudiant.
      */
     @Test
     public void testList() throws Exception {
 	System.out.println("list");
-	XMLAdmin instance = new XMLAdmin();
+	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	String expResult = "";
-	String result = instance.list();
+	ArrayList<EtudiantECUE> result = instance.list();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");

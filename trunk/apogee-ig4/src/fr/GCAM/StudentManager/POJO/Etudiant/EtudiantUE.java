@@ -13,6 +13,14 @@ public class EtudiantUE extends AbstractEtudiant {
     private boolean VAE = false;
     private boolean APDJ = false;
 
+    public EtudiantUE() {
+    }
+
+    
+    public EtudiantUE(int numEtudiant, String numIne, String libelleProvenance, String libelleStatut, String libelleNationalite, String nom, String prenom, String mail) {
+	super(numEtudiant, numIne, libelleProvenance, libelleStatut, libelleNationalite, nom, prenom, mail);
+    }
+    
     public boolean isAPDJ() {
 	return APDJ;
     }

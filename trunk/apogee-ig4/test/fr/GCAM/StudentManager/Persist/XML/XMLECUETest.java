@@ -5,16 +5,10 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.Core.JDOM;
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
-import java.io.FileOutputStream;
-import org.jdom.output.XMLOutputter;
-import org.jdom.output.Format;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import java.util.Iterator;
 import org.jdom.input.SAXBuilder;
-import org.jdom.Document;
 import org.jdom.Element;
-import java.io.File;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import java.util.ArrayList;
 import org.junit.After;
@@ -31,75 +25,29 @@ import static org.junit.Assert.*;
  */
 public class XMLECUETest {
 
-    private static File file;
     private static ECUE ecue_m;
+    private static EtudiantECUE etud;
+
 
     public XMLECUETest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-	file = new File("xml/ECUE.xml");
-	if (file.exists()) {
-	    System.out.println("Le fichier existe");
-	    Element courant;
-	    Document d = new SAXBuilder().build("xml/ECUE.xml");
-	    Iterator i = d.getRootElement().getChildren("ECUE").iterator();
-	    Iterator j;
-	    Element ECUE, listeEtud, Etudiant;
-	    AbstractEtudiant etud = new AbstractEtudiant(99999, "netud", "petud", 0, 0);
-	    
+	
+	ecue_m = new ECUE();
+	ecue_m.setCodeMatiere("TEST001");
+	ecue_m.setCodeUE("testCUE");
+	ecue_m.setLibelleECUE("testlibelle");
+	ecue_m.setNbHeures(99);
+	ecue_m.setResponsable("NRtest PRtest");
 
-	    while (i.hasNext()) {
-                courant = (Element) i.next();
-	    }
-
-	    ECUE = new Element("ECUE");
-            ecue_m = new ECUE();
-	    ecue_m.setCodeMatiere("TEST001");
-	    ecue_m.setCodeUE("testCUE");
-	    ecue_m.setLibelleECUE("testlibelle");
-	    ecue_m.setNbHeures(99);
-	    ecue_m.setResponsable("NRtest PRtest");
-
-	    ecue_m.getListeEtud().add(etud);
-	    
-            listeEtud = new Element("listeEtud");
-	    Etudiant = new Element("Etudiant");
-	    Etudiant.addContent(new Element("numEtudiant").setText(Integer.toString(etud.getNumEtudiant())));
-	    Etudiant.addContent(new Element("nom").setText(etud.getNom()));
-	    Etudiant.addContent(new Element("prenom").setText(etud.getPrenom()));
-	    Etudiant.addContent(new Element("noteSession1").setText(Float.toString(etud.getNoteSession1())));
-	    Etudiant.addContent(new Element("noteSession2").setText(Float.toString(etud.getNoteSession2())));
-	    //s.executeQuery("insert into Etudiant values (99999,0,'INETEST',0,null,null,null,'testCEt','netud','petud','m@etud.com')");
-	    listeEtud.addContent(Etudiant);
-
-	    ECUE.addContent(new Element("codeMatiere").setText(ecue_m.getCodeMatiere()));
-	    ECUE.addContent(new Element("libelleECUE").setText(ecue_m.getLibelleECUE()));
-	    ECUE.addContent(new Element("nbHeures").setText(Integer.toString(ecue_m.getNbHeures())));
-	    ECUE.addContent(new Element("responsable").setText(ecue_m.getResponsable()));
-	    ECUE.addContent(new Element("codeUE").setText(ecue_m.getCodeUE()));
-	    ECUE.addContent(listeEtud);
-	    d.getRootElement().addContent(ECUE);
-
-	    //Sauvegarde du fichier
-    	JDOM.save(d, "xml/ECUE.xml");
-//	    new XMLOutputter(Format.getPrettyFormat()).output(d, new FileOutputStream("xml/ECUE.xml"));
-	} else {
-	    System.out.println("Le fichier n'existe pas, tant pis");
-	}
+	ecue_m.getListeEtud().add(etud);
+	
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-	System.out.println("tearDownClass");
-	//TODO : supprimer les données rajoutées
-	Document d = new SAXBuilder().build("xml/ECUE.xml");
-	d.getRootElement().getChildren("ECUE").remove( d.getRootElement().getChildren("ECUE").size() - 1 );	
-
-	JDOM.save(d, "xml/ECUE.xml");
-	//new XMLOutputter(Format.getPrettyFormat()).output(d, new FileOutputStream("xml/ECUE.xml"));
-
     }
 
     @Before
@@ -198,7 +146,7 @@ public class XMLECUETest {
 	System.out.println("list XMLECUE");
 	XMLECUE instance = new XMLECUE();
 	String expResult = "";
-	String result = instance.list();
+	ArrayList<ECUE> result = instance.list();
 	assertEquals(expResult, result);
     }
 

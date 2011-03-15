@@ -6,6 +6,7 @@
 package fr.GCAM.StudentManager.Persist.DB;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.UE;
 import org.junit.After;
@@ -105,7 +106,7 @@ public class DBUETest {
 	System.out.println("list");
 	DBUE instance = null;
 	String expResult = "";
-	String result = instance.list();
+	ArrayList<UE> result = instance.list();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");

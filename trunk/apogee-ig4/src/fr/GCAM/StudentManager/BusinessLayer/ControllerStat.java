@@ -5,7 +5,7 @@
 
 package fr.GCAM.StudentManager.BusinessLayer;
 
-import fr.GCAM.StudentManager.POJO.Etudiant;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 
@@ -15,10 +15,10 @@ import fr.GCAM.StudentManager.Persist.DAO;
  */
 public class ControllerStat extends AbstractController {
 
-    private DAO<Etudiant> etudDAO;
+    private DAO<EtudiantECUE> etudDAO;
 
     public ControllerStat() {
-        this.etudDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOEtudiant();
+        this.etudDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOEtudiantECUE();
     }
 
     @Override
@@ -36,8 +36,8 @@ public class ControllerStat extends AbstractController {
     }
 
     private void commande1() throws Exception {
-        for(Etudiant e : etudDAO.list()) {
-            disp.display(Integer.toString(e.getScoreToeic()));
+        for(EtudiantECUE e : etudDAO.list()) {
+            //disp.display(Integer.toString(e.getScoreToeic()));
         }
     }
 

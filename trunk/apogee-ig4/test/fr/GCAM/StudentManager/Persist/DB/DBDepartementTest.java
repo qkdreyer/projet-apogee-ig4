@@ -5,14 +5,8 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
-import java.sql.ResultSet;
-import java.util.logging.Logger;
-import java.util.logging.Level;
-import java.sql.SQLException;
-import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
-import java.sql.Statement;
 import java.sql.Connection;
+import java.util.ArrayList;
 import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.Departement;
 import org.junit.After;
@@ -116,7 +110,7 @@ public class DBDepartementTest {
 	System.out.println("list");
 	DBDepartement instance = null;
 	String expResult = "";
-	String result = instance.list();
+	ArrayList<Departement> result = instance.list();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");

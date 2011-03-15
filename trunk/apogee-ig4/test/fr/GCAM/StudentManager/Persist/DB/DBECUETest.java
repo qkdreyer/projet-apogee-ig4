@@ -4,15 +4,13 @@
  */
 package fr.GCAM.StudentManager.Persist.DB;
 
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.ECUE;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.Connection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Before;
@@ -29,8 +27,8 @@ public class DBECUETest {
 
     private static Connection conn;
 
-    private static ECUE ecue;
-    private static AbstractEtudiant etud;
+    private static ECUE ecue_m;
+    private static EtudiantECUE etud;
 
     public DBECUETest() {
     }
@@ -40,15 +38,15 @@ public class DBECUETest {
 
 	conn = ConnectionDB.getConnection();
 
-	etud = new AbstractEtudiant(99999, "netud", "petud", (float) 0.0, (float) 0.0);
+	etud = new EtudiantECUE(99999, "testINE", "testProv", "testStat", "nEtud", "pEtud", "test@mail.final", 0, 0);
 
-	ecue = new ECUE();
-	ecue.setCodeMatiere("TEST001");
-	ecue.setLibelleECUE("testlibelle");
-	ecue.setNbHeures(99);
+	ecue_m = new ECUE();
+	ecue_m.setCodeMatiere("TEST001");
+	ecue_m.setLibelleECUE("testlibelle");
+	ecue_m.setNbHeures(99);
 	//ecue.setIdEnseignant(9999);
 
-	ecue.setCodeUE("testCUE");
+	ecue_m.setCodeUE("testCUE");
     }
 
     @AfterClass
@@ -97,13 +95,13 @@ public class DBECUETest {
         System.out.println("update DBECUE");
         //on lui modif ses notes
         DBECUE dbecue = new DBECUE(conn);
-        ecue.getListeEtud().add(etud);
+        ecue_m.getListeEtud().add(etud);
 
         etud.setNoteSession1((float) 12.8);
         etud.setNoteSession2((float) 5.8);
 
         //on update
-        dbecue.update(ecue);
+        dbecue.update(ecue_m);
         //on recupere le resultat
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet r = s.executeQuery("SELECT v.codematiere, v.libelleECUE,"
@@ -111,6 +109,7 @@ public class DBECUETest {
 		+ "v.numetudiant, v.nom, v.prenom, v.notesession1,v.notesession2 "
 		+ "FROM vo_ecue v "
 		+ "WHERE v.codematiere='TEST001' AND v.numetudiant=99999");
+	
         //on le compare avec ce qu'on a mis a la base
         if (r.first()) {
             String codematiere = r.getString("codeMatiere");
