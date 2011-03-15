@@ -17,14 +17,13 @@ import java.util.ArrayList;
  */
 public class ControllerUtilisateur extends AbstractController {
 
-    private UI disp;
     private DAO<Utilisateur> userDAO;
     private Utilisateur user = null;
-    private String dao;
 
-    public ControllerUtilisateur(UI disp, String s) {
+    public ControllerUtilisateur(UI disp, String dao) {
         this.disp = disp;
-        this.dao = s;
+        System.out.println("t:"+disp);
+        this.dao = dao;
         this.userDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUtilisateur();
     }
 
@@ -91,18 +90,18 @@ public class ControllerUtilisateur extends AbstractController {
     }
 
     private AbstractController loginAdmin() {
-        return new ControllerAdmin(disp, dao);
+        return new ControllerAdmin();
     }
 
     private AbstractController loginUser(Responsabilite r) throws Exception {
         if (r.getLibelle().equals("ECUE")) {
-            return new ControllerECUE(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
+            return new ControllerECUE().handleMessage("#find " + r.getCodeResponsabilite());
         } else if (r.getLibelle().equals("UE")) {
-            return new ControllerUE(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
+            return new ControllerUE().handleMessage("#find " + r.getCodeResponsabilite());
         } else if (r.getLibelle().equals("Etape")) {
-            return new ControllerEtape(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
+            return new ControllerEtape().handleMessage("#find " + r.getCodeResponsabilite());
         } else if (r.getLibelle().equals("Departement")) {
-            return new ControllerDepartement(disp, dao).handleMessage("#find " + r.getCodeResponsabilite());
+            return new ControllerDepartement().handleMessage("#find " + r.getCodeResponsabilite());
         } else {
             return null;
         }

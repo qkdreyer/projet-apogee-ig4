@@ -8,7 +8,6 @@ package fr.GCAM.StudentManager.Controller;
 import fr.GCAM.StudentManager.POJO.Departement;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
-import fr.GCAM.StudentManager.UI.UI;
 
 
 /**
@@ -18,14 +17,11 @@ import fr.GCAM.StudentManager.UI.UI;
  */
 public class ControllerDepartement extends AbstractController {
 
-
-    private UI disp;
     private DAO<Departement> deptDAO;
     private Departement dept = null;
 
-    public ControllerDepartement(UI disp, String s) {
-        this.disp = disp;
-        deptDAO = AbstractDAOFactory.getDAOFactory(s).getDAODepartement();
+    public ControllerDepartement() {
+        deptDAO = AbstractDAOFactory.getDAOFactory(dao).getDAODepartement();
     }
 
     /**
@@ -51,6 +47,8 @@ public class ControllerDepartement extends AbstractController {
             this.quit();
         } else if (msg[0].equals("#help")) {
             this.help();
+        } else if (msg[0].equals("#down") && msg.length == 2) {
+            return new ControllerEtape().handleMessage("#find " + msg[1]);
         }
         return this;
     }

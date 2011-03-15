@@ -75,8 +75,8 @@ public class DBEtudiant extends DB<Etudiant> {
 	    e.setNom(result.getString("nom"));
 	    e.setPrenom(result.getString("prenom"));
 	    e.setMail(result.getString("mail"));
-	    e.setNoteSession1(result.getFloat("noteSession1"));
-	    e.setNoteSession2(result.getFloat("noteSession2"));
+            e.setNoteSession1(result.getFloat("noteSession1"));
+            e.setNoteSession2(result.getFloat("noteSession2"));
         }
         return e;
     }

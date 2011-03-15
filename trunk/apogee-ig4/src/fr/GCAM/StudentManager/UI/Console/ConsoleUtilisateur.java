@@ -21,8 +21,8 @@ public class ConsoleUtilisateur extends Console<Utilisateur> {
     private AbstractController contr;
     //private AbstractController parentController;
     
-    public ConsoleUtilisateur(String s) {
-	this.contr = new ControllerUtilisateur(this, s);
+    public ConsoleUtilisateur(String dao) {
+	this.contr = new ControllerUtilisateur(this, dao);
 	this.accept();
     }
 

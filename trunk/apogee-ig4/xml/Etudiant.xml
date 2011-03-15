@@ -123,8 +123,8 @@
     <nom>meyer</nom>
     <prenom>lisa</prenom>
     <mail>jsuitrobonne@sex.xx</mail>
-    <noteSession1>15.0</noteSession1>
-    <noteSession2>5.5</noteSession2>
+    <noteSession1>0.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
   </Etudiant>
   <Etudiant>
     <numEtudiant>20070010</numEtudiant>
@@ -138,7 +138,7 @@
     <prenom>bomb</prenom>
     <mail>6@9.xnxx</mail>
     <noteSession1>0.0</noteSession1>
-    <noteSession2>3.2</noteSession2>
+    <noteSession2>0.0</noteSession2>
   </Etudiant>
 </root>
 

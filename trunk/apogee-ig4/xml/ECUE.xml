@@ -11,22 +11,22 @@
         <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -41,15 +41,15 @@
         <numEtudiant>20070009</numEtudiant>
         <nom>meyer</nom>
         <prenom>lisa</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070010</numEtudiant>
         <nom>asse</nom>
         <prenom>bomb</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -64,36 +64,36 @@
         <numEtudiant>20070001</numEtudiant>
         <nom>puechlong</nom>
         <prenom>joris</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070002</numEtudiant>
         <nom>jambet</nom>
         <prenom>pierre</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070003</numEtudiant>
         <nom>dreyer</nom>
         <prenom>quentin</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070004</numEtudiant>
         <nom>michel</nom>
         <prenom>benjamin</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070005</numEtudiant>
         <nom>coudsi</nom>
         <prenom>julien</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -108,15 +108,15 @@
         <numEtudiant>20070009</numEtudiant>
         <nom>meyer</nom>
         <prenom>lisa</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070010</numEtudiant>
         <nom>asse</nom>
         <prenom>bomb</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -131,22 +131,22 @@
         <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -161,36 +161,36 @@
         <numEtudiant>20070001</numEtudiant>
         <nom>puechlong</nom>
         <prenom>joris</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070002</numEtudiant>
         <nom>jambet</nom>
         <prenom>pierre</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070003</numEtudiant>
         <nom>dreyer</nom>
         <prenom>quentin</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070004</numEtudiant>
         <nom>michel</nom>
         <prenom>benjamin</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070005</numEtudiant>
         <nom>coudsi</nom>
         <prenom>julien</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -205,15 +205,15 @@
         <numEtudiant>20070009</numEtudiant>
         <nom>meyer</nom>
         <prenom>lisa</prenom>
-        <noteSession1>15.0</noteSession1>
-        <noteSession2>5.5</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070010</numEtudiant>
         <nom>asse</nom>
         <prenom>bomb</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>3.2</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -228,22 +228,22 @@
         <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -258,22 +258,22 @@
         <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -288,22 +288,22 @@
         <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -318,22 +318,22 @@
         <numEtudiant>20070006</numEtudiant>
         <nom>costanza</nom>
         <prenom>guillaume</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070007</numEtudiant>
         <nom>rance</nom>
         <prenom>justine</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070008</numEtudiant>
         <nom>paze</nom>
         <prenom>yannick</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>
@@ -348,15 +348,15 @@
         <numEtudiant>20070009</numEtudiant>
         <nom>meyer</nom>
         <prenom>lisa</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070010</numEtudiant>
         <nom>asse</nom>
         <prenom>bomb</prenom>
-        <noteSession1>0.0</noteSession1>
-        <noteSession2>0.0</noteSession2>
+        <noteSession1 />
+        <noteSession2 />
       </Etudiant>
     </listeEtud>
   </ECUE>

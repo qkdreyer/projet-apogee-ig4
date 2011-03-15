@@ -8,7 +8,6 @@ import fr.GCAM.StudentManager.Core.SSParser;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
-import fr.GCAM.StudentManager.UI.UI;
 
 /**
  * Cette classe implemente la partie Controlleur du MVC(Model View Controller).
@@ -17,13 +16,11 @@ import fr.GCAM.StudentManager.UI.UI;
  */
 public class ControllerECUE extends AbstractController {
 
-    private UI disp;
     private DAO<ECUE> ecueDAO;
     private ECUE ecue = null;
 
-    public ControllerECUE(UI disp, String s) {
-        this.disp = disp;
-        ecueDAO = AbstractDAOFactory.getDAOFactory(s).getDAOECUE();
+    public ControllerECUE() {
+        ecueDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOECUE();
     }
 
     /**
@@ -61,6 +58,8 @@ public class ControllerECUE extends AbstractController {
             SSParser.loadSS(ecue, msg[1]);
         } else if (msg[0].equals("#help")) {
             this.help();
+        } else if (msg[0].equals("#up") && msg.length == 2) {
+            return new ControllerUE().handleMessage("#find " + msg[1]);
         }
         return this;
     }
@@ -74,6 +73,7 @@ public class ControllerECUE extends AbstractController {
     private void note1(String[] msg) throws Exception {
         if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
             ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession1(Float.parseFloat(msg[2]));
+            ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession1Changed(true);
             disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).toString());
             handleMessage("#update");
         }
@@ -88,6 +88,7 @@ public class ControllerECUE extends AbstractController {
     private void note2(String[] msg) throws Exception {
         if (ecue.hasStudent(Integer.parseInt(msg[1]))) {
             ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession2(Float.parseFloat(msg[2]));
+            ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).setNoteSession2Changed(true);
             disp.display(ecue.getListeEtud().get(Integer.parseInt(msg[1]) - 1).toString());
             handleMessage("#update");
         }

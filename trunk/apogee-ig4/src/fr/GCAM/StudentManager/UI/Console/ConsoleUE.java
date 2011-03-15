@@ -18,7 +18,7 @@ public class ConsoleUE extends Console<UE> {
     public ControllerUE contr;
 
     public ConsoleUE(String s) {
-        contr = new ControllerUE(this, s);
+        contr = new ControllerUE();
     }
 
     /**
