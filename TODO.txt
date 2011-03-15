@@ -1,8 +1,5 @@
-- ChoixUE / PJ / moyenne etape ?
 - Gestion controller
-- Implementer statistiques / finir admin
-- Triggers sur vues
-- md5 oracle
+- Suppr les libelle dans vue etape/dept/ue ?
 
 GUI :
 - Ajouter Resp UE (prenom nom) dans ManageUE.java + Optionnel
