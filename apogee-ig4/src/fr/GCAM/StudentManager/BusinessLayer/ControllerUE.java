@@ -3,25 +3,23 @@
  * and open the template in the editor.
  */
 
-package fr.GCAM.StudentManager.Controller;
+package fr.GCAM.StudentManager.BusinessLayer;
 
-import fr.GCAM.StudentManager.POJO.Departement;
+import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 
-
 /**
- * Classe définissant la méthode handleMessage pour un Departement.
  *
  * @author Quentin
  */
-public class ControllerDepartement extends AbstractController {
+public class ControllerUE extends AbstractController {
 
-    private DAO<Departement> deptDAO;
-    private Departement dept = null;
+    private DAO<UE> ueDAO;
+    private UE ue = null;
 
-    public ControllerDepartement() {
-        deptDAO = AbstractDAOFactory.getDAOFactory(dao).getDAODepartement();
+    public ControllerUE() {
+        ueDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUE();
     }
 
     /**
@@ -48,11 +46,12 @@ public class ControllerDepartement extends AbstractController {
         } else if (msg[0].equals("#help")) {
             this.help();
         } else if (msg[0].equals("#down") && msg.length == 2) {
+            return new ControllerECUE().handleMessage("#find " + msg[1]);
+        } else if (msg[0].equals("#up") && msg.length == 2) {
             return new ControllerEtape().handleMessage("#find " + msg[1]);
         }
         return this;
     }
-
 
     /**
      * Méthode appelé par handleMessage lorsque le message vaut "#find"
@@ -60,8 +59,9 @@ public class ControllerDepartement extends AbstractController {
      * @param msg(String) Le message contenant les informations à 'find'
      * @throws Exception
      */
-    private void find(String[] msg) throws Exception {
-        disp.display(deptDAO.find(msg[1]).toString());
+    public void find(String[] msg) throws Exception {
+        ue = (UE) ueDAO.find(msg[1]);
+        disp.display(ue.toString());
     }
 
     /**
@@ -70,8 +70,8 @@ public class ControllerDepartement extends AbstractController {
      * @param msg(String) Le message contenant les informations à 'update'
      * @throws Exception
      */
-    private void update(String[] msg) throws Exception {
-        deptDAO.update(dept);
+    public void update(String[] msg) throws Exception {
+        ueDAO.update(ue);
     }
 
     /**
@@ -79,7 +79,7 @@ public class ControllerDepartement extends AbstractController {
      *
      * @throws Exception
      */
-    private void quit() {
+    public void quit() {
         System.exit(0);
     }
 
@@ -89,7 +89,7 @@ public class ControllerDepartement extends AbstractController {
      * @throws Exception
      */
     private void help() {
-        disp.display("\t #find 'versionDiplome'");
+        disp.display("\t #find 'codeUE'");
         disp.display("\t #update");
         disp.display("\t #quit");
     }

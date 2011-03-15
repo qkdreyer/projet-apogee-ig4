@@ -5,7 +5,7 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.Controller.ControllerUE;
+import fr.GCAM.StudentManager.BusinessLayer.ControllerUE;
 import fr.GCAM.StudentManager.POJO.UE;
 
 /**
