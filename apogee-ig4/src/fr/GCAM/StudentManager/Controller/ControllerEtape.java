@@ -16,13 +16,11 @@ import fr.GCAM.StudentManager.UI.UI;
  */
 public class ControllerEtape extends AbstractController {
 
-    private UI disp;
     private DAO<Etape> etapeDAO;
     private Etape etape = null;
 
-    public ControllerEtape(UI disp, String s) {
-        this.disp = disp;
-        etapeDAO = AbstractDAOFactory.getDAOFactory(s).getDAOEtape();
+    public ControllerEtape() {
+        etapeDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOEtape();
     }
 
     /**
@@ -48,6 +46,10 @@ public class ControllerEtape extends AbstractController {
             this.quit();
         } else if (msg[0].equals("#help")) {
             this.help();
+        } else if (msg[0].equals("#down") && msg.length == 2) {
+            return new ControllerUE().handleMessage("#find " + msg[1]);
+        } else if (msg[0].equals("#up") && msg.length == 2) {
+            return new ControllerDepartement().handleMessage("#find " + msg[1]);
         }
         return this;
     }

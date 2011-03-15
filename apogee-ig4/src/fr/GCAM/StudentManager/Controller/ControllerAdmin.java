@@ -7,7 +7,6 @@ package fr.GCAM.StudentManager.Controller;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
-import fr.GCAM.StudentManager.UI.UI;
 
 /**
  *
@@ -15,14 +14,10 @@ import fr.GCAM.StudentManager.UI.UI;
  */
 public class ControllerAdmin extends AbstractController {
 
-    private UI disp;
     private DAO<Utilisateur> userDAO;
-    private String dao;
     private Utilisateur user = null;
 
-    public ControllerAdmin(UI disp, String s) {
-        this.disp = disp;
-        this.dao = s;
+    public ControllerAdmin() {
         this.userDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUtilisateur();
     }
 

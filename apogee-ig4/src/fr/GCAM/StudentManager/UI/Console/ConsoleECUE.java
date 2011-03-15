@@ -17,7 +17,7 @@ public class ConsoleECUE extends Console<ECUE> {
     public ControllerECUE contr;
 
     public ConsoleECUE(String s) {
-        contr = new ControllerECUE(this, s);
+        contr = new ControllerECUE();
     }
 
     /**

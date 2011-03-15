@@ -17,7 +17,7 @@ public class ConsoleEtape extends Console<Etape> {
     public ControllerEtape contr;
 
     public ConsoleEtape(String s) {
-        contr = new ControllerEtape(this, s);
+        contr = new ControllerEtape();
     }
 
     /**

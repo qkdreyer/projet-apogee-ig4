@@ -152,7 +152,6 @@ public class Etudiant {
 
     public void setNoteSession1(float noteSession1) {
 	this.noteSession1 = noteSession1;
-	noteSession1Changed = true;
     }
 
     public float getNoteSession2() {
@@ -161,7 +160,14 @@ public class Etudiant {
 
     public void setNoteSession2(float noteSession2) {
 	this.noteSession2 = noteSession2;
-	noteSession2Changed = true;
+    }
+
+    public void setNoteSession1Changed(boolean noteSession1Changed) {
+        this.noteSession1Changed = noteSession1Changed;
+    }
+
+    public void setNoteSession2Changed(boolean noteSession2Changed) {
+        this.noteSession2Changed = noteSession2Changed;
     }
 
     public String toString() {

@@ -8,7 +8,6 @@ package fr.GCAM.StudentManager.Controller;
 import fr.GCAM.StudentManager.POJO.Etudiant;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
-import fr.GCAM.StudentManager.UI.UI;
 
 /**
  *
@@ -16,13 +15,9 @@ import fr.GCAM.StudentManager.UI.UI;
  */
 public class ControllerStat extends AbstractController {
 
-    private UI disp;
     private DAO<Etudiant> etudDAO;
-    private String dao;
 
-    public ControllerStat(UI disp, String s) {
-        this.disp = disp;
-        this.dao = s;
+    public ControllerStat() {
         this.etudDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOEtudiant();
     }
 

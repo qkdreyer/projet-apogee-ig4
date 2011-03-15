@@ -18,7 +18,7 @@ public class ConsoleDepartement extends Console<Departement> {
     public ControllerDepartement contr;
     
     public ConsoleDepartement(String s) {
-        contr = new ControllerDepartement(this, s);
+        contr = new ControllerDepartement();
     }
 
     /**

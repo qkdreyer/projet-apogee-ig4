@@ -68,8 +68,16 @@ public class JDOM {
 		Etudiant.addContent(new Element("numEtudiant").setText(Integer.toString(etud.getNumEtudiant())));
 		Etudiant.addContent(new Element("nom").setText(etud.getNom()));
 		Etudiant.addContent(new Element("prenom").setText(etud.getPrenom()));
-		Etudiant.addContent(new Element("noteSession1").setText(Float.toString(etud.getNoteSession1())));
-		Etudiant.addContent(new Element("noteSession2").setText(Float.toString(etud.getNoteSession2())));
+                if (etud.getNoteSession1() == 0.0) {
+                    Etudiant.addContent(new Element("noteSession1"));
+                } else {
+                    Etudiant.addContent(new Element("noteSession1").setText(Float.toString(etud.getNoteSession1())));
+                }
+                if (etud.getNoteSession1() == 0.0) {
+                    Etudiant.addContent(new Element("noteSession2"));
+                } else {
+                    Etudiant.addContent(new Element("noteSession2").setText(Float.toString(etud.getNoteSession2())));
+                }
 		listeEtud.addContent(Etudiant);
 	    }
 

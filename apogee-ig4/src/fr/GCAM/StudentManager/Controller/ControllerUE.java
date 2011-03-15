@@ -8,7 +8,6 @@ package fr.GCAM.StudentManager.Controller;
 import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
-import fr.GCAM.StudentManager.UI.UI;
 
 /**
  *
@@ -16,13 +15,11 @@ import fr.GCAM.StudentManager.UI.UI;
  */
 public class ControllerUE extends AbstractController {
 
-    private UI disp;
     private DAO<UE> ueDAO;
     private UE ue = null;
 
-    public ControllerUE(UI disp, String s) {
-        this.disp = disp;
-        ueDAO = AbstractDAOFactory.getDAOFactory(s).getDAOUE();
+    public ControllerUE() {
+        ueDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUE();
     }
 
     /**
@@ -48,6 +45,10 @@ public class ControllerUE extends AbstractController {
             this.quit();
         } else if (msg[0].equals("#help")) {
             this.help();
+        } else if (msg[0].equals("#down") && msg.length == 2) {
+            return new ControllerECUE().handleMessage("#find " + msg[1]);
+        } else if (msg[0].equals("#up") && msg.length == 2) {
+            return new ControllerEtape().handleMessage("#find " + msg[1]);
         }
         return this;
     }
