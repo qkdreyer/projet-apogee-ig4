@@ -456,11 +456,9 @@ MINUS (
 --;
 --/
 
-create or replace type TEtudiant as object (
+create or replace type TEtudiantECUE as object (
 	numEtudiant number,
-	pointJuryAnnee number,
 	numIne varchar2(15),
-	scoreToeic number,
 	libelleProvenance varchar2(20),
 	libelleStatut varchar2(10),
 	libelleNationalite varchar2(20),
@@ -472,9 +470,9 @@ create or replace type TEtudiant as object (
 );
 /
 
-create or replace view VO_Etudiant of TEtudiant
+create or replace view VO_EtudiantECUE of TEtudiantECUE
 with object identifier(numEtudiant) as
-select e.numEtudiant, pointJuryAnnee, numIne, scoreToeic, libelleProvenance, libelle as libelleStatut, 
+select e.numEtudiant, numIne, libelleProvenance, libelle as libelleStatut, 
 libelleNationalite, nom, prenom, mail, noteSession1, noteSession2
 from Etudiant e, Note n, Provenance p, Statut s, Nationalite na
 where e.numEtudiant = n.numEtudiant (+)

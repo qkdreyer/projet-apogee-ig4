@@ -4,6 +4,7 @@
  */
 package fr.GCAM.StudentManager.Persist.XML;
 
+import fr.GCAM.StudentManager.Core.JDOM;
 import fr.GCAM.StudentManager.Core.SHA1;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
@@ -31,7 +32,22 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * @throws Exception
      */
     public void create(Utilisateur obj) throws Exception {
-        //TODO createXMLUtil
+	Document d = new SAXBuilder().build("xml/Utilisateur.xml");
+	Element util = new Element("Utilisateur"), resp;
+	
+	util.addContent(new Element("nom").setText(obj.getNom()));
+	util.addContent(new Element("prenom").setText(obj.getPrenom()));
+	util.addContent(new Element("mdp").setText(SHA1.getHash(obj.getMDP())));
+	util.addContent(new Element("mail").setText(obj.getMail()));
+
+	for (Responsabilite r : obj.getListeResponsabilites()) {
+	    resp = new Element("responsabilite");
+	    resp.addContent(new Element("codeResponsabilite").setText(r.getCodeResponsabilite()));
+	    resp.addContent(new Element("libelle").setText(r.getLibelle()));
+	    util.addContent(resp);
+	}
+	d.getRootElement().addContent(util);
+	JDOM.save(null, filename);
     }
 
     /**
@@ -41,7 +57,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * @throws Exception
      */
     public void update(Utilisateur obj) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+	throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -51,7 +67,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * @throws Exception
      */
     public void delete(Utilisateur obj) throws Exception {
-        //TODO deleteXMLUtil
+	//TODO deleteXMLUtil
     }
 
     /**
@@ -86,31 +102,32 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * @throws Exception
      */
     private Utilisateur findWithLogin(ArrayList a) throws Exception {
-        Utilisateur util = new Utilisateur();
-        Element courant;
+	Utilisateur util = new Utilisateur();
+	Element courant;
 
-        Iterator i = new SAXBuilder().build("xml/Utilisateur.xml").getRootElement().getChildren("Utilisateur").iterator();
-        Iterator j;
-        while (i.hasNext()) {
-            courant = (Element) i.next();
-            if (courant.getChild("nom").getText().equals(((String) a.get(1)).toLowerCase())
-                    && courant.getChild("prenom").getText().equals(((String) a.get(0)).toLowerCase())
-                    && courant.getChild("mdp").getText().equals(SHA1.getHash((String) a.get(2)))) {
-                util.setNom(courant.getChild("nom").getText());
-                util.setPrenom(courant.getChild("prenom").getText());
-                util.setMDP(courant.getChild("mdp").getText());
-                util.setMail(courant.getChild("mail").getText());
+	Iterator i = new SAXBuilder().build("xml/Utilisateur.xml").getRootElement().getChildren("Utilisateur").iterator();
+	Iterator j;
+	while (i.hasNext()) {
+	    courant = (Element) i.next();
+	    if (courant.getChild("nom").getText().equals(((String) a.get(1)).toLowerCase())
+		    && courant.getChild("prenom").getText().equals(((String) a.get(0)).toLowerCase())
+		    && courant.getChild("mdp").getText().equals(SHA1.getHash((String) a.get(2)))) {
+		util.setIdEnseignant(Integer.parseInt(courant.getChild("idEnseignant").getText()));
+		util.setNom(courant.getChild("nom").getText());
+		util.setPrenom(courant.getChild("prenom").getText());
+		util.setMDP(courant.getChild("mdp").getText());
+		util.setMail(courant.getChild("mail").getText());
 
-                j = courant.getChild("listeResponsabilites").getChildren("responsabilite").iterator();
-                while (j.hasNext()) {
-                    courant = (Element) j.next();
-                    util.getListeResponsabilites().add(new Responsabilite(
-                            courant.getChild("codeResponsabilite").getText(),
-                            courant.getChild("libelle").getText()));
-                }
-            }
-        }
-        return util;
+		j = courant.getChild("listeResponsabilites").getChildren("responsabilite").iterator();
+		while (j.hasNext()) {
+		    courant = (Element) j.next();
+		    util.getListeResponsabilites().add(new Responsabilite(
+			    courant.getChild("codeResponsabilite").getText(),
+			    courant.getChild("libelle").getText()));
+		}
+	    }
+	}
+	return util;
     }
 
     /**
@@ -121,34 +138,33 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * @throws Exception
      */
     private Utilisateur findWithID(Integer num) throws Exception {
-        Utilisateur util = new Utilisateur();
-        Element courant;
+	Utilisateur util = new Utilisateur();
+	Element courant;
 
-        Iterator i = new SAXBuilder().build("xml/Utilisateur.xml").getRootElement().getChildren("Utilisateur").iterator();
-        Iterator j;
-        while (i.hasNext()) {
-            courant = (Element) i.next();
-            if (courant.getChild("idEnseignant").getText().equals(Integer.toString(num))) {
-                //util.setIdEnseignant(Integer.parseInt(courant.getChild("idEnseignant").getText()));
-                util.setNom(courant.getChild("nom").getText());
-                util.setPrenom(courant.getChild("prenom").getText());
-                util.setMDP(courant.getChild("mdp").getText());
+	Iterator i = new SAXBuilder().build("xml/Utilisateur.xml").getRootElement().getChildren("Utilisateur").iterator();
+	Iterator j;
+	while (i.hasNext()) {
+	    courant = (Element) i.next();
+	    if (courant.getChild("idEnseignant").getText().equals(Integer.toString(num))) {
+		util.setIdEnseignant(Integer.parseInt(courant.getChild("idEnseignant").getText()));
+		util.setNom(courant.getChild("nom").getText());
+		util.setPrenom(courant.getChild("prenom").getText());
+		util.setMDP(courant.getChild("mdp").getText());
 
-                j = courant.getChild("listeResponsabilites").getChildren("responsabilite").iterator();
-                while (j.hasNext()) {
-                    courant = (Element) j.next();
-                    util.getListeResponsabilites().add(new Responsabilite(
-                            courant.getChild("codeResponsabilite").getText(),
-                            courant.getChild("libelle").getText()));
-                }
-            }
-        }
-        return util;
+		j = courant.getChild("listeResponsabilites").getChildren("responsabilite").iterator();
+		while (j.hasNext()) {
+		    courant = (Element) j.next();
+		    util.getListeResponsabilites().add(new Responsabilite(
+			    courant.getChild("codeResponsabilite").getText(),
+			    courant.getChild("libelle").getText()));
+		}
+	    }
+	}
+	return util;
     }
 
     public ArrayList<Utilisateur> list() throws Exception {
-        //TODO listXMLUtil
-        return null;
+	//TODO listXMLUtil
+	return null;
     }
-
 }

@@ -90,21 +90,18 @@ public class DBUtilisateur extends DB<Utilisateur> {
      */
     public void delete(Utilisateur obj) throws Exception {
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	int id = s.executeQuery("select idEnseignant from Enseignant where nom = '" +
-		obj.getNom() + "' and prenom = '" +
-		obj.getPrenom() + "'").getInt("idEnseignant");
         for (Responsabilite r : obj.getListeResponsabilites()) {
             if (r.getLibelle().equals("ECUE")) {
-                s.execute("update ECUE set idEnseignant = null where idEnseignant = " + id);
+                s.execute("update ECUE set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
             } else if (r.getLibelle().equals("UE")) {
-		s.execute("update UE set idEnseignant = null where idEnseignant = " + id);
+		s.execute("update UE set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
             } else if (r.getLibelle().equals("Etape")) {
-		s.execute("update Etape set idEnseignant = null where idEnseignant = " + id);
+		s.execute("update Etape set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
             } else if (r.getLibelle().equals("Departement")) {
-		s.execute("update Departement set idEnseignant = null where idEnseignant = " + id);
+		s.execute("update Departement set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
             }
         }
-	s.execute("delete from Enseignant where idEnseignant = " + id);
+	s.execute("delete from Enseignant where idEnseignant = " + obj.getIdEnseignant());
     }
 
     /**
@@ -144,6 +141,7 @@ public class DBUtilisateur extends DB<Utilisateur> {
         ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
                 + "where idEnseignant = " + num);
         if (result.first()) {
+	    util.setIdEnseignant(result.getInt("idEnseignant"));
             util.setNom(result.getString("nom"));
             util.setPrenom(result.getString("prenom"));
             util.setMDP(result.getString("mdp"));
@@ -172,12 +170,13 @@ public class DBUtilisateur extends DB<Utilisateur> {
     private Utilisateur findWithLogin(ArrayList a) throws Exception {
         Utilisateur util = new Utilisateur();
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT lower(nom) as nom, lower(prenom) as prenom, mdp, mail, coderesponsabilite, libelle from VO_Utilisateur "
+        ResultSet result = s.executeQuery("SELECT idEnseignant, lower(nom) as nom, "
+		+ "lower(prenom) as prenom, mdp, mail, coderesponsabilite, libelle from VO_Utilisateur "
                 + "where lower(nom) = '" + ((String) a.get(1)).toLowerCase() + "' and "
                 + "lower(prenom) = '" + ((String) a.get(0)).toLowerCase() + "' and "
                 + "mdp = getHash('" + (String) a.get(2) + "')");
-
         if (result.first()) {
+	    util.setIdEnseignant(result.getInt("idEnseignant"));
             util.setNom(result.getString("nom"));
             util.setPrenom(result.getString("prenom"));
             util.setMDP(result.getString("mdp"));
