@@ -8,7 +8,7 @@ package fr.GCAM.StudentManager.POJO.Etudiant;
  *
  * @author Quentin
  */
-public class EtudiantEtape {
+public class EtudiantEtape extends AbstractEtudiant {
 
     private int scoreToeic;
     private float pointJuryAnnee;
