@@ -32,7 +32,7 @@ public class XMLEtudiantUE extends XML<EtudiantUE> {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public EtudiantUE find(Object id) throws Exception { //TODO findEtUE
+    public EtudiantUE find(Object id) throws Exception { //TODO 1 findEtudUE
 	EtudiantUE e = new EtudiantUE();
 
         Element courant;
@@ -55,7 +55,7 @@ public class XMLEtudiantUE extends XML<EtudiantUE> {
     }
 
     public ArrayList<EtudiantUE> list() throws Exception {
-        //TODO listXMLEtudUE
+        //TODO 3 listEtudUE
         return null;
     }
 

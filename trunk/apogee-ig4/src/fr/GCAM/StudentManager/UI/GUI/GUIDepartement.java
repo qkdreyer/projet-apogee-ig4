@@ -23,6 +23,5 @@ public class GUIDepartement extends GUI<Departement> {
      * @param msg La chaine contenant le message à afficher dans la GUI
      */
     public void display(String msg) {
-	//TODO implementer le GUI
     }
 }

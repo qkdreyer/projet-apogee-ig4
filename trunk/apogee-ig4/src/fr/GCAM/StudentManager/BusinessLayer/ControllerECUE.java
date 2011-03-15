@@ -4,7 +4,7 @@
  */
 package fr.GCAM.StudentManager.BusinessLayer;
 
-import fr.GCAM.StudentManager.Core.SSParser;
+import fr.GCAM.StudentManager.Util.SSParser;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;

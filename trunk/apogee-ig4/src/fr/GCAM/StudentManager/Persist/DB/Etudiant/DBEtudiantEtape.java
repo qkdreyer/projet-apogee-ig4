@@ -60,7 +60,7 @@ public class DBEtudiantEtape extends DB<EtudiantEtape> {
      * @return L'Etudiant correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
-    public EtudiantEtape find(Object id) throws Exception { //TODO findEtEtape
+    public EtudiantEtape find(Object id) throws Exception { //TODO 1 findEtudEtape
         EtudiantEtape e = new EtudiantEtape();
 
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -86,7 +86,7 @@ public class DBEtudiantEtape extends DB<EtudiantEtape> {
      * @return L'ensemble des etudiants
      * @throws Exception
      */
-    public ArrayList<EtudiantEtape> list() throws Exception { //TODO listEtEtape
+    public ArrayList<EtudiantEtape> list() throws Exception { //TODO 3 listEtudEtape
         ArrayList<EtudiantEtape> listeEtud = new ArrayList<EtudiantEtape>();
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet result = s.executeQuery("select * from Etudiant order by numEtudiant");

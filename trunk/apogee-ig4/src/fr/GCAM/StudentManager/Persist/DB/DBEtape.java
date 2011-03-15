@@ -76,7 +76,7 @@ public class DBEtape extends DB<Etape> {
 
             String codeSemestre1 = result.getString("codeSemestre");
 
-            //TODO: obtenir la liste des étudiants de l'étape A vérifier
+            //TODO 1 Obtenir la liste des étudiants de l'étape A vérifier
             ResultSet resultEtudiant = s.executeQuery("SELECT codeEtudiant FROM Etudiant"
                     + "WHERE codeEtape = '" + (String)id + "'");
 

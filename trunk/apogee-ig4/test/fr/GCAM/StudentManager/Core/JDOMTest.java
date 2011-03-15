@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Core;
 
+import fr.GCAM.StudentManager.Util.JDOM;
 import org.jdom.Document;
 import org.junit.After;
 import org.junit.AfterClass;

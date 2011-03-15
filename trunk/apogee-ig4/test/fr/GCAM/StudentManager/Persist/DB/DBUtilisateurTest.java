@@ -7,7 +7,7 @@ package fr.GCAM.StudentManager.Persist.DB;
 
 import java.sql.Statement;
 import java.sql.ResultSet;
-import fr.GCAM.StudentManager.Core.SHA1;
+import fr.GCAM.StudentManager.Util.SHA1;
 import org.junit.Ignore;
 import java.sql.Connection;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
