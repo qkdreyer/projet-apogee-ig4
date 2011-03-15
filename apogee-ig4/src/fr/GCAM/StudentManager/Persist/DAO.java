@@ -5,6 +5,8 @@
 
 package fr.GCAM.StudentManager.Persist;
 
+import java.util.ArrayList;
+
 /**
  * Cette classe définit les 4 méthodes de base qui vont être redefinies par les
  * classes concretes.
@@ -46,12 +48,11 @@ public interface DAO<T> {
     public abstract T find(Object id) throws Exception;
 
     /**
-     *
-     * @return L'ensemble des clés primaires du POJO correspondant
+     * //TODO Javadoc
+     * @param
+     * @return
      * @throws Exception
-     * @deprecated 
      */
-    public abstract String list() throws Exception;
-
+    public abstract ArrayList<T> list() throws Exception;
 
 }

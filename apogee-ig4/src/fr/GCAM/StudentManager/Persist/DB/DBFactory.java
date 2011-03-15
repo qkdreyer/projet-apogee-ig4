@@ -80,14 +80,4 @@ public class DBFactory extends AbstractDAOFactory {
         return new DBDepartement(conn);
     }
 
-    /**
-     * Méthode utilisée pour obtenir un objet DAO<Admin>.
-     *
-     * @return Renvoie un DAOAdmin qui est un DAO concret instancié avec le POJO
-     * Admin.
-     */
-    public DAO<Admin> getDAOAdmin() {
-        return new DBAdmin(conn);
-    }
-
 }

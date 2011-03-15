@@ -9,32 +9,20 @@ import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 import fr.GCAM.StudentManager.UI.UI;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  *
  * @author Quentin
  */
-public class ControllerUE extends AbstractController implements Observer {
+public class ControllerUE extends AbstractController {
 
     private UI disp;
     private DAO<UE> ueDAO;
-    private UE ue;
+    private UE ue = null;
 
     public ControllerUE(UI disp, String s) {
         this.disp = disp;
         ueDAO = AbstractDAOFactory.getDAOFactory(s).getDAOUE();
-        ue = new UE();
-    }
-
-    /**
-     * Methodé de l'interface Observer
-     * @param o
-     * @param arg
-     */
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -92,14 +80,6 @@ public class ControllerUE extends AbstractController implements Observer {
      */
     public void quit() {
         System.exit(0);
-    }
-
-    /**
-     * Cette fonction affiche la liste des clés primaires (codeUE) des UE
-     * @deprecated 
-     */
-    public void list() throws Exception {
-        disp.display(ueDAO.list());
     }
 
     /**

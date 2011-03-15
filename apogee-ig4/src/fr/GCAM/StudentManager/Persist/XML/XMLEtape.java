@@ -5,7 +5,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.POJO.Etape;
-import fr.GCAM.StudentManager.POJO.UE;
+import java.util.ArrayList;
 import java.util.Iterator;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -88,23 +88,8 @@ public class XMLEtape extends XML<Etape> {
         return etape;
     }
 
-    /**
-     * Methode renvoyant l'ensemble des clés primaires du fichier XML correspondant
-     * (ici Etape.xml)
-     *
-     * @return L'ensemble des clés primaires (codeEtape) des Etape
-     * @throws Exception
-     * @deprecated 
-     */
-    public String list() throws Exception {
-        String str = "";
-        Element courant;
-        Iterator i = new SAXBuilder().build("xml/Etape.xml").getRootElement().getChildren("Etape").iterator();
-
-        while (i.hasNext()) {
-            courant = (Element) i.next();
-            str = str + courant.getChild("codeEtape").getText() + "\n";
-        }
-        return str;
+    public ArrayList<Etape> list() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }

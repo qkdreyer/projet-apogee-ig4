@@ -90,7 +90,7 @@ public class Etape {
 	    return str;
 	}
 
-	public float getMoyenne(Etudiant e) {
+	public float getMoyenne(Etudiant e) { //TODO ajoute pj sem ?
 	    float moyenne = 0;
 	    float nbCredit = 0;
 	    for (UE ue : listeUE) {
@@ -154,9 +154,7 @@ public class Etape {
     }
 
     public float getMoyenne(Etudiant e) {
-	float moyenne = 0;
-
-	return moyenne;
+	return semestre1.getMoyenne(e)+semestre2.getMoyenne(e)+e.getPointJuryAnnee();
     }
 
     public String toString() {

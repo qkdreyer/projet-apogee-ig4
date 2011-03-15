@@ -6,6 +6,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.POJO.Etudiant;
+import java.util.ArrayList;
 import java.util.Iterator;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -56,8 +57,10 @@ public class XMLEtudiant extends XML<Etudiant> {
         return e;
     }
 
-    public String list() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<Etudiant> list() throws Exception {
+        //TODO listXMLEtud
+        return null;
     }
+
 
 }

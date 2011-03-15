@@ -28,11 +28,11 @@ public class Etudiant {
     private float noteSession2;
     private boolean noteSession1Changed = false;
     private boolean noteSession2Changed = false;
-    private boolean VAE = false;
+    private boolean VAE = false; //TODO VAE APDJ PJsem PJannee choixUE redoubl etranger
     private boolean APDJ = false;
 
-    public Etudiant(int numEtud, String nom, String prenom, float noteSession1, float noteSession2) {
-        this.numEtudiant = numEtud;
+    public Etudiant(int numEtudiant, String nom, String prenom, Float noteSession1, Float noteSession2) {
+        this.numEtudiant = numEtudiant;
         this.nom = nom;
         this.prenom = prenom;
         this.noteSession1 = noteSession1;

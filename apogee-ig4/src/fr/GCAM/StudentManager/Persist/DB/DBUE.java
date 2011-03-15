@@ -5,11 +5,11 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.UE;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Cette classe définit les methodes de l'interface DAO pour le type UE
@@ -80,23 +80,8 @@ public class DBUE extends DB<UE> {
         return ue;
     }
 
-    /**
-     * Methode renvoyant l'ensemble des clés primaires de la vue correspondante
-     * (ici vo_ue)
-     *
-     * @return L'ensemble des clés primaires (codeUE) des UE
-     * @throws Exception
-     * @deprecated 
-     */
-    public String list() throws Exception {
-        String str = "";
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT distinct codeUE from VO_UE");
-        if (result.first()) {
-            do {
-                str = str + result.getString(1) + "\n";
-            } while (result.next());
-        }
-        return str;
+    public ArrayList<UE> list() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }

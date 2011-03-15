@@ -24,6 +24,5 @@ public class GUIDepartement extends GUI<Departement> {
      */
     public void display(String msg) {
 	//TODO implementer le GUI
-        System.out.println(msg);
     }
 }

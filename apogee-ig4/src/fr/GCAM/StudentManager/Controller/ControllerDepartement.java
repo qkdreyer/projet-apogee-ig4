@@ -9,8 +9,6 @@ import fr.GCAM.StudentManager.POJO.Departement;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 import fr.GCAM.StudentManager.UI.UI;
-import java.util.Observable;
-import java.util.Observer;
 
 
 /**
@@ -18,17 +16,16 @@ import java.util.Observer;
  *
  * @author Quentin
  */
-public class ControllerDepartement extends AbstractController implements Observer {
+public class ControllerDepartement extends AbstractController {
 
 
     private UI disp;
     private DAO<Departement> deptDAO;
-    private Departement dept;
+    private Departement dept = null;
 
     public ControllerDepartement(UI disp, String s) {
         this.disp = disp;
         deptDAO = AbstractDAOFactory.getDAOFactory(s).getDAODepartement();
-        dept = new Departement();
     }
 
     /**
@@ -66,8 +63,7 @@ public class ControllerDepartement extends AbstractController implements Observe
      * @throws Exception
      */
     private void find(String[] msg) throws Exception {
-        dept = (Departement) deptDAO.find(msg[1]);
-        disp.display(dept.toString());
+        disp.display(deptDAO.find(msg[1]).toString());
     }
 
     /**
@@ -87,23 +83,6 @@ public class ControllerDepartement extends AbstractController implements Observe
      */
     private void quit() {
         System.exit(0);
-    }
-
-    /**
-     * Methodé de l'interface Observer
-     * @param o
-     * @param arg
-     */
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    /**
-     * Cette fonction affiche la liste des clés primaires (versionDiplome) des Departement
-     * @deprecated 
-     */
-    private void list() throws Exception {
-        disp.display(deptDAO.list());
     }
 
     /**

@@ -10,7 +10,7 @@ package fr.GCAM.StudentManager.Controller;
  * définir : handleMessage.
  * @author Quentin
  */
-public abstract class AbstractController {
+public abstract class AbstractController { // Gestion controller
 
     /**
      * Cette méthode devra étre défini par chaque controlleur afin de définir

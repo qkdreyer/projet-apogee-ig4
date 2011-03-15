@@ -37,6 +37,7 @@ insert into UE values ('PSTIAU51',8,'pate a tartiner','f',2153,52);
 insert into UE values ('PSTIAU52',5,'mode américaine','f',2384,52);
 insert into UE values ('PSTIAU61',9,'pate a tartiner: concept avancés','f',2153,62);
 
+insert into Enseignant values (0,getHash('root'),'','root','');
 insert into Enseignant values (1001,getHash('roux'),'villaret','anne-laure','alv@crepuq.fr');
 insert into Enseignant values (1432,getHash('ada'),'vilarem','marie-catherine','mcv@lirmm.fr');
 insert into Enseignant values (1569,getHash('cheveux'),'berry','vincent','vberry@lirmm.fr');

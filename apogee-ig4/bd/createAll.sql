@@ -76,17 +76,6 @@ create table Personne (
 );
 
 
-create table Utilisateur (
-	idutilisateur number,
-	mdp varchar2(20),
-	login varchar2(20),
-	nom varchar2(20),
-	prenom varchar2(20),
-	mail varchar2(20),
-	constraint pkUtilisateur primary key(idutilisateur)
-);
-
-
 create table Etudiant (
 	numEtudiant number,
 	pointjuryannee number,
@@ -120,7 +109,6 @@ create table APDJ (
 );
 
 	
--- Qu'est ce que l'enseignant a en plus de la secretaire ?
 create table Enseignant (
 	idenseignant number,
 	mdp varchar2(40),
@@ -128,16 +116,6 @@ create table Enseignant (
 	prenom varchar2(20),
 	mail varchar2(40),
 	constraint pkEnseignant primary key(idenseignant)
-);
-
-
-create table Secretaire (
-	idsecretaire number,
-	mdp varchar2(20),
-	nom varchar2(20),
-	prenom varchar2(20),
-	mail varchar2(40),
-	constraint pkSecretaire primary key(idsecretaire)
 );
 
 -- Statuts
@@ -719,13 +697,12 @@ begin
 end etudiant_del;
 /
 
-    CREATE OR REPLACE FUNCTION getHash (p_in varchar2)
-       RETURN RAW
-    IS
-       l_hash   RAW (4000);
-    BEGIN
-       l_hash := DBMS_CRYPTO.HASH (src => UTL_RAW.cast_to_raw(p_in), typ => DBMS_CRYPTO.hash_sh1);
-       RETURN l_hash;
-    END;
-    /
+create sequence utilSeq start with 1 increment by 1 nomaxvalue;
+
+create or replace function getHash(p_in varchar2)
+return raw is
+begin
+	return DBMS_CRYPTO.HASH (src => UTL_RAW.cast_to_raw(p_in), typ => DBMS_CRYPTO.hash_sh1);
+end;
+/
 

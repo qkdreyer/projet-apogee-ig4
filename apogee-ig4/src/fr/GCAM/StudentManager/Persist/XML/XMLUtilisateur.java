@@ -31,7 +31,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * @throws Exception
      */
     public void create(Utilisateur obj) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //TODO createXMLUtil
     }
 
     /**
@@ -51,7 +51,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * @throws Exception
      */
     public void delete(Utilisateur obj) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //TODO deleteXMLUtil
     }
 
     /**
@@ -96,7 +96,6 @@ public class XMLUtilisateur extends XML<Utilisateur> {
             if (courant.getChild("nom").getText().equals(((String) a.get(1)).toLowerCase())
                     && courant.getChild("prenom").getText().equals(((String) a.get(0)).toLowerCase())
                     && courant.getChild("mdp").getText().equals(SHA1.getHash((String) a.get(2)))) {
-                //util.setIdEnseignant(Integer.parseInt(courant.getChild("idEnseignant").getText()));
                 util.setNom(courant.getChild("nom").getText());
                 util.setPrenom(courant.getChild("prenom").getText());
                 util.setMDP(courant.getChild("mdp").getText());
@@ -147,23 +146,9 @@ public class XMLUtilisateur extends XML<Utilisateur> {
         return util;
     }
 
-    /**
-     * Methode renvoyant l'ensemble des clés primaires du fichier XML correspondant
-     * (ici Utilsateur.xml)
-     *
-     * @return L'ensemble des clés primaires (prenom.nom) des Enseignants
-     * @throws Exception
-     */
-    public String list() throws Exception {
-        String str = "";
-        Element courant;
-        Iterator i = new SAXBuilder().build("xml/Utilisateur.xml").getRootElement().getChildren("Utilisateur").iterator();
-        Iterator j;
-
-        while (i.hasNext()) {
-            courant = (Element) i.next();
-            str = str + courant.getChild("prenom").getText() + "." + courant.getChild("nom").getText() + "\n";
-        }
-        return str;
+    public ArrayList<Utilisateur> list() throws Exception {
+        //TODO listXMLUtil
+        return null;
     }
+
 }

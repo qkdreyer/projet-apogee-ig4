@@ -5,7 +5,10 @@
 package fr.GCAM.StudentManager.Persist.DB;
 
 import fr.GCAM.StudentManager.POJO.Etudiant;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Cette classe définit les methodes de l'interface DAO pour le type Etudiant
@@ -79,13 +82,21 @@ public class DBEtudiant extends DB<Etudiant> {
     }
 
     /**
-     * Methode renvoyant l'ensemble des clés primaires de la vue correspondante
+     * Methode renvoyant l'ensemble des etudiants
      *
-     * @return
+     * @return L'ensemble des etudiants
      * @throws Exception
      */
-    public String list() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<Etudiant> list() throws Exception {
+        ArrayList<Etudiant> listeEtud = new ArrayList<Etudiant>();
+        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet result = s.executeQuery("select * from Etudiant order by numEtudiant");
+        if (result.first()) {
+            do {
+                listeEtud.add(this.find(result.getInt("numEtudiant")));
+            } while (result.next());
+        }
+        return listeEtud;
     }
 
 }

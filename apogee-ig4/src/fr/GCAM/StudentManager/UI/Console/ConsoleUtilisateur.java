@@ -18,7 +18,8 @@ import java.io.InputStreamReader;
  */
 public class ConsoleUtilisateur extends Console<Utilisateur> {
 
-    public AbstractController contr;
+    private AbstractController contr;
+    //private AbstractController parentController;
     
     public ConsoleUtilisateur(String s) {
 	this.contr = new ControllerUtilisateur(this, s);
@@ -52,6 +53,5 @@ public class ConsoleUtilisateur extends Console<Utilisateur> {
             ex.printStackTrace();
         }
     }
-
 
 }
