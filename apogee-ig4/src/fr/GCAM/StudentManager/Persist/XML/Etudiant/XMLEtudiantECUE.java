@@ -56,8 +56,7 @@ public class XMLEtudiantECUE extends XML<EtudiantECUE> {
         return e;
     }
 
-    public ArrayList<EtudiantECUE> list() throws Exception {
-        //TODO listXMLEtudECUE
+    public ArrayList<EtudiantECUE> list() throws Exception { //TODO 3 listEtudECUE
         return null;
     }
 

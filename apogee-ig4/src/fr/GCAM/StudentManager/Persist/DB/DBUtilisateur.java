@@ -4,7 +4,7 @@
  */
 package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.Core.SHA1;
+import fr.GCAM.StudentManager.Util.SHA1;
 import fr.GCAM.StudentManager.POJO.*;
 import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
 import java.sql.Connection;

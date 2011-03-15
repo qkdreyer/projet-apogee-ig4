@@ -5,7 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.Core.JDOM;
+import fr.GCAM.StudentManager.Util.JDOM;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import java.io.File;
@@ -42,7 +42,6 @@ public class XMLTestSuite {
 	file = new File("xml/ECUE.xml");
 	if (file.exists()) {
 	    System.out.println("Le fichier existe");
-	    Element courant;
 	    Document d = new SAXBuilder().build("xml/ECUE.xml");
 	    Iterator i = d.getRootElement().getChildren("ECUE").iterator();
 	    Iterator j;
@@ -57,10 +56,6 @@ public class XMLTestSuite {
 	    ecue.setResponsable("NRtest PRtest");
 
 	    ecue.getListeEtud().add(etud);
-
-	    while (i.hasNext()) {
-                courant = (Element) i.next();
-	    }
 
 	    ECUE = new Element("ECUE");
 
@@ -84,7 +79,6 @@ public class XMLTestSuite {
 
 	    //Sauvegarde du fichier
 	    JDOM.save(d, "xml/ECUE.xml");
-//	    new XMLOutputter(Format.getPrettyFormat()).output(d, new FileOutputStream("xml/ECUE.xml"));
 	} else {
 	    System.out.println("Le fichier n'existe pas, tant pis");
 	}
@@ -98,7 +92,6 @@ public class XMLTestSuite {
 	d.getRootElement().getChildren("ECUE").remove( d.getRootElement().getChildren("ECUE").size() - 1 );
 
 	JDOM.save(d, "xml/ECUE.xml");
-	//new XMLOutputter(Format.getPrettyFormat()).output(d, new FileOutputStream("xml/ECUE.xml"));
     }
 
     @Before

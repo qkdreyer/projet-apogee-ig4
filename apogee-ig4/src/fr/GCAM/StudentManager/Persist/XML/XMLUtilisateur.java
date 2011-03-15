@@ -4,8 +4,8 @@
  */
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.Core.JDOM;
-import fr.GCAM.StudentManager.Core.SHA1;
+import fr.GCAM.StudentManager.Util.JDOM;
+import fr.GCAM.StudentManager.Util.SHA1;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
 	    util.addContent(resp);
 	}
 	d.getRootElement().addContent(util);
-	JDOM.save(null, filename);
+	JDOM.save(d, "xml/Utilisateur.xml");
     }
 
     /**
@@ -67,7 +67,16 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * @throws Exception
      */
     public void delete(Utilisateur obj) throws Exception {
-	//TODO deleteXMLUtil
+	Document d = new SAXBuilder().build("xml/Utilisateur.xml");
+        Element courant;
+        Iterator i = d.getRootElement().getChildren("Utilisateur").iterator();
+        while (i.hasNext()) {
+            courant = (Element) i.next();
+            if (courant.getChildText("idEnseignant").equals(Integer.toString(obj.getIdEnseignant()))) {
+                d.getRootElement().getChildren("Utilisateur").remove(courant);
+            }
+        }
+        JDOM.save(d, "xml/Utilisateur.xml");
     }
 
     /**
@@ -164,7 +173,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
     }
 
     public ArrayList<Utilisateur> list() throws Exception {
-	//TODO listXMLUtil
+	//TODO 3 listUtil
 	return null;
     }
 }

@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Utilisateur implements Comparable {
 
-    private int idEnseignant; //TODO add IdEns ou il faut
+    private int idEnseignant;
     private String prenom;
     private String nom;
     private String mdp;
@@ -136,4 +136,5 @@ public class Utilisateur implements Comparable {
 
 	return str;
     }
+    
 }
