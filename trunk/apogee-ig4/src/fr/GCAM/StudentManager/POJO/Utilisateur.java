@@ -27,7 +27,7 @@ public class Utilisateur implements Comparable {
         listeResponsabilites = new ArrayList<Responsabilite>();
     }
 
-    public Utilisateur(String prenom, String nom, String mdp, ArrayList<Responsabilite> listeResponsabilites) {
+    public Utilisateur(int idEnseignant, String prenom, String nom, String mdp, ArrayList<Responsabilite> listeResponsabilites) {
 	this.idEnseignant = idEnseignant;
 	this.prenom = prenom;
 	this.nom = nom;
@@ -126,9 +126,8 @@ public class Utilisateur implements Comparable {
 	this.prenom = prenom;
     }
 
-    @Override
     public String toString() {
-	String str = this.getPrenom() + "." + this.getNom()
+	String str = "(id:" + this.getIdEnseignant() + ") " + this.getPrenom() + "." + this.getNom()
                 + " (" + this.getMDP() + ")\n"
                 + mail + "\n";
 	for (Responsabilite r : this.getListeResponsabilites()) {
