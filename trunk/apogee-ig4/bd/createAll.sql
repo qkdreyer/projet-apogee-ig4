@@ -635,6 +635,34 @@ and s.codeSemestre = ue.codeSemestre
 and ue.idEnseignant = ens.idEnseignant;
 /
 
+
+--Vue etudiant etape
+create or replace type TEtudiantEtape as object(
+	numEtudiant number,
+	numIne varchar2(15),
+	libelleProvenance varchar2(20),
+	libelleStatut varchar2(10),
+	libelleNationalite varchar2(20),
+	nom varchar2(20),
+	prenom varchar2(20),
+	mail varchar2(40),
+	pointJuryAnnee number,
+	scoreToeic number
+);
+/
+
+create or replace view VO_EtudiantEtape of TEtudiantEtape
+with object identifier(numEtudiant) as
+select e.numEtudiant, e.numIne, p.libelleProvenance, s.libelle, n.libelleNationalite,
+	e.nom, e.prenom, e.mail, e.pointJuryAnnee, e.scoreToeic
+from Etudiant e, Nationalite n, Statut s, Provenance p
+where e.idNationalite = n.idNationalite
+and e.idStatut = s.idStatut
+and e.idProvenance = p.idProvenance;
+/
+
+
+
 --vue dept
 create or replace type TDepartement as object (
 	versionDiplome varchar2(10),

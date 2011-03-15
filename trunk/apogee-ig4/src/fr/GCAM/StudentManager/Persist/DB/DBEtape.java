@@ -63,12 +63,15 @@ public class DBEtape extends DB<Etape> {
         Etape etape = new Etape();
 
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT * from VO_Etape where codeEtape = '" + (String) id + "'");
+        ResultSet result = s.executeQuery("SELECT * from VO_Etape where codeEtape = '"
+                + (String) id
+                + "'");
         if (result.first()) {
             etape.setCodeEtape(result.getString("codeEtape"));
             etape.setVersionEtape(result.getString("versionEtape"));
             etape.setVersionDiplome(result.getString("versionDiplome"));
-            etape.setResponsable(result.getString("prenomResponsable") + " " + result.getString("nomResponsable"));
+            etape.setResponsable(result.getString("prenomResponsable") + " "
+                    + result.getString("nomResponsable"));
 
             String codeSemestre1 = result.getString("codeSemestre");
             Etape.Semestre semestre;
