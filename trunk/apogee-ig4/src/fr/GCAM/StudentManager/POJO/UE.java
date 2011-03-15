@@ -4,6 +4,7 @@
  */
 package fr.GCAM.StudentManager.POJO;
 
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantUE;
 import java.util.ArrayList;
 
 /**
@@ -23,6 +24,7 @@ public class UE {
     private String responsable;
     private String codeSemestre;
     private ArrayList<ECUE> listeECUE;
+    private ArrayList<EtudiantUE> listeEtud;
 
     public UE() {
         listeECUE = new ArrayList<ECUE>();
@@ -98,6 +100,7 @@ public class UE {
         this.listeECUE = listeECUE;
     }
 
+    @Override
     public String toString() {
         String str = "Code UE : " + this.getCodeUE() + "\n"
                 + "libelle UE : " + this.getLibelleUE() + "\n"
@@ -111,21 +114,15 @@ public class UE {
         }
         return str;
     }
-
-    public ArrayList<Etudiant> getListeEtudiant() {
-	return listeECUE.get(0).getListeEtud();
-    }
     
-    public float getMoyenne(Etudiant e) {
+    public float getMoyenne(int numEtud) {
 	float noteTotal = 0;
-	float nbHeures = 0;
-	Etudiant et;
+	float nbHeureTotal = 0;
 	for (ECUE ecue : listeECUE) {
-	    et = ecue.getListeEtud().get(ecue.getListeEtud().indexOf(e));
-	    nbHeures += ecue.getNbHeures();
-	    noteTotal += et.getNoteSession1()*nbHeures;
+	    nbHeureTotal += ecue.getNbHeures();
+	    noteTotal += ecue.getNote(numEtud)*ecue.getNbHeures();
 	}
-	return noteTotal/nbHeures;
+	return noteTotal/nbHeureTotal;
     }
 
 
