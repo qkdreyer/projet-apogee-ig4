@@ -662,7 +662,6 @@ and e.idProvenance = p.idProvenance;
 /
 
 
-
 --vue dept
 create or replace type TDepartement as object (
 	versionDiplome varchar2(10),
