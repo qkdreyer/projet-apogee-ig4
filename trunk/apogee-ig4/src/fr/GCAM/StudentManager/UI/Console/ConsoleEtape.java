@@ -4,7 +4,7 @@
  */
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.Controller.ControllerEtape;
+import fr.GCAM.StudentManager.BusinessLayer.ControllerEtape;
 import fr.GCAM.StudentManager.POJO.Etape;
 
 /**

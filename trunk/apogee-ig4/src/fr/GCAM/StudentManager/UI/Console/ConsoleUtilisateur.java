@@ -5,8 +5,8 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.Controller.AbstractController;
-import fr.GCAM.StudentManager.Controller.ControllerUtilisateur;
+import fr.GCAM.StudentManager.BusinessLayer.AbstractController;
+import fr.GCAM.StudentManager.BusinessLayer.ControllerUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

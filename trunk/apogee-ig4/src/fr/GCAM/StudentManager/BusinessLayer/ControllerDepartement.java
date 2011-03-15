@@ -3,30 +3,31 @@
  * and open the template in the editor.
  */
 
-package fr.GCAM.StudentManager.Controller;
+package fr.GCAM.StudentManager.BusinessLayer;
 
-import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.POJO.Departement;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
-import fr.GCAM.StudentManager.UI.UI;
+
 
 /**
+ * Classe définissant la méthode handleMessage pour un Departement.
  *
  * @author Quentin
  */
-public class ControllerEtape extends AbstractController {
+public class ControllerDepartement extends AbstractController {
 
-    private DAO<Etape> etapeDAO;
-    private Etape etape = null;
+    private DAO<Departement> deptDAO;
+    private Departement dept = null;
 
-    public ControllerEtape() {
-        etapeDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOEtape();
+    public ControllerDepartement() {
+        deptDAO = AbstractDAOFactory.getDAOFactory(dao).getDAODepartement();
     }
 
     /**
      * La classe définit les traitements associés au message<br>
      * -#find<br>
-     * -#list<br>
+     * -#update<br>
      * -#quit<br>
      * -#help<br>
      *
@@ -47,12 +48,11 @@ public class ControllerEtape extends AbstractController {
         } else if (msg[0].equals("#help")) {
             this.help();
         } else if (msg[0].equals("#down") && msg.length == 2) {
-            return new ControllerUE().handleMessage("#find " + msg[1]);
-        } else if (msg[0].equals("#up") && msg.length == 2) {
-            return new ControllerDepartement().handleMessage("#find " + msg[1]);
+            return new ControllerEtape().handleMessage("#find " + msg[1]);
         }
         return this;
     }
+
 
     /**
      * Méthode appelé par handleMessage lorsque le message vaut "#find"
@@ -60,9 +60,8 @@ public class ControllerEtape extends AbstractController {
      * @param msg(String) Le message contenant les informations à 'find'
      * @throws Exception
      */
-    public void find(String[] msg) throws Exception {
-        etape = (Etape) etapeDAO.find(msg[1]);
-        disp.display(etape.toString());
+    private void find(String[] msg) throws Exception {
+        disp.display(deptDAO.find(msg[1]).toString());
     }
 
     /**
@@ -71,8 +70,8 @@ public class ControllerEtape extends AbstractController {
      * @param msg(String) Le message contenant les informations à 'update'
      * @throws Exception
      */
-    public void update(String[] msg) throws Exception {
-        etapeDAO.update(etape);
+    private void update(String[] msg) throws Exception {
+        deptDAO.update(dept);
     }
 
     /**
@@ -80,7 +79,7 @@ public class ControllerEtape extends AbstractController {
      *
      * @throws Exception
      */
-    public void quit() {
+    private void quit() {
         System.exit(0);
     }
 
@@ -90,7 +89,7 @@ public class ControllerEtape extends AbstractController {
      * @throws Exception
      */
     private void help() {
-        disp.display("\t #find 'codeEtape'");
+        disp.display("\t #find 'versionDiplome'");
         disp.display("\t #update");
         disp.display("\t #quit");
     }
