@@ -5,6 +5,10 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
+import org.jdom.Document;
+import java.io.File;
+import fr.GCAM.StudentManager.Util.JDOM;
+import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import java.util.Iterator;
 import org.jdom.input.SAXBuilder;
@@ -61,6 +65,7 @@ public class XMLECUETest {
     /**
      * Test of create method, of class XMLECUE.
      */
+    @Ignore
     @Test
     public void testCreate() throws Exception {
 	System.out.println("create XMLECUE");
@@ -117,6 +122,7 @@ public class XMLECUETest {
     /**
      * Test of delete method, of class XMLECUE.
      */
+    @Ignore
     @Test
     public void testDelete() throws Exception {
 	System.out.println("delete XMLECUE");

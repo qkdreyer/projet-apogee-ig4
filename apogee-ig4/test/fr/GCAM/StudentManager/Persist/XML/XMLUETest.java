@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
+import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.UE;
 import java.util.ArrayList;
 import org.junit.After;
@@ -43,8 +44,9 @@ public class XMLUETest {
      * Test of create method, of class XMLUE.
      */
     @Test
+    @Ignore
     public void testCreate() throws Exception {
-	System.out.println("create");
+	System.out.println("create XMLUE");
 	UE obj = null;
 	XMLUE instance = new XMLUE();
 	instance.create(obj);
@@ -55,9 +57,10 @@ public class XMLUETest {
     /**
      * Test of update method, of class XMLUE.
      */
+    @Ignore
     @Test
     public void testUpdate() throws Exception {
-	System.out.println("update");
+	System.out.println("update XMLUE");
 	UE obj = null;
 	XMLUE instance = new XMLUE();
 	instance.update(obj);
@@ -68,9 +71,10 @@ public class XMLUETest {
     /**
      * Test of delete method, of class XMLUE.
      */
+    @Ignore
     @Test
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete XMLUE");
 	UE obj = null;
 	XMLUE instance = new XMLUE();
 	instance.delete(obj);
@@ -83,7 +87,7 @@ public class XMLUETest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find");
+	System.out.println("find XMLUE");
 	Object id = null;
 	XMLUE instance = new XMLUE();
 	UE expResult = null;
@@ -98,7 +102,7 @@ public class XMLUETest {
      */
     @Test
     public void testList() throws Exception {
-	System.out.println("list");
+	System.out.println("list XMLUE");
 	XMLUE instance = new XMLUE();
 	String expResult = "";
 	ArrayList<UE> result = instance.list();

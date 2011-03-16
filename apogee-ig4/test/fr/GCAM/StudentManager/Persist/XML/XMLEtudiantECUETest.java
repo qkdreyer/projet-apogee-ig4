@@ -5,9 +5,9 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
+import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.XML.Etudiant.XMLEtudiantECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -42,11 +42,12 @@ public class XMLEtudiantECUETest {
     }
 
     /**
-     * Test of create method, of class XMLEtudiant.
+     * Test of create method, of class XMLEtudiantECUE.
      */
     @Test
+    @Ignore
     public void testCreate() throws Exception {
-	System.out.println("create");
+	System.out.println("create XMLEtudiantECUE");
 	EtudiantECUE obj = null;
 	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	instance.create(obj);
@@ -55,11 +56,12 @@ public class XMLEtudiantECUETest {
     }
 
     /**
-     * Test of update method, of class XMLEtudiant.
+     * Test of update method, of class XMLEtudiantECUE.
      */
     @Test
+    @Ignore
     public void testUpdate() throws Exception {
-	System.out.println("update");
+	System.out.println("update XMLEtudiantECUE");
 	EtudiantECUE obj = null;
 	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	instance.update(obj);
@@ -68,11 +70,12 @@ public class XMLEtudiantECUETest {
     }
 
     /**
-     * Test of delete method, of class XMLEtudiant.
+     * Test of delete method, of class XMLEtudiantECUE.
      */
     @Test
+    @Ignore
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete XMLEtudiantECUE");
 	EtudiantECUE obj = null;
 	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	instance.delete(obj);
@@ -81,11 +84,11 @@ public class XMLEtudiantECUETest {
     }
 
     /**
-     * Test of find method, of class XMLEtudiant.
+     * Test of find method, of class XMLEtudiantECUE.
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find");
+	System.out.println("find XMLEtudiantECUE");
 	Object id = null;
 	XMLEtudiantECUE instance = new XMLEtudiantECUE();
 	EtudiantECUE expResult = null;
@@ -96,14 +99,14 @@ public class XMLEtudiantECUETest {
     }
 
     /**
-     * Test of list method, of class XMLEtudiant.
+     * Test of list method, of class XMLEtudiantECUE.
      */
     @Test
     public void testList() throws Exception {
-	System.out.println("list");
+	System.out.println("list XMLEtudiantECUE");
 	XMLEtudiantECUE instance = new XMLEtudiantECUE();
-	String expResult = "";
-	ArrayList<EtudiantECUE> result = instance.list();
+	ArrayList expResult = null;
+	ArrayList result = instance.list();
 	assertEquals(expResult, result);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
