@@ -101,8 +101,6 @@ public class DBUE extends DB<UE> {
                 } while (resultEtudiant.next());
             }
 
-            
-
             do {
                 ue.getListeECUE().add(new DBECUE(conn).find(result.getString("codeMatiere")));
             } while (result.next());
