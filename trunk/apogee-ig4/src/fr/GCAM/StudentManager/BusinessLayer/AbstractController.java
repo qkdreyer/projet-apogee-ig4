@@ -5,9 +5,6 @@
 
 package fr.GCAM.StudentManager.BusinessLayer;
 
-import fr.GCAM.StudentManager.UI.AbstractUIFactory;
-import fr.GCAM.StudentManager.UI.UI;
-
 /**
  * Classe abstraite déclarant la méthode que chaque controlleur concret devra
  * définir : handleMessage.
@@ -15,7 +12,6 @@ import fr.GCAM.StudentManager.UI.UI;
  */
 public abstract class AbstractController { // Gestion controller
 
-    protected UI disp;
     protected String dao;
 
     /*public AbstractController(String ui, String dao) {
@@ -33,6 +29,6 @@ public abstract class AbstractController { // Gestion controller
      * @return
      * @throws Exception
      */
-    public abstract AbstractController handleMessage(String message) throws Exception;
+    //public abstract AbstractController handleMessage(String message) throws Exception;
 
 }

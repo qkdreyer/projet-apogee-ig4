@@ -138,8 +138,7 @@ public class DBECUE extends DB<ECUE> {
     }
 
     public ArrayList<ECUE> list() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+	throw new UnsupportedOperationException("Not supported yet.");
     }
-
 
 }

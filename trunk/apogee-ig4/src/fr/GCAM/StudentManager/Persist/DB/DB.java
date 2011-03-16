@@ -18,7 +18,7 @@ import java.sql.Connection;
  */
 public abstract class DB<T> implements DAO<T> {
 
-    protected Connection conn = null;
+    protected static Connection conn = null;
 
     public DB(Connection conn) {
 	this.conn = conn;
