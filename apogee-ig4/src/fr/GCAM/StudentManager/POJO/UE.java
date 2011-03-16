@@ -26,6 +26,7 @@ public class UE {
     private ArrayList<ECUE> listeECUE;
     private ArrayList<EtudiantUE> listeEtud;
 
+
     public UE() {
         listeECUE = new ArrayList<ECUE>();
     }
@@ -98,6 +99,15 @@ public class UE {
 
     public void setListeECUE(ArrayList<ECUE> listeECUE) {
         this.listeECUE = listeECUE;
+    }
+    
+    
+    public ArrayList<EtudiantUE> getListeEtud() {
+        return listeEtud;
+    }
+
+    public void setListeEtud(ArrayList<EtudiantUE> listeEtud) {
+        this.listeEtud = listeEtud;
     }
 
     @Override

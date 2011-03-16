@@ -5,7 +5,9 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantUE;
 import fr.GCAM.StudentManager.POJO.UE;
+import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantUE;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -59,6 +61,9 @@ public class DBUE extends DB<UE> {
      * @param id(String) Le codeUE de l'UE que l'on souhaite charger
      * @return L'UE correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
+     * TODO: Appels sur base de donnée à améliorer. On doit pouvoir penser à
+     * une manière de mettre la création des liens VAE et APDJ dans la classe
+     * DBEtudiantUE.
      */
     public UE find(Object id) throws Exception {
         UE ue = new UE();
@@ -72,6 +77,31 @@ public class DBUE extends DB<UE> {
             ue.setOptionnel(result.getString("optionnel").equals("t") ? true : false);
             ue.setResponsable(result.getString("prenomResponsable") + " " + result.getString("nomResponsable"));
             ue.setCodeSemestre(result.getString("codeSemestre"));
+
+            ResultSet resultEtudiant = s.executeQuery("SELECT numEtudiant FROM table(get_liste_etud_UE('PIGU51'))");
+            if(resultEtudiant.first()){
+                do{
+                    EtudiantUE etudUE = new DBEtudiantUE(conn).find(resultEtudiant.getInt("numEtudiant"));
+
+                    ResultSet resultVAE = s.executeQuery("SELECT null FROM VAE "
+                            + "WHERE numEtudiant = " + etudUE.getNumEtudiant()
+                            + "AND codeUE = '" + (String)id + "'");
+                    
+                    ResultSet resultAPDJ = s.executeQuery("SELECT null FROM APDJ"
+                            + "WHERE numEtudiant = " + etudUE.getNumEtudiant()
+                            + "AND codeUE = '" + (String)id + "'");
+
+                    if (resultVAE.first()){
+                        etudUE.setVAE(true);
+                    }
+                    if (resultAPDJ.first()){
+                        etudUE.setAPDJ(true);
+                    }
+                    ue.getListeEtud().add(etudUE);
+                } while (resultEtudiant.next());
+            }
+
+            
 
             do {
                 ue.getListeECUE().add(new DBECUE(conn).find(result.getString("codeMatiere")));

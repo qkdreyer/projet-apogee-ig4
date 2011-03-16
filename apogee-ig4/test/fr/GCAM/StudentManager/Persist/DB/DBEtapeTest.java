@@ -90,6 +90,11 @@ public class DBEtapeTest {
 
     /**
      * Test of find method, of class DBEtape.
+     * TODO: Verifier:
+     *          -que result contient tous les attributs nécessaires
+     *          -que les semestres que l'étape contient sont bien les semestres attendus
+     *          -que la liste des UE que result contient est celle attendue
+     *          -que la liste des étudiants que result contient est celle attendue
      */
     @Test
     public void testFind() throws Exception {
