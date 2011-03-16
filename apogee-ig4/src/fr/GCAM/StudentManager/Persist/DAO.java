@@ -47,12 +47,9 @@ public interface DAO<T> {
      */
     public abstract T find(Object id) throws Exception;
 
-    /**
-     * //TODO 1 Utilisation de list() ?
-     * @param
-     * @return
-     * @throws Exception
+    /** TODO
+     *
      */
-    public abstract ArrayList<T> list() throws Exception;
+    public abstract ArrayList <T> list() throws Exception;
 
 }

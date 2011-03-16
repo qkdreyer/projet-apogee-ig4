@@ -109,7 +109,6 @@ public class DBUE extends DB<UE> {
     }
 
     public ArrayList<UE> list() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+	throw new UnsupportedOperationException("Not supported yet.");
     }
-
 }

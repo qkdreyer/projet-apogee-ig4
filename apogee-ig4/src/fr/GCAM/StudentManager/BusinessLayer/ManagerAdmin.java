@@ -13,12 +13,12 @@ import fr.GCAM.StudentManager.Persist.DAO;
  *
  * @author Quentin
  */
-public class ControllerAdmin extends AbstractController {
+public class ManagerAdmin extends AbstractController {
 
     private DAO<Utilisateur> userDAO;
     private Utilisateur user = null;
 
-    public ControllerAdmin() {
+    public ManagerAdmin() {
         this.userDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUtilisateur();
     }
 

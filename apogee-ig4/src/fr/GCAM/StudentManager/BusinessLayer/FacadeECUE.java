@@ -13,9 +13,10 @@ package fr.GCAM.StudentManager.BusinessLayer;
  * du programme
  * 
  */
-public class BL_ECUE {
+public class FacadeECUE {
 
-    /*
+    /**
+     * 
      * pour afficher la fenetre, j'ai besoin de:
      * nom de l'ECUE
      * nom du responsable
@@ -27,5 +28,33 @@ public class BL_ECUE {
      * elles sont mises a jour dans la BD (et vérifiées)
      * on peut aussi telecharger le fichier csv qui sera aussi chargé dans la base
      */
+
+    private ManagerECUE manECUE;
+
+    public FacadeECUE(String s) throws Exception {
+	manECUE = new ManagerECUE(s);
+    }
+
+    public String getNomResponsable() throws Exception {
+	return manECUE.getNomResponsable();
+    }
+
+    public String getPrenomResponsable() throws Exception {
+	return manECUE.getPrenomResponsable();
+    }
+
+    public String getCodeMatiere() throws Exception {
+	return manECUE.getCodeMatiere();
+    }
+
+    public int getNbHeures() throws Exception {
+	return manECUE.getNbHeures();
+    }
+
+    public Object[][] getArrayOfEtud() throws Exception {
+	return manECUE.getArrayOfEtud();
+    }
+
+
 
 }

@@ -5,7 +5,6 @@
 package fr.GCAM.StudentManager.Persist.DB;
 
 import fr.GCAM.StudentManager.POJO.Etape;
-import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantEtape;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -106,8 +105,7 @@ public class DBEtape extends DB<Etape> {
     }
 
     public ArrayList<Etape> list() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+	throw new UnsupportedOperationException("Not supported yet.");
     }
-
-
+    
 }

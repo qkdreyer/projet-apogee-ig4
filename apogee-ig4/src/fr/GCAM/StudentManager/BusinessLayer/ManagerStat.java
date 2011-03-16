@@ -13,11 +13,11 @@ import fr.GCAM.StudentManager.Persist.DAO;
  *
  * @author Quentin
  */
-public class ControllerStat extends AbstractController {
+public class ManagerStat extends AbstractController {
 
     private DAO<EtudiantECUE> etudDAO;
 
-    public ControllerStat() {
+    public ManagerStat() {
         this.etudDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOEtudiantECUE();
     }
 

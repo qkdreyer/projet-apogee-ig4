@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author Quentin
  */
-public class DBUtilisateur extends DB<Utilisateur> {
+public class DBUtilisateur extends DB<Utilisateur>  {
 
     public DBUtilisateur(Connection conn) {
         super(conn);
@@ -197,7 +197,7 @@ public class DBUtilisateur extends DB<Utilisateur> {
      * @return L'ensemble des utilisateurs
      * @throws Exception
      */
-    public ArrayList<Utilisateur> list() throws Exception {
+    public ArrayList<Utilisateur> list() throws Exception{
         ArrayList<Utilisateur> listeUtil = new ArrayList<Utilisateur>();
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet result = s.executeQuery("select * from Enseignant order by idEnseignant");

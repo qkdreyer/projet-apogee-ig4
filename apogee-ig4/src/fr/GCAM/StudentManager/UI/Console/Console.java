@@ -15,6 +15,6 @@ import fr.GCAM.StudentManager.UI.UI;
  *
  * @author Quentin
  */
-public abstract class Console<T> implements UI<T> {
+public abstract class Console<T> {
 
 }

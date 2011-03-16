@@ -6,7 +6,7 @@
 package fr.GCAM.StudentManager.UI.Console;
 
 import fr.GCAM.StudentManager.BusinessLayer.AbstractController;
-import fr.GCAM.StudentManager.BusinessLayer.ControllerUtilisateur;
+import fr.GCAM.StudentManager.BusinessLayer.ManagerUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -22,18 +22,8 @@ public class ConsoleUtilisateur extends Console<Utilisateur> {
     //private AbstractController parentController;
     
     public ConsoleUtilisateur(String dao) {
-	this.contr = new ControllerUtilisateur(this, dao);
+	this.contr = new ManagerUtilisateur(this, dao);
 	this.accept();
-    }
-
-    /**
-     * La méthode se contente d'affichier via un sout le message 'msg' dans la
-     * console
-     *
-     * @param msg La chaine de caractere à afficher
-     */
-    public void display(String msg) {
-	System.out.println(msg);
     }
 
      /**

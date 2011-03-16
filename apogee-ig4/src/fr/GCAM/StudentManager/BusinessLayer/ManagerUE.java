@@ -5,28 +5,27 @@
 
 package fr.GCAM.StudentManager.BusinessLayer;
 
-import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
-import fr.GCAM.StudentManager.UI.UI;
 
 /**
  *
  * @author Quentin
  */
-public class ControllerEtape extends AbstractController {
+public class ManagerUE extends AbstractController {
 
-    private DAO<Etape> etapeDAO;
-    private Etape etape = null;
+    private DAO<UE> ueDAO;
+    private UE ue = null;
 
-    public ControllerEtape() {
-        etapeDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOEtape();
+    public ManagerUE() {
+        ueDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUE();
     }
 
     /**
      * La classe définit les traitements associés au message<br>
      * -#find<br>
-     * -#list<br>
+     * -#update<br>
      * -#quit<br>
      * -#help<br>
      *
@@ -47,9 +46,9 @@ public class ControllerEtape extends AbstractController {
         } else if (msg[0].equals("#help")) {
             this.help();
         } else if (msg[0].equals("#down") && msg.length == 2) {
-            return new ControllerUE().handleMessage("#find " + msg[1]);
+            return new ManagerECUE().handleMessage("#find " + msg[1]);
         } else if (msg[0].equals("#up") && msg.length == 2) {
-            return new ControllerDepartement().handleMessage("#find " + msg[1]);
+            return new ManagerEtape().handleMessage("#find " + msg[1]);
         }
         return this;
     }
@@ -61,8 +60,8 @@ public class ControllerEtape extends AbstractController {
      * @throws Exception
      */
     public void find(String[] msg) throws Exception {
-        etape = (Etape) etapeDAO.find(msg[1]);
-        disp.display(etape.toString());
+        ue = (UE) ueDAO.find(msg[1]);
+        disp.display(ue.toString());
     }
 
     /**
@@ -72,7 +71,7 @@ public class ControllerEtape extends AbstractController {
      * @throws Exception
      */
     public void update(String[] msg) throws Exception {
-        etapeDAO.update(etape);
+        ueDAO.update(ue);
     }
 
     /**
@@ -90,7 +89,7 @@ public class ControllerEtape extends AbstractController {
      * @throws Exception
      */
     private void help() {
-        disp.display("\t #find 'codeEtape'");
+        disp.display("\t #find 'codeUE'");
         disp.display("\t #update");
         disp.display("\t #quit");
     }

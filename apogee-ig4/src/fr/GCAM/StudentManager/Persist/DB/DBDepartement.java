@@ -80,8 +80,7 @@ public class DBDepartement extends DB<Departement> {
     }
 
     public ArrayList<Departement> list() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+	throw new UnsupportedOperationException("Not supported yet.");
     }
-
 
 }
