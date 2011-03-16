@@ -59,6 +59,8 @@ public class DBEtudiantUE extends DB<EtudiantUE> {
      * @param id(int) L'idEtudiant de l'Etudiant que l'on souhaite charger
      * @return L'Etudiant correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
+     * TODO: Revoir le fonctionement de la methode pour la récupération des
+     * infos de l'UE
      */
     public EtudiantUE find(Object id) throws Exception { //TODO 1 findEtudUE
         EtudiantUE e = new EtudiantUE();
