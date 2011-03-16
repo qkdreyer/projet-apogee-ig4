@@ -5,6 +5,7 @@
 package fr.GCAM.StudentManager.Persist.DB;
 
 import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantEtape;
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantEtape;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -58,14 +59,17 @@ public class DBEtape extends DB<Etape> {
      * @param id(String) Le codeEtape de l'Etape que l'on souhaite charger
      * @return L'Etape correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
+     * TODO: Revoir amélioration possibles
      */
     public Etape find(Object id) throws Exception {
         Etape etape = new Etape();
 
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        //recherche le contenu de l'étape
         ResultSet result = s.executeQuery("SELECT * from VO_Etape where codeEtape = '"
                 + (String) id
                 + "'");
+        //enregistrement des données récupérées
         if (result.first()) {
             etape.setCodeEtape(result.getString("codeEtape"));
             etape.setVersionEtape(result.getString("versionEtape"));
@@ -75,10 +79,11 @@ public class DBEtape extends DB<Etape> {
 
             String codeSemestre1 = result.getString("codeSemestre");
 
-            //TODO 1 Obtenir la liste des étudiants de l'étape A vérifier
+            //Obtention de la liste des numEtudiants
             ResultSet resultEtudiant = s.executeQuery("SELECT numEtudiant FROM Etudiant"
                     + "WHERE codeEtape = '" + (String)id + "'");
 
+            //Création des objets EtudiantEtape dans la listeEtud
             if (resultEtudiant.first()){
                 do {
                     etape.getListeEtud().add(new DBEtudiantEtape(conn).find(result.getString("codeEtudiant")));
@@ -86,6 +91,7 @@ public class DBEtape extends DB<Etape> {
             }
 
 
+            //Creation des deux semestres, et enregistrement de leurs données
             Etape.Semestre semestre;
             do {
                 if (codeSemestre1.equals(result.getString("codeSemestre"))) {
@@ -96,7 +102,25 @@ public class DBEtape extends DB<Etape> {
                 semestre.setCodeEtape(result.getString("codeEtape"));
                 semestre.setCodeSemestre(result.getString("codeSemestre"));
                 semestre.setNbUEFacultatives(result.getInt("nbUEFacultatives"));
-                //semestre.getListeUE().add(new Etape.Semestre.UESemestre(
+
+                //TODO: Enregistrement dans listeEtudiant des EtudiantsSemestre
+                
+                //recopie des informations de chaque étudiant dans la liste des
+                //étudiants du semestre
+                for (EtudiantEtape e : etape.getListeEtud()){
+                    ResultSet resultEtudSemPJ = s.executeQuery("SELECT null FROM PointsJury"
+                        + "WHERE codeSemestre = '" + semestre.getCodeSemestre() + "'"
+                        + "AND numEtudiant = " + e.getNumEtudiant());
+
+                    //Ajout des information d'un étudiant
+
+                    //Ajout de l'étudiant dans listeEtudiant du semestre
+                    //semestre.getListeEtud().add();
+                }
+
+                
+
+                //enregistremenet de la liste des UE dans le semestre
                 semestre.getListeUE().add( new DBUE(conn).find(result.getString("codeUE")));
             } while (result.next());
         }
