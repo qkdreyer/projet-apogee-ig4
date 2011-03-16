@@ -75,6 +75,7 @@ public class DBEtudiantUE extends DB<EtudiantUE> {
 	    e.setPrenom(result.getString("prenom"));
 	    e.setMail(result.getString("mail"));
         }
+
         return e;
     }
 
