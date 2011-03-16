@@ -53,7 +53,6 @@ public class DBUtilisateurTest {
      * Test of create method, of class DBUtilisateur.
      */
     @Test
-    @Ignore
     public void testCreate() throws Exception {
 	System.out.println("create");
 	Utilisateur obj = null;
@@ -81,7 +80,6 @@ public class DBUtilisateurTest {
      * Test of delete method, of class DBUtilisateur.
      */
     @Test
-    @Ignore
     public void testDelete() throws Exception {
 	System.out.println("delete");
 	Utilisateur obj = null;

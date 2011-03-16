@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
+import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.Departement;
 import java.util.ArrayList;
 import org.junit.After;
@@ -20,11 +21,14 @@ import static org.junit.Assert.*;
  */
 public class XMLDepartementTest {
 
+    private static Departement dep_m;
+
     public XMLDepartementTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+
     }
 
     @AfterClass
@@ -43,8 +47,9 @@ public class XMLDepartementTest {
      * Test of create method, of class XMLDepartement.
      */
     @Test
+    @Ignore
     public void testCreate() throws Exception {
-	System.out.println("create");
+	System.out.println("create XMLDepartement");
 	Departement obj = null;
 	XMLDepartement instance = new XMLDepartement();
 	instance.create(obj);
@@ -56,8 +61,9 @@ public class XMLDepartementTest {
      * Test of update method, of class XMLDepartement.
      */
     @Test
+    @Ignore
     public void testUpdate() throws Exception {
-	System.out.println("update");
+	System.out.println("update XMLDepartement");
 	Departement obj = null;
 	XMLDepartement instance = new XMLDepartement();
 	instance.update(obj);
@@ -69,8 +75,9 @@ public class XMLDepartementTest {
      * Test of delete method, of class XMLDepartement.
      */
     @Test
+    @Ignore
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete XMLDepartement");
 	Departement obj = null;
 	XMLDepartement instance = new XMLDepartement();
 	instance.delete(obj);
@@ -83,14 +90,14 @@ public class XMLDepartementTest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find");
-	Object id = null;
+	System.out.println("find XMLDepartement");
 	XMLDepartement instance = new XMLDepartement();
-	Departement expResult = null;
+	
+	String id = "TEST001";
 	Departement result = instance.find(id);
-	assertEquals(expResult, result);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
+
+	assertEquals(dep_m.getMnemo(), result.getMnemo());
+
     }
 
     /**
@@ -98,7 +105,7 @@ public class XMLDepartementTest {
      */
     @Test
     public void testList() throws Exception {
-	System.out.println("list");
+	System.out.println("list XMLDepartement");
 	XMLDepartement instance = new XMLDepartement();
 	String expResult = "";
 	ArrayList<Departement> result = instance.list();

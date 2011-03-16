@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
+import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.util.ArrayList;
 import org.junit.After;
@@ -44,7 +45,7 @@ public class XMLUtilisateurTest {
      */
     @Test
     public void testCreate() throws Exception {
-	System.out.println("create");
+	System.out.println("create XMLUtilisateur");
 	Utilisateur obj = null;
 	XMLUtilisateur instance = new XMLUtilisateur();
 	instance.create(obj);
@@ -56,8 +57,9 @@ public class XMLUtilisateurTest {
      * Test of update method, of class XMLUtilisateur.
      */
     @Test
+    @Ignore
     public void testUpdate() throws Exception {
-	System.out.println("update");
+	System.out.println("update XMLUtilisateur");
 	Utilisateur obj = null;
 	XMLUtilisateur instance = new XMLUtilisateur();
 	instance.update(obj);
@@ -70,7 +72,7 @@ public class XMLUtilisateurTest {
      */
     @Test
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete XMLUtilisateur");
 	Utilisateur obj = null;
 	XMLUtilisateur instance = new XMLUtilisateur();
 	instance.delete(obj);
@@ -83,7 +85,7 @@ public class XMLUtilisateurTest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find");
+	System.out.println("find XMLUtilisateur");
 	Object request = null;
 	XMLUtilisateur instance = new XMLUtilisateur();
 	Utilisateur expResult = null;
@@ -98,7 +100,7 @@ public class XMLUtilisateurTest {
      */
     @Test
     public void testList() throws Exception {
-	System.out.println("list");
+	System.out.println("list XMLUtilisateur");
 	XMLUtilisateur instance = new XMLUtilisateur();
 	String expResult = "";
 	ArrayList<Utilisateur> result = instance.list();

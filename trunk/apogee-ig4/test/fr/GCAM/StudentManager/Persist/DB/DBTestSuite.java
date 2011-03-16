@@ -28,9 +28,11 @@ import org.junit.runners.Suite;
     fr.GCAM.StudentManager.Persist.DB.DBECUETest.class,
     fr.GCAM.StudentManager.Persist.DB.DBEtapeTest.class,
     fr.GCAM.StudentManager.Persist.DB.DBEtudiantECUETest.class,
+    fr.GCAM.StudentManager.Persist.DB.DBEtudiantEtapeTest.class,
+    fr.GCAM.StudentManager.Persist.DB.DBEtudiantSemestreTest.class,
+    fr.GCAM.StudentManager.Persist.DB.DBEtudiantUETest.class,
     fr.GCAM.StudentManager.Persist.DB.DBUETest.class,
-    fr.GCAM.StudentManager.Persist.DB.DBUtilisateurTest.class,
-    fr.GCAM.StudentManager.Persist.DB.DBFactoryTest.class
+    fr.GCAM.StudentManager.Persist.DB.DBUtilisateurTest.class
 })
 public class DBTestSuite {
 

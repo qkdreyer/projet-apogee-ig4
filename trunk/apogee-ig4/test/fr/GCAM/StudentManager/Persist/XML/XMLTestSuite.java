@@ -30,6 +30,9 @@ import org.junit.runners.Suite;
     fr.GCAM.StudentManager.Persist.XML.XMLECUETest.class,
     fr.GCAM.StudentManager.Persist.XML.XMLEtapeTest.class,
     fr.GCAM.StudentManager.Persist.XML.XMLEtudiantECUETest.class,
+    fr.GCAM.StudentManager.Persist.XML.XMLEtudiantEtapeTest.class,
+    fr.GCAM.StudentManager.Persist.XML.XMLEtudiantSemestreTest.class,
+    fr.GCAM.StudentManager.Persist.XML.XMLEtudiantUETest.class,
     fr.GCAM.StudentManager.Persist.XML.XMLUETest.class,
     fr.GCAM.StudentManager.Persist.XML.XMLUtilisateurTest.class
 })
@@ -39,12 +42,13 @@ public class XMLTestSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+
+
 	file = new File("xml/ECUE.xml");
 	if (file.exists()) {
 	    System.out.println("Le fichier existe");
 	    Document d = new SAXBuilder().build("xml/ECUE.xml");
-	    Iterator i = d.getRootElement().getChildren("ECUE").iterator();
-	    Iterator j;
+
 	    Element ECUE, listeEtud, Etudiant;
 	    EtudiantECUE etud = new EtudiantECUE(99999, "testINE", "testProv", "testStat", "nEtud", "pEtud", "test@mail.final", 0, 0);
 	    ECUE ecue = new ECUE();
@@ -82,6 +86,7 @@ public class XMLTestSuite {
 	} else {
 	    System.out.println("Le fichier n'existe pas, tant pis");
 	}
+	
     }
 
     @AfterClass
