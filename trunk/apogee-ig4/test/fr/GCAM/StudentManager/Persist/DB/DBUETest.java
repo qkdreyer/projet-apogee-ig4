@@ -88,6 +88,10 @@ public class DBUETest {
 
     /**
      * Test of find method, of class DBUE.
+     * TODO: verifier:
+     *              -que result contient bien les ECUE attendues
+     *              -que result contient bien la liste des étudiants attendue
+     *              -faire des tests avec des étudiants VAE et APDJ
      */
     @Test
     public void testFind() throws Exception {
