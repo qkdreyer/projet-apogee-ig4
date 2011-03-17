@@ -80,17 +80,22 @@ public class ManagerUtilisateur {
         try {//essaie de trouver l'utilisateur correspondant
             user = userDAO.find(request);
         } catch (Exception ex) {//si utilisateur non trouvé
+            System.out.println("No user");
             Logger.getLogger(ManagerUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         response.put("nom", user.getNom());
         response.put("prenom", user.getPrenom());
         response.put("mail", user.getMail());
-        
+
+        System.out.println("user.getNom() = " + user.getNom());
+
         if (!user.getListeResponsabilites().isEmpty()){
             response.put("topResponsability", user.getTopResponsability().getLibelle());
             System.out.println("user.getTopResponsability().getLibelle() = "
                     + user.getTopResponsability().getLibelle());
+        }else{
+            System.out.println("NO RESPONSABILITY");
         }
         
         return response;
