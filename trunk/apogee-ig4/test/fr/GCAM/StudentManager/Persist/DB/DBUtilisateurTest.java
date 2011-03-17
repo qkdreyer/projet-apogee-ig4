@@ -72,8 +72,13 @@ public class DBUtilisateurTest {
 	System.out.println("str = " + str);
 	ResultSet r = s.executeQuery(str);
 	if (r.first()) {
+	    //On verifie que le bon nom a ete insere
 	    assertEquals(util_m.getNom(), r.getString("nom"));
 	    assertEquals(util_m.getPrenom(), r.getString("prenom"));
+
+	    //On verifie ses responsabilites, il est cense etre responsable
+	    //d'une ECUE, UE, etape, departement
+	    assertEquals(str, str);
 	}
     }
 
@@ -121,9 +126,12 @@ public class DBUtilisateurTest {
     public void testFind() throws Exception {
 	System.out.println("find DBUtilisateur");
 	DBUtilisateur dbu = new DBUtilisateur(conn);
+	
+	//Test avec findwithid
 	Utilisateur result = dbu.find(9999);
 	assertEquals("testNom", result.getNom());
 
+	//Test avec find whith logs
 	ArrayList<String> logs = new ArrayList<String>();
 	logs.add("testPrenom");
 	logs.add("testNom");

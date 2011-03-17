@@ -43,34 +43,50 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 	    for (Responsabilite r : obj.getListeResponsabilites()) {
 		if (r.getLibelle().equals("ECUE")) {
 		    ECUE e = new DBECUE(conn).find(r.getCodeResponsabilite());
-		    s.execute("insert into ECUE values('"
-			    + r.getCodeResponsabilite() + "', '"
-			    + e.getLibelleECUE() + "', "
-			    + e.getNbHeures() + ", "
-			    + "utilSeq.currval, '"
-			    + e.getCodeUE() + "')");
+		    String query_ecue = "UPDATE ECUE "
+			    + "SET idenseignant=" + obj.getIdEnseignant() +
+			    " WHERE codematiere ='" + e.getCodeMatiere() +"'";
+		    s.execute(query_ecue);
+//		    s.execute("insert into ECUE values('"
+//			    + r.getCodeResponsabilite() + "', '"
+//			    + e.getLibelleECUE() + "', "
+//			    + e.getNbHeures() + ", "
+//			    + "utilSeq.currval, '"
+//			    + e.getCodeUE() + "')");
 		} else if (r.getLibelle().equals("UE")) {
 		    UE u = new DBUE(conn).find(r.getCodeResponsabilite());
-		    s.execute("insert into UE values('"
-			    + r.getCodeResponsabilite() + "', "
-			    + u.getNbECTS() + ", '"
-			    + u.getLibelleUE() + "', "
-			    + (u.isOptionnel() ? 't' : 'f') + ", "
-			    + "utilSeq.currval, '"
-			    + u.getCodeSemestre() + "')");
+		    String query_ue = "UPDATE UE "
+			    + "SET idenseignant=" + obj.getIdEnseignant() +
+			    " WHERE codeUE ='" + u.getCodeUE() +"'";
+		    s.execute(query_ue);
+//		    s.execute("insert into UE values('"
+//			    + r.getCodeResponsabilite() + "', "
+//			    + u.getNbECTS() + ", '"
+//			    + u.getLibelleUE() + "', "
+//			    + (u.isOptionnel() ? 't' : 'f') + ", "
+//			    + "utilSeq.currval, '"
+//			    + u.getCodeSemestre() + "')");
 		} else if (r.getLibelle().equals("Etape")) {
 		    Etape e = new DBEtape(conn).find(r.getCodeResponsabilite());
-		    s.execute("insert into Etape values('"
-			    + r.getCodeResponsabilite() + "', '"
-			    + "utilSeq.currval, '"
-			    + e.getVersionDiplome() + "')");
+		    String query_etape = "UPDATE Etape "
+			    + "SET idenseignant=" + obj.getIdEnseignant() +
+			    " WHERE codeEtape ='" + e.getCodeEtape() +"'";
+		    s.execute(query_etape);
+//		    s.execute("insert into Etape values('"
+//			    + r.getCodeResponsabilite() + "', '"
+//			    + "utilSeq.currval, '"
+//			    + e.getVersionDiplome() + "')");
 		} else if (r.getLibelle().equals("Departement")) {
 		    Departement d = new DBDepartement(conn).find(r.getCodeResponsabilite());
-		    s.execute("insert into Departement values('"
-			    + r.getCodeResponsabilite() + "', '"
-			    + d.getNomDepartement() + "', '"
-			    + d.getMnemo() + "', "
-			    + "utilSeq.currval)");
+		    String query_dep = "UPDATE Departement "
+			    + "SET idenseignant=" + obj.getIdEnseignant() +
+			    " WHERE versionDiplome ='" + d.getVersionDiplome() +"'";
+		    s.execute(query_dep);
+//		    s.execute("insert into Departement values('"
+//			    + r.getCodeResponsabilite() + "', '"
+//			    + d.getNomDepartement() + "', '"
+//			    + d.getMnemo() + "', "
+//			    + "utilSeq.currval)");
 		}
 	    }
         }
@@ -125,13 +141,13 @@ public class DBUtilisateur extends DB<Utilisateur>  {
      * @throws Exception
      */
     public Utilisateur find(Object request) throws Exception {
+	Utilisateur result = null;
         if (request instanceof ArrayList) {
-            return this.findWithLogin((ArrayList) request);
+            result = this.findWithLogin((ArrayList) request);
         } else if (request instanceof Integer) {
-            return this.findWithID((Integer) request);
-        } else {
-            return null;
+	    result = this.findWithID((Integer) request);
         }
+	return ( result != null) ? result : null ;
     }
 
     /**
@@ -178,11 +194,13 @@ public class DBUtilisateur extends DB<Utilisateur>  {
     private Utilisateur findWithLogin(ArrayList a) throws Exception {
         Utilisateur util = new Utilisateur();
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT idEnseignant, lower(nom) as nom, "
+	String str = "SELECT idEnseignant, lower(nom) as nom, "
 		+ "lower(prenom) as prenom, mdp, mail, coderesponsabilite, libelle from VO_Utilisateur "
                 + "where lower(nom) = '" + ((String) a.get(1)).toLowerCase() + "' and "
                 + "lower(prenom) = '" + ((String) a.get(0)).toLowerCase() + "' and "
-                + "mdp = getHash('" + (String) a.get(2) + "')");
+                + "mdp = getHash('" + (String) a.get(2) + "')";
+	System.out.println("str = " + str);
+        ResultSet result = s.executeQuery(str);
         if (result.first()) {
 	    util.setIdEnseignant(result.getInt("idEnseignant"));
             util.setNom(result.getString("nom"));
