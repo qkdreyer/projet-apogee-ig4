@@ -9,7 +9,7 @@ package fr.GCAM.StudentManager.Business;
  *
  * @author Jojo
  */
-public class FacadeAdmin {
+public class BL_ADMIN {
 
     /*
      * L'on doit avoir la liste des responsables

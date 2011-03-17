@@ -5,19 +5,26 @@
 
 package fr.GCAM.StudentManager.Business;
 
+import java.util.HashMap;
+
 /**
  *
- * @author Jojo
+ * @author ben
  */
 public class FacadeUtilisateur {
 
-    /*
-     * Lorsque l'utilisateur a rentré son identifiant et mdp
-     * L'on doit chercher s'ils sont exacts
-     * puis on le redirige vers la fenetre adéquate
-     * BL_ECUE pour responsable ECUE
-     * BL_UE pour responsable UE
-     * ...
+    ManagerUtilisateur utilisateur;
+
+    public FacadeUtilisateur() {
+        utilisateur = new ManagerUtilisateur(null);
+    }
+
+    /**
+     * methode login
+     *
      */
+    public HashMap< String, String > login(String nom, String prenom, String mdp){
+        return utilisateur.login(nom, prenom, mdp);
+    }
 
 }

@@ -92,6 +92,9 @@ public class ManagerECUE {
         ecueDAO.update(ecue);
     }
 
+    /**
+     * Methode
+     */
     public Object[][] getArrayOfEtudiantECUE() {
 	ArrayList<EtudiantECUE> listeEtud = ecue.getListeEtud();
 	Object[][] arrayEtud = new Object[listeEtud.size()+1][4];

@@ -11,15 +11,23 @@
 
 package maquette;
 
+import fr.GCAM.StudentManager.Business.FacadeUtilisateur;
+import fr.GCAM.StudentManager.POJO.ECUE;
+import java.util.HashMap;
+import java.util.Hashtable;
+
 /**
  *
  * @author pierre
  */
 public class Login extends javax.swing.JFrame {
 
+    FacadeUtilisateur facadeUtilisateur;
+
     /** Creates new form Login */
     public Login() {
         initComponents();
+        facadeUtilisateur = new FacadeUtilisateur();
     }
 
     /** This method is called from within the constructor to
@@ -35,8 +43,8 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        mdp = new javax.swing.JTextField();
+        identifiant = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GCAM Consulter - Identification");
@@ -49,10 +57,15 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Mot de passe");
 
         jButton1.setText("Connexion");
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                onConnectionClick(evt);
+            }
+        });
+
+        identifiant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                identifiantActionPerformed(evt);
             }
         });
 
@@ -69,8 +82,8 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField1)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
+                        .addComponent(mdp)
+                        .addComponent(identifiant, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
                 .addGap(151, 151, 151))
         );
         jPanel1Layout.setVerticalGroup(
@@ -79,11 +92,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(identifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -109,9 +122,32 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void identifiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identifiantActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_identifiantActionPerformed
+
+    /**
+     * Connecte l'utilisateur à la base de données, et fd
+     */
+    private void onConnectionClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onConnectionClick
+        //contient nom et prénom
+        String[] ident_tab;
+
+        //Sortire le nom et le prénom
+        ident_tab = identifiant.getText().split(".");
+
+        //identifier l'utilisateur, et récupère nouvelle fenêtre
+        HashMap<String, String> resp = facadeUtilisateur.login(ident_tab[0], ident_tab[1], mdp.getText());
+
+        if( resp == null ){
+            System.out.println("Error");;
+        }else{
+            if(resp.get("topResponsability").equals("ECUE")){
+                this.setVisible(false);
+                new ManageECUE_GUI().setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_onConnectionClick
 
     /**
     * @param args the command line arguments
@@ -125,12 +161,12 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField identifiant;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField mdp;
     // End of variables declaration//GEN-END:variables
 
 }
