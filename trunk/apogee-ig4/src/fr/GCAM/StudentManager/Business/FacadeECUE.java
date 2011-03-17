@@ -31,8 +31,8 @@ public class FacadeECUE {
 
     private ManagerECUE manECUE;
 
-    public FacadeECUE(String s) throws Exception {
-	manECUE = new ManagerECUE(s);
+    public FacadeECUE(String s, String dao) throws Exception {
+	manECUE = new ManagerECUE(s, dao);
     }
 
     public String getResponsable() throws Exception {

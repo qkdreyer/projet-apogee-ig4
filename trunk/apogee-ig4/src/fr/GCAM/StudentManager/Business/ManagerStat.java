@@ -13,11 +13,11 @@ import fr.GCAM.StudentManager.Persist.DAO;
  *
  * @author Quentin
  */
-public class ManagerStat extends AbstractManager {
+public class ManagerStat {
 
     private DAO<EtudiantECUE> etudDAO;
 
-    public ManagerStat() {
+    public ManagerStat(String dao) {
         this.etudDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOEtudiantECUE();
     }
 

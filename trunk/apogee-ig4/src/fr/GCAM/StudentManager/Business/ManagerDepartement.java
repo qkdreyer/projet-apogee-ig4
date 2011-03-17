@@ -15,12 +15,26 @@ import fr.GCAM.StudentManager.Persist.DAO;
  *
  * @author Quentin
  */
-public class ManagerDepartement extends AbstractManager {
+public class ManagerDepartement {
 
     private Departement dept = null;
+    private DAO<Departement> deptDAO = null;
 
-    public ManagerDepartement(String s) throws Exception {
-        dept = AbstractDAOFactory.getDAOFactory(dao).getDAODepartement().find(s);
+    public ManagerDepartement(String s, String dao) throws Exception {
+        deptDAO = AbstractDAOFactory.getDAOFactory(dao).getDAODepartement();
+        dept = deptDAO.find(s);
+    }
+
+    public String getVersionDiplome() {
+        return dept.getVersionDiplome();
+    }
+
+    public String getNomDepartement() {
+        return dept.getNomDepartement();
+    }
+
+    public String getMnemo() {
+        return dept.getMnemo();
     }
 
 }

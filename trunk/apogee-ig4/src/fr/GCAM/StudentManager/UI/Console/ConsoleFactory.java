@@ -24,7 +24,7 @@ public class ConsoleFactory extends AbstractUIFactory {
      * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
      */
     public UI<Utilisateur> getUIUtilisateur(String s) {
-	throw new UnsupportedOperationException("Not supported yet.");
+	return new ConsoleUtilisateur(s);
     }
 
     @Override

@@ -13,13 +13,13 @@ import fr.GCAM.StudentManager.Persist.DAO;
  *
  * @author Quentin
  */
-public class ManagerAdmin extends AbstractManager {
+public class ManagerAdmin {
 
     private DAO<Utilisateur> userDAO;
     private Utilisateur user = null;
 
-    public ManagerAdmin() {
-        this.userDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUtilisateur();
+    public ManagerAdmin(String dao) {
+        userDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUtilisateur();
     }
 
     private void add(String[] msg) throws Exception { // #add Prenom Nom MDP mail codeResp1 libelle1 codeResN libelleN
