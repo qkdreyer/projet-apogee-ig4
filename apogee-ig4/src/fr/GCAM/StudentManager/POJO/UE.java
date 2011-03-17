@@ -29,12 +29,14 @@ public class UE {
 
     public UE() {
         listeECUE = new ArrayList<ECUE>();
+        listeEtud = new ArrayList<EtudiantUE>();
     }
 
     public UE(String codeUE, String libelleUE) {
         this.codeUE = codeUE;
         this.libelleUE = libelleUE;
         listeECUE = new ArrayList<ECUE>();
+        listeEtud = new ArrayList<EtudiantUE>();
     }
 
     public String getCodeSemestre() {
