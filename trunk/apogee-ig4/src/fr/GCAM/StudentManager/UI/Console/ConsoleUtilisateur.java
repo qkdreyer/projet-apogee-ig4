@@ -5,7 +5,11 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.BusinessLayer.AbstractController;
+import fr.GCAM.StudentManager.BusinessLayer.AbstractManager;
+import fr.GCAM.StudentManager.BusinessLayer.FacadeDepartement;
+import fr.GCAM.StudentManager.BusinessLayer.FacadeECUE;
+import fr.GCAM.StudentManager.BusinessLayer.FacadeEtape;
+import fr.GCAM.StudentManager.BusinessLayer.FacadeUE;
 import fr.GCAM.StudentManager.BusinessLayer.ManagerUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.io.BufferedReader;
@@ -16,13 +20,9 @@ import java.io.InputStreamReader;
  *
  * @author Quentin
  */
-public class ConsoleUtilisateur extends Console<Utilisateur> {
-
-    private AbstractController contr;
-    //private AbstractController parentController;
+public class ConsoleUtilisateur {
     
     public ConsoleUtilisateur(String dao) {
-	this.contr = new ManagerUtilisateur(this, dao);
 	this.accept();
     }
 
@@ -36,12 +36,43 @@ public class ConsoleUtilisateur extends Console<Utilisateur> {
 
             while (true) {
                 message = fromConsole.readLine();
-                contr = contr.handleMessage(message);
+                System.out.println(handleMessage(message));
             }
         } catch (Exception ex) {
             System.out.println("Erreur : " + ex);
             ex.printStackTrace();
         }
+    }
+
+    private String handleMessage(String message) throws Exception {
+        String[] msg = message.split(" ");
+
+        if (msg[0].equals("#findECUE") && msg.length == 2) { // #find pstia602
+            return new FacadeECUE(msg[1]).toString();
+        } else if (msg[0].equals("#findUE") && msg.length == 2) {
+            return new FacadeUE(msg[1]).toString();
+        } else if (msg[0].equals("#findEtape") && msg.length == 2) {
+            return new FacadeEtape(msg[1]).toString();
+        } else if (msg[0].equals("#findDept") && msg.length == 2) {
+            //return new FacadeDepartement(msg[1]).toString();
+        } else if (msg[0].equals("#help")) {
+            return this.help();
+        } else if (msg[0].equals("#quit")) {
+            this.quit();
+        }
+        return null;
+    }
+
+    private String help() {
+        return "#findECUE 'ecue'"
+                + "#findUE 'ue'"
+                + "#findEtape 'etape'"
+                + "#findDept 'dept'"
+                + "#quit";
+    }
+
+    private void quit() {
+        System.exit(1);
     }
 
 }
