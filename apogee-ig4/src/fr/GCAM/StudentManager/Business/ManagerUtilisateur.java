@@ -8,6 +8,7 @@ import fr.GCAM.StudentManager.POJO.Utilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +26,10 @@ public class ManagerUtilisateur {
         userDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUtilisateur();
         user = userDAO.find(s);
 	//this.user = us;
+    }
+
+    public ManagerUtilisateur(String dao){
+        userDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUtilisateur();
     }
 
     /**
@@ -81,9 +86,11 @@ public class ManagerUtilisateur {
         response.put("nom", user.getNom());
         response.put("prenom", user.getPrenom());
         response.put("mail", user.getMail());
-
+        
         if (!user.getListeResponsabilites().isEmpty()){
             response.put("topResponsability", user.getTopResponsability().getLibelle());
+            System.out.println("user.getTopResponsability().getLibelle() = "
+                    + user.getTopResponsability().getLibelle());
         }
         
         return response;
