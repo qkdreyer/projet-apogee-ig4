@@ -69,25 +69,37 @@ insert into Etudiant values (20070003,0,'PUM2003',255,01,03,01,'11','dreyer','qu
 insert into Etudiant values (20070004,0,'PUM2004',010,04,03,02,'11','michel','benjamin','benji@china.cn');
 insert into Etudiant values (20070005,0,'PUM2005',235,01,69,04,'11','coudsi','julien','besseges@uneseulerace.bes');
 
+
+
 insert into Etudiant values (20070006,0,'PUM2006',700,01,03,01,'10','costanza','guillaume','gc@popo.fr');
 insert into Etudiant values (20070007,0,'PUM2007',700,01,03,01,'10','rance','justine','rancitude@laposte.net');
 insert into Etudiant values (20070008,0,'PUM2008',700,01,03,01,'10','paze','yannick','dieguito@pasderace.com');
 
 insert into Etudiant values (20070009,0,'PUM2009',500,01,03,01,'20','meyer','lisa','jsuitrobonne@sex.xx');
 insert into Etudiant values (20070010,0,'PUM2010',500,01,03,01,'20','asse','bomb','6@9.xnxx');
+
+
+
+insert into Etudiant values (20079999,0,'PUM9999',700,01,03,02,'11','moreau','js','papa@bientot.com');
+insert into Etudiant values (20060006,0,'PUM2200',900,02,03,01,'11','romand','olivier','olivier@met.fi');
+
 	
-insert into Note values();
-insert into Note values();
-insert into Note values();
-insert into Note values();
-insert into Note values();
+insert into Note values(13,0,20070002,'PIG701');
+insert into Note values(08,9,20070001,'PIG701');
+insert into Note values(06,08,20070001,'PIG702');
+insert into Note values(18,0,20070002,'PIG702');
+insert into Note values(02,03,20070003,'PIG702');
+insert into Note values(03,02,20070003,'PIG701');
 
 -- UE Level
-insert into APDJ values();
+insert into APDJ values('PIGU71',20070001);
 	
-insert into VAE values();
+insert into VAE values('PIGU71',20079999);
+	
+insert into CHoixUE values('PIGU71',2007003);
 	
 --Sem Level
-insert into PointJury values();
-insert into Etranger values();
-insert into Redoublant values();
+insert into PointJury values(6532,10,20070001,71);
+insert into Etranger values(12.7, 20060006,81 );
+insert into Redoublant values(3,20070003,71);
+	
