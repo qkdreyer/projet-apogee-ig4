@@ -134,7 +134,7 @@ public class Login extends javax.swing.JFrame {
         //Sortire le nom et le prénom
         ident_tab = identifiant.getText().split("\\.");
 
-        System.out.println("ident_tab = " + ident_tab);
+        System.out.println("ident_tab = " + ident_tab[0]);
 
         //identifier l'utilisateur, et récupère nouvelle fenêtre
         HashMap<String, String> resp = facadeUtilisateur.login(ident_tab[0], ident_tab[1], mdp.getText());
