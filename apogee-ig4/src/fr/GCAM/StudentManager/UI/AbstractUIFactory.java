@@ -6,7 +6,6 @@ package fr.GCAM.StudentManager.UI;
 
 import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.POJO.*;
-import fr.GCAM.StudentManager.UI.Console.ConsoleFactory;
 import fr.GCAM.StudentManager.UI.GUI.GUIFactory;
 
 /**
@@ -74,14 +73,6 @@ public abstract class AbstractUIFactory {
      */
     public abstract UI<Departement> getUIDepartement(String s);
 
-//    /**
-//     *
-//     * @param s
-//     * @return
-//     * @deprecated
-//     */
-    //public abstract UI<Etape.Semestre> getUISemestre(String s);
-
     /**
      * Methode renvoyant l'UI (Console ou GUI) associée à la chaine passée
      * en parametre.
@@ -90,7 +81,7 @@ public abstract class AbstractUIFactory {
      * g(GUI)
      * @return L'AbstractUIFactory retournée est en fait une des sous classes :
      * ConsoleFactory ou GUIFactory.
-     */
+     *
     public static AbstractUIFactory getUIFactory(String s) {
 	if (fact == null) {
 	    if (s.equals("c")) {
@@ -102,5 +93,5 @@ public abstract class AbstractUIFactory {
 	    }
 	}
 	return fact;
-    }
+    }*/
 }

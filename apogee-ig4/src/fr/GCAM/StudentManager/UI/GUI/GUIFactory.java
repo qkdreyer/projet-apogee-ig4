@@ -15,7 +15,7 @@ import fr.GCAM.StudentManager.UI.UI;
  *
  * @author Quentin
  */
-public class GUIFactory extends AbstractUIFactory {
+public class GUIFactory {
 
     /**
      * Méthode permettant de créer une GUIECUE
@@ -23,7 +23,7 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique ECUE(POJO)
      */
-    public UI<ECUE> getUIECUE(String s) {
+    public GUI<ECUE> getUIECUE(String s) {
 	return new GUIECUE(s);
     }
 
@@ -33,7 +33,7 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Etudiant(POJO)
      */
-    public UI<AbstractEtudiant> getUIEtudiant(String s) {
+    public GUI<AbstractEtudiant> getUIEtudiant(String s) {
 	return new GUIEtudiant(s);
     }
 
@@ -43,7 +43,7 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
      */
-    public UI<Utilisateur> getUIUtilisateur(String s) {
+    public GUI<Utilisateur> getUIUtilisateur(String s) {
         return new GUIUtilisateur(s);
     }
 
@@ -53,7 +53,7 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique UE(POJO)
      */
-    public UI<UE> getUIUE(String s) {
+    public GUI<UE> getUIUE(String s) {
         return new GUIUE(s);
     }
 
@@ -63,7 +63,7 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Etape(POJO)
      */
-    public UI<Etape> getUIEtape(String s) {
+    public GUI<Etape> getUIEtape(String s) {
         return new GUIEtape(s);
     }
 
@@ -73,7 +73,7 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Departement(POJO)
      */
-    public UI<Departement> getUIDepartement(String s) {
+    public GUI<Departement> getUIDepartement(String s) {
         return new GUIDepartement(s);
     }
 
