@@ -16,7 +16,7 @@ public class FacadeUtilisateur {
     ManagerUtilisateur utilisateur;
 
     public FacadeUtilisateur() {
-        utilisateur = new ManagerUtilisateur(null);
+        utilisateur = new ManagerUtilisateur("db");
     }
 
     /**
