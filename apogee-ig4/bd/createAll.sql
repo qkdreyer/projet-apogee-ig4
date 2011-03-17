@@ -94,18 +94,21 @@ create table Etudiant (
 
 create table VAE (
 	codeue varchar2(10),
-	numEtudiant number	
+	numEtudiant number,
+	constraint pkVAE primary key(codeue, numEtudiant)	
 );
 
 create table choixUE (
 	codeue varchar2(10),
-	numEtudiant number	
+	numEtudiant number,
+	constraint pkChoixUE primary key(codeue, numEtudiant)
 );
 
 
 create table APDJ (
 	codeue varchar2(10),
-	numEtudiant number	
+	numEtudiant number,
+	constraint pkAPDJ primary key(codeue, numEtudiant)	
 );
 
 	
@@ -129,30 +132,27 @@ create table Statut (
 
 -- Notes
 create table Note (
-	idnote number,
 	noteSession1 number(4,2),
 	noteSession2 number(4,2),
 	numEtudiant number,
 	codeMatiere varchar2(10),
-	constraint pkNote primary key(idnote)	
+	constraint pkNote primary key(numEtudiant, codeMatiere)	
 );
 
 
 create table PointsJury (
-	idPointsJury number,
 	nbPoints number,
 	numEtudiant number,
 	codesemestre varchar2(10),
-	constraint pkPointJury primary key(idPointsJury)
+	constraint pkPointJury primary key(numEtudiant, codeSemestre)
 );
 
 
 create table Redoublant (
-	idredoublant number,
 	moyenne number,
 	numEtudiant number,
 	codesemestre varchar2(10),
-	constraint pkRedoublant primary key(idredoublant)
+	constraint pkRedoublant primary key(numEtudiant, codeSemestre)
 );
 
 	
@@ -164,11 +164,10 @@ create table Provenance (
 
 
 create table etranger (
-	idetranger number,
-	moyenne number,
+	moyenne number(4,2),
 	numEtudiant number,
 	codesemestre varchar2(10),
-	constraint pkEtranger primary key(idetranger)
+	constraint pkEtranger primary key(numEtudiant, codeSemestre)
 );
 
 
