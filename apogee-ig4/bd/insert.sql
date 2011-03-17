@@ -96,10 +96,10 @@ insert into APDJ values('PIGU71',20070001);
 	
 insert into VAE values('PIGU71',20079999);
 	
-insert into CHoixUE values('PIGU71',2007003);
+insert into CHoixUE values('PIGU71',20070003);
 	
 --Sem Level
-insert into PointJury values(6532,10,20070001,71);
+insert into PointsJury values(10,20070001,71);
 insert into Etranger values(12.7, 20060006,81 );
 insert into Redoublant values(3,20070003,71);
 	

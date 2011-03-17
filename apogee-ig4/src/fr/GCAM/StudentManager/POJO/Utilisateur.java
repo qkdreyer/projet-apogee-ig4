@@ -34,6 +34,8 @@ public class Utilisateur implements Comparable {
 	this.mdp = mdp;
 	if (listeResponsabilites == null )
 	    this.listeResponsabilites = new ArrayList<Responsabilite>();
+	else
+	    this.listeResponsabilites = listeResponsabilites;
     }
 
     public Utilisateur(int idEnseignant, String prenom, String nom, String mdp, String mail, ArrayList<Responsabilite> listeResponsabilites) {
@@ -44,6 +46,8 @@ public class Utilisateur implements Comparable {
 	this.mail = mail;
 	if (listeResponsabilites == null )
 	    this.listeResponsabilites = new ArrayList<Responsabilite>();
+	else
+	    this.listeResponsabilites = listeResponsabilites;
     }
 
 
