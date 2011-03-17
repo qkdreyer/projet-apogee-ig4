@@ -10,6 +10,7 @@ import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantSemestre;
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantEtape;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -65,8 +66,14 @@ public class DBEtape extends DB<Etape> {
     public Etape find(Object id) throws Exception {
         Etape etape = new Etape();
 
+        //Un statement pour chaque requètes
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        Statement s2 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement sListeEtudiant = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement sPointsJury = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement sEtranger = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement sRedoublant = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement sListeUE = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
 
         //recherche le contenu de l'étape
         ResultSet result = s.executeQuery("SELECT * from VO_Etape WHERE codeEtape = '"
@@ -87,10 +94,8 @@ public class DBEtape extends DB<Etape> {
 
 	    System.out.println("id = " + id);
             //Obtention de la liste des numEtudiants
-	    String str = "SELECT numEtudiant FROM Etudiant "
-                    + "WHERE codeEtape = '" + id + "'";
-	    System.out.println("str = " + str);
-            ResultSet resultEtudiant = s2.executeQuery(str);
+            ResultSet resultEtudiant = sListeEtudiant.executeQuery("SELECT numEtudiant FROM Etudiant "
+                    + "WHERE codeEtape = '" + id + "'");
 
             //Création des objets EtudiantEtape dans la listeEtud et insertion
             //des informations basiques
@@ -100,6 +105,7 @@ public class DBEtape extends DB<Etape> {
                 }while(resultEtudiant.next());
             }
 
+            
 
             //Creation des deux semestres, et enregistrement de leurs données
             Etape.Semestre semestre;
@@ -134,22 +140,22 @@ public class DBEtape extends DB<Etape> {
                             false); //Redoublant par défaut
 
                     //si l'étudiant a reçu des points jury
-                    ResultSet resultEtudSemPJ = s.executeQuery("SELECT nbpoints FROM PointsJury"
+                    ResultSet resultEtudSemPJ = sPointsJury.executeQuery("SELECT nbpoints FROM PointsJury"
                         + " WHERE codeSemestre = '" + semestre.getCodeSemestre() + "'"
                         + " AND numEtudiant = " + e.getNumEtudiant());
                     
                     //si l'étudiant passe son semestre à l'étranger
-                    ResultSet resultEtudEtranger = s.executeQuery("SELECT moyenne FROM Etranger"
+                    ResultSet resultEtudEtranger = sEtranger.executeQuery("SELECT moyenne FROM Etranger"
                             + " WHERE codeSemestre = '" + semestre.getCodeSemestre() +"'"
                             + " AND numEtudiant = " +e.getNumEtudiant());
 
                     //si l'étudiant a déjà une note en raison d'un redoublement
-                    ResultSet resultEtudRedouble = s.executeQuery("SELECT moyenne FROM Redoublant"
+                    ResultSet resultEtudRedouble = sRedoublant.executeQuery("SELECT moyenne FROM Redoublant"
                             + " WHERE codeSemestre = '" + semestre.getCodeSemestre() +"'"
                             + " AND numEtudiant = " +e.getNumEtudiant());
                     
                     //Ajout des information d'un étudiant
-
+                    
                     //Si l'étudiant a des points jury:
                     if (resultEtudSemPJ.first()){
                         etudSem.setPointJurySemestre(resultEtudSemPJ.getInt("nbpoints"));
@@ -175,10 +181,18 @@ public class DBEtape extends DB<Etape> {
                     semestre.getListeEtud().add(etudSem);
                 }
 
-                
+                    //Recupération de la liste des UE
+                ResultSet resultListeUE = sListeUE.executeQuery("SELECT codeUE FROM UE"
+                        + " WHERE codeSemestre = '" + semestre.getCodeSemestre() +"'");
 
-                //enregistremenet de la liste des UE dans le semestre
-                semestre.getListeUE().add( new DBUE(conn).find(result.getString("codeUE")));
+                //enregistrement de la liste des UE dans le semestre
+                if(resultListeUE.first()){
+                    do{
+                        //Récupère l'UE et l'enregistre dans le semestre
+                        semestre.getListeUE().add( new DBUE(conn).find(resultListeUE.getString("codeUE")));
+                    }while(resultListeUE.next());
+                }
+                
             } while (result.next());
         }
 

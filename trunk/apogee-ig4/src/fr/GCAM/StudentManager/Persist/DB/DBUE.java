@@ -66,10 +66,15 @@ public class DBUE extends DB<UE> {
     public UE find(Object id) throws Exception {
         UE ue = new UE();
 
-        //Récupère l'UE correspondant au codeUE donné
+        //Creation des statements
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement sListeEtud = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement sAPDJ = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement sVAE = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+        //Récupère l'UE correspondant au codeUE donné
         ResultSet result = s.executeQuery("SELECT * from VO_UE where codeUE = '" + (String) id + "'");
-        
+
         //enregistrement des données trouvées
         if (result.first()) {
             ue.setCodeUE(result.getString("codeUE"));
@@ -80,21 +85,21 @@ public class DBUE extends DB<UE> {
             ue.setCodeSemestre(result.getString("codeSemestre"));
 
             //Récupération de la liste des étudiants inscrit à l'UE
-            ResultSet resultEtudiant = s.executeQuery("SELECT numEtudiant FROM table(get_liste_etud_UE('PIGU51'))");
+            ResultSet resultEtudiant = sListeEtud.executeQuery("SELECT numEtudiant FROM table(get_liste_etud_UE('PIGU51'))");
             if(resultEtudiant.first()){
                 do{
                     //On crée un étudiant
                     EtudiantUE etudUE = new DBEtudiantUE(conn).find(resultEtudiant.getInt("numEtudiant"));
 
                     //on vérifie si il a un VAE pour cette UE
-                    ResultSet resultVAE = s.executeQuery("SELECT null FROM VAE "
-                            + "WHERE numEtudiant = " + etudUE.getNumEtudiant()
-                            + "AND codeUE = '" + (String)id + "'");
+                    ResultSet resultVAE = sVAE.executeQuery("SELECT null FROM VAE"
+                            + " WHERE numEtudiant = " + etudUE.getNumEtudiant()
+                            + " AND codeUE = '" + (String)id + "'");
 
                     //On vérifie si il a une APDJ pour cette UE
-                    ResultSet resultAPDJ = s.executeQuery("SELECT null FROM APDJ"
-                            + "WHERE numEtudiant = " + etudUE.getNumEtudiant()
-                            + "AND codeUE = '" + (String)id + "'");
+                    ResultSet resultAPDJ = sAPDJ.executeQuery("SELECT null FROM APDJ"
+                            + " WHERE numEtudiant = " + etudUE.getNumEtudiant()
+                            + " AND codeUE = '" + (String)id + "'");
 
                     //Si l'étudiant a une VAE, on met la var à vrais, sinon faux
                     if (resultVAE.first()){
