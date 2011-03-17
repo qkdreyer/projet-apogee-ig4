@@ -36,6 +36,7 @@ public class Utilisateur implements Comparable {
     }
 
     public int compareTo(Object o) {
+	System.out.println("Comparaison de 2 utils");
 	if (this.idEnseignant == ((Utilisateur)o).getIdEnseignant() ) {
 	    return 0;
 	} else if ( this.idEnseignant < ((Utilisateur)o).getIdEnseignant() ) {

@@ -98,7 +98,7 @@ public class DBEtapeTest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find Etape");
+	System.out.println("find DBEtape");
 	Object id = null;
 	DBEtape instance = new DBEtape(conn);
 	Etape result = instance.find("testCEt");

@@ -63,7 +63,7 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
     public EtudiantECUE find(Object id) throws Exception {
         EtudiantECUE e = new EtudiantECUE();
 
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where numEtudiant = " + id);
         if (result.first()) {
 	    e.setNumEtudiant(result.getInt("numEtudiant"));

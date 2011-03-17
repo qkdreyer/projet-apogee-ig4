@@ -6,7 +6,6 @@
 package fr.GCAM.StudentManager.Persist.DB;
 
 import java.sql.Connection;
-import fr.GCAM.StudentManager.Persist.DB.ConnectionDB;
 import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
@@ -51,7 +50,7 @@ public class DBEtudiantECUETest {
      */
     @Test
     public void testCreate() throws Exception {
-	System.out.println("create");
+	System.out.println("create DBEtudiantTest");
 	EtudiantECUE obj = null;
 	DBEtudiantECUE instance = null;
 	instance.create(obj);
@@ -64,7 +63,7 @@ public class DBEtudiantECUETest {
      */
     @Test
     public void testUpdate() throws Exception {
-	System.out.println("update");
+	System.out.println("update DBEtudiantTest");
 	EtudiantECUE obj = null;
 	DBEtudiantECUE instance = null;
 	instance.update(obj);
@@ -77,7 +76,7 @@ public class DBEtudiantECUETest {
      */
     @Test
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete DBEtudiantTest");
 	EtudiantECUE obj = null;
 	DBEtudiantECUE instance = null;
 	instance.delete(obj);
@@ -90,9 +89,9 @@ public class DBEtudiantECUETest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find DBEtudiant");
-
-	AbstractEtudiant result = new DBEtudiantECUE(conn).find(99999);
+	System.out.println("find DBEtudiantTest");
+	DBEtudiantECUE dbe = new DBEtudiantECUE(conn);
+	EtudiantECUE result = dbe.find(99999);
 	assertEquals("INETEST", result.getNumIne());
     }
 
@@ -101,7 +100,7 @@ public class DBEtudiantECUETest {
      */
     @Test
     public void testList() throws Exception {
-	System.out.println("list");
+	System.out.println("list DBEtudiantTest");
 	DBEtudiantECUE instance = null;
 	ArrayList expResult = null;
 	ArrayList result = instance.list();

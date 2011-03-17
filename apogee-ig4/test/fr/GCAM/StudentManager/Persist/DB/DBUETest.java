@@ -50,7 +50,7 @@ public class DBUETest {
     @Test
     @Ignore
     public void testCreate() throws Exception {
-	System.out.println("create");
+	System.out.println("create DBUE");
 	UE obj = null;
 	DBUE instance = null;
 	instance.create(obj);
@@ -64,7 +64,7 @@ public class DBUETest {
     @Test
     @Ignore
     public void testUpdate() throws Exception {
-	System.out.println("update");
+	System.out.println("update DBUE");
 	UE obj = null;
 	DBUE instance = null;
 	instance.update(obj);
@@ -78,7 +78,7 @@ public class DBUETest {
     @Test
     @Ignore
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete DBUE");
 	UE obj = null;
 	DBUE instance = null;
 	instance.delete(obj);
@@ -95,7 +95,7 @@ public class DBUETest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find UE");
+	System.out.println("find DBUE");
 
 	UE result = new DBUE(conn).find("testCUE");
 	assertEquals("testLib", result.getLibelleUE());
@@ -107,7 +107,7 @@ public class DBUETest {
     @Test
     @Ignore
     public void testList() throws Exception {
-	System.out.println("list");
+	System.out.println("list DBUE");
 	DBUE instance = null;
 	String expResult = "";
 	ArrayList<UE> result = instance.list();
