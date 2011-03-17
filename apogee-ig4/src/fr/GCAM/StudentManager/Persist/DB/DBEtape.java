@@ -65,7 +65,9 @@ public class DBEtape extends DB<Etape> {
     public Etape find(Object id) throws Exception {
         Etape etape = new Etape();
 
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement s2 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
         //recherche le contenu de l'étape
         ResultSet result = s.executeQuery("SELECT * from VO_Etape WHERE codeEtape = '"
                 + (String) id
@@ -79,16 +81,22 @@ public class DBEtape extends DB<Etape> {
                     + result.getString("nomResponsable"));
 
             String codeSemestre1 = result.getString("codeSemestre");
+	    String codeSemestre2 = result.getString("codeSemestre");
+	    System.out.println("codeSemestre1 = " + codeSemestre1);
+	    System.out.println("codeSemestre2 = " + codeSemestre2);
 
+	    System.out.println("id = " + id);
             //Obtention de la liste des numEtudiants
-            ResultSet resultEtudiant = s.executeQuery("SELECT numEtudiant FROM Etudiant"
-                    + "WHERE codeEtape = '" + (String)id + "'");
+	    String str = "SELECT numEtudiant FROM Etudiant "
+                    + "WHERE codeEtape = '" + id + "'";
+	    System.out.println("str = " + str);
+            ResultSet resultEtudiant = s2.executeQuery(str);
 
             //Création des objets EtudiantEtape dans la listeEtud et insertion
             //des informations basiques
             if (resultEtudiant.first()){
                 do {
-                    etape.getListeEtud().add(new DBEtudiantEtape(conn).find(result.getString("codeEtudiant")));
+                    etape.getListeEtud().add(new DBEtudiantEtape(conn).find(resultEtudiant.getString("numEtudiant")));
                 }while(resultEtudiant.next());
             }
 
@@ -96,6 +104,7 @@ public class DBEtape extends DB<Etape> {
             //Creation des deux semestres, et enregistrement de leurs données
             Etape.Semestre semestre;
             do {
+		System.out.println("result.getString(\"codeSemestre\") = " + result.getString("codeSemestre"));
                 if (codeSemestre1.equals(result.getString("codeSemestre"))) {
                     semestre = etape.getSemestre(1);
                 } else {

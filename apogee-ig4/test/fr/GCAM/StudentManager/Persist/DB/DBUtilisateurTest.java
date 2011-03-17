@@ -116,7 +116,7 @@ public class DBUtilisateurTest {
 	System.out.println("list DBUtilisateur");
 	DBUtilisateur dbu = new DBUtilisateur(conn);
 	util = new Utilisateur();
-	boolean Trouve = false;
+	boolean trouve = false;
 //	ArrayList<Utilisateur> expResult = new ArrayList<Utilisateur>();
 
 	ArrayList<Utilisateur> result = dbu.list();
@@ -129,12 +129,12 @@ public class DBUtilisateurTest {
 	    do {
 		util = new Utilisateur();
 		util.setIdEnseignant(r.getInt("idenseignant"));
-		System.out.println("util.getIdEnseignant() = " + util.getIdEnseignant());
-//		trouve = false;
+		trouve = false;
                 for (Utilisateur each : result) {
-		    
+		    if(each.getIdEnseignant() == util.getIdEnseignant())
+			trouve = true;
 		}
-		assertTrue(Trouve);
+		assertTrue(trouve);
             } while (r.next());
 
 //	    assertEquals(expResult, result);

@@ -63,7 +63,7 @@ public class DBEtudiantEtape extends DB<EtudiantEtape> {
     public EtudiantEtape find(Object id) throws Exception { //TODO 1 findEtudEtape
         EtudiantEtape e = new EtudiantEtape();
 
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet result = s.executeQuery("SELECT * from VO_Etudiant where numEtudiant = " + id);
         if (result.first()) {
 	    e.setNumEtudiant(result.getInt("numEtudiant"));
