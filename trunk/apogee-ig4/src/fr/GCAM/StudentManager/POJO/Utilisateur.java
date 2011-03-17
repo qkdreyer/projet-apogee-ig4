@@ -32,8 +32,21 @@ public class Utilisateur implements Comparable {
 	this.prenom = prenom;
 	this.nom = nom;
 	this.mdp = mdp;
-	this.listeResponsabilites = listeResponsabilites;
+	if (listeResponsabilites == null )
+	    this.listeResponsabilites = new ArrayList<Responsabilite>();
     }
+
+    public Utilisateur(int idEnseignant, String prenom, String nom, String mdp, String mail, ArrayList<Responsabilite> listeResponsabilites) {
+	this.idEnseignant = idEnseignant;
+	this.prenom = prenom;
+	this.nom = nom;
+	this.mdp = mdp;
+	this.mail = mail;
+	if (listeResponsabilites == null )
+	    this.listeResponsabilites = new ArrayList<Responsabilite>();
+    }
+
+
 
     public int compareTo(Object o) {
 	System.out.println("Comparaison de 2 utils");
@@ -46,10 +59,13 @@ public class Utilisateur implements Comparable {
 	}
     }
 
-    public static class Responsabilite {
+    public static class Responsabilite implements Comparable {
 
 	private String libelle;
 	private String codeResponsabilite;
+
+	public Responsabilite() {
+	}
 
 	public Responsabilite(String codeResponsabilite, String libelle) {
 	    this.codeResponsabilite = codeResponsabilite;
@@ -68,6 +84,56 @@ public class Utilisateur implements Comparable {
 	public String toString() {
 	    String str = this.getLibelle() + " (" + this.getCodeResponsabilite() + ")\n";
 	    return str;
+	}
+
+	public int compareTo(Object o) {
+	    if (libelle.equals("Departement")) {
+		if (libelle.equals("Departement")) {
+		    return 0;
+		} else if (libelle.equals("Etape")) {
+		    return 1;
+		} else if (libelle.equals("UE")) {
+		    return 1;
+		} else if (libelle.equals("ECUE")) {
+		    return 1;
+		} else
+		    return 2;
+	    } else if (libelle.equals("Etape")) {
+		if (libelle.equals("Departement")) {
+		    return -1;
+		} else if (libelle.equals("Etape")) {
+		    return 0;
+		} else if (libelle.equals("UE")) {
+		    return 1;
+		} else if (libelle.equals("ECUE")) {
+		    return 1;
+		} else
+		    return 2;
+	    } else if (libelle.equals("UE")) {
+		if (libelle.equals("Departement")) {
+		    return -1;
+		} else if (libelle.equals("Etape")) {
+		    return -1;
+		} else if (libelle.equals("UE")) {
+		    return 0;
+		} else if (libelle.equals("ECUE")) {
+		    return 1;
+		} else
+		    return 2;
+	    } else if (libelle.equals("ECUE")) {
+		if (libelle.equals("Departement")) {
+		    return -1;
+		} else if (libelle.equals("Etape")) {
+		    return -1;
+		} else if (libelle.equals("UE")) {
+		    return -1;
+		} else if (libelle.equals("ECUE")) {
+		    return 0;
+		} else
+		    return 2;
+	    } else {
+		return 2;
+	    }
 	}
     }
 
@@ -136,6 +202,20 @@ public class Utilisateur implements Comparable {
 	}
 
 	return str;
+    }
+
+    public Responsabilite getTopResponsability() {
+	Responsabilite topRes = new Responsabilite();
+	if (listeResponsabilites != null) {
+
+	    topRes = listeResponsabilites.get(0);
+	    for (Responsabilite each : listeResponsabilites) {
+		if (each.compareTo(topRes) == 1)
+		    topRes = each;
+	    }
+	    return topRes;
+	} else
+	    return null;
     }
     
 }

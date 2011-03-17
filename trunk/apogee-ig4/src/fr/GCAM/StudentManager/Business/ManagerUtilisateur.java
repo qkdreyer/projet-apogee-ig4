@@ -21,6 +21,7 @@ public class ManagerUtilisateur {
     public ManagerUtilisateur(String s, String dao) throws Exception {
         userDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUtilisateur();
         user = userDAO.find(s);
+	//this.user = us;
     }
 
     /**
