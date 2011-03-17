@@ -9,6 +9,6 @@ package fr.GCAM.StudentManager.BusinessLayer;
  *
  * @author Jojo
  */
-public class BL_SEMESTRE {
+public class FacadeSemestre {
 
 }

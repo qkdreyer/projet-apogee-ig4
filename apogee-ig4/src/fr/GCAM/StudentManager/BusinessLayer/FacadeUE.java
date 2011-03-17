@@ -9,7 +9,7 @@ package fr.GCAM.StudentManager.BusinessLayer;
  *
  * @author Jojo
  */
-public class BL_UE {
+public class FacadeUE {
 
      /*
      * pour afficher la fenetre, j'ai besoin de:

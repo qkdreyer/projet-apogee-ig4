@@ -9,7 +9,7 @@ package fr.GCAM.StudentManager.BusinessLayer;
  *
  * @author Jojo
  */
-public class BL_DEPARTEMENT {
+public class FacadeDepartement {
 
     /*
      * L'on doit connaitre le departement et les années

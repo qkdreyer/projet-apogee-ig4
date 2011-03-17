@@ -9,7 +9,7 @@ package fr.GCAM.StudentManager.BusinessLayer;
  *
  * @author Jojo
  */
-public class BL_ETAPE {
+public class FacadeEtape {
 
     /*
      * On doit connaitre
