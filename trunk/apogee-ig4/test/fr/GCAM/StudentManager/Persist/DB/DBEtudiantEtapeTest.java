@@ -45,7 +45,7 @@ public class DBEtudiantEtapeTest {
      */
     @Test
     public void testCreate() throws Exception {
-	System.out.println("create");
+	System.out.println("create DBEtudiantEtapeTest");
 	EtudiantEtape obj = null;
 	DBEtudiantEtape instance = null;
 	instance.create(obj);
@@ -58,7 +58,7 @@ public class DBEtudiantEtapeTest {
      */
     @Test
     public void testUpdate() throws Exception {
-	System.out.println("update");
+	System.out.println("update DBEtudiantEtape");
 	EtudiantEtape obj = null;
 	DBEtudiantEtape instance = null;
 	instance.update(obj);
@@ -71,7 +71,7 @@ public class DBEtudiantEtapeTest {
      */
     @Test
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete DBEtudiantEtapeTest");
 	EtudiantEtape obj = null;
 	DBEtudiantEtape instance = null;
 	instance.delete(obj);
@@ -84,7 +84,7 @@ public class DBEtudiantEtapeTest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find");
+	System.out.println("find DBEtudiantEtapeTest");
 	Object id = null;
 	DBEtudiantEtape instance = null;
 	EtudiantEtape expResult = null;
@@ -99,7 +99,7 @@ public class DBEtudiantEtapeTest {
      */
     @Test
     public void testList() throws Exception {
-	System.out.println("list");
+	System.out.println("list DBEtudiantEtapeTest");
 	DBEtudiantEtape instance = null;
 	ArrayList expResult = null;
 	ArrayList result = instance.list();

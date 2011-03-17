@@ -54,7 +54,7 @@ public class DBUtilisateurTest {
      */
     @Test
     public void testCreate() throws Exception {
-	System.out.println("create");
+	System.out.println("create DBUtilisateur");
 	Utilisateur obj = null;
 	DBUtilisateur instance = null;
 	instance.create(obj);
@@ -81,7 +81,7 @@ public class DBUtilisateurTest {
      */
     @Test
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete DBUtilisateur");
 	Utilisateur obj = null;
 	DBUtilisateur instance = null;
 	instance.delete(obj);
@@ -94,7 +94,7 @@ public class DBUtilisateurTest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find Utilisateur");
+	System.out.println("find DBUtilisateur");
 	DBUtilisateur dbu = new DBUtilisateur(conn);
 	Utilisateur result = dbu.find(9999);
 	assertEquals("testNom", result.getNom());
@@ -113,22 +113,28 @@ public class DBUtilisateurTest {
      */
     @Test
     public void testList() throws Exception {
-	System.out.println("list Utilisateur");
+	System.out.println("list DBUtilisateur");
 	DBUtilisateur dbu = new DBUtilisateur(conn);
 	util = new Utilisateur();
+	boolean Trouve = false;
 //	ArrayList<Utilisateur> expResult = new ArrayList<Utilisateur>();
 
 	ArrayList<Utilisateur> result = dbu.list();
-	System.out.println("result.toString() = " + result.toString());
+//	System.out.println("result.toString() = " + result.toString());
 
 	 //on recupere le resultat
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet r = s.executeQuery("SELECT distinct(idenseignant) from vo_utilisateur");
 	if (r.first()) {
 	    do {
+		util = new Utilisateur();
 		util.setIdEnseignant(r.getInt("idenseignant"));
 		System.out.println("util.getIdEnseignant() = " + util.getIdEnseignant());
-                assertTrue(result.contains(util));
+//		trouve = false;
+                for (Utilisateur each : result) {
+		    
+		}
+		assertTrue(Trouve);
             } while (r.next());
 
 //	    assertEquals(expResult, result);

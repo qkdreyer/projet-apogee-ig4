@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.POJO.*;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import fr.GCAM.StudentManager.UI.UI;
@@ -23,27 +24,27 @@ public class ConsoleFactory extends AbstractUIFactory {
      * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
      */
     public UI<Utilisateur> getUIUtilisateur(String s) {
-        return new ConsoleUtilisateur(s);
+	throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public UI<ECUE> getUIECUE(String s) {
-        throw new UnsupportedOperationException("Not supported yet.");
+	throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public UI<UE> getUIUE(String s) {
-        throw new UnsupportedOperationException("Not supported yet.");
+	throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public UI<Etape> getUIEtape(String s) {
-        throw new UnsupportedOperationException("Not supported yet.");
+	throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public UI<Departement> getUIDepartement(String s) {
-        throw new UnsupportedOperationException("Not supported yet.");
+	throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

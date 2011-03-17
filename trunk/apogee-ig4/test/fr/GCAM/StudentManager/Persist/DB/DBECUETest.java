@@ -155,8 +155,8 @@ public class DBECUETest {
     @Test
     public void testFind() throws Exception {
         System.out.println("find DBECUE");
-        Object id = null;
-        DBECUE instance = new DBECUE(conn);
+	
+	DBECUE instance = new DBECUE(conn);
         ECUE result = instance.find("TEST001");
         assertEquals("testlibelle", result.getLibelleECUE());
     }

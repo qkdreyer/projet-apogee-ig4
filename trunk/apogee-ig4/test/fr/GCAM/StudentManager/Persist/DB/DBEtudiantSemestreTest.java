@@ -45,7 +45,7 @@ public class DBEtudiantSemestreTest {
      */
     @Test
     public void testCreate() throws Exception {
-	System.out.println("create");
+	System.out.println("create DBEtudiantSemestre");
 	EtudiantSemestre obj = null;
 	DBEtudiantSemestre instance = null;
 	instance.create(obj);
@@ -58,7 +58,7 @@ public class DBEtudiantSemestreTest {
      */
     @Test
     public void testUpdate() throws Exception {
-	System.out.println("update");
+	System.out.println("update DBEtudiantSemestre");
 	EtudiantSemestre obj = null;
 	DBEtudiantSemestre instance = null;
 	instance.update(obj);
@@ -71,7 +71,7 @@ public class DBEtudiantSemestreTest {
      */
     @Test
     public void testDelete() throws Exception {
-	System.out.println("delete");
+	System.out.println("delete DBEtudiantSemestre");
 	EtudiantSemestre obj = null;
 	DBEtudiantSemestre instance = null;
 	instance.delete(obj);
@@ -84,7 +84,7 @@ public class DBEtudiantSemestreTest {
      */
     @Test
     public void testFind() throws Exception {
-	System.out.println("find");
+	System.out.println("find DBEtudiantSemestre");
 	Object id = null;
 	DBEtudiantSemestre instance = null;
 	EtudiantSemestre expResult = null;
@@ -99,7 +99,7 @@ public class DBEtudiantSemestreTest {
      */
     @Test
     public void testList() throws Exception {
-	System.out.println("list");
+	System.out.println("list DBEtudiantSemestre");
 	DBEtudiantSemestre instance = null;
 	ArrayList expResult = null;
 	ArrayList result = instance.list();
