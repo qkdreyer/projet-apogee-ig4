@@ -29,8 +29,8 @@ public class FacadeUE {
 
     private ManagerUE manUE;
 
-    public FacadeUE(String s) throws Exception {
-	manUE = new ManagerUE(s);
+    public FacadeUE(String s, String dao) throws Exception {
+	manUE = new ManagerUE(s, dao);
     }
 
     public String getResponsable() throws Exception {

@@ -1,8 +1,5 @@
 package fr.GCAM.StudentManager.UI;
 
-import fr.GCAM.StudentManager.Business.AbstractManager;
-import fr.GCAM.StudentManager.UI.AbstractUIFactory;
-
 /**
  * Classe principale du projet. C'est ici que l'on va regarder les deux arguments
  * obligatoires qui doivent etre passés pour l'éxecution du programme.
@@ -16,7 +13,7 @@ public class Main {
                 && (args[0].equals("c") || args[0].equals("g"))
                 && (args[1].equals("db") || args[1].equals("xml"))) {
             //new AbstractController(args[0], args[1]);
-            //AbstractUIFactory.getUIFactory(args[0]).getUIUtilisateur(args[1]);
+            AbstractUIFactory.getUIFactory(args[0]).getUIUtilisateur(args[1]);
         } else {
             System.err.println("Arguments invalides (Format : c/g db/xml)");
         }

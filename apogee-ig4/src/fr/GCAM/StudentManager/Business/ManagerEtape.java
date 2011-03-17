@@ -14,11 +14,11 @@ import java.util.ArrayList;
  *
  * @author Quentin
  */
-public class ManagerEtape extends AbstractManager {
+public class ManagerEtape {
 
     private Etape etape = null;
 
-    public ManagerEtape(String s) throws Exception {
+    public ManagerEtape(String s, String dao) throws Exception {
         etape = AbstractDAOFactory.getDAOFactory(dao).getDAOEtape().find(s);
     }
 

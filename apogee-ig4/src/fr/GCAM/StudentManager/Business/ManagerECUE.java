@@ -7,6 +7,7 @@ package fr.GCAM.StudentManager.Business;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
+import fr.GCAM.StudentManager.Persist.DAO;
 import fr.GCAM.StudentManager.Util.SSParser;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,12 +17,15 @@ import java.util.ArrayList;
  *
  * @author Quentin
  */
-public class ManagerECUE extends AbstractManager {
+public class ManagerECUE {
 
     private ECUE ecue = null;
+    private DAO<ECUE> ecueDAO = null;
 
-    public ManagerECUE(String s) throws Exception {
-	ecue = AbstractDAOFactory.getDAOFactory(dao).getDAOECUE().find(s);
+
+    public ManagerECUE(String s, String dao) throws Exception {
+        ecueDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOECUE();
+	ecue = ecueDAO.find(s);
     }
 
     /**
@@ -65,7 +69,7 @@ public class ManagerECUE extends AbstractManager {
      */
     public void setNoteSession1(int indexEtud, int note) throws Exception {
 	ecue.getListeEtud().get(indexEtud).modifyNoteSession1(note);
-        AbstractDAOFactory.getDAOFactory(dao).getDAOECUE().update(ecue);
+        ecueDAO.update(ecue);
     }
 
     /**
@@ -76,7 +80,7 @@ public class ManagerECUE extends AbstractManager {
      */
     public void setNoteSession2(int indexEtud, int note) throws Exception {
 	ecue.getListeEtud().get(indexEtud).modifyNoteSession2(note);
-        AbstractDAOFactory.getDAOFactory(dao).getDAOECUE().update(ecue);
+        ecueDAO.update(ecue);
     }
 
     public void createSS() throws IOException {
@@ -85,7 +89,7 @@ public class ManagerECUE extends AbstractManager {
 
     public void loadSS(String s) throws Exception {
 	SSParser.loadSS(ecue, s);
-        AbstractDAOFactory.getDAOFactory(dao).getDAOECUE().update(ecue);
+        ecueDAO.update(ecue);
     }
 
     public Object[][] getArrayOfEtudiantECUE() {

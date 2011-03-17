@@ -5,7 +5,6 @@
 
 package fr.GCAM.StudentManager.Business;
 
-import fr.GCAM.StudentManager.Business.AbstractManager;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantUE;
 import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
@@ -16,12 +15,14 @@ import java.util.ArrayList;
  *
  * @author Quentin
  */
-public class ManagerUE extends AbstractManager {
+public class ManagerUE {
 
     private UE ue = null;
+    private DAO<UE> ueDAO = null;
 
-    public ManagerUE(String s) throws Exception {
-        ue = AbstractDAOFactory.getDAOFactory(dao).getDAOUE().find(s);
+    public ManagerUE(String s, String dao) throws Exception {
+        ueDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOUE();
+        ue = ueDAO.find(s);
     }
 
     public String getLibelleUE() {

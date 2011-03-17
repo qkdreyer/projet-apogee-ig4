@@ -24,8 +24,8 @@ public class FacadeEtape {
 
     private ManagerEtape manEtape;
 
-    public FacadeEtape(String s) throws Exception {
-	manEtape = new ManagerEtape(s);
+    public FacadeEtape(String s, String dao) throws Exception {
+	manEtape = new ManagerEtape(s, dao);
     }
 
     public String getResponsable() throws Exception {
