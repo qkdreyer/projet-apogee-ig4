@@ -5,12 +5,10 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.BusinessLayer.AbstractManager;
-import fr.GCAM.StudentManager.BusinessLayer.FacadeDepartement;
-import fr.GCAM.StudentManager.BusinessLayer.FacadeECUE;
-import fr.GCAM.StudentManager.BusinessLayer.FacadeEtape;
-import fr.GCAM.StudentManager.BusinessLayer.FacadeUE;
-import fr.GCAM.StudentManager.BusinessLayer.ManagerUtilisateur;
+import fr.GCAM.StudentManager.Business.FacadeDepartement;
+import fr.GCAM.StudentManager.Business.FacadeECUE;
+import fr.GCAM.StudentManager.Business.FacadeEtape;
+import fr.GCAM.StudentManager.Business.FacadeUE;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -20,7 +18,7 @@ import java.io.InputStreamReader;
  *
  * @author Quentin
  */
-public class ConsoleUtilisateur {
+public class ConsoleUtilisateur extends Console<Utilisateur> {
     
     public ConsoleUtilisateur(String dao) {
 	this.accept();

@@ -4,8 +4,8 @@
  */
 package fr.GCAM.StudentManager.UI;
 
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.POJO.*;
+import fr.GCAM.StudentManager.UI.Console.ConsoleFactory;
 import fr.GCAM.StudentManager.UI.GUI.GUIFactory;
 
 /**
@@ -27,15 +27,6 @@ public abstract class AbstractUIFactory {
      * par s.
      */
     public abstract UI<Utilisateur> getUIUtilisateur(String s);
-
-    /**
-     * Methode renvoyant une UI(User Interface) pour un Etudiant
-     *
-     * @param s La chaine contient le type de stockage des données (db ou xml)
-     * @return Renvoie l'UI Etudiant, connecté au stockage des données définies
-     * par s.
-     */
-    public abstract UI<AbstractEtudiant> getUIEtudiant(String s);
 
     /**
      * Methode renvoyant une UI(User Interface) pour une ECUE
@@ -81,7 +72,7 @@ public abstract class AbstractUIFactory {
      * g(GUI)
      * @return L'AbstractUIFactory retournée est en fait une des sous classes :
      * ConsoleFactory ou GUIFactory.
-     *
+     */
     public static AbstractUIFactory getUIFactory(String s) {
 	if (fact == null) {
 	    if (s.equals("c")) {
@@ -93,5 +84,5 @@ public abstract class AbstractUIFactory {
 	    }
 	}
 	return fact;
-    }*/
+    }
 }
