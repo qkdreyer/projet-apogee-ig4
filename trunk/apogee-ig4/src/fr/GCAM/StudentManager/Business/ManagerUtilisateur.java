@@ -8,6 +8,9 @@ import fr.GCAM.StudentManager.POJO.Utilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -57,6 +60,33 @@ public class ManagerUtilisateur {
         for (Utilisateur u : userDAO.list()) {
             
         }
+    }
+
+    HashMap<String, String> login(String nom, String prenom, String mdp) {
+        //Créer un arraylist avec nom, prenom, mdp
+        ArrayList<String> request = new ArrayList<String>();
+        //ajoute chaque élément
+        request.add(nom);
+        request.add(prenom);
+        request.add(mdp);
+
+        HashMap<String, String> response = new HashMap<String, String>();
+
+        try {//essaie de trouver l'utilisateur correspondant
+            user = userDAO.find(request);
+        } catch (Exception ex) {//si utilisateur non trouvé
+            Logger.getLogger(ManagerUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        response.put("nom", user.getNom());
+        response.put("prenom", user.getPrenom());
+        response.put("mail", user.getMail());
+
+        if (!user.getListeResponsabilites().isEmpty()){
+            response.put("topResponsability", user.getTopResponsability().getLibelle());
+        }
+        
+        return response;
     }
 
 }
