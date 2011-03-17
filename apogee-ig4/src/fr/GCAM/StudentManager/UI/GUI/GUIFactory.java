@@ -15,7 +15,7 @@ import fr.GCAM.StudentManager.UI.UI;
  *
  * @author Quentin
  */
-public class GUIFactory {
+public class GUIFactory extends AbstractUIFactory {
 
     /**
      * Méthode permettant de créer une GUIECUE
@@ -25,16 +25,6 @@ public class GUIFactory {
      */
     public GUI<ECUE> getUIECUE(String s) {
 	return new GUIECUE(s);
-    }
-
-    /**
-     * Méthode permettant de créer une GUIEtudiant
-     *
-     * @param s La chaine contenant le type de persistence des données (db ou xml)
-     * @return L'UI instancié avec le type spécifique Etudiant(POJO)
-     */
-    public GUI<AbstractEtudiant> getUIEtudiant(String s) {
-	return new GUIEtudiant(s);
     }
 
     /**

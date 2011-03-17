@@ -1,6 +1,6 @@
 package fr.GCAM.StudentManager.UI;
 
-import fr.GCAM.StudentManager.BusinessLayer.AbstractManager;
+import fr.GCAM.StudentManager.Business.AbstractManager;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 
 /**
