@@ -178,8 +178,10 @@ public class DBUtilisateur extends DB<Utilisateur>  {
                         result.getString("libelle")));
             } while (result.next());
             util.setListeResponsabilites(listeResp);
-        }
-        return util;
+            return util;
+        } else
+            return null;
+        
     }
 
     /**
@@ -213,8 +215,10 @@ public class DBUtilisateur extends DB<Utilisateur>  {
                         result.getString("codeResponsabilite"),
                         result.getString("libelle")));
             } while (result.next());
-        }
-        return util;
+            return util;
+        } else
+            return null;
+        
     }
 
     /**
