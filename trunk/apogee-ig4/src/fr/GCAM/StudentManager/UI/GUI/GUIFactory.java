@@ -5,10 +5,8 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.POJO.*;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
-import fr.GCAM.StudentManager.UI.UI;
 
 /**
  * Cette classe est la fabrique concrete d'UI.

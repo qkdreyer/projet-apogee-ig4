@@ -65,7 +65,7 @@ public class DBDepartement extends DB<Departement> {
     public Departement find(Object id) throws Exception {
 	Departement dept = new Departement();
 
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet result = s.executeQuery("SELECT * from VO_Departement where versionDiplome = '" + (String) id + "'");
         if (result.first()) {
             dept.setVersionDiplome(result.getString("versionDiplome"));

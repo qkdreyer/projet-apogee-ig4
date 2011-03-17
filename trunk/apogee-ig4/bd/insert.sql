@@ -75,3 +75,19 @@ insert into Etudiant values (20070008,0,'PUM2008',700,01,03,01,'10','paze','yann
 
 insert into Etudiant values (20070009,0,'PUM2009',500,01,03,01,'20','meyer','lisa','jsuitrobonne@sex.xx');
 insert into Etudiant values (20070010,0,'PUM2010',500,01,03,01,'20','asse','bomb','6@9.xnxx');
+	
+insert into Note values();
+insert into Note values();
+insert into Note values();
+insert into Note values();
+insert into Note values();
+
+-- UE Level
+insert into APDJ values();
+	
+insert into VAE values();
+	
+--Sem Level
+insert into PointJury values();
+insert into Etranger values();
+insert into Redoublant values();
