@@ -9,7 +9,7 @@ package fr.GCAM.StudentManager.BusinessLayer;
  *
  * @author Jojo
  */
-public class BL_STATS {
+public class FacadeStats {
 
     /*
      *  Nous avons besoin de l'ACP, AFC, ACM, ANOVA ...

@@ -9,7 +9,7 @@ package fr.GCAM.StudentManager.BusinessLayer;
  *
  * @author Jojo
  */
-public class BL_LOGIN {
+public class FacadeLogin {
 
     /*
      * Lorsque l'utilisateur a rentré son identifiant et mdp
