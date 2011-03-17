@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package fr.GCAM.StudentManager.BusinessLayer;
+package fr.GCAM.StudentManager.Business;
 
 /**
  * Classe abstraite déclarant la méthode que chaque controlleur concret devra
