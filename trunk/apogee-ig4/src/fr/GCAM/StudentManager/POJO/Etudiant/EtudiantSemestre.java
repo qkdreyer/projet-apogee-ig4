@@ -11,13 +11,14 @@ package fr.GCAM.StudentManager.POJO.Etudiant;
 public class EtudiantSemestre extends AbstractEtudiant {
 
     private int pointJurySemestre;
+    private int MoyEtranger = 0;
+    private int MoyRedoublant = 0;
     private boolean etranger;
     private boolean redoublant;
 
     public EtudiantSemestre() {
     }
 
-    
     public EtudiantSemestre(int numEtudiant, String numIne, String libelleProvenance, String libelleStatut, String libelleNationalite, String nom, String prenom, String mail, int pointJurySemestre, boolean etranger, boolean redoublant) {
 	super(numEtudiant, numIne, libelleProvenance, libelleStatut, libelleNationalite, nom, prenom, mail);
 	this.pointJurySemestre = pointJurySemestre;
@@ -47,6 +48,22 @@ public class EtudiantSemestre extends AbstractEtudiant {
 
     public void setRedoublant(boolean redoublant) {
 	this.redoublant = redoublant;
+    }
+
+    public int getMoyEtranger() {
+        return MoyEtranger;
+    }
+
+    public void setMoyEtranger(int MoyEtranger) {
+        this.MoyEtranger = MoyEtranger;
+    }
+
+    public int getMoyRedoublant() {
+        return MoyRedoublant;
+    }
+
+    public void setMoyRedoublant(int MoyRedoublant) {
+        this.MoyRedoublant = MoyRedoublant;
     }
 
     @Override
