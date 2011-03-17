@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
+import org.junit.Ignore;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantSemestre;
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantSemestre;
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ public class DBEtudiantSemestreTest {
      * Test of create method, of class DBEtudiantSemestre.
      */
     @Test
+    @Ignore
     public void testCreate() throws Exception {
 	System.out.println("create DBEtudiantSemestre");
 	EtudiantSemestre obj = null;
@@ -57,6 +59,7 @@ public class DBEtudiantSemestreTest {
      * Test of update method, of class DBEtudiantSemestre.
      */
     @Test
+    @Ignore
     public void testUpdate() throws Exception {
 	System.out.println("update DBEtudiantSemestre");
 	EtudiantSemestre obj = null;
@@ -70,6 +73,7 @@ public class DBEtudiantSemestreTest {
      * Test of delete method, of class DBEtudiantSemestre.
      */
     @Test
+    @Ignore
     public void testDelete() throws Exception {
 	System.out.println("delete DBEtudiantSemestre");
 	EtudiantSemestre obj = null;

@@ -31,44 +31,48 @@ public class DBUtilisateur extends DB<Utilisateur>  {
      * @throws Exception
      */
     public void create(Utilisateur obj) throws Exception {
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        s.execute("insert into Enseignant values(utilSeq.nextval, '"
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        String str = "insert into Enseignant values(utilSeq.nextval, '"
                 + SHA1.getHash(obj.getMDP()) + "', '"
                 + obj.getNom() + "', '"
                 + obj.getPrenom() + "', '"
-                + obj.getMail() + "'");
-        for (Responsabilite r : obj.getListeResponsabilites()) {
-            if (r.getLibelle().equals("ECUE")) {
-                ECUE e = new DBECUE(conn).find(r.getCodeResponsabilite());
-                s.execute("insert into ECUE values("
-                        + r.getCodeResponsabilite() + ", '"
-                        + e.getLibelleECUE() + "', "
-                        + e.getNbHeures() + ", "
-                        + "utilSeq.currval, '"
-                        + e.getCodeUE() + "'");
-            } else if (r.getLibelle().equals("UE")) {
-                UE u = new DBUE(conn).find(r.getCodeResponsabilite());
-                s.execute("insert into UE values("
-                        + r.getCodeResponsabilite() + ", "
-                        + u.getNbECTS() + ", '"
-                        + u.getLibelleUE() + "', "
-                        + (u.isOptionnel() ? 't' : 'f') + ", "
-                        + "utilSeq.currval, '"
-                        + u.getCodeSemestre() + "'");
-            } else if (r.getLibelle().equals("Etape")) {
-                Etape e = new DBEtape(conn).find(r.getCodeResponsabilite());
-                s.execute("insert into Etape values("
-                        + r.getCodeResponsabilite() + ", '"
-                        + "utilSeq.currval, '"
-                        + e.getVersionDiplome() + "'");
-            } else if (r.getLibelle().equals("Departement")) {
-                Departement d = new DBDepartement(conn).find(r.getCodeResponsabilite());
-                s.execute("insert into Departement values("
-                        + r.getCodeResponsabilite() + ", '"
-                        + d.getNomDepartement() + "', '"
-                        + d.getMnemo() + "', "
-                        + "utilSeq.currval");
-            }
+                + obj.getMail() + "')";
+	System.out.println("str = " + str);
+	s.execute(str);
+	if (obj.getListeResponsabilites() != null) {
+	    for (Responsabilite r : obj.getListeResponsabilites()) {
+		if (r.getLibelle().equals("ECUE")) {
+		    ECUE e = new DBECUE(conn).find(r.getCodeResponsabilite());
+		    s.execute("insert into ECUE values('"
+			    + r.getCodeResponsabilite() + "', '"
+			    + e.getLibelleECUE() + "', "
+			    + e.getNbHeures() + ", "
+			    + "utilSeq.currval, '"
+			    + e.getCodeUE() + "')");
+		} else if (r.getLibelle().equals("UE")) {
+		    UE u = new DBUE(conn).find(r.getCodeResponsabilite());
+		    s.execute("insert into UE values('"
+			    + r.getCodeResponsabilite() + "', "
+			    + u.getNbECTS() + ", '"
+			    + u.getLibelleUE() + "', "
+			    + (u.isOptionnel() ? 't' : 'f') + ", "
+			    + "utilSeq.currval, '"
+			    + u.getCodeSemestre() + "')");
+		} else if (r.getLibelle().equals("Etape")) {
+		    Etape e = new DBEtape(conn).find(r.getCodeResponsabilite());
+		    s.execute("insert into Etape values('"
+			    + r.getCodeResponsabilite() + "', '"
+			    + "utilSeq.currval, '"
+			    + e.getVersionDiplome() + "')");
+		} else if (r.getLibelle().equals("Departement")) {
+		    Departement d = new DBDepartement(conn).find(r.getCodeResponsabilite());
+		    s.execute("insert into Departement values('"
+			    + r.getCodeResponsabilite() + "', '"
+			    + d.getNomDepartement() + "', '"
+			    + d.getMnemo() + "', "
+			    + "utilSeq.currval)");
+		}
+	    }
         }
     }
 
@@ -84,23 +88,27 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 
     /**
      * Methode permettant la suppression d'un Utilisateur
+     * Cette methode n'a pas a etre utilisée logiquement. En effet les données sont
+     * chargées depuis apogee, nous n'avons pas a supprimer un utilisateur.
      *
      * @param obj l'Utilisateur qui doit être supprimée dans la base de données
      * @throws Exception
      */
     public void delete(Utilisateur obj) throws Exception {
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        for (Responsabilite r : obj.getListeResponsabilites()) {
-            if (r.getLibelle().equals("ECUE")) {
-                s.execute("update ECUE set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
-            } else if (r.getLibelle().equals("UE")) {
-		s.execute("update UE set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
-            } else if (r.getLibelle().equals("Etape")) {
-		s.execute("update Etape set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
-            } else if (r.getLibelle().equals("Departement")) {
-		s.execute("update Departement set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
-            }
-        }
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	if (obj.getListeResponsabilites() != null) {
+	    for (Responsabilite r : obj.getListeResponsabilites()) {
+		if (r.getLibelle().equals("ECUE")) {
+		    s.execute("update ECUE set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
+		} else if (r.getLibelle().equals("UE")) {
+		    s.execute("update UE set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
+		} else if (r.getLibelle().equals("Etape")) {
+		    s.execute("update Etape set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
+		} else if (r.getLibelle().equals("Departement")) {
+		    s.execute("update Departement set idEnseignant = null where idEnseignant = " + obj.getIdEnseignant());
+		}
+	    }
+	}
 	s.execute("delete from Enseignant where idEnseignant = " + obj.getIdEnseignant());
     }
 
@@ -137,7 +145,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
         Utilisateur util = new Utilisateur();
         ArrayList<Utilisateur.Responsabilite> listeResp;
 
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet result = s.executeQuery("SELECT * from VO_Utilisateur "
                 + "where idEnseignant = " + num);
         if (result.first()) {
@@ -169,7 +177,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
      */
     private Utilisateur findWithLogin(ArrayList a) throws Exception {
         Utilisateur util = new Utilisateur();
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet result = s.executeQuery("SELECT idEnseignant, lower(nom) as nom, "
 		+ "lower(prenom) as prenom, mdp, mail, coderesponsabilite, libelle from VO_Utilisateur "
                 + "where lower(nom) = '" + ((String) a.get(1)).toLowerCase() + "' and "
@@ -199,7 +207,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
      */
     public ArrayList<Utilisateur> list() throws Exception {
         ArrayList<Utilisateur> listeUtil = new ArrayList<Utilisateur>();
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet result = s.executeQuery("select * from Enseignant order by idEnseignant");
         if (result.first()) {
             do {

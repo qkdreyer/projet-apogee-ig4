@@ -25,7 +25,7 @@ import static org.junit.Assert.*;
  */
 public class DBUtilisateurTest {
 
-    private Utilisateur util;
+    private static Utilisateur util_m;
 
     private static Connection conn;
 
@@ -35,6 +35,13 @@ public class DBUtilisateurTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
 	conn = ConnectionDB.getConnection();
+	ArrayList<Utilisateur.Responsabilite> listResp = new ArrayList<Utilisateur.Responsabilite>();
+	listResp.add(new Utilisateur.Responsabilite("testVDip", "Departement"));
+	listResp.add(new Utilisateur.Responsabilite("testCEt", "Etape"));
+	listResp.add(new Utilisateur.Responsabilite("testCUE", "UE"));
+	listResp.add(new Utilisateur.Responsabilite("TEST001", "ECUE"));
+
+	util_m = new Utilisateur(9999, "testPrenom", "testNom", "testPass", "testMail", listResp);
     }
 
     @AfterClass
@@ -55,11 +62,19 @@ public class DBUtilisateurTest {
     @Test
     public void testCreate() throws Exception {
 	System.out.println("create DBUtilisateur");
-	Utilisateur obj = null;
-	DBUtilisateur instance = null;
-	instance.create(obj);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
+
+	DBUtilisateur instance = new DBUtilisateur(conn);
+	instance.create(util_m);
+
+	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        String str = "SELECT * from vo_utilisateur where idenseignant = '" +
+		util_m.getIdEnseignant() + "'";
+	System.out.println("str = " + str);
+	ResultSet r = s.executeQuery(str);
+	if (r.first()) {
+	    assertEquals(util_m.getNom(), r.getString("nom"));
+	    assertEquals(util_m.getPrenom(), r.getString("prenom"));
+	}
     }
 
     /**
@@ -82,11 +97,21 @@ public class DBUtilisateurTest {
     @Test
     public void testDelete() throws Exception {
 	System.out.println("delete DBUtilisateur");
-	Utilisateur obj = null;
-	DBUtilisateur instance = null;
-	instance.delete(obj);
-	// TODO review the generated test code and remove the default call to fail.
-	fail("The test case is a prototype.");
+
+	DBUtilisateur instance = new DBUtilisateur(conn);
+	instance.delete(util_m);
+	// Le create est testé avant donc il est censé marcher.
+
+	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        String str = "SELECT * from vo_utilisateur where idenseignant = '" +
+		util_m.getIdEnseignant() + "'";
+	System.out.println("str = " + str);
+	ResultSet r = s.executeQuery(str);
+	if (r.first()) {
+	    assertEquals(null, r.getString("nom"));
+	    assertEquals(null, r.getString("prenom"));
+	}
+
     }
 
     /**
@@ -115,23 +140,23 @@ public class DBUtilisateurTest {
     public void testList() throws Exception {
 	System.out.println("list DBUtilisateur");
 	DBUtilisateur dbu = new DBUtilisateur(conn);
-	util = new Utilisateur();
+	util_m = new Utilisateur();
 	boolean trouve = false;
 //	ArrayList<Utilisateur> expResult = new ArrayList<Utilisateur>();
 
 	ArrayList<Utilisateur> result = dbu.list();
 //	System.out.println("result.toString() = " + result.toString());
 
-	 //on recupere le resultat
+	//on recupere le resultat
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet r = s.executeQuery("SELECT distinct(idenseignant) from vo_utilisateur");
 	if (r.first()) {
 	    do {
-		util = new Utilisateur();
-		util.setIdEnseignant(r.getInt("idenseignant"));
+		util_m = new Utilisateur();
+		util_m.setIdEnseignant(r.getInt("idenseignant"));
 		trouve = false;
                 for (Utilisateur each : result) {
-		    if(each.getIdEnseignant() == util.getIdEnseignant())
+		    if(each.getIdEnseignant() == util_m.getIdEnseignant())
 			trouve = true;
 		}
 		assertTrue(trouve);

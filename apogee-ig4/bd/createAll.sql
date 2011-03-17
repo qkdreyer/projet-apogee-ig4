@@ -179,11 +179,12 @@ create table nationalite (
 
 
 ------------ Sequence 
+--@deprecated
 --sequence pour les pk des notes
-create sequence note_pk_seq
-start with 1 
-increment by 1 
-nomaxvalue; 
+--create sequence note_pk_seq
+--start with 1 
+--increment by 1 
+--nomaxvalue; 
 
 
 
@@ -210,7 +211,7 @@ create type Etud_num_tab is table of Etud_num;
 --out: [numEtudiant]
 
 --require:
---	Le codeEtape correspond au code d'une etape
+--	Le codeEtape corRESPond au code d'une etape
 --	existante
 --ensure:
 --	[numEtudiant] contient tous les numeros 
@@ -683,19 +684,17 @@ create or replace trigger vo_ecue_up
 instead of update on vo_ecue
 for each row
 declare
-	idNote number;
 begin
 	update Note set
 		noteSession1 = :new.noteSession1,
 		noteSession2 = :new.noteSession2
 	where numEtudiant = :new.numEtudiant;
-	if (sql%rowcount = 0) then
-		select note_pk_seq.nextval into idNote from dual;
+	if (sql%rowcount = 0) then		
 		insert into Note values(
-			idNote, :new.noteSession1, :new.noteSession2, :new.numEtudiant, :new.codeMatiere
+			:new.noteSession1, :new.noteSession2, :new.numEtudiant, :new.codeMatiere
 		);
 	end if;
-end vo_ecue_up;
+end vo_ecue_uP;
 /
 
 --Suppression de l'etudiant 
