@@ -15,10 +15,10 @@ package maquette;
  *
  * @author pierre
  */
-public class ManageECUE_GUI extends javax.swing.JFrame {
+public class ECUE_GUI extends javax.swing.JFrame {
 
     /** Creates new form ManageECUE_GUI */
-    public ManageECUE_GUI() {
+    public ECUE_GUI() {
         initComponents();
     }
 
@@ -298,7 +298,7 @@ public class ManageECUE_GUI extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageECUE_GUI().setVisible(true);
+                new ECUE_GUI().setVisible(true);
             }
         });
     }

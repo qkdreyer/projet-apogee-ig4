@@ -84,21 +84,20 @@ public class ManagerUtilisateur {
             Logger.getLogger(ManagerUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        response.put("nom", user.getNom());
-        response.put("prenom", user.getPrenom());
-        response.put("mail", user.getMail());
+        if (user != null){
+            response.put("nom", user.getNom());
+            response.put("prenom", user.getPrenom());
+            response.put("mail", user.getMail());
 
-        System.out.println("user.getNom() = " + user.getNom());
-
-        if (!user.getListeResponsabilites().isEmpty()){
-            response.put("topResponsability", user.getTopResponsability().getLibelle());
-            System.out.println("user.getTopResponsability().getLibelle() = "
-                    + user.getTopResponsability().getLibelle());
+            if (!user.getListeResponsabilites().isEmpty()){
+                response.put("topResponsability", user.getTopResponsability().getLibelle());
+            }else{
+                System.out.println("NO RESPONSABILITY");
+            }
+            return response;
         }else{
-            System.out.println("NO RESPONSABILITY");
+            return null;
         }
-        
-        return response;
     }
 
 }
