@@ -67,7 +67,7 @@ public class ManagerUtilisateur {
         }
     }
 
-    HashMap<String, String> login(String nom, String prenom, String mdp) {
+    public HashMap<String, String> login(String nom, String prenom, String mdp) {
         //Créer un arraylist avec nom, prenom, mdp
         ArrayList<String> request = new ArrayList<String>();
         //ajoute chaque élément
@@ -83,12 +83,13 @@ public class ManagerUtilisateur {
             System.out.println("No user");
             Logger.getLogger(ManagerUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
         }
+            System.out.println("user = " + user);
 
         if (user != null){
             response.put("nom", user.getNom());
             response.put("prenom", user.getPrenom());
             response.put("mail", user.getMail());
-
+            System.out.println("nom = "+response.get("nom"));
             if (!user.getListeResponsabilites().isEmpty()){
                 response.put("topResponsability", user.getTopResponsability().getLibelle());
             }else{
@@ -96,6 +97,7 @@ public class ManagerUtilisateur {
             }
             return response;
         }else{
+            System.out.println("no user");
             return null;
         }
     }

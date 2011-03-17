@@ -69,7 +69,6 @@ public class Login extends javax.swing.JFrame {
         });
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        errorLabel.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,7 +121,7 @@ public class Login extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -144,16 +143,24 @@ public class Login extends javax.swing.JFrame {
         //Sortire le nom et le prénom
         ident_tab = identifiant.getText().split("\\.");
 
-        //identifier l'utilisateur, et récupère nouvelle fenêtre
-        HashMap<String, String> resp = facadeUtilisateur.login(ident_tab[0], ident_tab[1], mdp.getText());
+        if (ident_tab.length == 2){
 
-        if( resp == null ){
-            errorLabel.setText("erreur d'identifiant ou de mot de passe");
-        }else{
-            if(resp.get("topResponsability").equals("ECUE")){
-                this.setVisible(false);
-                new ECUE_GUI().setVisible(true);
+            //identifier l'utilisateur, et récupère nouvelle fenêtre
+            HashMap<String, String> resp = facadeUtilisateur.login(ident_tab[0], ident_tab[1], mdp.getText());
+
+            System.out.println("nom =" +resp.get("nom"));
+            System.out.println("resp ="+resp);
+
+            if( resp == null ){
+                errorLabel.setText("erreur d'identifiant ou de mot de passe");
+            }else{
+                if(resp.get("topResponsability").equals("ECUE")){
+                    this.setVisible(false);
+                    new ECUE_GUI().setVisible(true);
+                }
             }
+        }else{
+            errorLabel.setText("Utilisateur: prénom.nom");
         }
     }//GEN-LAST:event_onConnectionClick
 
