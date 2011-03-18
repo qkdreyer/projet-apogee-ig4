@@ -43,8 +43,8 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique UE(POJO)
      */
-    public GUI<UE> getUIUE(String s) {
-        return new GUIUE(s);
+    public GUI<UE> getUIUE(String s, String dao) throws Exception {
+        return new GUIUE(s, dao);
     }
 
     /**

@@ -13,6 +13,8 @@ package fr.GCAM.StudentManager.UI.GUI;
 import fr.GCAM.StudentManager.Business.FacadeUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,12 +22,14 @@ import java.util.HashMap;
  */
 public class GUIUtilisateur extends GUI<Utilisateur> {
 
-    FacadeUtilisateur facadeUtilisateur;
+    private FacadeUtilisateur facadeUtilisateur;
+    private String dao;
 
     /** Creates new form Login */
     public GUIUtilisateur(String s) {
 	initComponents();
-	facadeUtilisateur = new FacadeUtilisateur();
+	dao = s;
+	facadeUtilisateur = new FacadeUtilisateur(s);
 	this.setVisible(true);
     }
 
@@ -152,22 +156,26 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 	    if (resp == null) {
 		errorLabel.setText("erreur d'identifiant ou de mot de passe");
 	    } else {
-		this.setVisible(false);
-		if (resp.get("topResponsability").equals("ECUE")) {
-		    new GUIECUE(resp.get("codeResp"));
-		} else if (resp.get("topResponsability").equals("ECUE")) {
-		    new GUIUE(resp.get("codeResp"));
-		} else if (resp.get("topResponsability").equals("ECUE")) {
-		    new GUIEtape(resp.get("codeResp"));
-		} else if (resp.get("topResponsability").equals("ECUE")) {
-		    new GUIDepartement(resp.get("codeResp"));
+		try {
+		    this.setVisible(false);
+		    if (resp.get("topResponsability").equals("ECUE")) {
+			new GUIECUE(resp.get("codeResp"));
+		    } else if (resp.get("topResponsability").equals("ECUE")) {
+			new GUIUE(resp.get("codeResp"), dao);
+		    } else if (resp.get("topResponsability").equals("ECUE")) {
+			new GUIEtape(resp.get("codeResp"));
+		    } else if (resp.get("topResponsability").equals("ECUE")) {
+			new GUIDepartement(resp.get("codeResp"));
+		    }
+		} catch (Exception ex) {
+		    System.err.println("Erreur : " + ex);
+		    ex.printStackTrace();
 		}
 	    }
 	} else {
 	    errorLabel.setText("Utilisateur : prénom.nom");
 	}
     }//GEN-LAST:event_onConnectionClick
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel errorLabel;
     private javax.swing.JTextField identifiant;

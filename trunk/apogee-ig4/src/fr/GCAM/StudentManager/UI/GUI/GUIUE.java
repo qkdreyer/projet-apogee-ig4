@@ -11,7 +11,10 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
+import fr.GCAM.StudentManager.Business.FacadeUE;
 import fr.GCAM.StudentManager.POJO.UE;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,9 +22,12 @@ import fr.GCAM.StudentManager.POJO.UE;
  */
 public class GUIUE extends GUI<UE> {
 
+    private FacadeUE fue;
+
     /** Creates new form ManageUE */
-    public GUIUE(String s) {
+    public GUIUE(String s, String dao) throws Exception {
         initComponents();
+	fue = new FacadeUE(s, dao);
 	this.setVisible(true);
     }
 
@@ -139,7 +145,7 @@ public class GUIUE extends GUI<UE> {
 
         jLabel4.setText("ECTS : ");
 
-        jLabel5.setText("15");
+        jLabel5.setText(Integer.toString(fue.getECTS()));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -210,7 +216,7 @@ public class GUIUE extends GUI<UE> {
 
         jLabel21.setText("Responsable");
 
-        jLabel24.setText("Mathématiques");
+        jLabel24.setText(fue.getListeECUE().get(0).getLibelleECUE());
 
         jLabel25.setText("Marco Czarnecki");
 

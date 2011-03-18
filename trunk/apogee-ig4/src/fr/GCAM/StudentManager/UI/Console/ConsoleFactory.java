@@ -33,7 +33,7 @@ public class ConsoleFactory extends AbstractUIFactory {
     }
 
     @Override
-    public UI<UE> getUIUE(String s) {
+    public UI<UE> getUIUE(String s, String dao) {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
