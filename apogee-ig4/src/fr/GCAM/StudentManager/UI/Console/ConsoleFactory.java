@@ -5,8 +5,8 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.POJO.*;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import fr.GCAM.StudentManager.UI.UI;
 
@@ -46,5 +46,12 @@ public class ConsoleFactory extends AbstractUIFactory {
     public UI<Departement> getUIDepartement(String s) {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public UI<AbstractEtudiant> getUIStat(String s) {
+	throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    
 
 }

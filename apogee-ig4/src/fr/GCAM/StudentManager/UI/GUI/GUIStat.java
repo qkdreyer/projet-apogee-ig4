@@ -9,17 +9,20 @@
  * Created on 22 févr. 2011, 17:43:41
  */
 
-package maquette;
+package fr.GCAM.StudentManager.UI.GUI;
+
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 
 /**
  *
  * @author pierre
  */
-public class Stat extends javax.swing.JFrame {
+public class GUIStat extends GUI<AbstractEtudiant> {
 
     /** Creates new form Stat */
-    public Stat() {
+    public GUIStat(String s) {
         initComponents();
+	this.setVisible(true);
     }
 
     /** This method is called from within the constructor to
@@ -206,16 +209,6 @@ public class Stat extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Stat().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

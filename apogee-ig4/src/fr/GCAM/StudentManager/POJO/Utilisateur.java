@@ -92,46 +92,46 @@ public class Utilisateur implements Comparable {
 
 	public int compareTo(Object o) {
 	    if (libelle.equals("Departement")) {
-		if (libelle.equals("Departement")) {
+		if (((Responsabilite)o).libelle.equals("Departement")) {
 		    return 0;
-		} else if (libelle.equals("Etape")) {
+		} else if (((Responsabilite)o).libelle.equals("Etape")) {
 		    return 1;
-		} else if (libelle.equals("UE")) {
+		} else if (((Responsabilite)o).libelle.equals("UE")) {
 		    return 1;
-		} else if (libelle.equals("ECUE")) {
+		} else if (((Responsabilite)o).libelle.equals("ECUE")) {
 		    return 1;
 		} else
 		    return 2;
 	    } else if (libelle.equals("Etape")) {
-		if (libelle.equals("Departement")) {
+		if (((Responsabilite)o).libelle.equals("Departement")) {
 		    return -1;
-		} else if (libelle.equals("Etape")) {
+		} else if (((Responsabilite)o).libelle.equals("Etape")) {
 		    return 0;
-		} else if (libelle.equals("UE")) {
+		} else if (((Responsabilite)o).libelle.equals("UE")) {
 		    return 1;
-		} else if (libelle.equals("ECUE")) {
+		} else if (((Responsabilite)o).libelle.equals("ECUE")) {
 		    return 1;
 		} else
 		    return 2;
 	    } else if (libelle.equals("UE")) {
-		if (libelle.equals("Departement")) {
+		if (((Responsabilite)o).libelle.equals("Departement")) {
 		    return -1;
-		} else if (libelle.equals("Etape")) {
+		} else if (((Responsabilite)o).libelle.equals("Etape")) {
 		    return -1;
-		} else if (libelle.equals("UE")) {
+		} else if (((Responsabilite)o).libelle.equals("UE")) {
 		    return 0;
-		} else if (libelle.equals("ECUE")) {
+		} else if (((Responsabilite)o).libelle.equals("ECUE")) {
 		    return 1;
 		} else
 		    return 2;
 	    } else if (libelle.equals("ECUE")) {
-		if (libelle.equals("Departement")) {
+		if (((Responsabilite)o).libelle.equals("Departement")) {
 		    return -1;
-		} else if (libelle.equals("Etape")) {
+		} else if (((Responsabilite)o).libelle.equals("Etape")) {
 		    return -1;
-		} else if (libelle.equals("UE")) {
+		} else if (((Responsabilite)o).libelle.equals("UE")) {
 		    return -1;
-		} else if (libelle.equals("ECUE")) {
+		} else if (((Responsabilite)o).libelle.equals("ECUE")) {
 		    return 0;
 		} else
 		    return 2;
