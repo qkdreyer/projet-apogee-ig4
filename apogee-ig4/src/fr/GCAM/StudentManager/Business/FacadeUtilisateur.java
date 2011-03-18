@@ -15,8 +15,8 @@ public class FacadeUtilisateur {
 
     ManagerUtilisateur utilisateur;
 
-    public FacadeUtilisateur() {
-        utilisateur = new ManagerUtilisateur("db");
+    public FacadeUtilisateur(String dao) {
+        utilisateur = new ManagerUtilisateur(dao);
     }
 
     /**

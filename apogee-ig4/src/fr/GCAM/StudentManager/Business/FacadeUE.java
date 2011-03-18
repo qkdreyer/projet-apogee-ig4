@@ -5,6 +5,9 @@
 
 package fr.GCAM.StudentManager.Business;
 
+import fr.GCAM.StudentManager.POJO.ECUE;
+import java.util.ArrayList;
+
 /**
  *
  * @author Jojo
@@ -33,23 +36,27 @@ public class FacadeUE {
 	manUE = new ManagerUE(s, dao);
     }
 
-    public String getResponsable() throws Exception {
+    public String getResponsable() {
 	return manUE.getResponsable();
     }
 
-    public String getCodeUE() throws Exception {
+    public String getCodeUE() {
 	return manUE.getCodeUE();
     }
 
-    public String getLibelleUE() throws Exception {
+    public String getLibelleUE() {
 	return manUE.getLibelleUE();
     }
 
-    public int getECTS() throws Exception {
+    public int getECTS() {
 	return manUE.getECTS();
     }
 
-    public Object[][] getArrayOfEtudiantUE() throws Exception {
+    public ArrayList<ECUE> getListeECUE() {
+	return manUE.getListeECUE();
+    }
+
+    public Object[][] getArrayOfEtudiantUE() {
 	return manUE.getArrayOfEtudiantUE();
     }
 

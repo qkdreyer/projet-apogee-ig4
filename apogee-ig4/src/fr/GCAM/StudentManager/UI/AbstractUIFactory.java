@@ -45,7 +45,7 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI UE, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<UE> getUIUE(String s);
+    public abstract UI<UE> getUIUE(String s, String dao) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour une Etape

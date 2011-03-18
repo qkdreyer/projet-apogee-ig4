@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Business;
 
+import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantUE;
 import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
@@ -39,6 +40,10 @@ public class ManagerUE {
 
     public int getECTS() {
         return ue.getNbECTS();
+    }
+
+    public ArrayList<ECUE> getListeECUE() {
+	return ue.getListeECUE();
     }
 
     public Object[][] getArrayOfEtudiantUE() {
