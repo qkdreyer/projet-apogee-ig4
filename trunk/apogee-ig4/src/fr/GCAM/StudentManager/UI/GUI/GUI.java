@@ -15,6 +15,6 @@ import fr.GCAM.StudentManager.UI.UI;
  *
  * @author Quentin
  */
-public abstract class GUI<T> implements UI<T> {
+public abstract class GUI<T> extends javax.swing.JFrame implements UI<T> {
 
 }

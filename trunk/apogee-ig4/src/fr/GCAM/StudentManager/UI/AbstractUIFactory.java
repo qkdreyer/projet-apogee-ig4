@@ -5,6 +5,7 @@
 package fr.GCAM.StudentManager.UI;
 
 import fr.GCAM.StudentManager.POJO.*;
+import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.UI.Console.ConsoleFactory;
 import fr.GCAM.StudentManager.UI.GUI.GUIFactory;
 
@@ -63,6 +64,13 @@ public abstract class AbstractUIFactory {
      * par s.
      */
     public abstract UI<Departement> getUIDepartement(String s);
+
+    /**
+     * TODO
+     * @param s
+     * @return
+     */
+    public abstract UI<AbstractEtudiant> getUIStat(String s);
 
     /**
      * Methode renvoyant l'UI (Console ou GUI) associée à la chaine passée

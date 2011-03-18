@@ -91,6 +91,7 @@ public class ManagerUtilisateur {
             System.out.println("nom = "+response.get("nom"));
             if (!user.getListeResponsabilites().isEmpty()){
                 response.put("topResponsability", user.getTopResponsability().getLibelle());
+		response.put("codeResp", user.getTopResponsability().getCodeResponsabilite());
             }else{
                 System.out.println("NO RESPONSABILITY");
             }

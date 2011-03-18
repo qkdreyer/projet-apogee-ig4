@@ -9,16 +9,16 @@
  * Created on 18 févr. 2011, 17:54:58
  */
 
-package maquette;
+package fr.GCAM.StudentManager.UI.GUI;
 
 /**
  *
  * @author pierre
  */
-public class Admin extends javax.swing.JFrame {
+public class GUIAdmin extends javax.swing.JFrame {
 
     /** Creates new form Admin */
-    public Admin() {
+    public GUIAdmin() {
         initComponents();
     }
 
@@ -198,7 +198,7 @@ public class Admin extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Admin().setVisible(true);
+                new GUIAdmin().setVisible(true);
             }
         });
     }

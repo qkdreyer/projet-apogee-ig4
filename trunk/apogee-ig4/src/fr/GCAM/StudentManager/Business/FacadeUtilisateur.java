@@ -21,6 +21,8 @@ public class FacadeUtilisateur {
 
     /**
      * methode login
+     * Le HasMap renvoyé contient le nom, le prenom, la plus haute responsabilité
+     * et le code de la plus haute responsabilité de l'utilisateur connecté.
      *
      */
     public HashMap< String, String > login(String nom, String prenom, String mdp){
