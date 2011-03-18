@@ -148,9 +148,6 @@ public class Login extends javax.swing.JFrame {
             //identifier l'utilisateur, et récupère nouvelle fenêtre
             HashMap<String, String> resp = facadeUtilisateur.login(ident_tab[0], ident_tab[1], mdp.getText());
 
-            System.out.println("nom =" +resp.get("nom"));
-            System.out.println("resp ="+resp);
-
             if( resp == null ){
                 errorLabel.setText("erreur d'identifiant ou de mot de passe");
             }else{

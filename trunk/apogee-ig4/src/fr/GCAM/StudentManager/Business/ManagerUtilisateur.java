@@ -83,7 +83,6 @@ public class ManagerUtilisateur {
             System.out.println("No user");
             Logger.getLogger(ManagerUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
         }
-            System.out.println("user = " + user);
 
         if (user != null){
             response.put("nom", user.getNom());
