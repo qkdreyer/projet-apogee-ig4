@@ -13,8 +13,6 @@ package fr.GCAM.StudentManager.UI.GUI;
 import fr.GCAM.StudentManager.Business.FacadeUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,6 +28,7 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 	initComponents();
 	dao = s;
 	facadeUtilisateur = new FacadeUtilisateur(s);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(facadeUtilisateur.getList()));
 	this.setVisible(true);
     }
 
@@ -46,9 +45,10 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        mdp = new javax.swing.JTextField();
         identifiant = new javax.swing.JTextField();
         errorLabel = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        mdp = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GCAM Consulter - Identification");
@@ -75,6 +75,12 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,15 +92,16 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1)
-                            .addComponent(mdp, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(identifiant, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
-                        .addGap(151, 151, 151))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(mdp)
+                            .addComponent(identifiant, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(jButton1))
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83))
+                    .addComponent(errorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,14 +109,17 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
                 .addContainerGap()
                 .addComponent(errorLabel)
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(identifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(mdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(mdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(identifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
                 .addComponent(jButton1)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -126,7 +136,7 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -142,16 +152,11 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
      * Connecte l'utilisateur à la base de données, et fd
      */
     private void onConnectionClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onConnectionClick
-	//contient nom et prénom
-	String[] ident_tab;
-
-	//Sortire le nom et le prénom
-	ident_tab = identifiant.getText().split("\\.");
-
-	if (ident_tab.length == 2) {
+	if (identifiant.getText().split("\\.").length == 2) {
 
 	    //identifier l'utilisateur, et récupère nouvelle fenêtre
-	    HashMap<String, String> resp = facadeUtilisateur.login(ident_tab[0], ident_tab[1], mdp.getText());
+	    HashMap<String, String> resp = facadeUtilisateur.login(identifiant.getText().split("\\.")[0],
+                    identifiant.getText().split("\\.")[1], mdp.getText());
 
 	    if (resp == null) {
 		errorLabel.setText("erreur d'identifiant ou de mot de passe");
@@ -177,13 +182,19 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 	    errorLabel.setText("Utilisateur : prénom.nom");
 	}
     }//GEN-LAST:event_onConnectionClick
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        identifiant.setText(jComboBox1.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel errorLabel;
     private javax.swing.JTextField identifiant;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField mdp;
+    private javax.swing.JPasswordField mdp;
     // End of variables declaration//GEN-END:variables
 }

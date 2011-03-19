@@ -11,11 +11,13 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
+import fr.GCAM.StudentManager.POJO.Utilisateur;
+
 /**
  *
  * @author pierre
  */
-public class GUIAdmin extends javax.swing.JFrame {
+public class GUIAdmin extends GUI<Utilisateur> {
 
     /** Creates new form Admin */
     public GUIAdmin() {
@@ -191,17 +193,6 @@ public class GUIAdmin extends javax.swing.JFrame {
         jButton5.setEnabled(true);
         
     }//GEN-LAST:event_jList1ValueChanged
-
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIAdmin().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

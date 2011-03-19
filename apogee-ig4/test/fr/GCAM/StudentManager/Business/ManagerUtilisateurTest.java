@@ -61,7 +61,7 @@ public class ManagerUtilisateurTest {
     public void testLogin() throws Exception {
         System.out.println("login");
         ManagerUtilisateur instance = null;
-        instance.login();
+        //instance.login();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

@@ -9,8 +9,11 @@ import fr.GCAM.StudentManager.POJO.*;
 import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Cette classe définit les methodes de l'interface DAO pour le type Utilsateur
@@ -147,7 +150,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
         } else if (request instanceof Integer) {
 	    result = this.findWithID((Integer) request);
         }
-	return ( result != null) ? result : null ;
+	return result;
     }
 
     /**
@@ -170,7 +173,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
             util.setPrenom(result.getString("prenom"));
             util.setMDP(result.getString("mdp"));
             util.setMail(result.getString("mail"));
-
+            
             listeResp = new ArrayList<Utilisateur.Responsabilite>();
             do {
                 listeResp.add(new Utilisateur.Responsabilite(
@@ -180,8 +183,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
             util.setListeResponsabilites(listeResp);
             return util;
         } else
-            return null;
-        
+            return null;   
     }
 
     /**
@@ -227,14 +229,20 @@ public class DBUtilisateur extends DB<Utilisateur>  {
      * @return L'ensemble des utilisateurs
      * @throws Exception
      */
-    public ArrayList<Utilisateur> list() throws Exception {
+    public ArrayList<Utilisateur> list() {
         ArrayList<Utilisateur> listeUtil = new ArrayList<Utilisateur>();
-        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("select * from Enseignant order by idEnseignant");
-        if (result.first()) {
-            do {
-                listeUtil.add(this.findWithID(result.getInt("idEnseignant")));
-            } while (result.next());
+        try {
+            Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet result = s.executeQuery("select * from Enseignant order by idEnseignant");
+            if (result.first()) {
+                do {
+                    if (result.getInt("idEnseignant") != 0) {
+                        listeUtil.add(this.findWithID(result.getInt("idEnseignant")));
+                    }
+                } while (result.next());
+            }
+        } catch (Exception ex) {
+
         }
         return listeUtil;
     }
