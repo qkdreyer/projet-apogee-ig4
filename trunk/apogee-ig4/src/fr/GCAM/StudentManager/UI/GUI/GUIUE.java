@@ -12,11 +12,11 @@ package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.FacadeUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantUE;
 import fr.GCAM.StudentManager.POJO.UE;
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -29,35 +29,51 @@ import javax.swing.JPanel;
 public class GUIUE extends GUI<UE> {
 
     private FacadeUE fue;
+    private String codeECUE;
 
     /** Creates new form ManageUE */
-    public GUIUE(String s, String dao) throws Exception {
+    public GUIUE(String s) throws Exception {
         initComponents();
         fue = new FacadeUE(s, dao);
 
-
-        jLabel5.setText(Integer.toString(fue.getECTS()));
+        libelle.setText("Libellé UE : " + fue.getLibelleUE());
+        responsable.setText("Responsable : " + fue.getResponsable());
+        ects.setText("ECTS : " + fue.getECTS());
 
         JPanel border, col1, col2;
+        JButton detail;
+        
         for (ECUE e : fue.getListeECUE()) {
             border = new JPanel();
             border.setLayout(new BoxLayout(border, BoxLayout.X_AXIS));
             border.setBorder(javax.swing.BorderFactory.createTitledBorder(e.getCodeMatiere()));
             col1 = new JPanel();
             col1.setLayout(new GridLayout(2, 1));
-            col1.add(new JLabel("Libelle : " + e.getLibelleECUE()));
+            col1.add(new JLabel("Libellé ECUE : " + e.getLibelleECUE()));
             col1.add(new JLabel("Responsable : " + e.getResponsable()));
             col2 = new JPanel();
             col2.setLayout(new FlowLayout(FlowLayout.RIGHT));
-            col2.add(new JButton("Détails..."));
+            detail = new JButton("Détails...");
+            codeECUE = e.getCodeMatiere();
+            detail.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        new GUIECUE(codeECUE);
+                    } catch (Exception ex) {
+                        
+                    }
+                }
+            });
+            col2.add(detail);
             border.add(col1);
             border.add(col2);
-            jPanel1.add(border);
+            panelECUE.add(border);
         }
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(fue.getArrayOfEtudiantUE(),
+        listeEtudiantUE.setModel(new javax.swing.table.DefaultTableModel(fue.getArrayOfEtudiantUE(),
                 new String[]{"Nom", "Prenom", "Moyenne"}));
 
+	setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
@@ -70,119 +86,128 @@ public class GUIUE extends GUI<UE> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel6 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
-        jLabel31 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        panelUE = new javax.swing.JPanel();
+        departement = new javax.swing.JLabel();
+        fieldDepartement = new javax.swing.JTextField();
+        etape = new javax.swing.JLabel();
+        comboEtape = new javax.swing.JComboBox();
+        semestre = new javax.swing.JLabel();
+        comboSemestre = new javax.swing.JComboBox();
+        ue = new javax.swing.JLabel();
+        comboUE = new javax.swing.JComboBox();
+        ects = new javax.swing.JLabel();
+        responsable = new javax.swing.JLabel();
+        libelle = new javax.swing.JLabel();
+        panelListeEtudiantUE = new javax.swing.JScrollPane();
+        listeEtudiantUE = new javax.swing.JTable();
+        panelECUE = new javax.swing.JPanel();
+        jMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GCAM StudentManager : UE");
         setResizable(false);
 
-        jLabel2.setText("Département : ");
+        departement.setText("Département : ");
 
-        jTextField1.setEditable(false);
-        jTextField1.setText("IG");
-        jTextField1.setEnabled(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        fieldDepartement.setEditable(false);
+        fieldDepartement.setText("IG");
+        fieldDepartement.setEnabled(false);
+        fieldDepartement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                fieldDepartementActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Année");
+        etape.setText("Année");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "3", "4", "5" }));
+        comboEtape.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "3", "4", "5" }));
 
-        jLabel3.setText("Semestre : ");
+        semestre.setText("Semestre : ");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2" }));
+        comboSemestre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2" }));
 
-        jLabel31.setText("UE : ");
+        ue.setText("UE : ");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "UE1", "UE2", "UE3", "UE4" }));
+        comboUE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "UE1", "UE2", "UE3", "UE4" }));
 
-        jLabel4.setText("ECTS : ");
+        ects.setText("ECTS : ");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        responsable.setText("Responsable :");
+
+        libelle.setText("jLabel1");
+
+        javax.swing.GroupLayout panelUELayout = new javax.swing.GroupLayout(panelUE);
+        panelUE.setLayout(panelUELayout);
+        panelUELayout.setHorizontalGroup(
+            panelUELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUELayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                .addGroup(panelUELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelUELayout.createSequentialGroup()
+                        .addComponent(departement)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldDepartement, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(libelle))
+                .addGap(18, 18, 18)
+                .addGroup(panelUELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelUELayout.createSequentialGroup()
+                        .addComponent(etape)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
+                        .addComponent(comboEtape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(semestre)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
+                        .addComponent(comboSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(responsable))
+                .addGap(18, 18, 18)
+                .addGroup(panelUELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelUELayout.createSequentialGroup()
+                        .addComponent(ue)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel31)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)))
+                        .addComponent(comboUE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ects))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        panelUELayout.setVerticalGroup(
+            panelUELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUELayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel31)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelUELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(departement)
+                    .addComponent(fieldDepartement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etape)
+                    .addComponent(comboEtape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(semestre)
+                    .addComponent(comboSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ue)
+                    .addComponent(comboUE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)))
+                .addGroup(panelUELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ects)
+                    .addComponent(responsable)
+                    .addComponent(libelle)))
         );
 
-        jTable2.setDragEnabled(true);
-        jTable2.setName("ListeEtudiants"); // NOI18N
-        jTable2.getTableHeader().setResizingAllowed(false);
-        jTable2.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(jTable2);
+        listeEtudiantUE.setDragEnabled(true);
+        listeEtudiantUE.setName("ListeEtudiants"); // NOI18N
+        listeEtudiantUE.getTableHeader().setResizingAllowed(false);
+        listeEtudiantUE.getTableHeader().setReorderingAllowed(false);
+        panelListeEtudiantUE.setViewportView(listeEtudiantUE);
 
-        jPanel1.setLayout(new java.awt.GridLayout(10, 1, 0, 5));
+        panelECUE.setLayout(new java.awt.GridLayout(10, 1, 0, 5));
 
         jMenu1.setText("Fichier");
-        jMenuBar1.add(jMenu1);
+        jMenuBar.add(jMenu1);
 
         jMenu2.setText("Edition");
-        jMenuBar1.add(jMenu2);
+        jMenuBar.add(jMenu2);
 
         jMenu3.setText("jMenu3");
-        jMenuBar1.add(jMenu3);
+        jMenuBar.add(jMenu3);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,48 +216,49 @@ public class GUIUE extends GUI<UE> {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelListeEtudiantUE, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                    .addComponent(panelUE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addComponent(panelECUE, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelUE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE))
+                    .addComponent(panelECUE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelListeEtudiantUE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void fieldDepartementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldDepartementActionPerformed
         // TODO add your handling code here:
-}//GEN-LAST:event_jTextField1ActionPerformed
+}//GEN-LAST:event_fieldDepartementActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JComboBox comboEtape;
+    private javax.swing.JComboBox comboSemestre;
+    private javax.swing.JComboBox comboUE;
+    private javax.swing.JLabel departement;
+    private javax.swing.JLabel ects;
+    private javax.swing.JLabel etape;
+    private javax.swing.JTextField fieldDepartement;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JLabel libelle;
+    private javax.swing.JTable listeEtudiantUE;
+    private javax.swing.JPanel panelECUE;
+    private javax.swing.JScrollPane panelListeEtudiantUE;
+    private javax.swing.JPanel panelUE;
+    private javax.swing.JLabel responsable;
+    private javax.swing.JLabel semestre;
+    private javax.swing.JLabel ue;
     // End of variables declaration//GEN-END:variables
 }

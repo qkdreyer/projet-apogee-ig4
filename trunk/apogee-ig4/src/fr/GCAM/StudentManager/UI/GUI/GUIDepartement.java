@@ -23,7 +23,7 @@ public class GUIDepartement extends GUI<Departement> {
     FacadeDepartement faDepa;
 
     /** Creates new form ManageDpt */
-    public GUIDepartement(String codeDepartement, String dao) throws Exception {
+    public GUIDepartement(String codeDepartement) throws Exception {
         initComponents();
 	this.setVisible(true);
         faDepa = new FacadeDepartement(codeDepartement, dao);

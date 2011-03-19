@@ -43,6 +43,10 @@ public class FacadeECUE {
 	return manECUE.getCodeMatiere();
     }
 
+    public String getLibelleECUE() throws Exception {
+        return manECUE.getLibelleECUE();
+    }
+
     public int getNbHeures() throws Exception {
 	return manECUE.getNbHeures();
     }

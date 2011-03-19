@@ -36,7 +36,7 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI ECUE, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<ECUE> getUIECUE(String s);
+    public abstract UI<ECUE> getUIECUE(String s) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour une UE
@@ -45,7 +45,7 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI UE, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<UE> getUIUE(String s, String dao) throws Exception;
+    public abstract UI<UE> getUIUE(String s) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour une Etape
@@ -54,7 +54,7 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI Etape, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<Etape> getUIEtape(String s);
+    public abstract UI<Etape> getUIEtape(String s) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour un Departement
@@ -63,14 +63,14 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI Departement, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<Departement> getUIDepartement(String s, String dao) throws Exception;
+    public abstract UI<Departement> getUIDepartement(String s) throws Exception;
 
     /**
      * TODO
      * @param s
      * @return
      */
-    public abstract UI<AbstractEtudiant> getUIStat(String s);
+    public abstract UI<AbstractEtudiant> getUIStat(String s) throws Exception;
 
     /**
      * Methode renvoyant l'UI (Console ou GUI) associée à la chaine passée
