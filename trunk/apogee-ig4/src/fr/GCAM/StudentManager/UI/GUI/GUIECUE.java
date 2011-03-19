@@ -12,6 +12,15 @@ package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.FacadeECUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
+import fr.GCAM.StudentManager.Util.SSParser;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -61,7 +70,7 @@ public class GUIECUE extends GUI<ECUE> {
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         createCSV = new javax.swing.JButton();
-        importCSV = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -155,10 +164,10 @@ public class GUIECUE extends GUI<ECUE> {
             }
         });
 
-        importCSV.setText("Importer CSV");
-        importCSV.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Importer CSV");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                importCSVActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -178,7 +187,7 @@ public class GUIECUE extends GUI<ECUE> {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(createCSV)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(importCSV))
+                                        .addComponent(jButton1))
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(58, Short.MAX_VALUE))
@@ -195,7 +204,7 @@ public class GUIECUE extends GUI<ECUE> {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(createCSV)
-                            .addComponent(importCSV)))
+                            .addComponent(jButton1)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)))
         );
 
@@ -237,16 +246,23 @@ public class GUIECUE extends GUI<ECUE> {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCSVActionPerformed
-        
+        try {
+            SSParser.createSS(fECUE.getECUE());
+            JOptionPane.showMessageDialog(this, "Fichier créé : " + System.getProperty("user.dir") + "\\spreadsheet.csv");
+        } catch (IOException ex) {
+        }
     }//GEN-LAST:event_createCSVActionPerformed
 
-    private void importCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importCSVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_importCSVActionPerformed
-
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            SSParser.loadSS(fECUE.getECUE());
+            JOptionPane.showMessageDialog(this, "Fichier chargé !");
+        } catch (Exception ex) {
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createCSV;
-    private javax.swing.JToggleButton importCSV;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

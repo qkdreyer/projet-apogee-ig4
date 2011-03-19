@@ -45,6 +45,10 @@ public class ManagerECUE {
      * @throws Exception
      */
 
+    public ECUE getECUE() {
+        return ecue;
+    }
+
     public String getLibelleECUE() throws Exception {
 	return ecue.getLibelleECUE();
     }
@@ -80,15 +84,6 @@ public class ManagerECUE {
      */
     public void setNoteSession2(int indexEtud, int note) throws Exception {
 	ecue.getListeEtud().get(indexEtud).modifyNoteSession2(note);
-        ecueDAO.update(ecue);
-    }
-
-    public void createSS() throws IOException {
-	SSParser.createSS(ecue);
-    }
-
-    public void loadSS(String s) throws Exception {
-	SSParser.loadSS(ecue, s);
         ecueDAO.update(ecue);
     }
 
