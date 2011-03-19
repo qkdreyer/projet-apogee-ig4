@@ -158,13 +158,14 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 	    } else {
 		try {
 		    this.setVisible(false);
+                    System.out.println("resp = " + resp.get("topResponsability").equals("ECUE"));
 		    if (resp.get("topResponsability").equals("ECUE")) {
 			new GUIECUE(resp.get("codeResp"));
-		    } else if (resp.get("topResponsability").equals("ECUE")) {
+		    } else if (resp.get("topResponsability").equals("UE")) {
 			new GUIUE(resp.get("codeResp"), dao);
-		    } else if (resp.get("topResponsability").equals("ECUE")) {
+		    } else if (resp.get("topResponsability").equals("Etape")) {
 			new GUIEtape(resp.get("codeResp"));
-		    } else if (resp.get("topResponsability").equals("ECUE")) {
+		    } else if (resp.get("topResponsability").equals("Departement")) {
 			new GUIDepartement(resp.get("codeResp"));
 		    }
 		} catch (Exception ex) {
