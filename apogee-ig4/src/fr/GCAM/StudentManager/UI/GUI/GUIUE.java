@@ -8,11 +8,11 @@
  *
  * Created on 18 févr. 2011, 18:42:36
  */
-
 package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.FacadeUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantUE;
 import fr.GCAM.StudentManager.POJO.UE;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -33,18 +33,18 @@ public class GUIUE extends GUI<UE> {
     /** Creates new form ManageUE */
     public GUIUE(String s, String dao) throws Exception {
         initComponents();
-	fue = new FacadeUE(s, dao);
-        
+        fue = new FacadeUE(s, dao);
+
 
         jLabel5.setText(Integer.toString(fue.getECTS()));
 
         JPanel border, col1, col2;
-        for(ECUE e : fue.getListeECUE()) {
+        for (ECUE e : fue.getListeECUE()) {
             border = new JPanel();
             border.setLayout(new BoxLayout(border, BoxLayout.X_AXIS));
             border.setBorder(javax.swing.BorderFactory.createTitledBorder(e.getCodeMatiere()));
             col1 = new JPanel();
-            col1.setLayout(new GridLayout(2,1));
+            col1.setLayout(new GridLayout(2, 1));
             col1.add(new JLabel("Libelle : " + e.getLibelleECUE()));
             col1.add(new JLabel("Responsable : " + e.getResponsable()));
             col2 = new JPanel();
@@ -54,8 +54,11 @@ public class GUIUE extends GUI<UE> {
             border.add(col2);
             jPanel1.add(border);
         }
-       
-	this.setVisible(true);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(fue.getArrayOfEtudiantUE(),
+                new String[]{"Nom", "Prenom", "Moyenne"}));
+
+        this.setVisible(true);
     }
 
     /** This method is called from within the constructor to
@@ -162,63 +165,6 @@ public class GUIUE extends GUI<UE> {
                     .addComponent(jLabel5)))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Nom_Etud", "Prenom_Etud", "10"},
-                {"...", null, null},
-                {"...", null, null},
-                {"...", null, null},
-                {"...", null, null},
-                {"...", null, null},
-                {"Nom_Etud", null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nom", "Prenom", "Moyenne"
-            }
-        ));
         jTable2.setDragEnabled(true);
         jTable2.setName("ListeEtudiants"); // NOI18N
         jTable2.getTableHeader().setResizingAllowed(false);
@@ -249,7 +195,7 @@ public class GUIUE extends GUI<UE> {
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,9 +203,9 @@ public class GUIUE extends GUI<UE> {
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, 0, 833, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -269,7 +215,6 @@ public class GUIUE extends GUI<UE> {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_jTextField1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
@@ -290,5 +235,4 @@ public class GUIUE extends GUI<UE> {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
-
 }

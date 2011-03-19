@@ -49,10 +49,7 @@ public class ManagerUE {
     public Object[][] getArrayOfEtudiantUE() {
 	ArrayList<EtudiantUE> listeEtud = ue.getListeEtud();
 	Object[][] arrayEtud = new Object[listeEtud.size()][3];
-        arrayEtud[0][0] = "Nom";
-        arrayEtud[0][1] = "Prenom";
-        arrayEtud[0][2] = "Moyenne";
-	int i = 1;
+	int i = 0;
 	for (EtudiantUE e : listeEtud) {
 	    arrayEtud[i][0] = e.getNom();
 	    arrayEtud[i][1] = e.getPrenom();
