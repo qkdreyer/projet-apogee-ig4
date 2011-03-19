@@ -7,10 +7,13 @@ package fr.GCAM.StudentManager.Util;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileFilter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -30,7 +33,29 @@ public class SSParser {
         fw.close();
     }
 
-    public static void loadSS(ECUE e, String filename) throws FileNotFoundException, IOException, NumberFormatException {
+    public static void loadSS(ECUE e) throws Exception {
+        JFileChooser jfc = new JFileChooser();
+        SSFilter filtreCSV = new SSFilter(".csv", "Fichier Comma Separeted Values");
+        SSFilter filtreXLS = new SSFilter(".xls", "Fichier Microsoft Excel");
+        SSFilter filtreODS = new SSFilter(".ods", "Fichier OpenOffice Data Sheet");
+        File file;
+
+        jfc.addChoosableFileFilter(filtreXLS);
+        jfc.addChoosableFileFilter(filtreODS);
+        jfc.addChoosableFileFilter(filtreCSV);
+
+        if (jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            file = jfc.getSelectedFile();
+            if (jfc.getFileFilter().accept(file)) {
+                modifyECUE(e, file);
+            }
+        } 
+
+
+        
+    }
+
+    private static void modifyECUE(ECUE e, File filename) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line = br.readLine();
         Float note1, note2;

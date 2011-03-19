@@ -5,6 +5,8 @@
 
 package fr.GCAM.StudentManager.Business;
 
+import fr.GCAM.StudentManager.POJO.ECUE;
+
 /**
  *
  * @author Jojo
@@ -33,6 +35,10 @@ public class FacadeECUE {
 
     public FacadeECUE(String s, String dao) throws Exception {
 	manECUE = new ManagerECUE(s, dao);
+    }
+
+    public ECUE getECUE() {
+        return manECUE.getECUE();
     }
 
     public String getResponsable() throws Exception {
