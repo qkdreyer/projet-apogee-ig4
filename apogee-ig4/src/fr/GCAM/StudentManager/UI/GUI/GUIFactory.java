@@ -23,8 +23,8 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique ECUE(POJO)
      */
-    public GUI<ECUE> getUIECUE(String s) {
-	return new GUIECUE(s);
+    public GUI<ECUE> getUIECUE(String s) throws Exception {
+        return new GUIECUE(s);
     }
 
     /**
@@ -43,8 +43,8 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique UE(POJO)
      */
-    public GUI<UE> getUIUE(String s, String dao) throws Exception {
-        return new GUIUE(s, dao);
+    public GUI<UE> getUIUE(String s) throws Exception {
+        return new GUIUE(s);
     }
 
     /**
@@ -53,7 +53,7 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Etape(POJO)
      */
-    public GUI<Etape> getUIEtape(String s) {
+    public GUI<Etape> getUIEtape(String s) throws Exception {
         return new GUIEtape(s);
     }
 
@@ -63,14 +63,14 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Departement(POJO)
      */
-    public GUI<Departement> getUIDepartement(String s, String dao) throws Exception {
-        return new GUIDepartement(s, dao);
+    public GUI<Departement> getUIDepartement(String s) throws Exception {
+        return new GUIDepartement(s);
     }
 
     /**
      * TODO
      */    
-    public UI<AbstractEtudiant> getUIStat(String s) {
+    public UI<AbstractEtudiant> getUIStat(String s) throws Exception {
         return new GUIStat(s);
     }
 

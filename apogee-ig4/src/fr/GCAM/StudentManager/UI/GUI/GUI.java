@@ -17,4 +17,6 @@ import fr.GCAM.StudentManager.UI.UI;
  */
 public abstract class GUI<T> extends javax.swing.JFrame implements UI<T> {
 
+    String dao;
+
 }
