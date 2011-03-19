@@ -49,6 +49,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 		    String query_ecue = "UPDATE ECUE "
 			    + "SET idenseignant=" + obj.getIdEnseignant() +
 			    " WHERE codematiere ='" + e.getCodeMatiere() +"'";
+		    System.out.println("query_ecue = " + query_ecue);
 		    s.execute(query_ecue);
 //		    s.execute("insert into ECUE values('"
 //			    + r.getCodeResponsabilite() + "', '"
@@ -229,20 +230,18 @@ public class DBUtilisateur extends DB<Utilisateur>  {
      * @return L'ensemble des utilisateurs
      * @throws Exception
      */
-    public ArrayList<Utilisateur> list() {
+    public ArrayList<Utilisateur> list() throws Exception {
         ArrayList<Utilisateur> listeUtil = new ArrayList<Utilisateur>();
-        try {
-            Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet result = s.executeQuery("select * from Enseignant order by idEnseignant");
-            if (result.first()) {
-                do {
-                    if (result.getInt("idEnseignant") != 0) {
-                        listeUtil.add(this.findWithID(result.getInt("idEnseignant")));
-                    }
-                } while (result.next());
-            }
-        } catch (Exception ex) {
-
+	Utilisateur util = null;
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet result = s.executeQuery("select * from Enseignant order by idEnseignant");
+        if (result.first()) {
+            do {
+		util = this.findWithID(result.getInt("idEnseignant"));
+		if (util != null ) {
+		    listeUtil.add(util);
+		}
+            } while (result.next());
         }
         return listeUtil;
     }

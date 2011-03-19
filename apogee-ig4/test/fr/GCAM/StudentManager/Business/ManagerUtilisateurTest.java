@@ -78,7 +78,7 @@ public class ManagerUtilisateurTest {
         String prenom = "prenomdansbase";
         String mdp = "motdepasse";
         ManagerUtilisateur instance = new ManagerUtilisateur("db");
-        HashMap expResult = new HashMap();
+        HashMap<String,String> expResult = new HashMap<String, String>();
         expResult.put("nom", "nomdansbase");
         expResult.put("prenom", "prenomdansbase");
         expResult.put("mds", "motdepasse");

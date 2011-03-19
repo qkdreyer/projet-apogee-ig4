@@ -5,9 +5,12 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import fr.GCAM.StudentManager.Util.SHA1;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Ignore;
 import java.sql.Connection;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
@@ -25,7 +28,8 @@ import static org.junit.Assert.*;
  */
 public class DBUtilisateurTest {
 
-    private static Utilisateur util_m;
+    private static Utilisateur util_m1;
+    private static Utilisateur util_m2;
 
     private static Connection conn;
 
@@ -41,11 +45,27 @@ public class DBUtilisateurTest {
 	listResp.add(new Utilisateur.Responsabilite("testCUE", "UE"));
 	listResp.add(new Utilisateur.Responsabilite("TEST001", "ECUE"));
 
-	util_m = new Utilisateur(9999, "testPrenom", "testNom", "testPass", "testMail", listResp);
+	util_m1 = new Utilisateur(9999, "testPrenom", "testNom", "testPass", "testMail", listResp);
+
+	//On cré le POJO du deuxieme utilisateur
+	listResp = new ArrayList<Utilisateur.Responsabilite>();
+	listResp.add(new Utilisateur.Responsabilite("testCMat2", "ECUE"));
+
+	util_m2 = new Utilisateur(10000, "testPrenom2", "testNom2", "testPass2", "testMail2", listResp);
+
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+
+	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+	//Suppression de la deuxieme ECUE créée juste pour ce test.
+	s.executeQuery("delete from ecue where codeMatiere='testCMat2'");
+
+
+	//Suprresion du deuxieme utilisateur créé
+	s.executeQuery("delete from enseignant where nom='testNom2' and prenom='testPrenom2'");
     }
 
     @Before
@@ -54,6 +74,7 @@ public class DBUtilisateurTest {
 
     @After
     public void tearDown() {
+
     }
 
     /**
@@ -61,24 +82,38 @@ public class DBUtilisateurTest {
      */
     @Test
     public void testCreate() throws Exception {
+	// TODO : Creer un autre utilisateur que celui de base
+	// avec genre une seule responsabilite
 	System.out.println("create DBUtilisateur");
 
-	DBUtilisateur instance = new DBUtilisateur(conn);
-	instance.create(util_m);
+	
 
 	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        String str = "SELECT * from vo_utilisateur where idenseignant = '" +
-		util_m.getIdEnseignant() + "'";
+
+        s.executeQuery("insert into ECUE values('testCMat2','testLibelle2', 100, 9999, 'testCUE')");
+
+	String str = "SELECT * from vo_utilisateur where nom = '" +
+		util_m2.getNom() + "' and prenom='"+util_m2.getPrenom()+"'";
+	//L'id est genere par la séquence.
+
+	DBUtilisateur instance = new DBUtilisateur(conn);
+	instance.create(util_m2);
+
 	System.out.println("str = " + str);
 	ResultSet r = s.executeQuery(str);
 	if (r.first()) {
 	    //On verifie que le bon nom a ete insere
-	    assertEquals(util_m.getNom(), r.getString("nom"));
-	    assertEquals(util_m.getPrenom(), r.getString("prenom"));
+	    assertEquals(util_m2.getNom(), r.getString("nom"));
+	    assertEquals(util_m2.getPrenom(), r.getString("prenom"));
+	    assertEquals(SHA1.getHash(util_m2.getMDP()), r.getString("mdp"));
 
 	    //On verifie ses responsabilites, il est cense etre responsable
 	    //d'une ECUE, UE, etape, departement
-	    assertEquals(str, str);
+	    // TODO
+	    //L'ECUE testCmat2 est censé etre dirigée par l'enseignant de code
+	    //1000 qu'on vient de créer.
+	    ResultSet r_ecue = s.executeQuery("select idenseignant from ecue where cotematiere='testCMat2'");
+	    assertEquals(1000, r_ecue.getString("idenseignant"));
 	}
     }
 
@@ -100,22 +135,32 @@ public class DBUtilisateurTest {
      * Test of delete method, of class DBUtilisateur.
      */
     @Test
+    @Ignore
     public void testDelete() throws Exception {
+
+	//Créer un nouvel utilisateur. et le supprimer.
+	//A la limite, petit idée de derniere minute, supprimer celui qu'on a créé au
+	//dessus dans le testCreate()
+
 	System.out.println("delete DBUtilisateur");
 
 	DBUtilisateur instance = new DBUtilisateur(conn);
-	instance.delete(util_m);
+	instance.delete(util_m1);
 	// Le create est testé avant donc il est censé marcher.
 
 	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         String str = "SELECT * from vo_utilisateur where idenseignant = '" +
-		util_m.getIdEnseignant() + "'";
+		util_m1.getIdEnseignant() + "'";
 	System.out.println("str = " + str);
 	ResultSet r = s.executeQuery(str);
 	if (r.first()) {
 	    assertEquals(null, r.getString("nom"));
 	    assertEquals(null, r.getString("prenom"));
 	}
+
+	//Tout a marché, on le reinsere :
+        s.executeQuery("insert into Enseignant values (9999,gethash('testPass'),'testNom','testPrenom','testMail')");
+
 
     }
 
@@ -130,9 +175,8 @@ public class DBUtilisateurTest {
 	//Test avec findwithid
         
 	Utilisateur result = dbu.find(9999);
-	//assertEquals("testNom", result.getNom());
-
-        /*
+	assertEquals("testNom", result.getNom());
+        
 	//Test avec find whith logs
 	ArrayList<String> logs = new ArrayList<String>();
 	logs.add("testPrenom");
@@ -141,7 +185,7 @@ public class DBUtilisateurTest {
 	result = dbu.find(logs);
 	assertEquals("testprenom", result.getPrenom());
 	assertEquals("testnom", result.getNom());
-        */
+	assertEquals(SHA1.getHash("testPass"), result.getMDP());
 
         //Test avec find with logs (renvoie null)
         ArrayList<String> logs2 = new ArrayList<String>();
@@ -159,7 +203,7 @@ public class DBUtilisateurTest {
     public void testList() throws Exception {
 	System.out.println("list DBUtilisateur");
 	DBUtilisateur dbu = new DBUtilisateur(conn);
-	util_m = new Utilisateur();
+	util_m1 = new Utilisateur();
 	boolean trouve = false;
 //	ArrayList<Utilisateur> expResult = new ArrayList<Utilisateur>();
 
@@ -171,11 +215,11 @@ public class DBUtilisateurTest {
         ResultSet r = s.executeQuery("SELECT distinct(idenseignant) from vo_utilisateur");
 	if (r.first()) {
 	    do {
-		util_m = new Utilisateur();
-		util_m.setIdEnseignant(r.getInt("idenseignant"));
+		util_m1 = new Utilisateur();
+		util_m1.setIdEnseignant(r.getInt("idenseignant"));
 		trouve = false;
-                for (Utilisateur each : result) {
-		    if(each.getIdEnseignant() == util_m.getIdEnseignant())
+		for (Utilisateur each : result) {
+		    if(each.getIdEnseignant() == util_m1.getIdEnseignant())
 			trouve = true;
 		}
 		assertTrue(trouve);
