@@ -11,6 +11,7 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
+import fr.GCAM.StudentManager.Business.FacadeDepartement;
 import fr.GCAM.StudentManager.POJO.Departement;
 
 /**
@@ -19,10 +20,13 @@ import fr.GCAM.StudentManager.POJO.Departement;
  */
 public class GUIDepartement extends GUI<Departement> {
 
+    FacadeDepartement faDepa;
+
     /** Creates new form ManageDpt */
-    public GUIDepartement(String s) {
+    public GUIDepartement(String codeDepartement, String dao) throws Exception {
         initComponents();
 	this.setVisible(true);
+        faDepa = new FacadeDepartement(codeDepartement, dao);
     }
 
     /** This method is called from within the constructor to

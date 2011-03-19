@@ -43,7 +43,7 @@ public class ConsoleFactory extends AbstractUIFactory {
     }
 
     @Override
-    public UI<Departement> getUIDepartement(String s) {
+    public UI<Departement> getUIDepartement(String s, String dao) {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 

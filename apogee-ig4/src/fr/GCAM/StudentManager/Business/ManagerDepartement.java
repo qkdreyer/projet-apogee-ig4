@@ -8,6 +8,8 @@ package fr.GCAM.StudentManager.Business;
 import fr.GCAM.StudentManager.POJO.Departement;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -20,7 +22,7 @@ public class ManagerDepartement {
     private Departement dept = null;
     private DAO<Departement> deptDAO = null;
 
-    public ManagerDepartement(String s, String dao) throws Exception {
+    public ManagerDepartement(String s, String dao) throws Exception{
         deptDAO = AbstractDAOFactory.getDAOFactory(dao).getDAODepartement();
         dept = deptDAO.find(s);
     }
