@@ -46,7 +46,7 @@ public class DBTestSuite {
         try {
 	    System.out.println("Creation des temoins");
             //On cré une ECUE, pour laquelle on va réaliser le test
-            Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            Statement s = conn.createStatement();
 
             s.executeQuery("insert into Enseignant values (9999,gethash('testPass'),'testNom','testPrenom','testMail')");
             s.executeQuery("insert into Departement values ('testVDip','testNomDep','testMnemo',9999)");
@@ -74,11 +74,15 @@ public class DBTestSuite {
     public static void tearDownClass() throws Exception {
 	//On supprime les insertions de la base
         try {
-            //On cré une ECUE, pour laquelle on va réaliser le test
-            Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-            //s.executeQuery("DELETE FROM ")
+	    Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	    //Il faut recuperer l'id de l'enseignant genere par la sequence.
+//	    ResultSet r = s.executeQuery("Select idenseignant from enseignant "
+//		    + "where nom='testNom' and prenom='testPrenom'");
+//   	    int id = r.getInt("idenseignant");
+//	    System.out.println("idEnseignant = " + id);
 
+//	    Statement s_del = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             s.executeQuery("DELETE FROM Etudiant WHERE numEtudiant=99999");
 	    s.executeQuery("DELETE FROM Provenance WHERE idprovenance=0");
 	    s.executeQuery("DELETE FROM Statut WHERE idstatut=0");
@@ -88,9 +92,11 @@ public class DBTestSuite {
             s.executeQuery("DELETE FROM Semestre WHERE codeSemestre='99'");
             s.executeQuery("DELETE FROM Etape WHERE codeEtape='testCEt'");
             s.executeQuery("DELETE FROM Departement WHERE versionDiplome='testVDip'");
+
             s.executeQuery("DELETE FROM Enseignant WHERE idenseignant=9999");
 
-            s.close();
+//            s_del.close();
+//	    s_q.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(DBECUETest.class.getName()).log(Level.SEVERE, null, ex);
