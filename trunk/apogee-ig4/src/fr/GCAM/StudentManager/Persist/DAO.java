@@ -50,6 +50,6 @@ public interface DAO<T> {
     /** TODO
      *
      */
-    public abstract ArrayList <T> list() throws Exception;
+    public abstract ArrayList<T> list() throws Exception;
 
 }
