@@ -89,6 +89,7 @@ public class DBUtilisateurTest {
 	
 
 	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	Statement s_enseignant = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
         s.executeQuery("insert into ECUE values('testCMat2','testLibelle2', 100, 9999, 'testCUE')");
 
@@ -112,8 +113,12 @@ public class DBUtilisateurTest {
 	    // TODO
 	    //L'ECUE testCmat2 est censé etre dirigée par l'enseignant de code
 	    //1000 qu'on vient de créer.
-	    ResultSet r_ecue = s.executeQuery("select idenseignant from ecue where cotematiere='testCMat2'");
-	    assertEquals(1000, r_ecue.getString("idenseignant"));
+	    ResultSet r_ecue = s.executeQuery("select idenseignant from ecue where codematiere='testCMat2'");
+	    ResultSet r_enseignant = s_enseignant.executeQuery("select idenseignant from enseignant where nom='testNom2'");
+	    if (r_ecue.first() && r_enseignant.first())
+		assertEquals(r_ecue.getString("idenseignant"), r_enseignant.getString("idenseignant") );
+	    else
+		fail("Erreur sur le test création");
 	}
     }
 

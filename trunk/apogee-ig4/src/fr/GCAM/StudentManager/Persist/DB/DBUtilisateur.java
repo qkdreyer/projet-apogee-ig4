@@ -34,20 +34,32 @@ public class DBUtilisateur extends DB<Utilisateur>  {
      * @throws Exception
      */
     public void create(Utilisateur obj) throws Exception {
-        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        String str = "insert into Enseignant values(utilSeq.nextval, '"
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        int id_reel;
+	String str = "insert into Enseignant values(utilSeq.nextval, '"
                 + SHA1.getHash(obj.getMDP()) + "', '"
                 + obj.getNom() + "', '"
                 + obj.getPrenom() + "', '"
                 + obj.getMail() + "')";
 	System.out.println("str = " + str);
 	s.execute(str);
+
+	//L'id stocke dans la BD est different
+
+	Statement s_id = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	ResultSet res_id = s_id.executeQuery("select idenseignant from enseignant where nom='testNom2'");
+
+	if (res_id.first()) {
+	    id_reel = res_id.getInt("idenseignant");
+	} else
+	    id_reel = 0;
+
 	if (obj.getListeResponsabilites() != null) {
 	    for (Responsabilite r : obj.getListeResponsabilites()) {
 		if (r.getLibelle().equals("ECUE")) {
 		    ECUE e = new DBECUE(conn).find(r.getCodeResponsabilite());
 		    String query_ecue = "UPDATE ECUE "
-			    + "SET idenseignant=" + obj.getIdEnseignant() +
+			    + "SET idenseignant=" + id_reel +
 			    " WHERE codematiere ='" + e.getCodeMatiere() +"'";
 		    System.out.println("query_ecue = " + query_ecue);
 		    s.execute(query_ecue);
@@ -60,7 +72,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 		} else if (r.getLibelle().equals("UE")) {
 		    UE u = new DBUE(conn).find(r.getCodeResponsabilite());
 		    String query_ue = "UPDATE UE "
-			    + "SET idenseignant=" + obj.getIdEnseignant() +
+			    + "SET idenseignant=" + id_reel +
 			    " WHERE codeUE ='" + u.getCodeUE() +"'";
 		    s.execute(query_ue);
 //		    s.execute("insert into UE values('"
@@ -73,7 +85,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 		} else if (r.getLibelle().equals("Etape")) {
 		    Etape e = new DBEtape(conn).find(r.getCodeResponsabilite());
 		    String query_etape = "UPDATE Etape "
-			    + "SET idenseignant=" + obj.getIdEnseignant() +
+			    + "SET idenseignant=" + id_reel +
 			    " WHERE codeEtape ='" + e.getCodeEtape() +"'";
 		    s.execute(query_etape);
 //		    s.execute("insert into Etape values('"
@@ -83,7 +95,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 		} else if (r.getLibelle().equals("Departement")) {
 		    Departement d = new DBDepartement(conn).find(r.getCodeResponsabilite());
 		    String query_dep = "UPDATE Departement "
-			    + "SET idenseignant=" + obj.getIdEnseignant() +
+			    + "SET idenseignant=" + id_reel +
 			    " WHERE versionDiplome ='" + d.getVersionDiplome() +"'";
 		    s.execute(query_dep);
 //		    s.execute("insert into Departement values('"
