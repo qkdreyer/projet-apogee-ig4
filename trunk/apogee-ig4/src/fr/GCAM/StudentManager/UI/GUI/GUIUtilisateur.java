@@ -166,7 +166,7 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 		    } else if (resp.get("topResponsability").equals("Etape")) {
 			new GUIEtape(resp.get("codeResp"));
 		    } else if (resp.get("topResponsability").equals("Departement")) {
-			new GUIDepartement(resp.get("codeResp"));
+			new GUIDepartement(resp.get("codeResp"), dao);
 		    }
 		} catch (Exception ex) {
 		    System.err.println("Erreur : " + ex);

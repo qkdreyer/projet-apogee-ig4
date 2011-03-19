@@ -63,7 +63,7 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI Departement, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<Departement> getUIDepartement(String s);
+    public abstract UI<Departement> getUIDepartement(String s, String dao) throws Exception;
 
     /**
      * TODO

@@ -63,8 +63,8 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Departement(POJO)
      */
-    public GUI<Departement> getUIDepartement(String s) {
-        return new GUIDepartement(s);
+    public GUI<Departement> getUIDepartement(String s, String dao) throws Exception {
+        return new GUIDepartement(s, dao);
     }
 
     /**
