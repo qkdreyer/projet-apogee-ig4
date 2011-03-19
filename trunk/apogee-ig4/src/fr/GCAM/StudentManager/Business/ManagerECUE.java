@@ -97,12 +97,8 @@ public class ManagerECUE {
      */
     public Object[][] getArrayOfEtudiantECUE() {
 	ArrayList<EtudiantECUE> listeEtud = ecue.getListeEtud();
-	Object[][] arrayEtud = new Object[listeEtud.size()+1][4];
-        arrayEtud[0][0] = "Nom";
-        arrayEtud[0][1] = "Preom";
-        arrayEtud[0][2] = "Note 1";
-        arrayEtud[0][3] = "Note 2";
-	int i = 1;
+	Object[][] arrayEtud = new Object[listeEtud.size()][4];
+	int i = 0;
 	for (EtudiantECUE e : listeEtud) {
 	    arrayEtud[i][0] = e.getNom();
 	    arrayEtud[i][1] = e.getPrenom();
