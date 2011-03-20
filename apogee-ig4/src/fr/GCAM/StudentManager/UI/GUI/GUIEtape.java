@@ -152,14 +152,6 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         semestre = new javax.swing.JPanel();
         semestre1 = new javax.swing.JPanel();
         ueSemestre1 = new javax.swing.JPanel();
-        jPanel35 = new javax.swing.JPanel();
-        jButton31 = new javax.swing.JButton();
-        jPanel37 = new javax.swing.JPanel();
-        jButton33 = new javax.swing.JButton();
-        jPanel38 = new javax.swing.JPanel();
-        jButton34 = new javax.swing.JButton();
-        jPanel39 = new javax.swing.JPanel();
-        jButton35 = new javax.swing.JButton();
         infoSemestre1 = new javax.swing.JPanel();
         codeSemestre1 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
@@ -176,9 +168,6 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         libelleSemestre2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         listeEtudSem2 = new javax.swing.JTable();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -232,11 +221,6 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         jTextField1.setEditable(false);
         jTextField1.setText("IG");
         jTextField1.setEnabled(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jLabel13.setText("Version étape");
 
@@ -285,98 +269,6 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         ueSemestre1.setBorder(javax.swing.BorderFactory.createTitledBorder("Liste des UEs"));
         ueSemestre1.setPreferredSize(new java.awt.Dimension(400, 166));
         ueSemestre1.setLayout(new java.awt.GridLayout(0, 3));
-
-        jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder("UE 1 - 6 ECTS"));
-
-        jButton31.setText("Détails");
-
-        javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
-        jPanel35.setLayout(jPanel35Layout);
-        jPanel35Layout.setHorizontalGroup(
-            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel35Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jButton31)
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
-        jPanel35Layout.setVerticalGroup(
-            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel35Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton31)
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        ueSemestre1.add(jPanel35);
-
-        jPanel37.setBorder(javax.swing.BorderFactory.createTitledBorder("UE 1 - 6 ECTS"));
-
-        jButton33.setText("Détails");
-
-        javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
-        jPanel37.setLayout(jPanel37Layout);
-        jPanel37Layout.setHorizontalGroup(
-            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel37Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jButton33)
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-        jPanel37Layout.setVerticalGroup(
-            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel37Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton33)
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        ueSemestre1.add(jPanel37);
-
-        jPanel38.setBorder(javax.swing.BorderFactory.createTitledBorder("UE 1 - 6 ECTS"));
-
-        jButton34.setText("Détails");
-
-        javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
-        jPanel38.setLayout(jPanel38Layout);
-        jPanel38Layout.setHorizontalGroup(
-            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel38Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jButton34)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
-        jPanel38Layout.setVerticalGroup(
-            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel38Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton34)
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        ueSemestre1.add(jPanel38);
-
-        jPanel39.setBorder(javax.swing.BorderFactory.createTitledBorder("UE 1 - 6 ECTS"));
-
-        jButton35.setText("Détails");
-
-        javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
-        jPanel39.setLayout(jPanel39Layout);
-        jPanel39Layout.setHorizontalGroup(
-            jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel39Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jButton35)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        jPanel39Layout.setVerticalGroup(
-            jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel39Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton35)
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        ueSemestre1.add(jPanel39);
 
         infoSemestre1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informations"));
 
@@ -515,7 +407,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                         .addComponent(infoSemestre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ueSemestre2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout semestreLayout = new javax.swing.GroupLayout(semestre);
@@ -533,25 +425,8 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             .addGroup(semestreLayout.createSequentialGroup()
                 .addComponent(semestre1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(semestre2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(semestre2, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
         );
-
-        jButton12.setText("Liste Etrangers");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-
-        jButton13.setText("Détail élève");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-
-        jButton14.setText("Ajout PJ");
 
         jMenu1.setText("Fichier");
 
@@ -606,14 +481,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                         .addComponent(jLabel11)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(154, 154, 154))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton12)
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton13)
-                        .addGap(49, 49, 49)
-                        .addComponent(jButton14)))
+                        .addGap(154, 154, 154)))
                 .addGap(18, 18, 18)
                 .addComponent(semestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -631,32 +499,15 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton12)
-                            .addComponent(jButton13)
-                            .addComponent(jButton14)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(semestre, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)))
+                        .addComponent(semestre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -666,13 +517,6 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
     private javax.swing.JLabel codeSemestre2;
     private javax.swing.JPanel infoSemestre1;
     private javax.swing.JPanel infoSemestre2;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton33;
-    private javax.swing.JButton jButton34;
-    private javax.swing.JButton jButton35;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -694,10 +538,6 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel35;
-    private javax.swing.JPanel jPanel37;
-    private javax.swing.JPanel jPanel38;
-    private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;

@@ -41,19 +41,19 @@ public class FacadeECUE {
         return manECUE.getECUE();
     }
 
-    public String getResponsable() throws Exception {
+    public String getResponsable() {
 	return manECUE.getResponsable();
     }
 
-    public String getCodeMatiere() throws Exception {
+    public String getCodeMatiere() {
 	return manECUE.getCodeMatiere();
     }
 
-    public String getLibelleECUE() throws Exception {
+    public String getLibelleECUE() {
         return manECUE.getLibelleECUE();
     }
 
-    public int getNbHeures() throws Exception {
+    public int getNbHeures() {
 	return manECUE.getNbHeures();
     }
 
@@ -65,7 +65,7 @@ public class FacadeECUE {
         manECUE.setNoteSession2(i, note);
     }
 
-    public Object[][] getArrayOfEtudiantECUE() throws Exception {
+    public Object[][] getArrayOfEtudiantECUE() {
 	return manECUE.getArrayOfEtudiantECUE();
     }
 

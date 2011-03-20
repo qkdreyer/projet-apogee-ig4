@@ -5,6 +5,9 @@
 
 package fr.GCAM.StudentManager.Business;
 
+import fr.GCAM.StudentManager.POJO.Etape;
+import java.util.ArrayList;
+
 /**
  *
  * @author Jojo
@@ -23,16 +26,20 @@ public class FacadeDepartement {
 	manDept = new ManagerDepartement(s, dao);
     }
 
-    public String getVersionDiplome() throws Exception {
+    public String getVersionDiplome() {
 	return manDept.getVersionDiplome();
     }
 
-    public String getNomDepartement() throws Exception {
+    public String getNomDepartement() {
 	return manDept.getNomDepartement();
     }
 
-    public String getMnemo() throws Exception {
+    public String getMnemo() {
 	return manDept.getMnemo();
+    }
+
+    public ArrayList<Etape> getListeEtape() {
+        return manDept.getListeEtape();
     }
 
     @Override
