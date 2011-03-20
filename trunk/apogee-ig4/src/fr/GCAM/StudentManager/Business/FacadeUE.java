@@ -60,6 +60,10 @@ public class FacadeUE {
 	return manUE.getArrayOfEtudiantUE();
     }
 
+    public String getOptionnel() {
+        return manUE.getOptionnel();
+    }
+
     @Override
     public String toString() {
         return manUE.toString();

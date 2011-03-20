@@ -12,6 +12,7 @@ package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.FacadeUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
+import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import java.util.HashMap;
 
 /**
@@ -21,12 +22,13 @@ import java.util.HashMap;
 public class GUIUtilisateur extends GUI<Utilisateur> {
 
     private FacadeUtilisateur facadeUtilisateur;
+    private String dao;
 
     /** Creates new form Login */
-    public GUIUtilisateur(String s) {
+    public GUIUtilisateur(String dao) {
 	initComponents();
-	dao = s;
-	facadeUtilisateur = new FacadeUtilisateur(s);
+	this.dao = dao;
+	facadeUtilisateur = new FacadeUtilisateur(dao);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(facadeUtilisateur.getList()));
         setLocationRelativeTo(null);
 	this.setVisible(true);
@@ -170,13 +172,13 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 		    this.setVisible(false);
                     System.out.println("resp = " + resp.get("topResponsability").equals("ECUE"));
 		    if (resp.get("topResponsability").equals("ECUE")) {
-			new GUIECUE(resp.get("codeResp"));
+                        AbstractUIFactory.getUIFactory("g").getUIECUE(dao, resp.get("codeResp"));
 		    } else if (resp.get("topResponsability").equals("UE")) {
-			new GUIUE(resp.get("codeResp"));
+			AbstractUIFactory.getUIFactory("g").getUIUE(dao, resp.get("codeResp"));
 		    } else if (resp.get("topResponsability").equals("Etape")) {
-			new GUIEtape(resp.get("codeResp"));
+			AbstractUIFactory.getUIFactory("g").getUIEtape(dao, resp.get("codeResp"));
 		    } else if (resp.get("topResponsability").equals("Departement")) {
-			new GUIDepartement(resp.get("codeResp"));
+			AbstractUIFactory.getUIFactory("g").getUIDepartement(dao, resp.get("codeResp"));
 		    }
 		} catch (Exception ex) {
 		    System.err.println("Erreur : " + ex);

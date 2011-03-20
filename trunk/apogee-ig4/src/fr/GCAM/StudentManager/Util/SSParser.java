@@ -8,8 +8,6 @@ import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileFilter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -49,25 +47,29 @@ public class SSParser {
             if (jfc.getFileFilter().accept(file)) {
                 modifyECUE(e, file);
             }
-        } 
+        }
 
 
-        
+
     }
 
     private static void modifyECUE(ECUE e, File filename) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line = br.readLine();
-        Float note1, note2;
+        float note1, note2;
 
         for (EtudiantECUE etud : e.getListeEtud()) {
             line = br.readLine();
             //if (line.matches("[a-zA-Z]\s[a-zA-Z];;\d\d[.;]\d\d;;\d\d[.;]\d\d")) { test
             note1 = Float.parseFloat(line.split(";;")[1].replace(',', '.'));
-            note2 = Float.parseFloat(line.split(";;")[2].replace(',', '.'));
-            if (note1 >= 0 && note1 <= 20 && note2 >= 0 && note2 <= 20) {
-                etud.setNoteSession1(note1);
-                etud.setNoteSession2(note2);
+            if (line.split(";;").length == 3) {
+                note2 = Float.parseFloat(line.split(";;")[2].replace(',', '.'));
+                if (note2 >= 0 && note2 <= 20) {
+                    etud.modifyNoteSession2(note2);
+                }
+            }
+            if (note1 >= 0 && note1 <= 20) {
+                etud.modifyNoteSession1(note1);
             }
         }
     }

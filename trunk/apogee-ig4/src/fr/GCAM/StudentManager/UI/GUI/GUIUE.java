@@ -13,12 +13,14 @@ package fr.GCAM.StudentManager.UI.GUI;
 import fr.GCAM.StudentManager.Business.FacadeUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.UE;
+import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -26,45 +28,42 @@ import javax.swing.JPanel;
  *
  * @author pierre
  */
-public class GUIUE extends GUI<UE> {
+public class GUIUE extends GUI<UE> implements ActionListener {
 
     private FacadeUE fue;
-    private String codeECUE;
+    private String dao;
 
     /** Creates new form ManageUE */
-    public GUIUE(String s) throws Exception {
+    public GUIUE(String dao, String id) throws Exception {
+        this.dao = dao;
         initComponents();
-        fue = new FacadeUE(s, dao);
+        fue = new FacadeUE(id, dao);
 
         libelle.setText("Libellé UE : " + fue.getLibelleUE());
         responsable.setText("Responsable : " + fue.getResponsable());
         ects.setText("ECTS : " + fue.getECTS());
+        optionnel.setText("Optionnel : " + fue.getOptionnel());
 
         JPanel border, col1, col2;
         JButton detail;
-        
+
         for (ECUE e : fue.getListeECUE()) {
             border = new JPanel();
             border.setLayout(new BoxLayout(border, BoxLayout.X_AXIS));
             border.setBorder(javax.swing.BorderFactory.createTitledBorder(e.getCodeMatiere()));
+
             col1 = new JPanel();
             col1.setLayout(new GridLayout(2, 1));
             col1.add(new JLabel("Libellé ECUE : " + e.getLibelleECUE()));
             col1.add(new JLabel("Responsable : " + e.getResponsable()));
+
             col2 = new JPanel();
             col2.setLayout(new FlowLayout(FlowLayout.RIGHT));
             detail = new JButton("Détails...");
-            codeECUE = e.getCodeMatiere();
-            detail.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        new GUIECUE(codeECUE);
-                    } catch (Exception ex) {
-                        
-                    }
-                }
-            });
+            detail.putClientProperty("id", e.getCodeMatiere());
+            detail.addActionListener(this);
             col2.add(detail);
+            
             border.add(col1);
             border.add(col2);
             panelECUE.add(border);
@@ -73,7 +72,7 @@ public class GUIUE extends GUI<UE> {
         listeEtudiantUE.setModel(new javax.swing.table.DefaultTableModel(fue.getArrayOfEtudiantUE(),
                 new String[]{"Nom", "Prenom", "Moyenne"}));
 
-	setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
@@ -101,6 +100,7 @@ public class GUIUE extends GUI<UE> {
         panelListeEtudiantUE = new javax.swing.JScrollPane();
         listeEtudiantUE = new javax.swing.JTable();
         panelECUE = new javax.swing.JPanel();
+        optionnel = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -198,6 +198,8 @@ public class GUIUE extends GUI<UE> {
 
         panelECUE.setLayout(new java.awt.GridLayout(10, 1, 0, 5));
 
+        optionnel.setText("Optionnel :");
+
         jMenu1.setText("Fichier");
         jMenuBar.add(jMenu1);
 
@@ -219,14 +221,18 @@ public class GUIUE extends GUI<UE> {
                     .addComponent(panelListeEtudiantUE, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                     .addComponent(panelUE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(panelECUE, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelECUE, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(optionnel))
                 .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelUE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelUE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(optionnel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(panelECUE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -254,6 +260,7 @@ public class GUIUE extends GUI<UE> {
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JLabel libelle;
     private javax.swing.JTable listeEtudiantUE;
+    private javax.swing.JLabel optionnel;
     private javax.swing.JPanel panelECUE;
     private javax.swing.JScrollPane panelListeEtudiantUE;
     private javax.swing.JPanel panelUE;
@@ -261,4 +268,11 @@ public class GUIUE extends GUI<UE> {
     private javax.swing.JLabel semestre;
     private javax.swing.JLabel ue;
     // End of variables declaration//GEN-END:variables
+
+    public void actionPerformed(ActionEvent e) {
+        try {
+            AbstractUIFactory.getUIFactory("g").getUIECUE(dao, ((JComponent) e.getSource()).getClientProperty("id").toString());
+        } catch (Exception ex) {
+        }
+    }
 }

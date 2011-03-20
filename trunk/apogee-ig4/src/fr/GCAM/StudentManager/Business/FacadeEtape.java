@@ -5,6 +5,9 @@
 
 package fr.GCAM.StudentManager.Business;
 
+import fr.GCAM.StudentManager.POJO.UE;
+import java.util.ArrayList;
+
 /**
  *
  * @author Jojo
@@ -28,19 +31,35 @@ public class FacadeEtape {
 	manEtape = new ManagerEtape(s, dao);
     }
 
-    public String getResponsable() throws Exception {
+    public String getResponsable() {
 	return manEtape.getResponsable();
     }
 
-    public String getCodeEtape() throws Exception {
+    public String getCodeEtape() {
 	return manEtape.getCodeEtape();
     }
 
-    public String getVersionEtape() throws Exception {
+    public String getVersionEtape() {
 	return manEtape.getVersionEtape();
     }
 
-    public Object[][] getArrayOfEtudiantEtape() throws Exception {
+    public String getCodeSemestre(int i) {
+        return manEtape.getCodeSemestre(i);
+    }
+
+    public String getLibelleSemestre(int i) {
+        return manEtape.getLibelleSemestre(i);
+    }
+
+    public ArrayList<UE> getListeUE(int i) {
+        return manEtape.getListeUE(i);
+    }
+
+    public Object[][] getArrayOfEtudiantSemestre(int n) {
+	return manEtape.getArrayOfEtudiantSemestre(n);
+    }
+
+    public Object[][] getArrayOfEtudiantEtape() {
 	return manEtape.getArrayOfEtudiantEtape();
     }
 

@@ -71,7 +71,7 @@ public class ManagerECUE {
      * @param msg
      * @throws Exception
      */
-    public void setNoteSession1(int indexEtud, int note) throws Exception {
+    public void setNoteSession1(int indexEtud, float note) throws Exception {
 	ecue.getListeEtud().get(indexEtud).modifyNoteSession1(note);
         ecueDAO.update(ecue);
     }
@@ -82,7 +82,7 @@ public class ManagerECUE {
      * @param msg
      * @throws Exception
      */
-    public void setNoteSession2(int indexEtud, int note) throws Exception {
+    public void setNoteSession2(int indexEtud, float note) throws Exception {
 	ecue.getListeEtud().get(indexEtud).modifyNoteSession2(note);
         ecueDAO.update(ecue);
     }
@@ -102,6 +102,10 @@ public class ManagerECUE {
 	    i++;
 	}
 	return arrayEtud;
+    }
+
+    public void update() throws Exception {
+        ecueDAO.update(ecue);
     }
 
     @Override

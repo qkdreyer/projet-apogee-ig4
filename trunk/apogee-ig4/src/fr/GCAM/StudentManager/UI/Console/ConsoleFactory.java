@@ -23,35 +23,37 @@ public class ConsoleFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
      */
-    public UI<Utilisateur> getUIUtilisateur(String s) {
-	return new ConsoleUtilisateur(s);
+    public UI<Utilisateur> getUIUtilisateur(String dao) {
+	return new ConsoleUtilisateur(dao);
     }
 
     @Override
-    public UI<ECUE> getUIECUE(String s) {
-	throw new UnsupportedOperationException("Not supported yet.");
+    public UI<ECUE> getUIECUE(String dao, String id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public UI<UE> getUIUE(String s) {
-	throw new UnsupportedOperationException("Not supported yet.");
+    public UI<UE> getUIUE(String dao, String id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public UI<Etape> getUIEtape(String s) {
-	throw new UnsupportedOperationException("Not supported yet.");
+    public UI<Etape> getUIEtape(String dao, String id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public UI<Departement> getUIDepartement(String s) {
-	throw new UnsupportedOperationException("Not supported yet.");
+    public UI<Departement> getUIDepartement(String dao, String id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public UI<AbstractEtudiant> getUIStat(String s) {
-	throw new UnsupportedOperationException("Not supported yet.");
+    public UI<AbstractEtudiant> getUIStat(String dao) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    
-
+    @Override
+    public UI<Utilisateur> getUIAdmin(String dao) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

@@ -23,10 +23,12 @@ public class GUIDepartement extends GUI<Departement> {
     FacadeDepartement faDepa;
 
     /** Creates new form ManageDpt */
-    public GUIDepartement(String codeDepartement) throws Exception {
+    public GUIDepartement(String dao, String id) throws Exception {
         initComponents();
+        faDepa = new FacadeDepartement(id, dao);
+
+        setLocationRelativeTo(null);
 	this.setVisible(true);
-        faDepa = new FacadeDepartement(codeDepartement, dao);
     }
 
     /** This method is called from within the constructor to
@@ -62,13 +64,13 @@ public class GUIDepartement extends GUI<Departement> {
         jTextField1.setEditable(false);
         jTextField1.setText("IG");
         jTextField1.setEnabled(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("Consulter");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Fichier");
 
@@ -99,9 +101,9 @@ public class GUIDepartement extends GUI<Departement> {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(216, Short.MAX_VALUE)
+                .addContainerGap(278, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -122,9 +124,9 @@ public class GUIDepartement extends GUI<Departement> {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
