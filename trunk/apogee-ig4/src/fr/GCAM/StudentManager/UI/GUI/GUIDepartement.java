@@ -13,6 +13,8 @@ package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.FacadeDepartement;
 import fr.GCAM.StudentManager.POJO.Departement;
+import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 
 /**
  *
@@ -20,12 +22,21 @@ import fr.GCAM.StudentManager.POJO.Departement;
  */
 public class GUIDepartement extends GUI<Departement> {
 
-    FacadeDepartement faDepa;
+    private FacadeDepartement faDepa;
+    private String dao;
 
     /** Creates new form ManageDpt */
     public GUIDepartement(String dao, String id) throws Exception {
         initComponents();
+        this.dao = dao;
         faDepa = new FacadeDepartement(id, dao);
+
+        nomDept.setText("Département : " + faDepa.getNomDepartement());
+        versionDiplome.setText("Version diplôme : " + faDepa.getVersionDiplome());
+        mnemo.setText(faDepa.getMnemo());
+        for (Etape e : faDepa.getListeEtape()) {
+            comboEtape.addItem(e.getCodeEtape());
+        }
 
         setLocationRelativeTo(null);
 	this.setVisible(true);
@@ -41,10 +52,12 @@ public class GUIDepartement extends GUI<Departement> {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        comboEtape = new javax.swing.JComboBox();
+        nomDept = new javax.swing.JLabel();
+        mnemo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        MnemoLabel = new javax.swing.JLabel();
+        versionDiplome = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -57,13 +70,10 @@ public class GUIDepartement extends GUI<Departement> {
 
         jLabel1.setText("Année");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "3", "4", "5" }));
+        nomDept.setText("Département : ");
 
-        jLabel2.setText("Département : ");
-
-        jTextField1.setEditable(false);
-        jTextField1.setText("IG");
-        jTextField1.setEnabled(false);
+        mnemo.setEditable(false);
+        mnemo.setEnabled(false);
 
         jButton1.setText("Consulter");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +81,10 @@ public class GUIDepartement extends GUI<Departement> {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        MnemoLabel.setText("Mnemo");
+
+        versionDiplome.setText("Version diplôme :");
 
         jMenu1.setText("Fichier");
 
@@ -94,52 +108,65 @@ public class GUIDepartement extends GUI<Departement> {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(278, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(versionDiplome)
+                    .addComponent(nomDept)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(MnemoLabel))
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboEtape, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(mnemo, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(versionDiplome)
+                .addGap(18, 18, 18)
+                .addComponent(nomDept)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MnemoLabel)
+                    .addComponent(mnemo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                    .addComponent(comboEtape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            AbstractUIFactory.getUIFactory("g").getUIEtape(dao, comboEtape.getSelectedItem().toString());
+        } catch (Exception ex) {
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MnemoLabel;
+    private javax.swing.JComboBox comboEtape;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField mnemo;
+    private javax.swing.JLabel nomDept;
+    private javax.swing.JLabel versionDiplome;
     // End of variables declaration//GEN-END:variables
 
 }

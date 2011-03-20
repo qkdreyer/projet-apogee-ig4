@@ -49,19 +49,19 @@ public class ManagerECUE {
         return ecue;
     }
 
-    public String getLibelleECUE() throws Exception {
+    public String getLibelleECUE() {
 	return ecue.getLibelleECUE();
     }
 
-    public String getResponsable() throws Exception {
+    public String getResponsable() {
 	return ecue.getResponsable();
     }
 
-    public int getNbHeures() throws Exception {
+    public int getNbHeures() {
 	return ecue.getNbHeures();
     }
 
-    public String getCodeMatiere() throws Exception {
+    public String getCodeMatiere() {
 	return ecue.getCodeMatiere();
     }
 

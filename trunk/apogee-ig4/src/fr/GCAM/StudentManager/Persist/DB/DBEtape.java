@@ -116,7 +116,7 @@ public class DBEtape extends DB<Etape> {
                 }
                 semestre.setCodeEtape(result.getString("codeEtape"));
                 semestre.setCodeSemestre(result.getString("codeSemestre"));
-                semestre.setLibelleSemestre(result.getString("libelleSemestre"));
+                //TODO semestre.setLibelleSemestre(result.getString("libelleSemestre"));
                 semestre.setNbUEFacultatives(result.getInt("nbUEFacultatives"));
 
                 
