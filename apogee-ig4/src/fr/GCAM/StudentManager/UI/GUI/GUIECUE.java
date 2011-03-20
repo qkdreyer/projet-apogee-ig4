@@ -13,14 +13,10 @@ package fr.GCAM.StudentManager.UI.GUI;
 import fr.GCAM.StudentManager.Business.FacadeECUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.Util.SSParser;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,9 +28,9 @@ public class GUIECUE extends GUI<ECUE> {
     private FacadeECUE fECUE;
 
     /** Creates new form ManageECUE_GUI */
-    public GUIECUE(String s) throws Exception {
+    public GUIECUE(String dao, String id) throws Exception {
         initComponents();
-        fECUE = new FacadeECUE(s, dao);
+        fECUE = new FacadeECUE(id, dao);
 
         jTextField4.setText(fECUE.getResponsable());
         jTextField2.setText(fECUE.getLibelleECUE());
@@ -43,6 +39,21 @@ public class GUIECUE extends GUI<ECUE> {
 
         jTable1.setModel(new DefaultTableModel(fECUE.getArrayOfEtudiantECUE(),
                 new String[]{"Nom", "Prenom", "Note Session 1", "Note Session 2"}));
+
+        jTable1.getModel().addTableModelListener(new TableModelListener() {
+            public void tableChanged(TableModelEvent e) {
+                try {
+                    if (jTable1.getSelectedColumn() == 2) {
+                        fECUE.setNoteSession1(jTable1.getSelectedRow(), Float.parseFloat(jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn()).toString()));
+                    } else if (jTable1.getSelectedColumn() == 3) {
+                        fECUE.setNoteSession2(jTable1.getSelectedRow(), Float.parseFloat(jTable1.getValueAt(
+                                jTable1.getSelectedRow(), jTable1.getSelectedColumn()).toString()));
+                    }
+                } catch (Exception ex) {           
+                }
+            }
+        });
+
         setLocationRelativeTo(null);
         this.setVisible(true);
     }
@@ -256,6 +267,8 @@ public class GUIECUE extends GUI<ECUE> {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             SSParser.loadSS(fECUE.getECUE());
+            jTable1.setModel(new DefaultTableModel(fECUE.getArrayOfEtudiantECUE(),
+                    new String[]{"Nom", "Prenom", "Note Session 1", "Note Session 2"}));
             JOptionPane.showMessageDialog(this, "Fichier chargé !");
         } catch (Exception ex) {
         }

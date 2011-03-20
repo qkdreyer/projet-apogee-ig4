@@ -57,8 +57,20 @@ public class FacadeECUE {
 	return manECUE.getNbHeures();
     }
 
+    public void setNoteSession1(int i, float note) throws Exception {
+        manECUE.setNoteSession1(i, note);
+    }
+
+    public void setNoteSession2(int i, float note) throws Exception {
+        manECUE.setNoteSession2(i, note);
+    }
+
     public Object[][] getArrayOfEtudiantECUE() throws Exception {
 	return manECUE.getArrayOfEtudiantECUE();
+    }
+
+    public void update() throws Exception {
+        manECUE.update();
     }
 
     @Override

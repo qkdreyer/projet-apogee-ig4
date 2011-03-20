@@ -44,6 +44,7 @@ public class Etape {
     public static class Semestre {
 
 	private String codeSemestre;
+        private String libelleSemestre;
 	private int nbUEFacultatives;
 	private String codeEtape;
 	private ArrayList<UE> listeUE;
@@ -65,6 +66,14 @@ public class Etape {
 	public String getCodeSemestre() {
 	    return codeSemestre;
 	}
+
+        public String getLibelleSemestre() {
+            return libelleSemestre;
+        }
+
+        public void setLibelleSemestre(String libelleSemestre) {
+            this.libelleSemestre = libelleSemestre;
+        }
 
 	public void setCodeSemestre(String codeSemestre) {
 	    this.codeSemestre = codeSemestre;

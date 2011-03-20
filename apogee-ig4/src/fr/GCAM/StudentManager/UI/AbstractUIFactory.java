@@ -16,7 +16,7 @@ import fr.GCAM.StudentManager.UI.GUI.GUIFactory;
  * @author PIERRE
  */
 
-public abstract class AbstractUIFactory {
+public abstract class AbstractUIFactory { //TODO params
 
     protected static AbstractUIFactory fact = null;
 
@@ -27,7 +27,7 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI Utilisateur, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<Utilisateur> getUIUtilisateur(String s);
+    public abstract UI<Utilisateur> getUIUtilisateur(String dao);
 
     /**
      * Methode renvoyant une UI(User Interface) pour une ECUE
@@ -36,7 +36,7 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI ECUE, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<ECUE> getUIECUE(String s) throws Exception;
+    public abstract UI<ECUE> getUIECUE(String dao, String id) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour une UE
@@ -45,7 +45,7 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI UE, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<UE> getUIUE(String s) throws Exception;
+    public abstract UI<UE> getUIUE(String dao, String id) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour une Etape
@@ -54,7 +54,7 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI Etape, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<Etape> getUIEtape(String s) throws Exception;
+    public abstract UI<Etape> getUIEtape(String dao, String id) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour un Departement
@@ -63,14 +63,21 @@ public abstract class AbstractUIFactory {
      * @return Renvoie l'UI Departement, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<Departement> getUIDepartement(String s) throws Exception;
+    public abstract UI<Departement> getUIDepartement(String dao, String id) throws Exception;
 
     /**
      * TODO
      * @param s
      * @return
      */
-    public abstract UI<AbstractEtudiant> getUIStat(String s) throws Exception;
+    public abstract UI<AbstractEtudiant> getUIStat(String dao) throws Exception;
+
+    /**
+     * TODO
+     * @param s
+     * @return
+     */
+    public abstract UI<Utilisateur> getUIAdmin(String dao) throws Exception;
 
     /**
      * Methode renvoyant l'UI (Console ou GUI) associée à la chaine passée

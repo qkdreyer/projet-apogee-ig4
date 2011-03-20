@@ -42,6 +42,10 @@ public class ManagerUE {
         return ue.getNbECTS();
     }
 
+    public String getOptionnel() {
+        return (ue.isOptionnel() ? "Oui" : "Non");
+    }
+
     public ArrayList<ECUE> getListeECUE() {
 	return ue.getListeECUE();
     }

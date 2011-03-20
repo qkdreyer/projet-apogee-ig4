@@ -20,7 +20,7 @@ import fr.GCAM.StudentManager.POJO.Utilisateur;
 public class GUIAdmin extends GUI<Utilisateur> {
 
     /** Creates new form Admin */
-    public GUIAdmin() {
+    public GUIAdmin(String s) {
         initComponents();
     }
 

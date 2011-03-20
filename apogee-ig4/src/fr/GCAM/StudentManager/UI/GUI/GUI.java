@@ -6,6 +6,7 @@
 package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.UI.UI;
+import javax.swing.JFrame;
 
 /**
  * Classe n'ayant pas une très grande utilité pour le moment. Elle servira dans
@@ -15,8 +16,6 @@ import fr.GCAM.StudentManager.UI.UI;
  *
  * @author Quentin
  */
-public abstract class GUI<T> extends javax.swing.JFrame implements UI<T> {
-
-    String dao;
+public abstract class GUI<T> extends JFrame implements UI<T> {
 
 }

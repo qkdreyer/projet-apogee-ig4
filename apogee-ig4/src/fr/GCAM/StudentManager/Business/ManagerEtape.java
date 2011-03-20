@@ -6,7 +6,10 @@
 package fr.GCAM.StudentManager.Business;
 
 import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.POJO.Etape.Semestre;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantEtape;
+import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantSemestre;
+import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import java.util.ArrayList;
 
@@ -34,17 +37,38 @@ public class ManagerEtape {
         return etape.getVersionEtape();
     }
 
+    public String getLibelleSemestre(int i) {
+        return etape.getSemestre(i).getLibelleSemestre();
+    }
+
+    public String getCodeSemestre(int i) {
+        return etape.getSemestre(i).getCodeSemestre();
+    }
+
+    public Object[][] getArrayOfEtudiantSemestre(int n) {
+        ArrayList<EtudiantSemestre> listeEtud = etape.getSemestre(n).getListeEtud();
+        Object[][] arrayEtud = new Object[listeEtud.size()][4];
+        int i = 0;
+        for (EtudiantSemestre e : listeEtud) {
+	    arrayEtud[i][0] = e.getNom();
+	    arrayEtud[i][1] = e.getPrenom();
+	    arrayEtud[i][2] = (e.isEtranger() ? e.getMoyEtranger() : 
+                (e.isRedoublant() ? e.getMoyRedoublant() : etape.getMoyenne(e.getNumEtudiant())));
+            arrayEtud[i][3] = e.getPointJurySemestre();
+        }
+        return arrayEtud;
+    }
+
     public Object[][] getArrayOfEtudiantEtape() {
 	ArrayList<EtudiantEtape> listeEtud = etape.getListeEtud();
-	Object[][] arrayEtud = new Object[listeEtud.size()][3];
-        arrayEtud[0][0] = "Nom";
-        arrayEtud[0][1] = "Prenom";
-        arrayEtud[0][2] = "Moyenne";
-	int i = 1;
+	Object[][] arrayEtud = new Object[listeEtud.size()][5];
+	int i = 0;
 	for (EtudiantEtape e : listeEtud) {
 	    arrayEtud[i][0] = e.getNom();
 	    arrayEtud[i][1] = e.getPrenom();
 	    arrayEtud[i][2] = etape.getMoyenne(e.getNumEtudiant());
+            arrayEtud[i][3] = e.getPointJuryAnnee();
+            arrayEtud[i][4] = e.getScoreToeic();
 	    i++;
 	}
 	return arrayEtud;
@@ -53,5 +77,9 @@ public class ManagerEtape {
     @Override
     public String toString() {
         return etape.toString();
+    }
+
+    public ArrayList<UE> getListeUE(int i) {
+        return etape.getSemestre(i).getListeUE();
     }
 }

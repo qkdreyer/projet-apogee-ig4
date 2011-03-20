@@ -23,8 +23,8 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique ECUE(POJO)
      */
-    public GUI<ECUE> getUIECUE(String s) throws Exception {
-        return new GUIECUE(s);
+    public GUI<ECUE> getUIECUE(String dao, String id) throws Exception {
+        return new GUIECUE(dao, id);
     }
 
     /**
@@ -33,8 +33,8 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
      */
-    public GUI<Utilisateur> getUIUtilisateur(String s) {
-        return new GUIUtilisateur(s);
+    public GUI<Utilisateur> getUIUtilisateur(String dao) {
+        return new GUIUtilisateur(dao);
     }
 
     /**
@@ -43,8 +43,8 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique UE(POJO)
      */
-    public GUI<UE> getUIUE(String s) throws Exception {
-        return new GUIUE(s);
+    public GUI<UE> getUIUE(String dao, String id) throws Exception {
+        return new GUIUE(dao, id);
     }
 
     /**
@@ -53,8 +53,8 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Etape(POJO)
      */
-    public GUI<Etape> getUIEtape(String s) throws Exception {
-        return new GUIEtape(s);
+    public GUI<Etape> getUIEtape(String dao, String id) throws Exception {
+            return new GUIEtape(dao, id);
     }
 
     /**
@@ -63,15 +63,22 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Departement(POJO)
      */
-    public GUI<Departement> getUIDepartement(String s) throws Exception {
-        return new GUIDepartement(s);
+    public GUI<Departement> getUIDepartement(String dao, String id) throws Exception {
+        return new GUIDepartement(dao, id);
     }
 
     /**
      * TODO
      */    
-    public UI<AbstractEtudiant> getUIStat(String s) throws Exception {
-        return new GUIStat(s);
+    public UI<AbstractEtudiant> getUIStat(String dao) throws Exception {
+        return new GUIStat(dao);
+    }
+
+    /**
+     * TODO
+     */
+    public UI<Utilisateur> getUIAdmin(String dao) throws Exception {
+        return new GUIAdmin(dao);
     }
 
 }

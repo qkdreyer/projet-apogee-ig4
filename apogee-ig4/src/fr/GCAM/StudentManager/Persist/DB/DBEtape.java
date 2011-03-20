@@ -99,13 +99,11 @@ public class DBEtape extends DB<Etape> {
 
             //Création des objets EtudiantEtape dans la listeEtud et insertion
             //des informations basiques
-            if (resultEtudiant.first()){
+            if (resultEtudiant.first()) {
                 do {
                     etape.getListeEtud().add(new DBEtudiantEtape(conn).find(resultEtudiant.getString("numEtudiant")));
-                }while(resultEtudiant.next());
-            }
-
-            
+                } while (resultEtudiant.next());
+            }            
 
             //Creation des deux semestres, et enregistrement de leurs données
             Etape.Semestre semestre;
@@ -118,6 +116,7 @@ public class DBEtape extends DB<Etape> {
                 }
                 semestre.setCodeEtape(result.getString("codeEtape"));
                 semestre.setCodeSemestre(result.getString("codeSemestre"));
+                semestre.setLibelleSemestre(result.getString("libelleSemestre"));
                 semestre.setNbUEFacultatives(result.getInt("nbUEFacultatives"));
 
                 
@@ -186,11 +185,11 @@ public class DBEtape extends DB<Etape> {
                         + " WHERE codeSemestre = '" + semestre.getCodeSemestre() +"'");
 
                 //enregistrement de la liste des UE dans le semestre
-                if(resultListeUE.first()){
-                    do{
+                if (resultListeUE.first()) {
+                    do {
                         //Récupère l'UE et l'enregistre dans le semestre
                         semestre.getListeUE().add( new DBUE(conn).find(resultListeUE.getString("codeUE")));
-                    }while(resultListeUE.next());
+                    } while (resultListeUE.next());
                 }
                 
             } while (result.next());
