@@ -29,7 +29,7 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 	initComponents();
 	this.dao = dao;
 	facadeUtilisateur = new FacadeUtilisateur(dao);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(facadeUtilisateur.getList()));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(facadeUtilisateur.getListLogin()));
         setLocationRelativeTo(null);
 	this.setVisible(true);
     }
@@ -160,18 +160,19 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
      * Connecte l'utilisateur à la base de données, et fd
      */
     private void onConnectionClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onConnectionClick
-	if (identifiant.getText().split("\\.").length == 2) {
+	//if (identifiant.getText().split("\\.").length == 2) {
 
 	    //identifier l'utilisateur, et récupère nouvelle fenêtre
 	    HashMap<String, String> resp = facadeUtilisateur.login(identifiant.getText().split("\\.")[0],
                     identifiant.getText().split("\\.")[1], mdp.getText());
 	    if (resp == null) {
-		errorLabel.setText("erreur d'identifiant ou de mot de passe");
+		errorLabel.setText("Erreur d'identifiant ou de mot de passe");
 	    } else {
 		try {
 		    this.setVisible(false);
-                    System.out.println("resp = " + resp.get("topResponsability").equals("ECUE"));
-		    if (resp.get("topResponsability").equals("ECUE")) {
+		    if (resp.get("nom").equals("root") && resp.get("prenom").equals("root")) {
+			AbstractUIFactory.getUIFactory("g").getUIAdmin(dao);
+		    } else  if (resp.get("topResponsability").equals("ECUE")) {
                         AbstractUIFactory.getUIFactory("g").getUIECUE(dao, resp.get("codeResp"));
 		    } else if (resp.get("topResponsability").equals("UE")) {
 			AbstractUIFactory.getUIFactory("g").getUIUE(dao, resp.get("codeResp"));
@@ -185,9 +186,9 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 		    ex.printStackTrace();
 		}
 	    }
-	} else {
+	/*} else {
 	    errorLabel.setText("Utilisateur : prénom.nom");
-	}
+	}*/
     }//GEN-LAST:event_onConnectionClick
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

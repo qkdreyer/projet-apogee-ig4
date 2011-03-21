@@ -141,7 +141,7 @@ create table Note (
 
 
 create table PointsJury (
-	nbPoints number,
+	nbPoints number(4,2),
 	numEtudiant number,
 	codesemestre varchar2(10),
 	constraint pkPointJury primary key(numEtudiant, codeSemestre)

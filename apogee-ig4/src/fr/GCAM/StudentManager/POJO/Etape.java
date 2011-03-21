@@ -22,9 +22,9 @@ public class Etape {
     private String versionEtape;
     private String responsable;
     private String versionDiplome;
-    private Semestre semestre1;
-    private Semestre semestre2;
-    private ArrayList<EtudiantEtape> listeEtud;
+    private Semestre semestre1 = null;
+    private Semestre semestre2 = null;
+    private ArrayList<EtudiantEtape> listeEtud = null;
 
     public Etape() {
 	semestre1 = new Semestre();
@@ -32,14 +32,10 @@ public class Etape {
         listeEtud = new ArrayList<EtudiantEtape>();
     }
 
-    public Etape(String codeEtape, String versionEtape, String responsable, String versionDiplome) {
+    public Etape(String codeEtape, String versionEtape) {
 	this.codeEtape = codeEtape;
 	this.versionEtape = versionEtape;
-	this.responsable = responsable;
-	this.versionDiplome = versionDiplome;
-        listeEtud = new ArrayList<EtudiantEtape>();
     }
-
     
     public static class Semestre {
 

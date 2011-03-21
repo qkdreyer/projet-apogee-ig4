@@ -8,12 +8,12 @@ insert into Etape values ('10','3',1001,'PI01');
 insert into Etape values ('20','3',2176,'PI02');
 insert into Etape values ('11','4',1001,'PI01');
 
-insert into Semestre values ('51','s05',0,10);
-insert into Semestre values ('61','s06',0,10);
-insert into Semestre values ('52','s05',0,20);
-insert into Semestre values ('62','s06',0,20);
-insert into Semestre values ('71','s07',0,11);
-insert into Semestre values ('81','s08',0,11);
+insert into Semestre values ('51','s05',0,'10');
+insert into Semestre values ('61','s06',0,'10');
+insert into Semestre values ('52','s05',0,'20');
+insert into Semestre values ('62','s06',0,'20');
+insert into Semestre values ('71','s07',0,'11');
+insert into Semestre values ('81','s08',0,'11');
 
 insert into ECUE values ('PIG501','algorithmique',100,1432,'PIGU51');
 insert into ECUE values ('PIG502','Unix',15,1569,'PIGU51');
@@ -37,7 +37,7 @@ insert into UE values ('PSTIAU51',8,'pate a tartiner','f',2153,52);
 insert into UE values ('PSTIAU52',5,'mode américaine','f',2384,52);
 insert into UE values ('PSTIAU61',9,'pate a tartiner: concept avancés','f',2153,62);
 
-insert into Enseignant values (0,getHash('root'),'','root','');
+insert into Enseignant values (0,getHash('root'),'root','root','');
 insert into Enseignant values (1001,getHash('roux'),'villaret','anne-laure','alv@crepuq.fr');
 insert into Enseignant values (1432,getHash('ada'),'vilarem','marie-catherine','mcv@lirmm.fr');
 insert into Enseignant values (1569,getHash('cheveux'),'berry','vincent','vberry@lirmm.fr');
@@ -69,8 +69,6 @@ insert into Etudiant values (20070003,0,'PUM2003',255,01,03,01,'11','dreyer','qu
 insert into Etudiant values (20070004,0,'PUM2004',010,04,03,02,'11','michel','benjamin','benji@china.cn');
 insert into Etudiant values (20070005,0,'PUM2005',235,01,69,04,'11','coudsi','julien','besseges@uneseulerace.bes');
 
-
-
 insert into Etudiant values (20070006,0,'PUM2006',700,01,03,01,'10','costanza','guillaume','gc@popo.fr');
 insert into Etudiant values (20070007,0,'PUM2007',700,01,03,01,'10','rance','justine','rancitude@laposte.net');
 insert into Etudiant values (20070008,0,'PUM2008',700,01,03,01,'10','paze','yannick','dieguito@pasderace.com');
@@ -78,11 +76,8 @@ insert into Etudiant values (20070008,0,'PUM2008',700,01,03,01,'10','paze','yann
 insert into Etudiant values (20070009,0,'PUM2009',500,01,03,01,'20','meyer','lisa','jsuitrobonne@sex.xx');
 insert into Etudiant values (20070010,0,'PUM2010',500,01,03,01,'20','asse','bomb','6@9.xnxx');
 
-
-
 insert into Etudiant values (20079999,0,'PUM9999',700,01,03,02,'11','moreau','js','papa@bientot.com');
 insert into Etudiant values (20060006,0,'PUM2200',900,02,03,01,'11','romand','olivier','olivier@met.fi');
-
 	
 insert into Note values(13,0,20070002,'PIG701');
 insert into Note values(08,9,20070001,'PIG701');
@@ -93,10 +88,8 @@ insert into Note values(03,02,20070003,'PIG701');
 
 -- UE Level
 insert into APDJ values('PIGU71',20070001);
-	
 insert into VAE values('PIGU71',20079999);
-	
-insert into CHoixUE values('PIGU71',20070003);
+insert into ChoixUE values('PIGU71',20070003);
 	
 --Sem Level
 insert into PointsJury values(10,20070001,71);

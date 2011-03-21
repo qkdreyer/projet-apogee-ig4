@@ -9,6 +9,7 @@ import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -129,16 +130,25 @@ public class DBECUE extends DB<ECUE> {
             ecue.setNbHeures(result.getInt("nbHeures"));
             ecue.setResponsable(result.getString("prenomResponsable") + " " + result.getString("nomResponsable"));
             ecue.setCodeUE(result.getString("codeUE"));
-
-            do {
-                ecue.getListeEtud().add(new DBEtudiantECUE(conn).find(result.getInt("numEtudiant")));
-            } while (result.next());
+	    ecue.setListeEtud(new DBEtudiantECUE(conn).list(result.getString("codeMatiere")));
         }
         return ecue;
     }
 
     public ArrayList<ECUE> list() throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    ArrayList<ECUE> list(String id) throws SQLException {
+	ArrayList<ECUE> list = new ArrayList<ECUE>();
+	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	ResultSet result = s.executeQuery("SELECT * from VO_ECUE where codeMatiere = '" + (String) id + "'");
+	if (result.first()) {
+	    do {
+		list.add(new ECUE(result.getString("codeMatiere"), result.getString("libelleECUE")));
+	    } while (result.next());
+	}
+	return list;
     }
 
 }

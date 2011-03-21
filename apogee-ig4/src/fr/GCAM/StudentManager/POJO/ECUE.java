@@ -23,7 +23,7 @@ public class ECUE {
     private int nbHeures;
     private String responsable;
     private String codeUE;
-    private ArrayList<EtudiantECUE> listeEtud;
+    private ArrayList<EtudiantECUE> listeEtud = null;
 
     public ECUE() {
         listeEtud = new ArrayList<EtudiantECUE>();
@@ -32,7 +32,6 @@ public class ECUE {
     public ECUE(String codeMatiere, String libelleECUE) {
         this.codeMatiere = codeMatiere;
         this.libelleECUE = libelleECUE;
-        listeEtud = new ArrayList<EtudiantECUE>();
     }
 
     public boolean hasStudent(Integer i) {
