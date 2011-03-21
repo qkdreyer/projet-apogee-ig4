@@ -837,7 +837,14 @@ with object identifier(idEnseignant, codeResponsabilite)
 as
 select en.idEnseignant, en.nom, en.prenom, en.mdp, mail,
 resp.codeResponsabilite, resp.libelle
-from Enseignant en, table(get_liste_resp(en.idEnseignant)) resp;
+from Enseignant en, table(get_liste_resp(en.idEnseignant)) resp
+UNION
+select en.idEnseignant, en.nom, en.prenom, en.mdp, mail,
+null, null
+from Enseignant en
+where en.nom='root'
+and en.prenom='root'
+;
 /
 
 
