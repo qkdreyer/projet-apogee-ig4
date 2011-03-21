@@ -149,7 +149,7 @@ create table PointsJury (
 
 
 create table Redoublant (
-	moyenne number,
+	moyenne number(4, 2),
 	numEtudiant number,
 	codesemestre varchar2(10),
 	constraint pkRedoublant primary key(numEtudiant, codeSemestre)
@@ -346,8 +346,7 @@ end;
 --	[numEtudiant] contient tous les numeros 
 --	d'etudiants qui sont inscrits a l'ECUE
 
-create or replace function get_liste_etud_ecue
-( codeMatiere_in IN ECUE.codeMatiere%type )
+create or replace function get_liste_etud_ecue(codeMatiere_in IN ECUE.codeMatiere%type)
 return Etud_num_tab
 is
 	--pour stocker la liste des etudiants
@@ -368,95 +367,309 @@ end;
 /
 
 -- CreateView
+-- Creation des vues nécessaires
 
--- Creation des vues objets utilisant la base relationelle
 
--- Creation du type qui composera la vue;
+--Vue VO_Etape
+--pk: (codeEtape, codeSemestre)
+--
+create or replace type TEtape as object(
+	codeEtape varchar2(10),
+	versionEtape varchar2(10),
+	versionDiplome varchar2(10),
+	nomResponsable varchar2(20),
+	prenomResponsable varchar2(20),
+	codeSemestre varchar2(10),
+	libelleSemestre varchar2(10),
+	nbUEFacultatives number
+);
+/
 
+create or replace view VO_Etape of TEtape
+with object identifier( codeEtape, codeSemestre) as
+select e.codeEtape, versionEtape, versionDiplome,
+ens.nom as nomResponsable, ens.prenom as prenomResponsable,
+s.codeSemestre, libelleSemestre, nbUEFacultatives
+from Etape e, Semestre s, Enseignant ens
+where e.codeEtape = s.codeEtape
+and e.idEnseignant = ens.idEnseignant;
+/
+
+
+--Vue VO_EtudEtape
+--pk: (numEtudiant, codeEtape)
+--
+create or replace type TEtudiantEtape as object(
+	numEtudiant number,
+	numIne varchar2(15),
+	libelleProvenance varchar2(20),
+	libelleStatut varchar2(10),
+	libelleNationalite varchar2(20),
+	nom varchar2(20),
+	prenom varchar2(20),
+	mail varchar2(40),
+	codeEtape varchar2(10),
+	pointJuryAnnee number,
+	scoreToeic number
+);
+/
+
+create or replace view VO_EtudiantEtape of TEtudiantEtape
+with object identifier( numEtudiant, codeEtape ) as 
+select e.numEtudiant, e.numIne, p.libelleProvenance, s.libelle as libelleStatut,
+n.libelleNationalite, e.nom, e.prenom, e.mail, et.codeEtape,
+e.PointJuryAnnee, e.scoreTOEIC
+from Etudiant e, Etape et, provenance p, statut s, nationalite n
+where e.idProvenance = p.idProvenance
+and e.idNationalite = n.idNationalite
+and e.idStatut = s.idStatut
+and e.numEtudiant in (
+	select l.numEtudiant
+	from table(get_liste_etud_etape(et.codeEtape)) l
+);
+/
+
+
+--Vue EtudiantSemestre
+--pk: ( numEtudiant, codeSemestre )
+--
+create or replace type TEtudiantSemestre as object(
+	numEtudiant number,
+	numIne varchar2(15),
+	libelleProvenance varchar2(20),
+	libelleStatut varchar2(10),
+	libelleNationalite varchar2(20),
+	nom varchar2(20),
+	prenom varchar2(20),
+	mail varchar2(40),
+	codeSemestre varchar2(10),
+	pointJurySemestre number,
+	moyenneEtranger number(4, 2),
+	moyenneRedoublant number(4,2)
+);
+/
+
+--function getPJSemestre
+--in: numEtudiant, codeSemestre
+--out: number
+create or replace function getPJSemestre(
+numetudiant_in IN Etudiant.numetudiant%type,
+codeSemestre_in IN Semestre.codeSemestre%type) 
+return number
+is
+	--commentaire
+	num number;
+begin
+	select nbPoints into num
+	from PointsJury pj
+	where pj.numEtudiant = numEtudiant_in
+	and pj.codeSemestre = codeSemestre_in;
+	if (num > 0) then		
+		return num;
+	end if;
+	return 0;
+exception
+	when others then
+		return 0;
+end;
+/
+
+
+--function getMoyenneEtr
+--in: numEtudiant, codeSemestre
+--out: number
+create or replace function getMoyenneEtr(
+numetudiant_in IN Etudiant.numetudiant%type,
+codeSemestre_in IN Semestre.codeSemestre%type) 
+return number
+is
+	--commentaire
+	num number;
+begin
+	select moyenne into num
+	from Etranger etr
+	where etr.numEtudiant = numEtudiant_in
+	and etr.codeSemestre = codeSemestre_in;
+	if (num > 0) then		
+		return num;
+	end if;
+	return null;
+exception
+	when others then
+		return null;
+end;
+/
+
+
+--function getMoyenneRed
+--in: numEtudiant, codeSemestre
+--out: number
+create or replace function getMoyenneRed(
+numetudiant_in IN Etudiant.numetudiant%type,
+codeSemestre_in IN Semestre.codeSemestre%type) 
+return number
+is
+	--commentaire
+	num number;
+begin
+	select moyenne into num
+	from Redoublant red
+	where red.numEtudiant = numEtudiant_in
+	and red.codeSemestre = codeSemestre_in;
+	if (num > 0) then		
+		return num;
+	end if;
+	return null;
+exception
+	when others then
+		return null;
+end;
+/
+
+
+create or replace view VO_EtudiantSemestre of TEtudiantSemestre
+with object identifier( numEtudiant, codeSemestre ) as
+select e.numEtudiant, e.numIne, p.libelleProvenance, s.libelle as libelleStatut,
+n.libelleNationalite, e.nom, e.prenom, e.mail, u.codeSemestre,
+getPJSemestre(e.numetudiant, u.codeSemestre),
+getMoyenneEtr(e.numetudiant, u.codeSemestre),
+getMoyenneRed(e.numetudiant, u.codeSemestre)
+from Etudiant e, UE u, provenance p, statut s, nationalite n
+where e.idProvenance = p.idProvenance
+and e.idNationalite = n.idNationalite
+and e.idStatut = s.idStatut
+and e.numEtudiant in (
+	select l.numEtudiant
+	from table(get_liste_etud_semestre(u.codeSemestre)) l
+);
+/
+
+--Vue UE
+--pk: ( codeUE, codeSemestre )
+--
+create or replace type TUE as object(
+	codeUE varchar2(10),
+	nbECTS number,
+	libelleUE varchar2(50),
+	optionnel char(1),
+	nomResponsable varchar2(20),
+	prenomResponsable varchar2(20),
+	codeSemestre varchar2(10)
+);
+/
+
+create or replace view VO_UE of TUE
+with object identifier( codeUE, codeSemestre ) as
+select u.codeUE, u.nbECTS, u.libelleUE, u.optionnel,
+ens.nom, ens.prenom, u.codeSemestre
+from UE u, Enseignant ens
+where ens.idenseignant = u.idenseignant;
+/
+
+
+--Vue EtudUE
+--pk: ( numEtudiant, codeUE)
+--
+create or replace type TEtudiantUE as object(
+	numEtudiant number,
+	numIne varchar2(15),
+	libelleProvenance varchar2(20),
+	libelleStatut varchar2(10),
+	libelleNationalite varchar2(20),
+	nom varchar2(20),
+	prenom varchar2(20),
+	mail varchar2(40),
+	codeUE varchar2(10),
+	vae varchar2(1),
+	apdj varchar2(1)
+);
+/
+
+
+--function is_vae
+--in: numEtudiant, codeUE
+--out: 'T' ou 'F'
+create or replace function is_vae(numEtudiant_in IN Etudiant.numetudiant%type, codeUE_in IN UE.codeUE%type) 
+return varchar2
+is
+	--commentaire
+	num number;
+begin
+	select count(*) into num
+	from vae v
+	where v.codeUE = codeUE_in
+	and v.numEtudiant = numEtudiant_in;
+	if (num = 0) then		
+		return 'f';
+	else
+		return 't';
+	end if;
+end;
+/	
+
+--function is_apdj
+--in: numEtudiant, codeUE
+--out: 'T' ou 'F'
+create or replace function is_apdj(numEtudiant_in IN Etudiant.numetudiant%type, codeUE_in IN UE.codeUE%type) 
+return varchar2
+is
+	--commentaire
+	num number;
+begin
+	select count(*) into num
+	from apdj a
+	where codeUE = codeUE_in
+	and numEtudiant = numEtudiant_in;
+	if (num = 0) then		
+		return 'f';
+	else
+		return 't';
+	end if;
+end;
+/
+
+create or replace view VO_EtudiantUE of TEtudiantUE
+with object identifier( numEtudiant, codeUE ) as
+select e.numEtudiant, e.numINE, p.libelleProvenance,
+s.libelle as libelleStatut, n.libelleNationalite, e.nom, e.prenom, 
+e.mail, u.codeUE,
+is_vae(numEtudiant, codeUE), is_apdj(numEtudiant, codeUE)
+from Etudiant e, UE u, provenance p, statut s, nationalite n
+where e.idprovenance = p.idprovenance
+and e.idstatut = s.idstatut
+and e.idnationalite = n.idnationalite
+and e.numEtudiant in (
+	select l.numEtudiant
+	from table(get_liste_etud_ue(u.codeUE)) l
+);
+
+
+--Vue ECUE
+--pk: ( codeMatiere, codeUE )
+--
 create or replace type TECUE as object (
 	codeMatiere varchar2(10),
 	libelleECUE varchar2(50),
 	nbHeures number,
 	nomResponsable varchar2(20),
 	prenomResponsable varchar2(20),
-	codeue varchar2(10),
-	numEtudiant number,
-	nom varchar2(20),
-	prenom varchar2(20),
-	noteSession1 number(4,2),
-	noteSession2 number(4,2)
+	codeue varchar2(10)
 );
 /
 
---TODO: Requete ne fonctionne que lorsque l'on
---met un where pour séléctioner une unique ECUE
+create or replace view VO_ECUE of TECUE
+with object identifier( codeMatiere, codeUE )as
+select ec.codeMatiere, ec.libelleECUE, ec.nbHeures, en.nom, en.prenom, u.codeUE
+from ECUE ec, Enseignant en, UE u
+where ec.idEnseignant = en.idEnseignant
+and ec.codeue = u.codeUE;
+/
+
+--vue EtudiantECUE
+--pk: ( numEtudiant, codeMatiere)
 --
---@fix(10/03/11) : rajout de la condition sur la jointure entre l'ecue
---et la note, sinon une note était valable pour toutes les ecue de l'etud
-
--- not working
-create or replace view VO_Ecue of TECUE
-with object identifier(codeMatiere) as
-select ecue.codeMatiere, libelleECUE, nbHeures, ens.nom as nomResponsable, ens.prenom as prenomResponsable,
-codeUE, e.numEtudiant, e.nom, e.prenom, noteSession1, noteSession2
-from ECUE ecue, Etudiant e, Enseignant ens, (
-	select ecue.codeMatiere, numEtudiant , noteSession1, noteSession2
-	from Note n, ECUE ecue
-	where ecue.codeMatiere = n.codeMatiere 
-) n where ecue.idEnseignant = ens.idEnseignant
-and n.numEtudiant (+) = e.numEtudiant
-and e.numEtudiant in (
-	select list.numEtudiant
-	from table(get_liste_etud_ecue(ecue.codeMatiere)) list
-);
-
-create or replace view VO_Ecue of TECUE
-with object identifier(codeMatiere, numEtudiant) as
-select ec.codeMatiere, ec.libelleECUE, ec.nbheures, ens.nom as nomResponsable, ens.prenom as prenomResponsable, ec.codeue, e.numetudiant, e.nom, e.prenom, n.noteSession1, n.noteSession2
-from etudiant e, note n, ecue ec, enseignant ens
-where ec.idenseignant = ens.idenseignant
-and e.numetudiant = n.numetudiant(+)
-and n.codeMatiere = ec.codeMatiere
-UNION
-select ec.codeMatiere, ec.libelleECUE, ec.nbheures, ens.nom as nomResponsable, ens.prenom as prenomResponsable, ec.codeue, e.numetudiant, e.nom, e.prenom, null, null
-from etudiant e, ecue ec, enseignant ens
-where ec.idenseignant = ens.idenseignant
-	and e.numetudiant in (
-	select le.numEtudiant
-	from table(get_liste_etud_ecue(ec.codeMatiere)) le
-)
-MINUS (
-	select ec.codeMatiere, ec.libelleECUE, ec.nbheures, ens.nom as nomResponsable, ens.prenom as prenomResponsable, ec.codeue, e.numetudiant, e.nom, e.prenom, null, null
-	from etudiant e, note n, ecue ec, enseignant ens
-	where ec.idenseignant = ens.idenseignant
-	and e.numetudiant = n.numetudiant
-	and n.codeMatiere = ec.codeMatiere
-	INTERSECT
-	select ec.codeMatiere, ec.libelleECUE, ec.nbheures, ens.nom as nomResponsable, ens.prenom as prenomResponsable, ec.codeue, e.numetudiant, e.nom, e.prenom, null, null
-	from etudiant e, ecue ec, enseignant ens
-	where ec.idenseignant = ens.idenseignant
-		and e.numetudiant in (
-		select le.numEtudiant
-		from table(get_liste_etud_ecue(ec.codeMatiere)) le
-	)
-);
-
---TODO:vue etudiant, a supprimer?
---create or replace view VO_Etud of Tetud
---with object identifier(numEtudiant)
---as
---	select distinct e.numEtudiant, e.nom, e.prenom,
---		n.noteSession1, n.noteSession2
---	from Etudiant e, Note n
---	where n.numEtudiant(+)= e.numEtudiant
---	and e.numEtudiant in (
---		Select le.numEtudiant
---		from table(get_liste_etud_ecue(e.codeMatiere)) le
---		)
---;
---/
-
 create or replace type TEtudiantECUE as object (
+	codeMatiere varchar2(10),
 	numEtudiant number,
 	numIne varchar2(15),
 	libelleProvenance varchar2(20),
@@ -471,15 +684,58 @@ create or replace type TEtudiantECUE as object (
 /
 
 create or replace view VO_EtudiantECUE of TEtudiantECUE
-with object identifier(numEtudiant) as
-select e.numEtudiant, numIne, libelleProvenance, libelle as libelleStatut, 
-libelleNationalite, nom, prenom, mail, noteSession1, noteSession2
-from Etudiant e, Note n, Provenance p, Statut s, Nationalite na
-where e.numEtudiant = n.numEtudiant (+)
-and e.idProvenance = p.idProvenance
-and e.idStatut = s.idStatut
-and e.idNationalite = na.idNationalite;
+with object identifier(codeMatiere, numEtudiant) as
+select ec.codeMatiere, e.numetudiant, e.numINE,
+p.libelleProvenance, s.libelle as libelleStatut, n.libelleNationalite,
+e.nom, e.prenom, e.mail, n.noteSession1, n.noteSession2
+from etudiant e, note n, ecue ec, provenance p, statut s, nationalite n
+where e.numetudiant = n.numetudiant(+)
+and n.codeMatiere = ec.codeMatiere
+and p.idprovenance = e.idprovenance
+and s.idstatut = e.idstatut
+and n.idnationalite = e.idnationalite
+UNION
+select ec.codeMatiere, e.numetudiant, e.numINE,
+p.libelleProvenance, s.libelle as libelleStatut, n.libelleNationalite,
+e.nom, e.prenom, e.mail, null, null
+from etudiant e, provenance p, statut s, nationalite n, ecue ec
+where p.idprovenance = e.idprovenance
+and s.idstatut = e.idstatut
+and n.idnationalite = e.idnationalite
+and e.numetudiant in (
+	select le.numEtudiant
+	from table(get_liste_etud_ecue(ec.codeMatiere)) le
+)
+MINUS (
+	select ec.codeMatiere, e.numetudiant, e.numINE,
+	p.libelleProvenance, s.libelle as libelleStatut, n.libelleNationalite,
+	e.nom, e.prenom, e.mail, null, null
+	from etudiant e, note n, ecue ec, provenance p, statut s, nationalite n
+	where e.numetudiant = n.numetudiant(+)
+	and n.codeMatiere = ec.codeMatiere
+	and p.idprovenance = e.idprovenance
+	and s.idstatut = e.idstatut
+	and n.idnationalite = e.idnationalite
+	INTERSECT
+	select ec.codeMatiere, e.numetudiant, e.numINE,
+	p.libelleProvenance, s.libelle as libelleStatut, n.libelleNationalite,
+	e.nom, e.prenom, e.mail, null, null
+	from etudiant e, provenance p, statut s, nationalite n, ecue ec
+	where p.idprovenance = e.idprovenance
+	and s.idstatut = e.idstatut
+	and n.idnationalite = e.idnationalite
+	and e.numetudiant in (
+		select le.numEtudiant
+		from table(get_liste_etud_ecue(ec.codeMatiere)) le
+	)
+);
 /
+
+---------------------------------------------------------------------
+-----------------------------FIN DES VUES----------------------------
+---------------------------------------------------------------------
+
+
 
 --type responsable
 create or replace type TResp as object (
@@ -584,104 +840,12 @@ resp.codeResponsabilite, resp.libelle
 from Enseignant en, table(get_liste_resp(en.idEnseignant)) resp;
 /
 
---vue ue
-create or replace type TUE as object (
-	codeUE varchar2(10),
-	nbECTS number,
-	libelleUE varchar2(50),
-	optionnel char(1),
-	nomResponsable varchar2(20),
-	prenomResponsable varchar2(20),
-	codeSemestre varchar2(10),
-	codeMatiere varchar2(10),
-	libelleECUE varchar2(50)
-);
-/
-
-create or replace view VO_UE of TUE
-with object identifier(codeUE, codeMatiere) as
-select ue.codeUE, nbECTS, libelleUE, optionnel, ens.nom as nomResponsable, ens.prenom as prenomResponsable, codeSemestre,
-codeMatiere, libelleECUE 
-from UE ue, ECUE ecue, Enseignant ens
-where ue.codeUE = ecue.codeUE
-and ue.idEnseignant = ens.idEnseignant;
-/
-
---vue etape
-create or replace type TEtape as object (
-	codeEtape varchar2(10),
-	versionEtape varchar2(10),
-	versionDiplome varchar2(10),
-	nomResponsable varchar2(20),
-	prenomResponsable varchar2(20),
-	codeSemestre varchar2(10),
-	nbUEFacultatives number,
-	codeUE varchar2(10),
-	libelleUE varchar2(50)
-);
-/
-
-create or replace view VO_Etape of TEtape
-with object identifier(codeEtape, codeUE) as
-select e.codeEtape, versionEtape, versionDiplome,
-ens.nom as nomResponsable, ens.prenom as prenomResponsable,
-s.codeSemestre, nbUEFacultatives,
-codeUE, libelleUE
-from Etape e, Semestre s, UE ue, Enseignant ens
-where e.codeEtape = s.codeEtape
-and s.codeSemestre = ue.codeSemestre
-and ue.idEnseignant = ens.idEnseignant;
-/
-
-
---Vue etudiant etape
-create or replace type TEtudiantEtape as object(
-	numEtudiant number,
-	numIne varchar2(15),
-	libelleProvenance varchar2(20),
-	libelleStatut varchar2(10),
-	libelleNationalite varchar2(20),
-	nom varchar2(20),
-	prenom varchar2(20),
-	mail varchar2(40),
-	pointJuryAnnee number,
-	scoreToeic number
-);
-/
-
-create or replace view VO_EtudiantEtape of TEtudiantEtape
-with object identifier(numEtudiant) as
-select e.numEtudiant, e.numIne, p.libelleProvenance, s.libelle, n.libelleNationalite,
-	e.nom, e.prenom, e.mail, e.pointJuryAnnee, e.scoreToeic
-from Etudiant e, Nationalite n, Statut s, Provenance p
-where e.idNationalite = n.idNationalite
-and e.idStatut = s.idStatut
-and e.idProvenance = p.idProvenance;
-/
-
-
---vue dept
-create or replace type TDepartement as object (
-	versionDiplome varchar2(10),
-	nomDepartement varchar2(100),
-	mnemo varchar2(10),
-	codeEtape varchar2(10),
-	versionEtape varchar2(10)
-);
-/
-
-create or replace view VO_Departement of TDepartement
-with object identifier(versionDiplome, codeEtape) as
-select d.versionDiplome, nomDepartement, mnemo, codeEtape, versionEtape
-from Departement d, Etape e
-where d.versionDiplome = e.versionDiplome;
-/
 
 -- Triggers
 
---Update sur vo_ecue
-create or replace trigger vo_ecue_up
-instead of update on vo_ecue
+--Update sur vo_Etudiantecue
+create or replace trigger vo_Etudiantecue_up
+instead of update on vo_Etudiantecue
 for each row
 declare
 begin
@@ -694,7 +858,7 @@ begin
 			:new.noteSession1, :new.noteSession2, :new.numEtudiant, :new.codeMatiere
 		);
 	end if;
-end vo_ecue_uP;
+end vo_Etudiantecue_uP;
 /
 
 --Suppression de l'etudiant 
