@@ -59,14 +59,13 @@ public class DBEtudiantUE extends DB<EtudiantUE> {
      * @param id(int) L'idEtudiant de l'Etudiant que l'on souhaite charger
      * @return L'Etudiant correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
-     * TODO: Revoir le fonctionement de la methode pour la récupération des
-     * infos de l'UE
+     * 
      */
-    public EtudiantUE find(Object id) throws Exception { //TODO 1 findEtudUE
+    public EtudiantUE find(Object id) throws Exception {
         EtudiantUE e = new EtudiantUE();
 
         Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT * from VO_Etudiant where numEtudiant = " + id);
+        ResultSet result = s.executeQuery("SELECT * from VO_EtudiantUE where codeUE = " + id);
         if (result.first()) {
 	    e.setNumEtudiant(result.getInt("numEtudiant"));
 	    e.setNumIne(result.getString("numIne"));
@@ -87,16 +86,36 @@ public class DBEtudiantUE extends DB<EtudiantUE> {
      * @return L'ensemble des etudiants
      * @throws Exception
      */
-    public ArrayList<EtudiantUE> list() throws Exception { //TODO 3 listEtudUE
-        ArrayList<EtudiantUE> listeEtud = new ArrayList<EtudiantUE>();
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("select * from Etudiant order by numEtudiant");
-        if (result.first()) {
-            do {
-                listeEtud.add(this.find(result.getInt("numEtudiant")));
-            } while (result.next());
-        }
-        return listeEtud;
+    public ArrayList<EtudiantUE> list() throws Exception {
+        return null;
+    }
+
+    /**
+     * TODO javadoc
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public ArrayList<EtudiantUE> list(String id) throws Exception {
+	ArrayList<EtudiantUE> listeEtud = new ArrayList<EtudiantUE>();
+	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantUE where codeUE = '" + id + "'");
+	if (result.first()) {
+	    do {
+		listeEtud.add(new EtudiantUE(
+			result.getInt("numEtudiant"),
+			result.getString("numIne"),
+			result.getString("libelleProvenance"),
+			result.getString("libelleStatut"),
+			result.getString("libelleNationalite"),
+			result.getString("nom"),
+			result.getString("prenom"),
+			result.getString("mail"),
+			(result.getString("vae").equals("t") ? true : false),
+			(result.getString("apdj").equals("t") ? true : false)));
+	    } while (result.next());
+	}
+	return listeEtud;
     }
 
 }

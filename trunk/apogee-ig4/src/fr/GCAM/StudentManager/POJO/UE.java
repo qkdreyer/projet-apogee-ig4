@@ -23,8 +23,8 @@ public class UE {
     private boolean optionnel;
     private String responsable;
     private String codeSemestre;
-    private ArrayList<ECUE> listeECUE;
-    private ArrayList<EtudiantUE> listeEtud;
+    private ArrayList<ECUE> listeECUE = null;
+    private ArrayList<EtudiantUE> listeEtud = null;
 
 
     public UE() {
@@ -35,8 +35,6 @@ public class UE {
     public UE(String codeUE, String libelleUE) {
         this.codeUE = codeUE;
         this.libelleUE = libelleUE;
-        listeECUE = new ArrayList<ECUE>();
-        listeEtud = new ArrayList<EtudiantUE>();
     }
 
     public String getCodeSemestre() {

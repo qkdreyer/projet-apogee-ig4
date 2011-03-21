@@ -84,16 +84,37 @@ public class DBEtudiantSemestre extends DB<EtudiantSemestre> {
      * @return L'ensemble des etudiants
      * @throws Exception
      */
-    public ArrayList<EtudiantSemestre> list() throws Exception { //TODO 3 listEtudSem
-        ArrayList<EtudiantSemestre> listeEtud = new ArrayList<EtudiantSemestre>();
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("select * from Etudiant order by numEtudiant");
-        if (result.first()) {
-            do {
-                listeEtud.add(this.find(result.getInt("numEtudiant")));
-            } while (result.next());
-        }
-        return listeEtud;
+    public ArrayList<EtudiantSemestre> list() throws Exception {
+        return null;
+    }
+
+    /**
+     * TODO javadoc
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public ArrayList<EtudiantSemestre> list(String id) throws Exception {
+	ArrayList<EtudiantSemestre> listeEtud = new ArrayList<EtudiantSemestre>();
+	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantSemestre where codeSemestre = '" + id + "'");
+	if (result.first()) {
+	    do {
+		listeEtud.add(new EtudiantSemestre(
+			result.getInt("numEtudiant"),
+			result.getString("numIne"),
+			result.getString("libelleProvenance"),
+			result.getString("libelleStatut"),
+			result.getString("libelleNationalite"),
+			result.getString("nom"),
+			result.getString("prenom"),
+			result.getString("mail"),
+			result.getFloat("pointJurySemestre"),
+			result.getFloat("moyEtranger"),
+			result.getFloat("moyRedoublant")));
+	    } while (result.next());
+	}
+	return listeEtud;
     }
 
 }

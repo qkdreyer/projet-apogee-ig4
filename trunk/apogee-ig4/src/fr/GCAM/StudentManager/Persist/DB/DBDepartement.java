@@ -71,10 +71,7 @@ public class DBDepartement extends DB<Departement> {
             dept.setVersionDiplome(result.getString("versionDiplome"));
             dept.setNomDepartement(result.getString("nomDepartement"));
             dept.setMnemo(result.getString("mnemo"));
-
-            do {
-                dept.getListeEtape().add(new DBEtape(conn).find(result.getString("codeEtape")));
-            } while (result.next());
+	    dept.setListeEtape(new DBEtape(conn).list(result.getString("versionDiplome")));
         }
         return dept;
     }

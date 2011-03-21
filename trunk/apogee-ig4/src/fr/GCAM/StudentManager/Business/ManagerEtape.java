@@ -45,6 +45,10 @@ public class ManagerEtape {
         return etape.getSemestre(i).getCodeSemestre();
     }
 
+    public String getNbUEFacultatives(int i) {
+	return Integer.toString(etape.getSemestre(i).getNbUEFacultatives());
+    }
+
     public Object[][] getArrayOfEtudiantSemestre(int n) {
         ArrayList<EtudiantSemestre> listeEtud = etape.getSemestre(n).getListeEtud();
         Object[][] arrayEtud = new Object[listeEtud.size()][4];
@@ -52,8 +56,8 @@ public class ManagerEtape {
         for (EtudiantSemestre e : listeEtud) {
 	    arrayEtud[i][0] = e.getNom();
 	    arrayEtud[i][1] = e.getPrenom();
-	    arrayEtud[i][2] = (e.isEtranger() ? e.getMoyEtranger() : 
-                (e.isRedoublant() ? e.getMoyRedoublant() : etape.getMoyenne(e.getNumEtudiant())));
+	    arrayEtud[i][2] = (e.getMoyEtranger() > 0 ? e.getMoyEtranger() :
+                (e.getMoyRedoublant() > 0 ? e.getMoyRedoublant() : etape.getMoyenne(e.getNumEtudiant())));
             arrayEtud[i][3] = e.getPointJurySemestre();
         }
         return arrayEtud;

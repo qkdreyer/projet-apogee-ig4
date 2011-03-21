@@ -61,11 +61,11 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
      * @throws Exception
      */
     public EtudiantECUE find(Object id) throws Exception {
-        EtudiantECUE e = new EtudiantECUE();
+	EtudiantECUE e = new EtudiantECUE();
 
-        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where numEtudiant = " + id);
-        if (result.first()) {
+	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where codeMatiere = " + id);
+	if (result.first()) {
 	    e.setNumEtudiant(result.getInt("numEtudiant"));
 	    e.setNumIne(result.getString("numIne"));
 	    e.setLibelleProvenance(result.getString("libelleProvenance"));
@@ -74,10 +74,10 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
 	    e.setNom(result.getString("nom"));
 	    e.setPrenom(result.getString("prenom"));
 	    e.setMail(result.getString("mail"));
-            e.setNoteSession1(result.getFloat("noteSession1"));
-            e.setNoteSession2(result.getFloat("noteSession2"));
-        }
-        return e;
+	    e.setNoteSession1(result.getFloat("noteSession1"));
+	    e.setNoteSession2(result.getFloat("noteSession2"));
+	}
+	return e;
     }
 
     /**
@@ -87,15 +87,36 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
      * @throws Exception
      */
     public ArrayList<EtudiantECUE> list() throws Exception {
-        ArrayList<EtudiantECUE> listeEtud = new ArrayList<EtudiantECUE>();
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("select * from Etudiant order by numEtudiant");
-        if (result.first()) {
-            do {
-                listeEtud.add(this.find(result.getInt("numEtudiant")));
-            } while (result.next());
-        }
-        return listeEtud;
+	return null;
     }
 
+    /**
+     * TODO javadoc
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public ArrayList<EtudiantECUE> list(String id) throws Exception {
+	ArrayList<EtudiantECUE> listeEtud = new ArrayList<EtudiantECUE>();
+	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	System.out.println("SELECT * from VO_EtudiantECUE where codeMatiere = '" + id + "'");
+	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where codeMatiere = '" + id + "'");
+	if (result.first()) {
+	    do {
+		System.out.println("new etud");
+		listeEtud.add(new EtudiantECUE(
+			result.getInt("numEtudiant"),
+			result.getString("numIne"),
+			result.getString("libelleProvenance"),
+			result.getString("libelleStatut"),
+			result.getString("libelleNationalite"),
+			result.getString("nom"),
+			result.getString("prenom"),
+			result.getString("mail"),
+			result.getFloat("noteSession1"),
+			result.getFloat("noteSession2")));
+	    } while (result.next());
+	}
+	return listeEtud;
+    }
 }

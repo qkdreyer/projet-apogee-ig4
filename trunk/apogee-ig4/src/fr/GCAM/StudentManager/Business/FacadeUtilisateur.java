@@ -29,8 +29,8 @@ public class FacadeUtilisateur {
         return utilisateur.login(nom, prenom, mdp);
     }
 
-    public Object[] getList() {
-        return utilisateur.getList();
+    public Object[] getListLogin() {
+        return utilisateur.getListLogin();
     }
 
 }

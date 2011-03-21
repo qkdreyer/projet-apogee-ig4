@@ -8,8 +8,6 @@ import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
-import fr.GCAM.StudentManager.Util.SSParser;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**

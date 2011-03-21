@@ -10,31 +10,21 @@ package fr.GCAM.StudentManager.POJO.Etudiant;
  */
 public class EtudiantSemestre extends AbstractEtudiant {
 
-    private int pointJurySemestre;
-    private int MoyEtranger = 0;
-    private int MoyRedoublant = 0;
-    private boolean etranger;
-    private boolean redoublant;
+    private float pointJurySemestre;
+    private float moyEtranger = -1;
+    private float moyRedoublant = -1;
 
     public EtudiantSemestre() {
     }
 
-    public EtudiantSemestre(int numEtudiant, String numIne, String libelleProvenance, String libelleStatut, String libelleNationalite, String nom, String prenom, String mail, int pointJurySemestre, boolean etranger, boolean redoublant) {
+    public EtudiantSemestre(int numEtudiant, String numIne, String libelleProvenance, String libelleStatut, String libelleNationalite, String nom, String prenom, String mail, float pointJurySemestre, float moyEtranger, float moyRedoublant) {
 	super(numEtudiant, numIne, libelleProvenance, libelleStatut, libelleNationalite, nom, prenom, mail);
 	this.pointJurySemestre = pointJurySemestre;
-	this.etranger = etranger;
-	this.redoublant = redoublant;
+	this.moyEtranger = moyEtranger;
+	this.moyRedoublant = moyRedoublant;
     }
 
-    public boolean isEtranger() {
-	return etranger;
-    }
-
-    public void setEtranger(boolean etranger) {
-	this.etranger = etranger;
-    }
-
-    public int getPointJurySemestre() {
+    public float getPointJurySemestre() {
 	return pointJurySemestre;
     }
 
@@ -42,35 +32,27 @@ public class EtudiantSemestre extends AbstractEtudiant {
 	this.pointJurySemestre = pointJurySemestre;
     }
 
-    public boolean isRedoublant() {
-	return redoublant;
-    }
-
-    public void setRedoublant(boolean redoublant) {
-	this.redoublant = redoublant;
-    }
-
-    public int getMoyEtranger() {
-        return MoyEtranger;
+    public float getMoyEtranger() {
+        return moyEtranger;
     }
 
     public void setMoyEtranger(int MoyEtranger) {
-        this.MoyEtranger = MoyEtranger;
+        this.moyEtranger = MoyEtranger;
     }
 
-    public int getMoyRedoublant() {
-        return MoyRedoublant;
+    public float getMoyRedoublant() {
+        return moyRedoublant;
     }
 
     public void setMoyRedoublant(int MoyRedoublant) {
-        this.MoyRedoublant = MoyRedoublant;
+        this.moyRedoublant = MoyRedoublant;
     }
 
     @Override
     public String toString() {
 	return super.toString() + " - "
 		+ "Point Jury Semestre : " + getPointJurySemestre()
-		+ (isEtranger() ? " (Etranger) " : "")
-		+ (isRedoublant() ? " (Redoublant) " : "");
+		+ (moyEtranger > 0 ? moyEtranger : "")
+		+ (moyRedoublant > 0 ? moyRedoublant : "");
     }
 }

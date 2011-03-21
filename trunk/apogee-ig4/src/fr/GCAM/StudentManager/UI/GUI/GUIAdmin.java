@@ -11,7 +11,10 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
+import fr.GCAM.StudentManager.Business.FacadeUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
+import javax.swing.ListModel;
+import javax.swing.event.ListDataListener;
 
 /**
  *
@@ -19,9 +22,13 @@ import fr.GCAM.StudentManager.POJO.Utilisateur;
  */
 public class GUIAdmin extends GUI<Utilisateur> {
 
+    private FacadeUtilisateur futil;
+
     /** Creates new form Admin */
-    public GUIAdmin(String s) {
+    public GUIAdmin(String dao) {
         initComponents();
+	futil = new FacadeUtilisateur(dao);
+	jList1.setListData(futil.getListLogin());
     }
 
     /** This method is called from within the constructor to
@@ -62,11 +69,6 @@ public class GUIAdmin extends GUI<Utilisateur> {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Utilisateurs"));
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Alan Silent", "Marco Czarnecki", "Benjamin Michel", "Michele Sala", "Jacques Moubarak", "Esther Pacitti", "Joris Puechlong", "Tiberiu Stratulat", "Helene Tortosa", "Isabelle Bourdon", "Bernard Fallery" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 jList1ValueChanged(evt);
@@ -146,15 +148,13 @@ public class GUIAdmin extends GUI<Utilisateur> {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                         .addComponent(jButton2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,8 +164,8 @@ public class GUIAdmin extends GUI<Utilisateur> {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 

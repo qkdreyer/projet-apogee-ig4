@@ -18,8 +18,8 @@ public class EtudiantECUE extends AbstractEtudiant {
     public EtudiantECUE() {
     }
 
-    public EtudiantECUE(int numEtud, String numIne, String libProv, String libStat, String nom, String Prenom, String mail, float noteSession1, float noteSession2) {
-	super(numEtud, numIne, libProv, libStat, libStat, nom, Prenom, mail);
+    public EtudiantECUE(int numEtud, String numIne, String libProv, String libStat, String libNat, String nom, String Prenom, String mail, float noteSession1, float noteSession2) {
+	super(numEtud, numIne, libProv, libStat, libNat, nom, Prenom, mail);
 	this.noteSession1 = noteSession1;
 	this.noteSession2 = noteSession2;
     }

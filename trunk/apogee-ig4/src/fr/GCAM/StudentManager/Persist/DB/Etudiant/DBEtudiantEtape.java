@@ -60,11 +60,11 @@ public class DBEtudiantEtape extends DB<EtudiantEtape> {
      * @return L'Etudiant correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
-    public EtudiantEtape find(Object id) throws Exception { //TODO 1 findEtudEtape
+    public EtudiantEtape find(Object id) throws Exception {
         EtudiantEtape e = new EtudiantEtape();
 
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("SELECT * from VO_Etudiant where numEtudiant = " + id);
+        ResultSet result = s.executeQuery("SELECT * from VO_EtudiantEtape where codeEtape = " + id);
         if (result.first()) {
 	    e.setNumEtudiant(result.getInt("numEtudiant"));
 	    e.setNumIne(result.getString("numIne"));
@@ -86,16 +86,36 @@ public class DBEtudiantEtape extends DB<EtudiantEtape> {
      * @return L'ensemble des etudiants
      * @throws Exception
      */
-    public ArrayList<EtudiantEtape> list() throws Exception { //TODO 3 listEtudEtape
-        ArrayList<EtudiantEtape> listeEtud = new ArrayList<EtudiantEtape>();
-        Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet result = s.executeQuery("select * from Etudiant order by numEtudiant");
-        if (result.first()) {
-            do {
-                listeEtud.add(this.find(result.getInt("numEtudiant")));
-            } while (result.next());
-        }
-        return listeEtud;
+    public ArrayList<EtudiantEtape> list() throws Exception {
+        return null;
+    }
+
+    /**
+     * TODO javadoc
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public ArrayList<EtudiantEtape> list(String id) throws Exception {
+	ArrayList<EtudiantEtape> listeEtud = new ArrayList<EtudiantEtape>();
+	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantEtape where codeEtape = '" + id + "'");
+	if (result.first()) {
+	    do {
+		listeEtud.add(new EtudiantEtape(
+			result.getInt("numEtudiant"),
+			result.getString("numIne"),
+			result.getString("libelleProvenance"),
+			result.getString("libelleStatut"),
+			result.getString("libelleNationalite"),
+			result.getString("nom"),
+			result.getString("prenom"),
+			result.getString("mail"),
+			result.getInt("scoreToeic"),
+			result.getFloat("pointJuryAnnee")));
+	    } while (result.next());
+	}
+	return listeEtud;
     }
 
 }
