@@ -23,15 +23,17 @@ public class ECUE {
     private int nbHeures;
     private String responsable;
     private String codeUE;
-    private ArrayList<EtudiantECUE> listeEtud = null;
+    private ArrayList<EtudiantECUE> listeEtud = new ArrayList<EtudiantECUE>();
 
     public ECUE() {
-        listeEtud = new ArrayList<EtudiantECUE>();
     }
 
-    public ECUE(String codeMatiere, String libelleECUE) {
+    public ECUE(String codeMatiere, String libelleECUE, String responsable, int nbHeures, ArrayList<EtudiantECUE> listeEtud) {
         this.codeMatiere = codeMatiere;
         this.libelleECUE = libelleECUE;
+	this.responsable = responsable;
+	this.nbHeures = nbHeures;
+	this.listeEtud = listeEtud;
     }
 
     public boolean hasStudent(Integer i) {
@@ -111,8 +113,9 @@ public class ECUE {
 
     public float getNote(int numEtudiant) {
 	for (EtudiantECUE e: listeEtud) {
-	    if (e.getNumEtudiant() == numEtudiant)
+	    if (e.getNumEtudiant() == numEtudiant) {
 		return e.getNoteSession1();
+	    }
 	}
 	return 0;
     }

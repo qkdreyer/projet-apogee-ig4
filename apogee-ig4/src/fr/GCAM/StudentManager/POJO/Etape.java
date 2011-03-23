@@ -22,14 +22,11 @@ public class Etape {
     private String versionEtape;
     private String responsable;
     private String versionDiplome;
-    private Semestre semestre1 = null;
-    private Semestre semestre2 = null;
-    private ArrayList<EtudiantEtape> listeEtud = null;
+    private Semestre semestre1 = new Semestre();
+    private Semestre semestre2 = new Semestre();
+    private ArrayList<EtudiantEtape> listeEtud = new ArrayList<EtudiantEtape>();
 
     public Etape() {
-	semestre1 = new Semestre();
-	semestre2 = new Semestre();
-        listeEtud = new ArrayList<EtudiantEtape>();
     }
 
     public Etape(String codeEtape, String versionEtape) {
@@ -44,11 +41,10 @@ public class Etape {
 	private int nbUEFacultatives;
 	private String codeEtape;
 	private ArrayList<UE> listeUE;
-        private ArrayList<EtudiantSemestre> listeEtud;
+        private ArrayList<EtudiantSemestre> listeEtud = new ArrayList<EtudiantSemestre>();
 
 	public Semestre() {
 	    listeUE = new ArrayList<UE>();
-            this.listeEtud = new ArrayList<EtudiantSemestre>();
 	}
 
 	public String getCodeEtape() {
@@ -120,9 +116,11 @@ public class Etape {
 	    }
 	    for (EtudiantSemestre e : listeEtud) {
 		if (e.getNumEtudiant() == numEtud) {
+		    System.out.println("Etape.getMoy " + numEtud + " : " + moyenne/nbCredit);
 		    return moyenne/nbCredit + e.getPointJurySemestre();
 		}
 	    }
+	    System.out.println("Etape.getMoy " + numEtud + " 0");
 	    return 0;
 	}
     }
@@ -196,12 +194,8 @@ public class Etape {
 	return 0;
     }
 
+    @Override
     public String toString() {
-	return "Code Etape : " + this.getCodeEtape() + "\n"
-		+ "Version etape : " + this.getVersionEtape() + "\n"
-		+ "Responsable : " + this.getResponsable() + "\n"
-		+ "Version diplome : " + this.getVersionDiplome() + "\n"
-		+ "Semestre 1 : " + semestre1.toString() + "\n"
-		+ "Semestre 2 : " + semestre2.toString() + "\n";
+	return versionEtape;
     }
 }

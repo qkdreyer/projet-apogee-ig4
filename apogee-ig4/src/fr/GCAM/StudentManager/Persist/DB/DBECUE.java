@@ -139,13 +139,18 @@ public class DBECUE extends DB<ECUE> {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    ArrayList<ECUE> list(String id) throws SQLException {
+    ArrayList<ECUE> list(String id) throws Exception {
 	ArrayList<ECUE> list = new ArrayList<ECUE>();
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	ResultSet result = s.executeQuery("SELECT * from VO_ECUE where codeMatiere = '" + (String) id + "'");
+	ResultSet result = s.executeQuery("SELECT * from VO_ECUE where codeUE = '" + (String) id + "'");
 	if (result.first()) {
 	    do {
-		list.add(new ECUE(result.getString("codeMatiere"), result.getString("libelleECUE")));
+		list.add(new ECUE(result.getString("codeMatiere"),
+			result.getString("libelleECUE"),
+			result.getString("prenomresponsable") + " " +
+			result.getString("nomresponsable"),
+			result.getInt("nbHeures"),
+			new DBEtudiantECUE(conn).list(result.getString("codeMatiere"))));
 	    } while (result.next());
 	}
 	return list;

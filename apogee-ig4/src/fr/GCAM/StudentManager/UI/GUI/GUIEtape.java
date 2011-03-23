@@ -14,10 +14,16 @@ import fr.GCAM.StudentManager.Business.FacadeEtape;
 import fr.GCAM.StudentManager.POJO.Etape;
 import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -37,8 +43,9 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         this.dao = dao;
         fetape = new FacadeEtape(id, dao);
 
-        responsable.setText(fetape.getResponsable());
-        versionEtape.setText(fetape.getVersionEtape());
+        nomResp.setText("Nom Responsable : " + fetape.getResponsable());
+        versionEtape.setText("Version étape : " + fetape.getVersionEtape());
+	codeEtape.setText("Code étape : " + fetape.getCodeEtape());
         codeSemestre1.setText(fetape.getCodeSemestre(1));
         codeSemestre2.setText(fetape.getCodeSemestre(2));
         libelleSemestre1.setText(fetape.getLibelleSemestre(1));
@@ -95,27 +102,38 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             }
         });
 
-        JPanel ue;
+        JPanel ue, top, bot;
         JButton detail;
         for (UE e : fetape.getListeUE(1)) {
             ue = new JPanel();
+	    ue.setLayout(new BoxLayout(ue, BoxLayout.Y_AXIS));
             ue.setBorder(javax.swing.BorderFactory.createTitledBorder(e.getCodeUE()));
 
             detail = new JButton("Détails...");
             detail.putClientProperty("id", e.getCodeUE());
             detail.addActionListener(this);
-            ue.add(detail);
+
+	    top = new JPanel(new GridLayout(2,1));
+	    top.add(new JLabel(e.getLibelleUE()));
+	    top.add(new JLabel(e.getResponsable()));
+	    bot = new JPanel();
+            bot.add(detail);
+	    ue.add(top);
+	    ue.add(bot);
 
             ueSemestre1.add(ue);
         }
 
         for (UE e : fetape.getListeUE(2)) {
             ue = new JPanel();
+	    ue.setLayout(new BoxLayout(ue, BoxLayout.Y_AXIS));
             ue.setBorder(javax.swing.BorderFactory.createTitledBorder(e.getCodeUE()));
 
             detail = new JButton("Détails...");
             detail.putClientProperty("id", e.getCodeUE());
             detail.addActionListener(this);
+	    ue.add(new JLabel(e.getLibelleUE()));
+	    ue.add(new JLabel(e.getResponsable()));
             ue.add(detail);
 
             ueSemestre2.add(ue);
@@ -143,10 +161,9 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         jLabel12 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         versionEtape = new javax.swing.JLabel();
-        responsable = new javax.swing.JLabel();
+        nomResp = new javax.swing.JLabel();
+        codeEtape = new javax.swing.JLabel();
         semestre = new javax.swing.JPanel();
         semestre1 = new javax.swing.JPanel();
         ueSemestre1 = new javax.swing.JPanel();
@@ -220,9 +237,11 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         jTextField1.setText("IG");
         jTextField1.setEnabled(false);
 
-        jLabel13.setText("Version étape");
+        versionEtape.setText("Version étape");
 
-        jLabel15.setText("Nom Enseignant");
+        nomResp.setText("Nom Enseignant");
+
+        codeEtape.setText("Code étape");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -231,27 +250,20 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(149, 149, 149)
-                        .addComponent(responsable))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(149, 149, 149)
-                        .addComponent(versionEtape)))
-                .addContainerGap(161, Short.MAX_VALUE))
+                    .addComponent(nomResp)
+                    .addComponent(codeEtape)
+                    .addComponent(versionEtape))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(responsable))
+                .addComponent(nomResp)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(versionEtape))
+                .addComponent(codeEtape)
+                .addGap(18, 18, 18)
+                .addComponent(versionEtape)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -279,7 +291,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                     .addGroup(infoSemestre1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(codeSemestre1)
-                        .addContainerGap(384, Short.MAX_VALUE))
+                        .addContainerGap(380, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSemestre1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel57)
@@ -352,7 +364,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                     .addGroup(infoSemestre2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(codeSemestre2)
-                        .addContainerGap(384, Short.MAX_VALUE))
+                        .addContainerGap(380, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSemestre2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel61)
@@ -399,7 +411,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                         .addComponent(infoSemestre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ueSemestre2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout semestreLayout = new javax.swing.GroupLayout(semestre);
@@ -490,8 +502,8 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(semestre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -505,6 +517,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel codeEtape;
     private javax.swing.JLabel codeSemestre1;
     private javax.swing.JLabel codeSemestre2;
     private javax.swing.JPanel infoSemestre1;
@@ -512,8 +525,6 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel60;
@@ -540,7 +551,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
     private javax.swing.JTable listeEtudEtape;
     private javax.swing.JTable listeEtudSem1;
     private javax.swing.JTable listeEtudSem2;
-    private javax.swing.JLabel responsable;
+    private javax.swing.JLabel nomResp;
     private javax.swing.JPanel semestre;
     private javax.swing.JPanel semestre1;
     private javax.swing.JPanel semestre2;

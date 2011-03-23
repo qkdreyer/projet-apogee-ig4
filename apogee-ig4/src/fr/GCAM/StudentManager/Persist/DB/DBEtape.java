@@ -69,7 +69,7 @@ public class DBEtape extends DB<Etape> {
 	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
 	//recherche le contenu de l'étape
-	ResultSet result = s.executeQuery("SELECT * from VO_EtapeSemestre WHERE codeEtape = '"
+	ResultSet result = s.executeQuery("SELECT * from VO_Etape WHERE codeEtape = '"
 		+ (String) id + "'");
 	//enregistrement des données récupérées
 	if (result.first()) {
@@ -101,13 +101,14 @@ public class DBEtape extends DB<Etape> {
     }
 
     ArrayList<Etape> list(String id) throws Exception {
+	System.out.println("codeEtape = " + id);
 	ArrayList<Etape> list = new ArrayList<Etape>();
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	ResultSet result = s.executeQuery("SELECT * from VO_ECUE where codeMatiere = '" + (String) id + "'");
+	ResultSet result = s.executeQuery("SELECT distinct(codeEtape), versionEtape from VO_Etape where versionDiplome = '" + (String) id + "'");
 	if (result.first()) {
 	    do {
 		list.add(new Etape(result.getString("codeEtape"), result.getString("versionEtape")));
-		System.out.println(new Etape(result.getString("codeEtape"), result.getString("versionEtape")).toString());
+		//System.out.println(new Etape(result.getString("codeEtape"), result.getString("versionEtape")).toString());
 	    } while (result.next());
 	}
 	return list;
