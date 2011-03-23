@@ -99,7 +99,9 @@ public class DBUE extends DB<UE> {
 		list.add(new UE(result.getString("codeUE"),
 			result.getString("libelleUE"),
 			result.getString("prenomresponsable") + " " +
-			result.getString("nomresponsable")));
+			result.getString("nomresponsable"),
+                        result.getInt("nbECTS"),
+                        new DBECUE(conn).list(result.getString("codeUE"))));
 	    } while (result.next());
 	}
 	return list;

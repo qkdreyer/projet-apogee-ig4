@@ -55,6 +55,7 @@ public class GUIAdmin extends GUI<Utilisateur> {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GCAM StudentManager : Admin");
         setResizable(false);
 
         jButton1.setText("Importer données APOGEE");

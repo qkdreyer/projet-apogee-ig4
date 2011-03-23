@@ -13,7 +13,9 @@ package fr.GCAM.StudentManager.UI.GUI;
 import fr.GCAM.StudentManager.Business.FacadeUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
+import fr.GCAM.StudentManager.UI.UI;
 import java.util.HashMap;
+import javax.swing.JFrame;
 
 /**
  *
@@ -171,15 +173,15 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 		try {
 		    this.setVisible(false);
 		    if (resp.get("nom").equals("root") && resp.get("prenom").equals("root")) {
-			AbstractUIFactory.getUIFactory("g").getUIAdmin(dao);
+			((JFrame)AbstractUIFactory.getUIFactory("g").getUIAdmin(dao)).setDefaultCloseOperation(EXIT_ON_CLOSE);
 		    } else  if (resp.get("topResponsability").equals("ECUE")) {
-                        AbstractUIFactory.getUIFactory("g").getUIECUE(dao, resp.get("codeResp"));
+                        ((JFrame)AbstractUIFactory.getUIFactory("g").getUIECUE(dao, resp.get("codeResp"))).setDefaultCloseOperation(EXIT_ON_CLOSE);
 		    } else if (resp.get("topResponsability").equals("UE")) {
-			AbstractUIFactory.getUIFactory("g").getUIUE(dao, resp.get("codeResp"));
+			((JFrame)AbstractUIFactory.getUIFactory("g").getUIUE(dao, resp.get("codeResp"))).setDefaultCloseOperation(EXIT_ON_CLOSE);
 		    } else if (resp.get("topResponsability").equals("Etape")) {
-			AbstractUIFactory.getUIFactory("g").getUIEtape(dao, resp.get("codeResp"));
+			((JFrame)AbstractUIFactory.getUIFactory("g").getUIEtape(dao, resp.get("codeResp"))).setDefaultCloseOperation(EXIT_ON_CLOSE);
 		    } else if (resp.get("topResponsability").equals("Departement")) {
-			AbstractUIFactory.getUIFactory("g").getUIDepartement(dao, resp.get("codeResp"));
+			((JFrame)AbstractUIFactory.getUIFactory("g").getUIDepartement(dao, resp.get("codeResp"))).setDefaultCloseOperation(EXIT_ON_CLOSE);
 		    }
 		} catch (Exception ex) {
 		    System.err.println("Erreur : " + ex);

@@ -33,7 +33,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="GCAM Consulter - Gerer le d&#xe9;partement"/>
+    <Property name="title" type="java.lang.String" value="GCAM StudentManager : D&#xe9;partement"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>

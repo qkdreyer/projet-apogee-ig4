@@ -30,10 +30,12 @@ public class UE {
     public UE() {
     }
 
-    public UE(String codeUE, String libelleUE, String responsable) {
+    public UE(String codeUE, String libelleUE, String responsable, int nbECTS, ArrayList<ECUE> listeECUE) {
         this.codeUE = codeUE;
         this.libelleUE = libelleUE;
 	this.responsable = responsable;
+        this.nbECTS = nbECTS;
+        this.listeECUE = listeECUE;
     }
 
     public String getCodeSemestre() {
