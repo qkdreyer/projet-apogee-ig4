@@ -27,6 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -51,8 +52,12 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         libelleSemestre1.setText(fetape.getLibelleSemestre(1));
         libelleSemestre2.setText(fetape.getLibelleSemestre(2));
 
-        listeEtudEtape.setModel(new javax.swing.table.DefaultTableModel(fetape.getArrayOfEtudiantEtape(),
-                new String[]{"Nom", "Prenom", "Moyenne", "PJ Année", "TOEIC"}));
+        DefaultTableModel modelEtape = new DefaultTableModel(fetape.getArrayOfEtudiantEtape(),
+                new String[]{"Nom", "Prenom", "Moyenne", "PJ Année", "TOEIC"});
+        
+        listeEtudEtape.setModel(new DefaultTableModel() {
+            
+        });
 
         listeEtudSem1.setModel(new javax.swing.table.DefaultTableModel(fetape.getArrayOfEtudiantSemestre(1),
                 new String[]{"Nom", "Prenom", "Moyenne", "PJ Sem"}));
@@ -216,8 +221,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Gestion Etape");
+        setTitle("GCAM StudentManager : Etape");
         setName("ListeEtudiant"); // NOI18N
         setResizable(false);
 
@@ -291,7 +295,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                     .addGroup(infoSemestre1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(codeSemestre1)
-                        .addContainerGap(380, Short.MAX_VALUE))
+                        .addContainerGap(384, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSemestre1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel57)
@@ -364,7 +368,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                     .addGroup(infoSemestre2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(codeSemestre2)
-                        .addContainerGap(380, Short.MAX_VALUE))
+                        .addContainerGap(384, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSemestre2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel61)
@@ -411,7 +415,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                         .addComponent(infoSemestre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ueSemestre2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout semestreLayout = new javax.swing.GroupLayout(semestre);

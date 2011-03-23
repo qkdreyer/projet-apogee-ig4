@@ -67,7 +67,7 @@ public class GUIDepartement extends GUI<Departement> {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("GCAM Consulter - Gerer le département");
+        setTitle("GCAM StudentManager : Département");
         setResizable(false);
 
         jLabel1.setText("Année");

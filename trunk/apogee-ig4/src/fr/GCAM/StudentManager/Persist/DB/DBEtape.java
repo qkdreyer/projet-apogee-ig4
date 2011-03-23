@@ -83,8 +83,8 @@ public class DBEtape extends DB<Etape> {
 	    String codeSemestre1 = result.getString("codeSemestre");
 	    int i;	    
 	    do {
-		//System.out.println("result.getString(\"codeSemestre\") = " + result.getString("codeSemestre"));
 		i = codeSemestre1.equals(result.getString("codeSemestre")) ? 1 : 2;
+                System.out.println("sem = " + i);
 		etape.getSemestre(i).setCodeEtape(result.getString("codeEtape"));
 		etape.getSemestre(i).setCodeSemestre(result.getString("codeSemestre"));
 		etape.getSemestre(i).setLibelleSemestre(result.getString("libelleSemestre"));
