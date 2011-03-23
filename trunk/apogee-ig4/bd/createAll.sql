@@ -859,14 +859,59 @@ begin
 	update Note set
 		noteSession1 = :new.noteSession1,
 		noteSession2 = :new.noteSession2
-	where numEtudiant = :new.numEtudiant;
-	if (sql%rowcount = 0) then		
+	where numEtudiant = :new.numEtudiant
+	and codeMatiere = :new.codeMatiere;
+	if (sql%rowcount = 0) then
 		insert into Note values(
 			:new.noteSession1, :new.noteSession2, :new.numEtudiant, :new.codeMatiere
 		);
 	end if;
 end vo_Etudiantecue_uP;
 /
+
+
+
+--Update sur vo_EtudiantSemestre
+create or replace trigger vo_EtudiantSemestre_up
+instead of update on vo_EtudiantSemestre
+for each row
+declare
+begin
+	update PointsJury set
+		nbpoints = :new.pointJurySemestre
+	where numEtudiant = :new.numEtudiant
+	and codeSemestre = :new.codeSemestre;
+	if (sql%rowcount = 0) then
+		insert into PointsJury values(
+			:new.pointJurySemestre, :new.numEtudiant, :new.codeSemestre
+		);
+	end if;
+end vo_EtudiantSemestre_up;
+/
+
+
+
+
+--Update sur vo_EtudiantEtape
+--TODO: FINIR TRIGGER!!!
+create or replace trigger vo_EtudiantEtape_up
+instead of update on vo_EtudiantEtape
+for each row
+declare
+begin
+	update PointsJury set
+		nbpoints = :new.pointJurySemestre
+	where numEtudiant = :new.numEtudiant
+	and codeSemestre = :new.codeSemestre;
+	if (sql%rowcount = 0) then
+		insert into PointsJury values(
+			:new.pointJurySemestre, :new.numEtudiant, :new.codeSemestre
+		);
+	end if;
+end vo_EtudiantSemestre_up;
+/
+
+
 
 --Suppression de l'etudiant 
 --Lors de la suppression, toutes les notes de l'etudiant sont supprime
