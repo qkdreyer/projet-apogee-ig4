@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Cette classe définit les methodes de l'interface DAO pour le type Etudiant
@@ -40,7 +41,7 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
      * @throws Exception
      */
     public void update(EtudiantECUE obj) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     /**

@@ -63,7 +63,7 @@ public class DBECUE extends DB<ECUE> {
 	    if (etudiant.isNoteSession2Changed()) {
                 updateNote2(etudiant.getNumEtudiant(), ecue.getCodeMatiere(), etudiant.getNoteSession2());
             }
-        }
+        }       
     }
 
     /**
@@ -77,7 +77,8 @@ public class DBECUE extends DB<ECUE> {
      * @throws Exception
      */
     private void updateNote1(int numEtud, String codeMatiere, float noteSession1) throws Exception {
-        this.conn.createStatement().executeUpdate("UPDATE VO_Ecue SET noteSession1 = " + noteSession1
+        System.out.println(numEtud + " " + codeMatiere + " " + " = " + noteSession1);
+        this.conn.createStatement().executeUpdate("UPDATE VO_EtudiantECUE SET noteSession1 = " + noteSession1
                 + " WHERE codeMatiere = '" + codeMatiere
                 + "' and numEtudiant = " + numEtud);
     }
@@ -93,7 +94,7 @@ public class DBECUE extends DB<ECUE> {
      * @throws Exception
      */
     private void updateNote2(int numEtud, String codeMatiere, float noteSession2) throws Exception {
-        this.conn.createStatement().executeUpdate("UPDATE VO_Ecue SET noteSession2 = " + noteSession2
+        this.conn.createStatement().executeUpdate("UPDATE VO_EtudiantECUE SET noteSession2 = " + noteSession2
                 + " WHERE codeMatiere = '" + codeMatiere
                 + "' and numEtudiant = " + numEtud);
     }

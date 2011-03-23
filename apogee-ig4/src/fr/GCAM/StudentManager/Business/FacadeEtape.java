@@ -68,4 +68,8 @@ public class FacadeEtape {
         return manEtape.toString();
     }
 
+    public void setPJSem(int numSem, int indexEtud, float pj) throws Exception {
+        manEtape.setPJSem(numSem, indexEtud, pj);
+    }
+
 }
