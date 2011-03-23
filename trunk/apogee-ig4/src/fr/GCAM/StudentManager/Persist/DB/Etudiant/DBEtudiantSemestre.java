@@ -110,8 +110,8 @@ public class DBEtudiantSemestre extends DB<EtudiantSemestre> {
 			result.getString("prenom"),
 			result.getString("mail"),
 			result.getFloat("pointJurySemestre"),
-			result.getFloat("moyEtranger"),
-			result.getFloat("moyRedoublant")));
+			result.getFloat("moyenneEtranger"),
+			result.getFloat("moyenneRedoublant")));
 	    } while (result.next());
 	}
 	return listeEtud;

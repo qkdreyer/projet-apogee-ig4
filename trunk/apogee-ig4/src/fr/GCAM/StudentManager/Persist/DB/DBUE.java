@@ -79,6 +79,7 @@ public class DBUE extends DB<UE> {
             ue.setOptionnel(result.getString("optionnel").equals("t") ? true : false);
             ue.setResponsable(result.getString("prenomResponsable") + " " + result.getString("nomResponsable"));
             ue.setCodeSemestre(result.getString("codeSemestre"));
+	    //ue.setListeECUE(new DBECUE(conn).list(result.getString("codeUE")));
 	    ue.setListeECUE(new DBECUE(conn).list(result.getString("codeUE")));
 	    ue.setListeEtud(new DBEtudiantUE(conn).list(result.getString("codeUE")));
         }
@@ -92,10 +93,13 @@ public class DBUE extends DB<UE> {
     public ArrayList<UE> list(String id) throws Exception {
 	ArrayList<UE> list = new ArrayList<UE>();
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	ResultSet result = s.executeQuery("SELECT * from VO_UE where codeUE = '" + (String) id + "'");
+	ResultSet result = s.executeQuery("SELECT * from VO_UE where codeSemestre = '" + (String) id + "'");
 	if (result.first()) {
 	    do {
-		list.add(new UE(result.getString("codeUE"), result.getString("libelleUE")));
+		list.add(new UE(result.getString("codeUE"),
+			result.getString("libelleUE"),
+			result.getString("prenomresponsable") + " " +
+			result.getString("nomresponsable")));
 	    } while (result.next());
 	}
 	return list;

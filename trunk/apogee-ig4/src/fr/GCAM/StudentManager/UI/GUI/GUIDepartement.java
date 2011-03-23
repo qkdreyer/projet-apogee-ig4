@@ -15,6 +15,7 @@ import fr.GCAM.StudentManager.Business.FacadeDepartement;
 import fr.GCAM.StudentManager.POJO.Departement;
 import fr.GCAM.StudentManager.POJO.Etape;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
+import javax.swing.JComponent;
 
 /**
  *
@@ -35,7 +36,8 @@ public class GUIDepartement extends GUI<Departement> {
         versionDiplome.setText("Version diplôme : " + faDepa.getVersionDiplome());
         mnemo.setText(faDepa.getMnemo());
         for (Etape e : faDepa.getListeEtape()) {
-            comboEtape.addItem(e.getCodeEtape());
+            comboEtape.addItem(e);
+	    //((JComponent)comboEtape.getItemAt(comboEtape.getItemCount()-1)).putClientProperty("id", e.getCodeEtape());
         }
 
         setLocationRelativeTo(null);
@@ -146,10 +148,12 @@ public class GUIDepartement extends GUI<Departement> {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            AbstractUIFactory.getUIFactory("g").getUIEtape(dao, comboEtape.getSelectedItem().toString());
+        System.out.println("id=" + ((Etape)comboEtape.getSelectedItem()).getCodeEtape());
+	try {
+            AbstractUIFactory.getUIFactory("g").getUIEtape(dao, ((Etape)comboEtape.getSelectedItem()).getCodeEtape());
         } catch (Exception ex) {
-            
+            System.err.println("Erreur : " + ex);
+	    ex.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

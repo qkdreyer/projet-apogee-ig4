@@ -59,6 +59,7 @@ public class ManagerEtape {
 	    arrayEtud[i][2] = (e.getMoyEtranger() > 0 ? e.getMoyEtranger() :
                 (e.getMoyRedoublant() > 0 ? e.getMoyRedoublant() : etape.getMoyenne(e.getNumEtudiant())));
             arrayEtud[i][3] = e.getPointJurySemestre();
+	    i++;
         }
         return arrayEtud;
     }

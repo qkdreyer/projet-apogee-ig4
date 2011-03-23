@@ -103,7 +103,6 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
 	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where codeMatiere = '" + id + "'");
 	if (result.first()) {
 	    do {
-		System.out.println("new etud");
 		listeEtud.add(new EtudiantECUE(
 			result.getInt("numEtudiant"),
 			result.getString("numIne"),
