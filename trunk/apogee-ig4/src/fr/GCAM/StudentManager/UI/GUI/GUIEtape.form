@@ -90,6 +90,7 @@
     </Menu>
   </NonVisualComponents>
   <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="GCAM StudentManager : Etape"/>
     <Property name="name" type="java.lang.String" value="ListeEtudiant" noResource="true"/>
     <Property name="resizable" type="boolean" value="false"/>

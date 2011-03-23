@@ -69,8 +69,9 @@ public class GUIUE extends GUI<UE> implements ActionListener {
             panelECUE.add(border);
         }
 
-        listeEtudiantUE.setModel(new javax.swing.table.DefaultTableModel(fue.getArrayOfEtudiantUE(),
-                new String[]{"Nom", "Prenom", "Moyenne"}));
+        listeEtudiantUE.setModel(new ApogeeTableModel(
+                new String[]{"Nom", "Prenom", "Moyenne"},
+                fue.getArrayOfEtudiantUE()));
 
         setLocationRelativeTo(null);
         this.setVisible(true);
@@ -106,6 +107,7 @@ public class GUIUE extends GUI<UE> implements ActionListener {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GCAM StudentManager : UE");
         setResizable(false);
 

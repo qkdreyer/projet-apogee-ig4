@@ -42,7 +42,7 @@ public class DBEtape extends DB<Etape> {
      * @throws Exception
      */
     public void update(Etape obj) throws Exception {
-	throw new UnsupportedOperationException("Not supported yet.");
+	throw new UnsupportedOperationException("Not supported yet."); //TODO !!!
     }
 
     /**

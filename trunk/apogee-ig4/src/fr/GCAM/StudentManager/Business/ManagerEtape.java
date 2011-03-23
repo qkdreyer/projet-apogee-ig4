@@ -6,11 +6,11 @@
 package fr.GCAM.StudentManager.Business;
 
 import fr.GCAM.StudentManager.POJO.Etape;
-import fr.GCAM.StudentManager.POJO.Etape.Semestre;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantEtape;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantSemestre;
 import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
+import fr.GCAM.StudentManager.Persist.DAO;
 import java.util.ArrayList;
 
 /**
@@ -19,10 +19,12 @@ import java.util.ArrayList;
  */
 public class ManagerEtape {
 
+    private DAO<Etape> etapeDAO = null;
     private Etape etape = null;
 
     public ManagerEtape(String s, String dao) throws Exception {
-        etape = AbstractDAOFactory.getDAOFactory(dao).getDAOEtape().find(s);
+        etapeDAO = AbstractDAOFactory.getDAOFactory(dao).getDAOEtape();
+        etape = etapeDAO.find(s);
     }
 
     public String getCodeEtape() {
@@ -86,5 +88,10 @@ public class ManagerEtape {
 
     public ArrayList<UE> getListeUE(int i) {
         return etape.getSemestre(i).getListeUE();
+    }
+
+    public void setPJSem(int numSem, int indexEtud, float pj) throws Exception {
+	etape.getSemestre(numSem).getListeEtud().get(indexEtud).setPointJurySemestre(pj);
+        etapeDAO.update(etape);
     }
 }

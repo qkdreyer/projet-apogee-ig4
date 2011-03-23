@@ -28,7 +28,7 @@ public class EtudiantSemestre extends AbstractEtudiant {
 	return pointJurySemestre;
     }
 
-    public void setPointJurySemestre(int pointJurySemestre) {
+    public void setPointJurySemestre(float pointJurySemestre) {
 	this.pointJurySemestre = pointJurySemestre;
     }
 

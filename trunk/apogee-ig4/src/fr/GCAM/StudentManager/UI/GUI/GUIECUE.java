@@ -38,19 +38,23 @@ public class GUIECUE extends GUI<ECUE> {
         jTextField3.setText(Integer.toString(fECUE.getNbHeures()));
 
 	//jTable1.setC
-        jTable1.setModel(new DefaultTableModel(fECUE.getArrayOfEtudiantECUE(),
-                new String[]{"Nom", "Prenom", "Note Session 1", "Note Session 2"}));
+        jTable1.setModel(new ApogeeTableModel(
+                new String[]{"Nom", "Prenom", "Note Session 1", "Note Session 2"},
+                fECUE.getArrayOfEtudiantECUE()));
 
         jTable1.getModel().addTableModelListener(new TableModelListener() {
             public void tableChanged(TableModelEvent e) {
                 try {
                     if (jTable1.getSelectedColumn() == 2) {
-                        fECUE.setNoteSession1(jTable1.getSelectedRow(), Float.parseFloat(jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn()).toString()));
+                        fECUE.setNoteSession1(jTable1.getSelectedRow(), Float.parseFloat(jTable1.getValueAt(
+                                jTable1.getSelectedRow(), jTable1.getSelectedColumn()).toString()));
                     } else if (jTable1.getSelectedColumn() == 3) {
                         fECUE.setNoteSession2(jTable1.getSelectedRow(), Float.parseFloat(jTable1.getValueAt(
                                 jTable1.getSelectedRow(), jTable1.getSelectedColumn()).toString()));
                     }
-                } catch (Exception ex) {           
+                } catch (Exception ex) {    
+                    System.err.println("Erreur : " + ex);
+                    ex.printStackTrace();
                 }
             }
         });
@@ -90,6 +94,7 @@ public class GUIECUE extends GUI<ECUE> {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GCAM StudentManager : ECUE");
         setResizable(false);
 

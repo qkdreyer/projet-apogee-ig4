@@ -27,6 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -51,19 +52,18 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         codeSemestre2.setText(fetape.getCodeSemestre(2));
         libelleSemestre1.setText(fetape.getLibelleSemestre(1));
         libelleSemestre2.setText(fetape.getLibelleSemestre(2));
-
-        DefaultTableModel modelEtape = new DefaultTableModel(fetape.getArrayOfEtudiantEtape(),
-                new String[]{"Nom", "Prenom", "Moyenne", "PJ Année", "TOEIC"});
         
-        listeEtudEtape.setModel(new DefaultTableModel() {
-            
-        });
+        listeEtudEtape.setModel(new ApogeeTableModel(
+                new String[]{"Nom", "Prenom", "Moyenne", "PJ Année", "TOEIC"},
+                fetape.getArrayOfEtudiantEtape()));
 
-        listeEtudSem1.setModel(new javax.swing.table.DefaultTableModel(fetape.getArrayOfEtudiantSemestre(1),
-                new String[]{"Nom", "Prenom", "Moyenne", "PJ Sem"}));
+        listeEtudSem1.setModel(new ApogeeTableModel(
+                new String[]{"Nom", "Prenom", "Moyenne", "PJ Sem"},
+                fetape.getArrayOfEtudiantSemestre(1)));
 
-        listeEtudSem2.setModel(new javax.swing.table.DefaultTableModel(fetape.getArrayOfEtudiantSemestre(2),
-                new String[]{"Nom", "Prenom", "Moyenne", "PJ Sem"}));
+        listeEtudSem2.setModel(new ApogeeTableModel(
+                new String[]{"Nom", "Prenom", "Moyenne", "PJ Sem"},
+                fetape.getArrayOfEtudiantSemestre(2)));
 
         listeEtudEtape.getModel().addTableModelListener(new TableModelListener() {
 
@@ -88,9 +88,13 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             public void tableChanged(TableModelEvent e) {
                 try {
                     if (listeEtudSem1.getSelectedColumn() == 3) {
-                        //TODO setPJSem1;
+                        fetape.setPJSem(1, listeEtudSem1.getSelectedRow(), Float.parseFloat(
+                                listeEtudSem1.getValueAt(listeEtudSem1.getSelectedRow(),
+                                listeEtudSem1.getSelectedColumn()).toString()));
                     }
                 } catch (Exception ex) {
+                    System.err.println("Erreur : " + ex);
+                    ex.printStackTrace();
                 }
             }
         });
@@ -100,7 +104,9 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             public void tableChanged(TableModelEvent e) {
                 try {
                     if (listeEtudSem2.getSelectedColumn() == 3) {
-                        //TODO setPJSem2;
+                        fetape.setPJSem(2, listeEtudSem2.getSelectedRow(), Float.parseFloat(
+                                listeEtudSem2.getValueAt(listeEtudSem2.getSelectedRow(),
+                                listeEtudSem2.getSelectedColumn()).toString()));
                     }
                 } catch (Exception ex) {
                 }
@@ -221,6 +227,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GCAM StudentManager : Etape");
         setName("ListeEtudiant"); // NOI18N
         setResizable(false);
