@@ -101,7 +101,6 @@ public class DBUtilisateurTest {
 	DBUtilisateur instance = new DBUtilisateur(conn);
 	instance.create(util2_m);
 
-	System.out.println("str = " + str);
 	ResultSet r = s.executeQuery(str);
 	if (r.first()) {
 	    //On verifie que le bon nom a ete insere
@@ -152,7 +151,6 @@ public class DBUtilisateurTest {
 	Statement s_id = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	String req_id = "SELECT idenseignant from enseignant where nom = 'testNom2'";
 
-	System.out.println("req_id = " + req_id);
 
 	ResultSet r_id = s_id.executeQuery(req_id);
 	int id_reel = 0;
@@ -160,17 +158,18 @@ public class DBUtilisateurTest {
 	     id_reel = r_id.getInt("idenseignant");
 	}
 	util2_m.setIdEnseignant(id_reel);
-	System.out.println("util2m.getIdEnseignant() = " + util2_m.getIdEnseignant());
-
 
 	DBUtilisateur instance = new DBUtilisateur(conn);
+
+	//TODO : assertTrue que l'util2_m est present dans la base
+
 	instance.delete(util2_m);
 	// Le create est testé avant donc il est censé marcher.
 
 	Statement s_del = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         String str = "SELECT * from vo_utilisateur where idenseignant = '" +
 		util2_m.getIdEnseignant() + "'";
-	System.out.println("str = " + str);
+
 	ResultSet r = s_del.executeQuery(str);
 	if (r.first()) {
 	    assertEquals(null, r.getString("nom"));
@@ -232,7 +231,6 @@ public class DBUtilisateurTest {
 //	ArrayList<Utilisateur> expResult = new ArrayList<Utilisateur>();
 
 	ArrayList<Utilisateur> result = dbu.list();
-//	System.out.println("result.toString() = " + result.toString());
 
 	//on recupere le resultat
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

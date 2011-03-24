@@ -36,23 +36,24 @@ public class DBUtilisateur extends DB<Utilisateur>  {
     public void create(Utilisateur obj) throws Exception {
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
         int id_reel;
-	String str = "insert into Enseignant values(utilSeq.nextval, '"
+
+	Statement s_id = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	ResultSet res_id = s_id.executeQuery("select utilSeq.nextval from dual");
+
+	if (res_id.first()) {
+	    id_reel = res_id.getInt("nextval");
+	} else {
+	    id_reel = 0;
+	}
+	
+	String str = "insert into Enseignant values(" + id_reel + ", '"
                 + SHA1.getHash(obj.getMDP()) + "', '"
                 + obj.getNom() + "', '"
                 + obj.getPrenom() + "', '"
                 + obj.getMail() + "')";
-	System.out.println("str = " + str);
 	s.execute(str);
 
 	//L'id stocke dans la BD est different
-
-	Statement s_id = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	ResultSet res_id = s_id.executeQuery("select idenseignant from enseignant where nom='testNom2'");
-
-	if (res_id.first()) {
-	    id_reel = res_id.getInt("idenseignant");
-	} else
-	    id_reel = 0;
 
 	if (obj.getListeResponsabilites() != null) {
 	    for (Responsabilite r : obj.getListeResponsabilites()) {
@@ -61,7 +62,6 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 		    String query_ecue = "UPDATE ECUE "
 			    + "SET idenseignant=" + id_reel +
 			    " WHERE codematiere ='" + e.getCodeMatiere() +"'";
-		    System.out.println("query_ecue = " + query_ecue);
 		    s.execute(query_ecue);
 //		    s.execute("insert into ECUE values('"
 //			    + r.getCodeResponsabilite() + "', '"
@@ -216,7 +216,6 @@ public class DBUtilisateur extends DB<Utilisateur>  {
                 + "where lower(nom) = '" + ((String) a.get(1)).toLowerCase() + "' and "
                 + "lower(prenom) = '" + ((String) a.get(0)).toLowerCase() + "' and "
                 + "mdp = getHash('" + (String) a.get(2) + "')";
-	System.out.println("str = " + str);
         ResultSet result = s.executeQuery(str);
         if (result.first()) {
 	    util.setIdEnseignant(result.getInt("idEnseignant"));

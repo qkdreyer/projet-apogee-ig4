@@ -66,7 +66,7 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
 
 	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	System.out.println("id = " + id);
-	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where codeMatiere = " + id);
+	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where numetudiant = " + id);
 	if (result.first()) {
 	    e.setNumEtudiant(result.getInt("numEtudiant"));
 	    e.setNumIne(result.getString("numIne"));
@@ -101,8 +101,8 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
     public ArrayList<EtudiantECUE> list(String id) throws Exception {
 	ArrayList<EtudiantECUE> listeEtud = new ArrayList<EtudiantECUE>();
 	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	//System.out.println("SELECT * from VO_EtudiantECUE where codeMatiere = '" + id + "'");
-	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where codeMatiere = '" + id + "'");
+	String req_lst = "SELECT * from VO_EtudiantECUE where codeMatiere = '" + id + "'";
+	ResultSet result = s.executeQuery(req_lst);
 	if (result.first()) {
 	    do {
 		listeEtud.add(new EtudiantECUE(
