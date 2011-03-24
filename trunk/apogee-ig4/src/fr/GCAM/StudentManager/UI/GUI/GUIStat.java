@@ -11,6 +11,7 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
+import fr.GCAM.StudentManager.Business.Facade.FacadeEtape;
 import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
 
 /**
@@ -19,9 +20,35 @@ import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
  */
 public class GUIStat extends GUI<AbstractEtudiant> {
 
+    private String dao;
+    private FacadeEtape fetape;
+
     /** Creates new form Stat */
-    public GUIStat(String s) {
+    public GUIStat(String dao, String id) throws Exception{
         initComponents();
+        this.dao = dao;
+        fetape = new FacadeEtape(dao, id);
+
+        //Get list of etudiant from etape
+        Object[][] listeEtudEtap = fetape.getArrayOfEtudiantEtape();
+        Object[][] lEtudStatTmp = new Object[listeEtudEtap.length][3];
+
+        //Copy the listeEtudEtap into lEtudStatTmp in order to respect
+        //the number of arguments
+        int i = 0;
+        for (Object[] o : listeEtudEtap) {
+	    lEtudStatTmp[i][0] = o[1];
+	    lEtudStatTmp[i][1] = o[2];
+	    lEtudStatTmp[i][2] = o[3];
+	    i++;
+	}
+
+        //Fill the table
+        listeEtudStat.setModel(new ApogeeTableModel(
+                new String[]{"Nom", "Prenom", "Moyenne"},
+                lEtudStatTmp));
+
+        //Display the window
 	this.setVisible(true);
     }
 
@@ -42,7 +69,7 @@ public class GUIStat extends GUI<AbstractEtudiant> {
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        listeEtudStat = new javax.swing.JTable();
         jComboBox3 = new javax.swing.JComboBox();
         jButton3 = new javax.swing.JButton();
 
@@ -83,9 +110,9 @@ public class GUIStat extends GUI<AbstractEtudiant> {
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(444, Short.MAX_VALUE))
+                .addContainerGap(484, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(585, Short.MAX_VALUE)
+                .addContainerGap(647, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
@@ -101,14 +128,14 @@ public class GUIStat extends GUI<AbstractEtudiant> {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
+                .addContainerGap(111, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        listeEtudStat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -165,7 +192,7 @@ public class GUIStat extends GUI<AbstractEtudiant> {
                 "Nom", "Prenom", "Moyenne"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(listeEtudStat);
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Moyenne", "Max", "Min", "Medianne", "..." }));
 
@@ -183,7 +210,7 @@ public class GUIStat extends GUI<AbstractEtudiant> {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox3, 0, 168, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, 0, 235, Short.MAX_VALUE)
                             .addComponent(jButton3))))
                 .addContainerGap())
         );
@@ -221,7 +248,7 @@ public class GUIStat extends GUI<AbstractEtudiant> {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable listeEtudStat;
     // End of variables declaration//GEN-END:variables
 
 }

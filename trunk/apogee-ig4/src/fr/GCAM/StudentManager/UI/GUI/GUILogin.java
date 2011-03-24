@@ -20,13 +20,13 @@ import javax.swing.JFrame;
  *
  * @author pierre
  */
-public class GUIUtilisateur extends GUI<Utilisateur> {
+public class GUILogin extends GUI<Utilisateur> {
 
     private FacadeUtilisateur facadeUtilisateur;
     private String dao;
 
     /** Creates new form Login */
-    public GUIUtilisateur(String dao) {
+    public GUILogin(String dao) {
 	initComponents();
 	this.dao = dao;
 	facadeUtilisateur = new FacadeUtilisateur(dao);
@@ -112,7 +112,7 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(83, 83, 83))
-                    .addComponent(errorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))
+                    .addComponent(errorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

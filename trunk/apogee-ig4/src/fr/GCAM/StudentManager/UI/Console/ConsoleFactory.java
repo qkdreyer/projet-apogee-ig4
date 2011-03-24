@@ -48,7 +48,7 @@ public class ConsoleFactory extends AbstractUIFactory {
     }
 
     @Override
-    public UI<AbstractEtudiant> getUIStat(String dao) throws Exception {
+    public UI<AbstractEtudiant> getUIStat(String dao, String id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
