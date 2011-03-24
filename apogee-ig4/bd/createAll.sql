@@ -909,18 +909,15 @@ begin
 end vo_EtudiantSemestre_up;
 /
 
-
-
-
 --Update sur vo_EtudiantEtape
---TODO: FINIR TRIGGER!!!
 create or replace trigger vo_EtudiantEtape_up
 instead of update on vo_EtudiantEtape
 for each row
 declare
 begin
 	update Etudiant set
-		pointjuryannee = :new.pointJuryAnnee
+		pointjuryannee = :new.pointJuryAnnee,
+		scoreToeic = :new.scoreToeic
 	where numEtudiant = :new.numEtudiant
 	and codeEtape = :new.codeEtape;
 	--Vu que les points sont stockés dans la table etudiant, théoriquement

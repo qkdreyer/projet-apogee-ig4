@@ -94,4 +94,14 @@ public class ManagerEtape {
 	etape.getSemestre(numSem).getListeEtud().get(indexEtud).setPointJurySemestre(pj);
         etapeDAO.update(etape);
     }
+
+    public void setPJAnnne(int indexEtud, float pj) throws Exception {
+        etape.getListeEtud().get(indexEtud).setPointJuryAnnee(pj);
+        etapeDAO.update(etape);
+    }
+    
+    public void setTOEIC(int indexEtud, int toeic) throws Exception {
+        etape.getListeEtud().get(indexEtud).setScoreToeic(toeic);
+        etapeDAO.update(etape);
+    }
 }

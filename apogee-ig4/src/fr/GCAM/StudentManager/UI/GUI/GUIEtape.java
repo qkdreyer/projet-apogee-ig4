@@ -70,13 +70,13 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             public void tableChanged(TableModelEvent e) {
                 try {
                     if (listeEtudEtape.getSelectedColumn() == 3) {
-                        //fECUE.setNoteSession1(listeEtudEtape.getSelectedRow(), Float.parseFloat(listeEtudEtape.getValueAt(
-                        //listeEtudEtape.getSelectedRow(), listeEtudEtape.getSelectedColumn()).toString()));
-                        //TODO setPJAnnee;
+                        fetape.setPJAnnee(listeEtudEtape.getSelectedRow(), Float.parseFloat(
+                                listeEtudEtape.getValueAt(listeEtudEtape.getSelectedRow(),
+                                listeEtudEtape.getSelectedColumn()).toString()));
                     } else if (listeEtudEtape.getSelectedColumn() == 4) {
-                        //fECUE.setNoteSession2(listeEtudEtape.getSelectedRow(), Float.parseFloat(listeEtudEtape.getValueAt(
-                        //listeEtudEtape.getSelectedRow(), listeEtudEtape.getSelectedColumn()).toString()));
-                        //TODO setTOEIC;
+                        fetape.setTOEIC(listeEtudEtape.getSelectedRow(), Integer.parseInt(
+                                listeEtudEtape.getValueAt(listeEtudEtape.getSelectedRow(),
+                                listeEtudEtape.getSelectedColumn()).toString()));
                     }
                 } catch (Exception ex) {
                 }
