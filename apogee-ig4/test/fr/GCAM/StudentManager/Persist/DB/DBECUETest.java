@@ -38,7 +38,8 @@ public class DBECUETest {
 
 	conn = ConnectionDB.getConnection();
 
-	etud = new EtudiantECUE(99999, "testINE", "testProv", "testStat", "nEtud", "pEtud", "test@mail.final", 0, 0);
+	etud = new EtudiantECUE(99999, "testINE", "testProv", "testStat",
+		"testNat","nEtud", "pEtud", "test@mail.final", 0, 0);
 
 	ecue_m = new ECUE();
 	ecue_m.setCodeMatiere("TEST001");
@@ -104,22 +105,15 @@ public class DBECUETest {
         dbecue.update(ecue_m);
         //on recupere le resultat
         Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet r = s.executeQuery("SELECT v.codematiere, v.libelleECUE,"
-		+ "v.nbheures,v.nomresponsable, v.prenomresponsable,v.codeue,"
-		+ "v.numetudiant, v.nom, v.prenom, v.notesession1,v.notesession2 "
-		+ "FROM vo_ecue v "
+	ResultSet r = s.executeQuery("SELECT * FROM vo_Etudiantecue v "
 		+ "WHERE v.codematiere='TEST001' AND v.numetudiant=99999");
 	
         //on le compare avec ce qu'on a mis a la base
         if (r.first()) {
             String codematiere = r.getString("codeMatiere");
-            String libelleECUE = r.getString("libelleECUE");
-            int nbheures = r.getInt("nbheures");
-            String prenomResp = r.getString("prenomResponsable");
-	    String nomResp = r.getString("nomResponsable");
-            String codeUE = r.getString("codeUE");
 
             int numetud = r.getInt("numetudiant");
+	    String numine = r.getString("numine");
 	    String nom = r.getString("nom");
 	    String prenom = r.getString("prenom");
 	    float notes1 = r.getFloat("notesession1");

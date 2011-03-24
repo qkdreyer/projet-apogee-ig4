@@ -9,7 +9,6 @@ import fr.GCAM.StudentManager.Util.JDOM;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import java.io.File;
-import java.util.Iterator;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -50,7 +49,7 @@ public class XMLTestSuite {
 	    Document d = new SAXBuilder().build("xml/ECUE.xml");
 
 	    Element ECUE, listeEtud, Etudiant;
-	    EtudiantECUE etud = new EtudiantECUE(99999, "testINE", "testProv", "testStat", "nEtud", "pEtud", "test@mail.final", 0, 0);
+	    EtudiantECUE etud = new EtudiantECUE(99999, "testINE", "testProv", "testStat","testNat", "nEtud", "pEtud", "test@mail.final", 0, 0);
 	    ECUE ecue = new ECUE();
 
 	    ecue.setCodeMatiere("TEST001");

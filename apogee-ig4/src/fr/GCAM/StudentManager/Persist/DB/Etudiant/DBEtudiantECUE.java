@@ -65,6 +65,7 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
 	EtudiantECUE e = new EtudiantECUE();
 
 	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	System.out.println("id = " + id);
 	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where codeMatiere = " + id);
 	if (result.first()) {
 	    e.setNumEtudiant(result.getInt("numEtudiant"));

@@ -48,7 +48,7 @@ insert into Enseignant values (1859,getHash('futurpierre'),'sala','michel','mimi
 insert into Enseignant values (2176,getHash('nut'),'Donald','Mac','mcdo@quick.fr');
 insert into Enseignant values (2153,getHash('ales'),'debombe','balle','nutellepuissance1000@gmail.com');
 insert into Enseignant values (2384,getHash('breakingbad'),'white','walter','drogue@bang.com');
-insert into Secretaire values (1000,getHash('pausecafe'),'tortosa','helene','helene@tortue.fr');
+-- insert into Secretaire values (1000,getHash('pausecafe'),'tortosa','helene','helene@tortue.fr');
 
 insert into Provenance values (01,'prepa intégré');
 insert into Provenance values (02,'IUT');

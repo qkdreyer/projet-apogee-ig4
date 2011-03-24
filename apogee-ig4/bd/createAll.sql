@@ -78,7 +78,7 @@ create table Personne (
 
 create table Etudiant (
 	numEtudiant number,
-	pointjuryannee number,
+	pointjuryannee number(4,2),
 	numINE varchar2(15),
 	scoreTOEIC number,
 	idprovenance number,
@@ -369,6 +369,25 @@ end;
 -- CreateView
 -- Creation des vues nécessaires
 
+--Vue VO_Departement
+--pk: (VersionDiplome)
+--
+create or replace type TDepartement as object (
+	versionDiplome varchar2(10),
+	nomDepartement varchar2(100),
+	mnemo varchar2(10),	
+	nomResponsable varchar2(20),
+	prenomResponsable varchar2(20)	
+);
+/
+
+create or replace view VO_Departement of TDepartement
+with object identifier(versionDiplome) as
+select d.versionDiplome, d.nomDepartement, d.mnemo,
+ens.nom as nomResponsable, ens.prenom as prenomResponsable
+from Departement d, Enseignant ens
+where d.idEnseignant = ens.idEnseignant;
+/
 
 --Vue VO_Etape
 --pk: (codeEtape, codeSemestre)
@@ -409,7 +428,7 @@ create or replace type TEtudiantEtape as object(
 	prenom varchar2(20),
 	mail varchar2(40),
 	codeEtape varchar2(10),
-	pointJuryAnnee number,
+	pointJuryAnnee number(4,2),
 	scoreToeic number
 );
 /
@@ -435,6 +454,7 @@ and e.numEtudiant in (
 --
 create or replace type TEtudiantSemestre as object(
 	numEtudiant number,
+	codeSemestre varchar2(10),
 	numIne varchar2(15),
 	libelleProvenance varchar2(20),
 	libelleStatut varchar2(10),
@@ -442,8 +462,7 @@ create or replace type TEtudiantSemestre as object(
 	nom varchar2(20),
 	prenom varchar2(20),
 	mail varchar2(40),
-	codeSemestre varchar2(10),
-	pointJurySemestre number,
+	pointJurySemestre number(4,2),
 	moyenneEtranger number(4, 2),
 	moyenneRedoublant number(4,2)
 );
@@ -529,8 +548,8 @@ end;
 
 create or replace view VO_EtudiantSemestre of TEtudiantSemestre
 with object identifier( numEtudiant, codeSemestre ) as
-select e.numEtudiant, e.numIne, p.libelleProvenance, s.libelle as libelleStatut,
-n.libelleNationalite, e.nom, e.prenom, e.mail, u.codeSemestre,
+select distinct e.numEtudiant, u.codeSemestre, e.numIne, p.libelleProvenance, s.libelle as libelleStatut,
+n.libelleNationalite, e.nom, e.prenom, e.mail,
 getPJSemestre(e.numetudiant, u.codeSemestre),
 getMoyenneEtr(e.numetudiant, u.codeSemestre),
 getMoyenneRed(e.numetudiant, u.codeSemestre)
@@ -642,6 +661,7 @@ and e.numEtudiant in (
 	select l.numEtudiant
 	from table(get_liste_etud_ue(u.codeUE)) l
 );
+/
 
 
 --Vue ECUE
@@ -899,16 +919,14 @@ instead of update on vo_EtudiantEtape
 for each row
 declare
 begin
-	update PointsJury set
-		nbpoints = :new.pointJurySemestre
+	update Etudiant set
+		pointjuryannee = :new.pointJuryAnnee
 	where numEtudiant = :new.numEtudiant
-	and codeSemestre = :new.codeSemestre;
-	if (sql%rowcount = 0) then
-		insert into PointsJury values(
-			:new.pointJurySemestre, :new.numEtudiant, :new.codeSemestre
-		);
-	end if;
-end vo_EtudiantSemestre_up;
+	and codeEtape = :new.codeEtape;
+	--Vu que les points sont stockés dans la table etudiant, théoriquement
+	--si on update vo_etudiantecue, l'etudiant existe forcement, donc pas 
+	--sql%rowcount bla bla bla ...
+end vo_EtudiantEtape_up;
 /
 
 
