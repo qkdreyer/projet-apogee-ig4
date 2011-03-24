@@ -33,6 +33,13 @@ public class Etape {
 	this.codeEtape = codeEtape;
 	this.versionEtape = versionEtape;
     }
+
+    public Etape(String codeEtape, String versionEtape, String responsable, String versionDiplome) {
+	this.codeEtape = codeEtape;
+	this.versionEtape = versionEtape;
+	this.responsable = responsable;
+	this.versionDiplome = versionDiplome;
+    }
     
     public static class Semestre {
 
