@@ -130,8 +130,6 @@ public class Etape {
 	}
     }
 
-
-
     public ArrayList<EtudiantEtape> getListeEtud() {
         return listeEtud;
     }

@@ -32,7 +32,7 @@ public class Utilisateur implements Comparable {
 	this.prenom = prenom;
 	this.nom = nom;
 	this.mdp = mdp;
-	if (listeResponsabilites == null )
+	if (listeResponsabilites == null)
 	    this.listeResponsabilites = new ArrayList<Responsabilite>();
 	else
 	    this.listeResponsabilites = listeResponsabilites;
@@ -197,15 +197,10 @@ public class Utilisateur implements Comparable {
 	this.prenom = prenom;
     }
 
+    @Override
     public String toString() {
-	String str = "(id:" + this.getIdEnseignant() + ") " + this.getPrenom() + "." + this.getNom()
-                + " (" + this.getMDP() + ")\n"
-                + mail + "\n";
-	for (Responsabilite r : this.getListeResponsabilites()) {
-	    str += "\t" + r.toString();
-	}
-
-	return str;
+	return this.getPrenom() + "." + this.getNom()
+                + " (" + this.getIdEnseignant() + ")";
     }
 
     public Responsabilite getTopResponsability() {

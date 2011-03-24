@@ -13,7 +13,6 @@ package fr.GCAM.StudentManager.UI.GUI;
 import fr.GCAM.StudentManager.Business.FacadeUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
-import fr.GCAM.StudentManager.UI.UI;
 import java.util.HashMap;
 import javax.swing.JFrame;
 
@@ -31,7 +30,10 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 	initComponents();
 	this.dao = dao;
 	facadeUtilisateur = new FacadeUtilisateur(dao);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(facadeUtilisateur.getListLogin()));
+        for (Utilisateur u : facadeUtilisateur.getListLogin()) {
+            jComboBox1.addItem(u);
+        }
+        //jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(facadeUtilisateur.getListLogin()));
         setLocationRelativeTo(null);
 	this.setVisible(true);
     }
@@ -172,7 +174,7 @@ public class GUIUtilisateur extends GUI<Utilisateur> {
 	    } else {
 		try {
 		    this.setVisible(false);
-		    if (resp.get("nom").equals("root") && resp.get("prenom").equals("root")) {
+		    if (resp.get("topResponsability").equals("root")) {
 			((JFrame)AbstractUIFactory.getUIFactory("g").getUIAdmin(dao)).setDefaultCloseOperation(EXIT_ON_CLOSE);
 		    } else  if (resp.get("topResponsability").equals("ECUE")) {
                         ((JFrame)AbstractUIFactory.getUIFactory("g").getUIECUE(dao, resp.get("codeResp"))).setDefaultCloseOperation(EXIT_ON_CLOSE);

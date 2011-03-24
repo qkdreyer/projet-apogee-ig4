@@ -5,6 +5,9 @@
 
 package fr.GCAM.StudentManager.Business;
 
+import fr.GCAM.StudentManager.POJO.Utilisateur;
+import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -29,8 +32,20 @@ public class FacadeUtilisateur {
         return utilisateur.login(nom, prenom, mdp);
     }
 
-    public Object[] getListLogin() {
+    public Utilisateur[] getListLogin() {
         return utilisateur.getListLogin();
+    }
+    
+    public void create(Utilisateur u) throws Exception {
+        utilisateur.create(u);
+    }
+    
+    public void delete(Utilisateur u) throws Exception {
+        utilisateur.delete(u);
+    }
+
+    public ArrayList<Responsabilite> getListeRespDispo() throws Exception {
+        return utilisateur.getListRespDispo();
     }
 
 }
