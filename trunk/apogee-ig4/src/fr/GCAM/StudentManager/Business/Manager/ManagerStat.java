@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package fr.GCAM.StudentManager.Business;
+package fr.GCAM.StudentManager.Business.Manager;
 
 import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;

@@ -11,8 +11,8 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
-import fr.GCAM.StudentManager.Business.FacadeAdmin;
-import fr.GCAM.StudentManager.Business.FacadeUtilisateur;
+import fr.GCAM.StudentManager.Business.Facade.FacadeAdmin;
+import fr.GCAM.StudentManager.Business.Facade.FacadeUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.util.logging.Level;
 import java.util.logging.Logger;

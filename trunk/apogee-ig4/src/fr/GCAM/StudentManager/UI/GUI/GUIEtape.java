@@ -10,7 +10,7 @@
  */
 package fr.GCAM.StudentManager.UI.GUI;
 
-import fr.GCAM.StudentManager.Business.FacadeEtape;
+import fr.GCAM.StudentManager.Business.Facade.FacadeEtape;
 import fr.GCAM.StudentManager.POJO.Etape;
 import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;

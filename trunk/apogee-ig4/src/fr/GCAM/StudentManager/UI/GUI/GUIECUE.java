@@ -10,7 +10,7 @@
  */
 package fr.GCAM.StudentManager.UI.GUI;
 
-import fr.GCAM.StudentManager.Business.FacadeECUE;
+import fr.GCAM.StudentManager.Business.Facade.FacadeECUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
 import fr.GCAM.StudentManager.Util.SSParser;
 import java.io.IOException;

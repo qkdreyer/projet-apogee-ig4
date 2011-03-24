@@ -5,12 +5,9 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import fr.GCAM.StudentManager.Util.SHA1;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.Ignore;
 import java.sql.Connection;
 import fr.GCAM.StudentManager.POJO.Utilisateur;

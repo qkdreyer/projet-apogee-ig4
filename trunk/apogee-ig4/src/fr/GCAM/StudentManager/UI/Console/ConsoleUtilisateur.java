@@ -5,10 +5,10 @@
 
 package fr.GCAM.StudentManager.UI.Console;
 
-import fr.GCAM.StudentManager.Business.FacadeDepartement;
-import fr.GCAM.StudentManager.Business.FacadeECUE;
-import fr.GCAM.StudentManager.Business.FacadeEtape;
-import fr.GCAM.StudentManager.Business.FacadeUE;
+import fr.GCAM.StudentManager.Business.Facade.FacadeDepartement;
+import fr.GCAM.StudentManager.Business.Facade.FacadeECUE;
+import fr.GCAM.StudentManager.Business.Facade.FacadeEtape;
+import fr.GCAM.StudentManager.Business.Facade.FacadeUE;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -28,7 +28,7 @@ public class XMLDepartementTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-
+	dep_m = new Departement("v", "d", "mnemo", null);
     }
 
     @AfterClass

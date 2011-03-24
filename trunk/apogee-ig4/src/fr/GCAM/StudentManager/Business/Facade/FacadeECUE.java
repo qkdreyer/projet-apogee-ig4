@@ -3,8 +3,9 @@
  * and open the template in the editor.
  */
 
-package fr.GCAM.StudentManager.Business;
+package fr.GCAM.StudentManager.Business.Facade;
 
+import fr.GCAM.StudentManager.Business.Manager.ManagerECUE;
 import fr.GCAM.StudentManager.POJO.ECUE;
 
 /**
