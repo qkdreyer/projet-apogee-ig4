@@ -37,7 +37,6 @@ public class GUIDepartement extends GUI<Departement> {
         mnemo.setText(faDepa.getMnemo());
         for (Etape e : faDepa.getListeEtape()) {
             comboEtape.addItem(e);
-	    //((JComponent)comboEtape.getItemAt(comboEtape.getItemCount()-1)).putClientProperty("id", e.getCodeEtape());
         }
 
         setLocationRelativeTo(null);

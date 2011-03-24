@@ -11,6 +11,10 @@ package fr.GCAM.StudentManager.Business;
  */
 public class FacadeAdmin {
 
+    public FacadeAdmin(String dao) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
     /*
      * L'on doit avoir la liste des responsables
      * on peut ajouter un responsable (insert dans la BD)

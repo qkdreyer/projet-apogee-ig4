@@ -11,10 +11,13 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
+import fr.GCAM.StudentManager.Business.FacadeAdmin;
 import fr.GCAM.StudentManager.Business.FacadeUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
-import javax.swing.ListModel;
-import javax.swing.event.ListDataListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JList;
 
 /**
  *
@@ -22,13 +25,19 @@ import javax.swing.event.ListDataListener;
  */
 public class GUIAdmin extends GUI<Utilisateur> {
 
-    private FacadeUtilisateur futil;
+    private FacadeUtilisateur fUtil;
+    private String dao;
 
     /** Creates new form Admin */
     public GUIAdmin(String dao) {
         initComponents();
-	futil = new FacadeUtilisateur(dao);
-	jList1.setListData(futil.getListLogin());
+        this.dao = dao;
+        fUtil = new FacadeUtilisateur(dao);
+        
+        jList1.setListData(fUtil.getListLogin());
+        
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /** This method is called from within the constructor to
@@ -78,6 +87,11 @@ public class GUIAdmin extends GUI<Utilisateur> {
         jScrollPane1.setViewportView(jList1);
 
         jButton3.setText("Nouveau");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Modifier");
         jButton4.setEnabled(false);
@@ -174,26 +188,41 @@ public class GUIAdmin extends GUI<Utilisateur> {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        // TODO export
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        //TODO import
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        try {
+            fUtil.delete((Utilisateur)jList1.getSelectedValue());
+            jList1.setListData(fUtil.getListLogin());
+            jButton4.setEnabled(false);
+            jButton5.setEnabled(false);
+        } catch (Exception ex) {
+            System.err.println("Erreur : " + ex);
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        //TODO Modify
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
         jButton4.setEnabled(true);
         jButton5.setEnabled(true);
-        
     }//GEN-LAST:event_jList1ValueChanged
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            new GUIAdminAddUser(this, true, dao);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
