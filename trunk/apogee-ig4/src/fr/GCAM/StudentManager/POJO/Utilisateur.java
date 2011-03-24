@@ -199,8 +199,7 @@ public class Utilisateur implements Comparable {
 
     @Override
     public String toString() {
-	return this.getPrenom() + "." + this.getNom()
-                + " (" + this.getIdEnseignant() + ")";
+	return this.getPrenom() + "." + this.getNom();
     }
 
     public Responsabilite getTopResponsability() {
