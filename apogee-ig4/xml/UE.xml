@@ -47,20 +47,6 @@
     </listeECUE>
   </UE>
   <UE>
-    <codeUE>PSTIAU52</codeUE>
-    <nbECTS>5</nbECTS>
-    <libelleUE>mode amÃ©ricaine</libelleUE>
-    <optionnel>false</optionnel>
-    <responsable>walter white</responsable>
-    <codeSemestre>52</codeSemestre>
-    <listeECUE>
-      <ECUE>
-        <codeMatiere>PSTIA601</codeMatiere>
-        <libelleECUE>beurre de cacahuÃ¨tes</libelleECUE>
-      </ECUE>
-    </listeECUE>
-  </UE>
-  <UE>
     <codeUE>PIGU71</codeUE>
     <nbECTS>8</nbECTS>
     <libelleUE>informatique objet</libelleUE>
@@ -69,12 +55,12 @@
     <codeSemestre>71</codeSemestre>
     <listeECUE>
       <ECUE>
-        <codeMatiere>PIG701</codeMatiere>
-        <libelleECUE>conception objet</libelleECUE>
-      </ECUE>
-      <ECUE>
         <codeMatiere>PIG702</codeMatiere>
         <libelleECUE>ingÃ©nierie objet</libelleECUE>
+      </ECUE>
+      <ECUE>
+        <codeMatiere>PIG701</codeMatiere>
+        <libelleECUE>conception objet</libelleECUE>
       </ECUE>
     </listeECUE>
   </UE>

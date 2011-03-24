@@ -11,7 +11,7 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
-import fr.GCAM.StudentManager.Business.FacadeDepartement;
+import fr.GCAM.StudentManager.Business.Facade.FacadeDepartement;
 import fr.GCAM.StudentManager.POJO.Departement;
 import fr.GCAM.StudentManager.POJO.Etape;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;

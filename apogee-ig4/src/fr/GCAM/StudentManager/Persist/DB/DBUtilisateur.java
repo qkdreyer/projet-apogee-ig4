@@ -9,11 +9,8 @@ import fr.GCAM.StudentManager.POJO.*;
 import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Cette classe définit les methodes de l'interface DAO pour le type Utilsateur

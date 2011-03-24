@@ -5,6 +5,7 @@
 
 package fr.GCAM.StudentManager.Business;
 
+import fr.GCAM.StudentManager.Business.Manager.ManagerUtilisateur;
 import java.util.ArrayList;
 import java.sql.Connection;
 import fr.GCAM.StudentManager.Persist.DB.ConnectionDB;

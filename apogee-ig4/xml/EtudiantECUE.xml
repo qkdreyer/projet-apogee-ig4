@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <EtudiantECUE>
+    <numEtudiant>20070004</numEtudiant>
+    <numIne>PUM2004</numIne>
+    <libelleProvenance>chine</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>chine</libelleNationalite>
+    <nom>michel</nom>
+    <prenom>benjamin</prenom>
+    <mail>benji@china.cn</mail>
+    <noteSession1>0.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20079999</numEtudiant>
+    <numIne>PUM9999</numIne>
+    <libelleProvenance>prepa intÃ©grÃ©</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>chine</libelleNationalite>
+    <nom>moreau</nom>
+    <prenom>js</prenom>
+    <mail>papa@bientot.com</mail>
+    <noteSession1>0.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20070005</numEtudiant>
+    <numIne>PUM2005</numIne>
+    <libelleProvenance>prepa intÃ©grÃ©</libelleProvenance>
+    <libelleStatut>consanguin</libelleStatut>
+    <libelleNationalite>besseges</libelleNationalite>
+    <nom>coudsi</nom>
+    <prenom>julien</prenom>
+    <mail>besseges@uneseulerace.bes</mail>
+    <noteSession1>0.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20070006</numEtudiant>
+    <numIne>PUM2006</numIne>
+    <libelleProvenance>prepa intÃ©grÃ©</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>france</libelleNationalite>
+    <nom>costanza</nom>
+    <prenom>guillaume</prenom>
+    <mail>gc@popo.fr</mail>
+    <noteSession1>0.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20070003</numEtudiant>
+    <numIne>PUM2003</numIne>
+    <libelleProvenance>prepa intÃ©grÃ©</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>france</libelleNationalite>
+    <nom>dreyer</nom>
+    <prenom>quentin</prenom>
+    <mail>quentin@dreyer.fr</mail>
+    <noteSession1>3.0</noteSession1>
+    <noteSession2>2.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20070009</numEtudiant>
+    <numIne>PUM2009</numIne>
+    <libelleProvenance>prepa intÃ©grÃ©</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>france</libelleNationalite>
+    <nom>meyer</nom>
+    <prenom>lisa</prenom>
+    <mail>jsuitrobonne@sex.xx</mail>
+    <noteSession1>0.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20070002</numEtudiant>
+    <numIne>PUM2002</numIne>
+    <libelleProvenance>prepa intÃ©grÃ©</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>france</libelleNationalite>
+    <nom>jambet</nom>
+    <prenom>pierre</prenom>
+    <mail>pierre@nicolas.con</mail>
+    <noteSession1>13.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20070008</numEtudiant>
+    <numIne>PUM2008</numIne>
+    <libelleProvenance>prepa intÃ©grÃ©</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>france</libelleNationalite>
+    <nom>paze</nom>
+    <prenom>yannick</prenom>
+    <mail>dieguito@pasderace.com</mail>
+    <noteSession1>0.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20060006</numEtudiant>
+    <numIne>PUM2200</numIne>
+    <libelleProvenance>IUT</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>france</libelleNationalite>
+    <nom>romand</nom>
+    <prenom>olivier</prenom>
+    <mail>olivier@met.fi</mail>
+    <noteSession1>0.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20070001</numEtudiant>
+    <numIne>PUM20001</numIne>
+    <libelleProvenance>prepa intÃ©grÃ©</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>france</libelleNationalite>
+    <nom>puechlong</nom>
+    <prenom>joris</prenom>
+    <mail>joris@redoublant.com</mail>
+    <noteSession1>8.0</noteSession1>
+    <noteSession2>9.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20070010</numEtudiant>
+    <numIne>PUM2010</numIne>
+    <libelleProvenance>prepa intÃ©grÃ©</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>france</libelleNationalite>
+    <nom>asse</nom>
+    <prenom>bomb</prenom>
+    <mail>6@9.xnxx</mail>
+    <noteSession1>0.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
+  </EtudiantECUE>
+  <EtudiantECUE>
+    <numEtudiant>20070007</numEtudiant>
+    <numIne>PUM2007</numIne>
+    <libelleProvenance>prepa intÃ©grÃ©</libelleProvenance>
+    <libelleStatut>aucune statut</libelleStatut>
+    <libelleNationalite>france</libelleNationalite>
+    <nom>rance</nom>
+    <prenom>justine</prenom>
+    <mail>rancitude@laposte.net</mail>
+    <noteSession1>0.0</noteSession1>
+    <noteSession2>0.0</noteSession2>
+  </EtudiantECUE>
+</root>
+

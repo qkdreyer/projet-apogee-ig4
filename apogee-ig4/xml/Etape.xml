@@ -4,19 +4,19 @@
     <codeEtape>10</codeEtape>
     <versionEtape>3</versionEtape>
     <versionDiplome>PI01</versionDiplome>
-    <responsable>marie-catherine vilarem</responsable>
+    <responsable>anne-laure villaret</responsable>
     <semestre1>
       <codeSemestre>51</codeSemestre>
       <nbUEFacultatives>0</nbUEFacultatives>
       <codeEtape>10</codeEtape>
       <listeUE>
         <UE>
-          <codeUE>PIGU51</codeUE>
-          <libelleUE>informatique imperative</libelleUE>
-        </UE>
-        <UE>
           <codeUE>PIGU52</codeUE>
           <libelleUE>base comptable</libelleUE>
+        </UE>
+        <UE>
+          <codeUE>PIGU51</codeUE>
+          <libelleUE>informatique imperative</libelleUE>
         </UE>
       </listeUE>
     </semestre1>
@@ -40,7 +40,7 @@
     <codeEtape>11</codeEtape>
     <versionEtape>4</versionEtape>
     <versionDiplome>PI01</versionDiplome>
-    <responsable>tiberiu stratulat</responsable>
+    <responsable>anne-laure villaret</responsable>
     <semestre1>
       <codeSemestre>71</codeSemestre>
       <nbUEFacultatives>0</nbUEFacultatives>
@@ -53,9 +53,9 @@
       </listeUE>
     </semestre1>
     <semestre2>
-      <codeSemestre />
+      <codeSemestre>81</codeSemestre>
       <nbUEFacultatives>0</nbUEFacultatives>
-      <codeEtape />
+      <codeEtape>11</codeEtape>
       <listeUE />
     </semestre2>
   </Etape>
@@ -63,7 +63,7 @@
     <codeEtape>20</codeEtape>
     <versionEtape>3</versionEtape>
     <versionDiplome>PI02</versionDiplome>
-    <responsable>balle debombe</responsable>
+    <responsable>Mac Donald</responsable>
     <semestre1>
       <codeSemestre>52</codeSemestre>
       <nbUEFacultatives>0</nbUEFacultatives>
@@ -72,10 +72,6 @@
         <UE>
           <codeUE>PSTIAU51</codeUE>
           <libelleUE>pate a tartiner</libelleUE>
-        </UE>
-        <UE>
-          <codeUE>PSTIAU52</codeUE>
-          <libelleUE>mode amÃ©ricaine</libelleUE>
         </UE>
       </listeUE>
     </semestre1>

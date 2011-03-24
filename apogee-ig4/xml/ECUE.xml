@@ -61,25 +61,32 @@
     <codeUE>PIGU71</codeUE>
     <listeEtud>
       <Etudiant>
+        <numEtudiant>20060006</numEtudiant>
+        <nom>romand</nom>
+        <prenom>olivier</prenom>
+        <noteSession1 />
+        <noteSession2 />
+      </Etudiant>
+      <Etudiant>
         <numEtudiant>20070001</numEtudiant>
         <nom>puechlong</nom>
         <prenom>joris</prenom>
-        <noteSession1 />
-        <noteSession2 />
+        <noteSession1>8.0</noteSession1>
+        <noteSession2>9.0</noteSession2>
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070002</numEtudiant>
         <nom>jambet</nom>
         <prenom>pierre</prenom>
-        <noteSession1 />
-        <noteSession2 />
+        <noteSession1>13.0</noteSession1>
+        <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070003</numEtudiant>
         <nom>dreyer</nom>
         <prenom>quentin</prenom>
-        <noteSession1 />
-        <noteSession2 />
+        <noteSession1>3.0</noteSession1>
+        <noteSession2>2.0</noteSession2>
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070004</numEtudiant>
@@ -95,26 +102,10 @@
         <noteSession1 />
         <noteSession2 />
       </Etudiant>
-    </listeEtud>
-  </ECUE>
-  <ECUE>
-    <codeMatiere>PSTIA601</codeMatiere>
-    <libelleECUE>beurre de cacahuÃ¨tes</libelleECUE>
-    <nbHeures>2</nbHeures>
-    <responsable>walter white</responsable>
-    <codeUE>PSTIAU52</codeUE>
-    <listeEtud>
       <Etudiant>
-        <numEtudiant>20070009</numEtudiant>
-        <nom>meyer</nom>
-        <prenom>lisa</prenom>
-        <noteSession1 />
-        <noteSession2 />
-      </Etudiant>
-      <Etudiant>
-        <numEtudiant>20070010</numEtudiant>
-        <nom>asse</nom>
-        <prenom>bomb</prenom>
+        <numEtudiant>20079999</numEtudiant>
+        <nom>moreau</nom>
+        <prenom>js</prenom>
         <noteSession1 />
         <noteSession2 />
       </Etudiant>
@@ -158,25 +149,32 @@
     <codeUE>PIGU71</codeUE>
     <listeEtud>
       <Etudiant>
+        <numEtudiant>20060006</numEtudiant>
+        <nom>romand</nom>
+        <prenom>olivier</prenom>
+        <noteSession1 />
+        <noteSession2 />
+      </Etudiant>
+      <Etudiant>
         <numEtudiant>20070001</numEtudiant>
         <nom>puechlong</nom>
         <prenom>joris</prenom>
-        <noteSession1 />
-        <noteSession2 />
+        <noteSession1>6.0</noteSession1>
+        <noteSession2>8.0</noteSession2>
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070002</numEtudiant>
         <nom>jambet</nom>
         <prenom>pierre</prenom>
-        <noteSession1 />
-        <noteSession2 />
+        <noteSession1>18.0</noteSession1>
+        <noteSession2>0.0</noteSession2>
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070003</numEtudiant>
         <nom>dreyer</nom>
         <prenom>quentin</prenom>
-        <noteSession1 />
-        <noteSession2 />
+        <noteSession1>2.0</noteSession1>
+        <noteSession2>3.0</noteSession2>
       </Etudiant>
       <Etudiant>
         <numEtudiant>20070004</numEtudiant>
@@ -189,6 +187,13 @@
         <numEtudiant>20070005</numEtudiant>
         <nom>coudsi</nom>
         <prenom>julien</prenom>
+        <noteSession1 />
+        <noteSession2 />
+      </Etudiant>
+      <Etudiant>
+        <numEtudiant>20079999</numEtudiant>
+        <nom>moreau</nom>
+        <prenom>js</prenom>
         <noteSession1 />
         <noteSession2 />
       </Etudiant>
