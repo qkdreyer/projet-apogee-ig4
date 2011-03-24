@@ -34,7 +34,7 @@ public class GUIFactory extends AbstractUIFactory {
      * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
      */
     public GUI<Utilisateur> getUIUtilisateur(String dao) {
-        return new GUIUtilisateur(dao);
+        return new GUILogin(dao);
     }
 
     /**
@@ -68,10 +68,14 @@ public class GUIFactory extends AbstractUIFactory {
     }
 
     /**
-     * TODO
+     * Méthode permettant de créer une GUIStat
+     *
+     * @param s La chaine contenant le type de persistence des données (db ou xml),
+     * ainsi que la chaine contenant l'identité de l'utilisateur courrant
+     * @return L'UI instancié avec le type spécifique Departement(POJO)
      */    
-    public UI<AbstractEtudiant> getUIStat(String dao) throws Exception {
-        return new GUIStat(dao);
+    public UI<AbstractEtudiant> getUIStat(String dao, String id) throws Exception {
+        return new GUIStat(dao, id);
     }
 
     /**

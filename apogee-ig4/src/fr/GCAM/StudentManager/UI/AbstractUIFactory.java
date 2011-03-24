@@ -70,7 +70,7 @@ public abstract class AbstractUIFactory { //TODO params
      * @param s
      * @return
      */
-    public abstract UI<AbstractEtudiant> getUIStat(String dao) throws Exception;
+    public abstract UI<AbstractEtudiant> getUIStat(String dao, String id) throws Exception;
 
     /**
      * TODO

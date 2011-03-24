@@ -141,7 +141,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             ue.setBorder(javax.swing.BorderFactory.createTitledBorder(e.getCodeUE()));
 
             detail = new JButton("Détails...");
-            detail.putClientProperty("id", e.getCodeUE());
+            detail.putClientProperty("codeUE", e.getCodeUE());
             detail.addActionListener(this);
 	    ue.add(new JLabel(e.getLibelleUE()));
 	    ue.add(new JLabel(e.getResponsable()));
@@ -196,11 +196,6 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
         listeEtudSem2 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -302,7 +297,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                     .addGroup(infoSemestre1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(codeSemestre1)
-                        .addContainerGap(328, Short.MAX_VALUE))
+                        .addContainerGap(344, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSemestre1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel57)
@@ -333,7 +328,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(semestre1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ueSemestre1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+                    .addComponent(ueSemestre1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
                     .addComponent(infoSemestre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -345,7 +340,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                         .addComponent(infoSemestre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ueSemestre1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -375,7 +370,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                     .addGroup(infoSemestre2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(codeSemestre2)
-                        .addContainerGap(328, Short.MAX_VALUE))
+                        .addContainerGap(344, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSemestre2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel61)
@@ -410,7 +405,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                         .addComponent(infoSemestre2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(semestre2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(ueSemestre2, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)))
+                        .addComponent(ueSemestre2, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         semestre2Layout.setVerticalGroup(
@@ -422,7 +417,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
                         .addComponent(infoSemestre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ueSemestre2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout semestreLayout = new javax.swing.GroupLayout(semestre);
@@ -445,21 +440,6 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
 
         jMenu1.setText("Fichier");
 
-        jMenuItem7.setText("jMenuItem7");
-        jMenu1.add(jMenuItem7);
-
-        jMenuItem5.setText("jMenuItem5");
-        jMenu1.add(jMenuItem5);
-
-        jMenuItem4.setText("jMenuItem4");
-        jMenu1.add(jMenuItem4);
-
-        jMenuItem3.setText("jMenuItem3");
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem6.setText("jMenuItem6");
-        jMenu1.add(jMenuItem6);
-
         jMenuItem1.setText("Quitter");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -470,9 +450,14 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edition");
+        jMenu2.setText("Statistiques");
 
-        jMenuItem2.setText("Preferences");
+        jMenuItem2.setText("Etudiants");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -486,7 +471,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel12)
@@ -525,8 +510,17 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        try {
+            AbstractUIFactory.getUIFactory("g").getUIStat(dao, fetape.getCodeEtape());
+        } catch (Exception ex) {
+            System.out.println("Failure to create the statistical window");
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel codeEtape;
     private javax.swing.JLabel codeSemestre1;
@@ -545,11 +539,6 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -573,7 +562,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         try {
-            AbstractUIFactory.getUIFactory("g").getUIUE(dao, ((JComponent) e.getSource()).getClientProperty("id").toString());
+            AbstractUIFactory.getUIFactory("g").getUIUE(dao, ((JComponent) e.getSource()).getClientProperty("codeUE").toString());
         } catch (Exception ex) {
         }
     }

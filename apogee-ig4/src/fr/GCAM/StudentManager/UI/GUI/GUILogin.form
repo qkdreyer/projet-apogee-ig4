@@ -72,7 +72,7 @@
                           <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="errorLabel" alignment="1" pref="359" max="32767" attributes="1"/>
+                      <Component id="errorLabel" alignment="1" pref="403" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
