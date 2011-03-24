@@ -123,11 +123,9 @@ public class Etape {
 	    }
 	    for (EtudiantSemestre e : listeEtud) {
 		if (e.getNumEtudiant() == numEtud) {
-		    System.out.println("Etape.getMoy " + numEtud + " : " + moyenne/nbCredit);
 		    return moyenne/nbCredit + e.getPointJurySemestre();
 		}
 	    }
-	    System.out.println("Etape.getMoy " + numEtud + " 0");
 	    return 0;
 	}
     }
@@ -195,7 +193,7 @@ public class Etape {
     public float getMoyenne(int numEtud) {
 	for (EtudiantEtape e : listeEtud) {
 	    if (e.getNumEtudiant() == numEtud) {
-		return semestre1.getMoyenne(numEtud) + semestre2.getMoyenne(numEtud) + e.getPointJuryAnnee();
+		return (semestre1.getMoyenne(numEtud) + semestre2.getMoyenne(numEtud))/2 + e.getPointJuryAnnee();
 	    }
 	}
 	return 0;

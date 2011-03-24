@@ -72,4 +72,12 @@ public class FacadeEtape {
         manEtape.setPJSem(numSem, indexEtud, pj);
     }
 
+    public void setPJAnnee(int indexEtud, float pj) throws Exception {
+        manEtape.setPJAnnne(indexEtud, pj);
+    }
+    
+    public void setTOEIC(int indexEtud, int toeic) throws Exception {
+        manEtape.setTOEIC(indexEtud, toeic);
+    }
+ 
 }

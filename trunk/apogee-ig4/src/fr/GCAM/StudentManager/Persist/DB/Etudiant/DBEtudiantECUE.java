@@ -101,7 +101,7 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
     public ArrayList<EtudiantECUE> list(String id) throws Exception {
 	ArrayList<EtudiantECUE> listeEtud = new ArrayList<EtudiantECUE>();
 	Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	System.out.println("SELECT * from VO_EtudiantECUE where codeMatiere = '" + id + "'");
+	//System.out.println("SELECT * from VO_EtudiantECUE where codeMatiere = '" + id + "'");
 	ResultSet result = s.executeQuery("SELECT * from VO_EtudiantECUE where codeMatiere = '" + id + "'");
 	if (result.first()) {
 	    do {
