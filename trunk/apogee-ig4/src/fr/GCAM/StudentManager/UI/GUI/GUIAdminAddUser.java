@@ -55,16 +55,16 @@ public class GUIAdminAddUser extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField(20);
+        jTextField2 = new javax.swing.JTextField(20);
+        jTextField3 = new javax.swing.JTextField(40);
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList(new DefaultListModel());
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        jPasswordField1 = new javax.swing.JPasswordField(40);
+        jPasswordField2 = new javax.swing.JPasswordField(40);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -204,10 +204,10 @@ public class GUIAdminAddUser extends javax.swing.JDialog {
         try {
             ArrayList<Responsabilite> listeResp = new ArrayList<Responsabilite>();
             Utilisateur newUtil = new Utilisateur(0,
-                    jTextField2.toString(),
-                    jTextField1.toString(),
-                    jPasswordField1.toString(),
-                    jTextField3.toString(),
+                    jTextField2.getText(),
+                    jTextField1.getText(),
+                    jPasswordField1.getPassword().toString(),
+                    jTextField3.getText(),
                     listeResp);
             fUtil.create(newUtil);
         } catch (Exception ex) {
