@@ -37,10 +37,10 @@ public class ManagerUtilisateur {
     /**
      * Cette fonction affiche la liste des clés primaires (prenom.nom) des Enseignants
      */
-    public Utilisateur[] getListLogin() {
-	ArrayList<Utilisateur> listeUtil = null;
-	Utilisateur l[] = null;
-	int i = 0;
+    public Utilisateur[] getListLogin() throws Exception {
+	ArrayList<Utilisateur> listeUtil = userDAO.list();
+	//Utilisateur l[] = null;
+	/*int i = 0;
 	try {
 	    listeUtil = userDAO.list();
 	    l = new Utilisateur[listeUtil.size()];
@@ -50,7 +50,8 @@ public class ManagerUtilisateur {
 	    }
 	} catch (Exception ex) {
 	}
-	return l;
+	return l;*/
+        return listeUtil.toArray(new Utilisateur[listeUtil.size()]);
     }
 
     /**
@@ -113,6 +114,10 @@ public class ManagerUtilisateur {
             } while (r.next());
         }
         return listeRespDispo;
+    }
+
+    public void update(Utilisateur u) throws Exception {
+        userDAO.update(u);
     }
 
 }

@@ -49,4 +49,8 @@ public class FacadeUtilisateur {
         return utilisateur.getListRespDispo();
     }
 
+    public void update(Utilisateur u) throws Exception {
+        utilisateur.update(u);
+    }
+
 }

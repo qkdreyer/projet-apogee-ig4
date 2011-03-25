@@ -4,9 +4,9 @@
  */
 
 /*
- * GUIAdminAddUser.java
+ * GUIAdminModifyUser.java
  *
- * Created on 24 mars 2011, 12:32:20
+ * Created on 25 mars 2011, 18:16:28
  */
 
 package fr.GCAM.StudentManager.UI.GUI;
@@ -23,21 +23,32 @@ import javax.swing.DefaultListModel;
  *
  * @author Quentin
  */
-public class GUIAdminAddUser extends javax.swing.JDialog {
-    
+public class GUIAdminModifyUser extends javax.swing.JDialog {
+
     private FacadeUtilisateur fUtil;
     private Pattern pattern = Pattern.compile("\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b");
-
-    /** Creates new form GUIAdminAddUser */
-    public GUIAdminAddUser(java.awt.Frame parent, boolean modal, String dao) throws Exception {
+    private Utilisateur util;
+    
+    /** Creates new form GUIAdminModifyUser */
+    public GUIAdminModifyUser(java.awt.Frame parent, boolean modal, String dao, Utilisateur u) throws Exception {
         super(parent, modal);
         initComponents();
+        util = u;
         fUtil = new FacadeUtilisateur(dao);
         
-        jList1.setListData(fUtil.getListeRespDispo().toArray());
+        jTextField1.setText(u.getNom());
+        jTextField2.setText(u.getPrenom());
+        jTextField3.setText(u.getMail());
+        
+        ArrayList<Responsabilite> listeResp = new ArrayList<Responsabilite>(u.getListeResponsabilites());
+        int indiceSelection = listeResp.size() - 1;
+        listeResp.addAll(fUtil.getListeRespDispo());
+        jList1.setListData(listeResp.toArray());
+        jList1.setSelectionInterval(0, indiceSelection);
+        
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        this.setVisible(true);         
     }
 
     /** This method is called from within the constructor to
@@ -98,7 +109,7 @@ public class GUIAdminAddUser extends javax.swing.JDialog {
         jButton1.setEnabled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                onClickValid(evt);
+                jButton1onClickValid(evt);
             }
         });
 
@@ -137,15 +148,15 @@ public class GUIAdminAddUser extends javax.swing.JDialog {
                     .addComponent(jLabel6))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(jPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -182,6 +193,7 @@ public class GUIAdminAddUser extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -189,6 +201,7 @@ public class GUIAdminAddUser extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 246, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,53 +211,53 @@ public class GUIAdminAddUser extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void onClickValid(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onClickValid
+    private void jTextField1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1CaretUpdate
+        isUserValid();
+}//GEN-LAST:event_jTextField1CaretUpdate
+
+    private void jTextField2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField2CaretUpdate
+        isUserValid();
+}//GEN-LAST:event_jTextField2CaretUpdate
+
+    private void jTextField3CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField3CaretUpdate
+        isUserValid();
+}//GEN-LAST:event_jTextField3CaretUpdate
+
+    private void jButton1onClickValid(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1onClickValid
         try {
             ArrayList<Responsabilite> listeResp = new ArrayList<Responsabilite>();
-           
+            
             for (Object o : jList1.getSelectedValues()) {
                 listeResp.add((Responsabilite) o);
             }
             
-            Utilisateur newUtil = new Utilisateur(0,
-                    jTextField2.getText(),
-                    jTextField1.getText(),
-                    new String(jPasswordField1.getPassword()),
-                    jTextField3.getText(),
-                    listeResp);
-            fUtil.create(newUtil);
+            util.setNom(jTextField1.getText());
+            util.setPrenom(jTextField2.getText());
+            util.setMDP(new String(jPasswordField1.getPassword()));
+            util.setMail(jTextField3.getText());
+            util.setListeResponsabilites(listeResp);
+            
+            fUtil.update(util);
             this.dispose();
             
         } catch (Exception ex) {
             System.err.println("Erreur : " + ex);
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_onClickValid
+}//GEN-LAST:event_jButton1onClickValid
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
         isUserValid();
-    }//GEN-LAST:event_jList1ValueChanged
-
-    private void jTextField2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField2CaretUpdate
-        isUserValid();
-    }//GEN-LAST:event_jTextField2CaretUpdate
-
-    private void jTextField1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1CaretUpdate
-        isUserValid();
-    }//GEN-LAST:event_jTextField1CaretUpdate
-
-    private void jTextField3CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField3CaretUpdate
-        isUserValid();
-    }//GEN-LAST:event_jTextField3CaretUpdate
+}//GEN-LAST:event_jList1ValueChanged
 
     private void jPasswordField1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jPasswordField1CaretUpdate
         isUserValid();
-    }//GEN-LAST:event_jPasswordField1CaretUpdate
+}//GEN-LAST:event_jPasswordField1CaretUpdate
 
     private void jPasswordField2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jPasswordField2CaretUpdate
         isUserValid();
-    }//GEN-LAST:event_jPasswordField2CaretUpdate
-
+}//GEN-LAST:event_jPasswordField2CaretUpdate
+    
     public void isUserValid() {
         if ((jTextField1.getText().length() > 0)
                 && (jTextField2.getText().length() > 0)
@@ -254,7 +267,7 @@ public class GUIAdminAddUser extends javax.swing.JDialog {
                 && (jList1.getSelectedValues().length > 0)) {
             jButton1.setEnabled(true);
         }
-    }
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

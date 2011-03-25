@@ -55,51 +55,26 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 	if (obj.getListeResponsabilites() != null) {
 	    for (Responsabilite r : obj.getListeResponsabilites()) {
 		if (r.getLibelle().equals("ECUE")) {
-		    ECUE e = new DBECUE(conn).find(r.getCodeResponsabilite());
 		    String query_ecue = "UPDATE ECUE "
-			    + "SET idenseignant=" + id_reel +
-			    " WHERE codematiere ='" + e.getCodeMatiere() +"'";
+			    + "SET idenseignant = " + id_reel +
+			    " WHERE codematiere = '" + r.getCodeResponsabilite() +"'";
 		    s.execute(query_ecue);
-//		    s.execute("insert into ECUE values('"
-//			    + r.getCodeResponsabilite() + "', '"
-//			    + e.getLibelleECUE() + "', "
-//			    + e.getNbHeures() + ", "
-//			    + "utilSeq.currval, '"
-//			    + e.getCodeUE() + "')");
 		} else if (r.getLibelle().equals("UE")) {
-		    UE u = new DBUE(conn).find(r.getCodeResponsabilite());
 		    String query_ue = "UPDATE UE "
-			    + "SET idenseignant=" + id_reel +
-			    " WHERE codeUE ='" + u.getCodeUE() +"'";
+			    + "SET idenseignant = " + id_reel +
+			    " WHERE codeUE = '" + r.getCodeResponsabilite() +"'";
 		    s.execute(query_ue);
-//		    s.execute("insert into UE values('"
-//			    + r.getCodeResponsabilite() + "', "
-//			    + u.getNbECTS() + ", '"
-//			    + u.getLibelleUE() + "', "
-//			    + (u.isOptionnel() ? 't' : 'f') + ", "
-//			    + "utilSeq.currval, '"
-//			    + u.getCodeSemestre() + "')");
 		} else if (r.getLibelle().equals("Etape")) {
-		    Etape e = new DBEtape(conn).find(r.getCodeResponsabilite());
 		    String query_etape = "UPDATE Etape "
-			    + "SET idenseignant=" + id_reel +
-			    " WHERE codeEtape ='" + e.getCodeEtape() +"'";
+			    + "SET idenseignant = " + id_reel +
+			    " WHERE codeEtape = '" + r.getCodeResponsabilite() +"'";
 		    s.execute(query_etape);
-//		    s.execute("insert into Etape values('"
-//			    + r.getCodeResponsabilite() + "', '"
-//			    + "utilSeq.currval, '"
-//			    + e.getVersionDiplome() + "')");
 		} else if (r.getLibelle().equals("Departement")) {
-		    Departement d = new DBDepartement(conn).find(r.getCodeResponsabilite());
 		    String query_dep = "UPDATE Departement "
-			    + "SET idenseignant=" + id_reel +
-			    " WHERE versionDiplome ='" + d.getVersionDiplome() +"'";
+			    + "SET idenseignant = " + id_reel +
+			    " WHERE versionDiplome = '" + r.getCodeResponsabilite() +"'";
 		    s.execute(query_dep);
-//		    s.execute("insert into Departement values('"
-//			    + r.getCodeResponsabilite() + "', '"
-//			    + d.getNomDepartement() + "', '"
-//			    + d.getMnemo() + "', "
-//			    + "utilSeq.currval)");
+                            
 		}
 	    }
         }
@@ -112,7 +87,40 @@ public class DBUtilisateur extends DB<Utilisateur>  {
      * @throws Exception
      */
     public void update(Utilisateur obj) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        s.executeUpdate("UPDATE Enseignant SET "
+                + "nom = '" + obj.getNom() + "', "
+                + "prenom = '" + obj.getPrenom() + "', "
+                + "mail = '" + obj.getMail() + "', " 
+                + "mdp = '" + SHA1.getHash(obj.getMDP()) + "' "
+                + "where idEnseignant = " + obj.getIdEnseignant());
+        
+        if (obj.getListeResponsabilites() != null) {
+	    for (Responsabilite r : obj.getListeResponsabilites()) {
+		if (r.getLibelle().equals("ECUE")) {
+		    String query_ecue = "UPDATE ECUE "
+			    + "SET idenseignant = " + obj.getIdEnseignant() +
+			    " WHERE codematiere = '" + r.getCodeResponsabilite() +"'";
+		    s.execute(query_ecue);
+		} else if (r.getLibelle().equals("UE")) {
+		    String query_ue = "UPDATE UE "
+			    + "SET idenseignant = " + obj.getIdEnseignant() +
+			    " WHERE codeUE = '" + r.getCodeResponsabilite() +"'";
+		    s.execute(query_ue);
+		} else if (r.getLibelle().equals("Etape")) {
+		    String query_etape = "UPDATE Etape "
+			    + "SET idenseignant = " + obj.getIdEnseignant() +
+			    " WHERE codeEtape = '" + r.getCodeResponsabilite() +"'";
+		    s.execute(query_etape);
+		} else if (r.getLibelle().equals("Departement")) {
+		    String query_dep = "UPDATE Departement "
+			    + "SET idenseignant = " + obj.getIdEnseignant() +
+			    " WHERE versionDiplome = '" + r.getCodeResponsabilite() +"'";
+		    s.execute(query_dep);
+                            
+		}
+	    }
+        }
     }
 
     /**
@@ -191,9 +199,10 @@ public class DBUtilisateur extends DB<Utilisateur>  {
                         result.getString("libelle")));
             } while (result.next());
             util.setListeResponsabilites(listeResp);
+            s.close();
             return util;
         } else
-            return null;   
+            return null;  
     }
 
     /**
