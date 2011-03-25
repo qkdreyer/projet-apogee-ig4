@@ -20,7 +20,7 @@ public class SHA1 {
 
     public static void main(String[] args) {
         try {
-            System.out.println(getHash("testPass"));
+            System.out.println(getHash("azerty"));
         } catch (NoSuchAlgorithmException ex) {
         } catch (UnsupportedEncodingException ex) {
         }

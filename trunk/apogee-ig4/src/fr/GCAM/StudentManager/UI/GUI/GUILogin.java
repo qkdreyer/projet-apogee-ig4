@@ -168,7 +168,7 @@ public class GUILogin extends GUI<Utilisateur> {
 
 	    //identifier l'utilisateur, et récupère nouvelle fenêtre
 	    HashMap<String, String> resp = facadeUtilisateur.login(identifiant.getText().split("\\.")[0],
-                    identifiant.getText().split("\\.")[1], mdp.getText());
+                    identifiant.getText().split("\\.")[1], new String(mdp.getPassword()));
 	    if (resp == null) {
 		errorLabel.setText("Erreur d'identifiant ou de mot de passe");
 	    } else {

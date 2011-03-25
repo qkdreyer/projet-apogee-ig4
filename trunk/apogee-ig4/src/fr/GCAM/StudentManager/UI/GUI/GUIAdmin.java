@@ -8,7 +8,6 @@
  *
  * Created on 18 févr. 2011, 17:54:58
  */
-
 package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.Facade.FacadeAdmin;
@@ -33,9 +32,9 @@ public class GUIAdmin extends GUI<Utilisateur> {
         initComponents();
         this.dao = dao;
         fUtil = new FacadeUtilisateur(dao);
-        
-        jList1.setListData(fUtil.getListLogin());
-        
+
+        getListLogin();
+
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
@@ -197,10 +196,8 @@ public class GUIAdmin extends GUI<Utilisateur> {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
-            fUtil.delete((Utilisateur)jList1.getSelectedValue());
-            jList1.setListData(fUtil.getListLogin());
-            jButton4.setEnabled(false);
-            jButton5.setEnabled(false);
+            fUtil.delete((Utilisateur) jList1.getSelectedValue());
+            getListLogin();
         } catch (Exception ex) {
             System.err.println("Erreur : " + ex);
             ex.printStackTrace();
@@ -208,22 +205,35 @@ public class GUIAdmin extends GUI<Utilisateur> {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        //TODO Modify
+        try {
+            new GUIAdminModifyUser(this, true, dao, (Utilisateur) jList1.getSelectedValue());
+            getListLogin();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        jButton4.setEnabled(true);
-        jButton5.setEnabled(true);
+        if (evt.getValueIsAdjusting() == false) {
+            if (jList1.getSelectedIndex() == -1) {
+                jButton4.setEnabled(false);
+                jButton5.setEnabled(false);
+            } else {
+                jButton4.setEnabled(true);
+                jButton5.setEnabled(true);
+            }
+        }
+
     }//GEN-LAST:event_jList1ValueChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             new GUIAdminAddUser(this, true, dao);
+            getListLogin();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -240,4 +250,8 @@ public class GUIAdmin extends GUI<Utilisateur> {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
+    private void getListLogin() {
+        System.out.println("fUtil.getListLogin().length = " + fUtil.getListLogin().length);
+        jList1.setListData(fUtil.getListLogin());
+    }
 }
