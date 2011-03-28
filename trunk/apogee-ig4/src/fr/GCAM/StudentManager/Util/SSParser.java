@@ -48,9 +48,6 @@ public class SSParser {
                 modifyECUE(e, file);
             }
         }
-
-
-
     }
 
     private static void modifyECUE(ECUE e, File filename) throws Exception {
@@ -72,5 +69,6 @@ public class SSParser {
                 etud.modifyNoteSession1(note1);
             }
         }
+        br.close();
     }
 }

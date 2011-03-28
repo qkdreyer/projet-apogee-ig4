@@ -13,10 +13,12 @@ package fr.GCAM.StudentManager.UI.GUI;
 import fr.GCAM.StudentManager.Business.Facade.FacadeAdmin;
 import fr.GCAM.StudentManager.Business.Facade.FacadeUtilisateur;
 import fr.GCAM.StudentManager.POJO.Utilisateur;
+import fr.GCAM.StudentManager.Util.SQL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,7 +30,7 @@ public class GUIAdmin extends GUI<Utilisateur> {
     private String dao;
 
     /** Creates new form Admin */
-    public GUIAdmin(String dao) {
+    public GUIAdmin(String dao) throws Exception {
         initComponents();
         this.dao = dao;
         fUtil = new FacadeUtilisateur(dao);
@@ -74,7 +76,11 @@ public class GUIAdmin extends GUI<Utilisateur> {
         });
 
         jButton2.setText("Exporter données APOGEE");
-        jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Utilisateurs"));
 
@@ -146,11 +152,6 @@ public class GUIAdmin extends GUI<Utilisateur> {
         jMenu2.setText("Edit");
 
         jMenuItem2.setText("jMenuItem2");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -186,12 +187,14 @@ public class GUIAdmin extends GUI<Utilisateur> {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO export
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //TODO import
+        try {
+            SQL.imports();
+            JOptionPane.showMessageDialog(this, "Importation terminée !");
+        } catch (Exception ex) {
+            System.err.println("Exception : " + ex);
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -223,7 +226,6 @@ public class GUIAdmin extends GUI<Utilisateur> {
                 jButton5.setEnabled(true);
             }
         }
-
     }//GEN-LAST:event_jList1ValueChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -234,6 +236,17 @@ public class GUIAdmin extends GUI<Utilisateur> {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            SQL.extract();
+            JOptionPane.showMessageDialog(this, "Extraction terminée ! (" + System.getProperty("user.dir") + "\\extract.sql)");
+        } catch (Exception ex) {
+            System.err.println("Exception : " + ex);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -250,7 +263,7 @@ public class GUIAdmin extends GUI<Utilisateur> {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    private void getListLogin() {
+    private void getListLogin() throws Exception {
         System.out.println("fUtil.getListLogin().length = " + fUtil.getListLogin().length);
         jList1.setListData(fUtil.getListLogin());
     }

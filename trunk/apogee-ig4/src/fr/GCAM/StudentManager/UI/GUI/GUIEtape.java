@@ -121,7 +121,7 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             ue.setBorder(javax.swing.BorderFactory.createTitledBorder(e.getCodeUE()));
 
             detail = new JButton("Détails...");
-            detail.putClientProperty("id", e.getCodeUE());
+            detail.putClientProperty("codeUE", e.getCodeUE());
             detail.addActionListener(this);
 
 	    top = new JPanel(new GridLayout(2,1));
@@ -143,9 +143,14 @@ public class GUIEtape extends GUI<Etape> implements ActionListener {
             detail = new JButton("Détails...");
             detail.putClientProperty("codeUE", e.getCodeUE());
             detail.addActionListener(this);
-	    ue.add(new JLabel(e.getLibelleUE()));
-	    ue.add(new JLabel(e.getResponsable()));
-            ue.add(detail);
+
+	    top = new JPanel(new GridLayout(2,1));
+	    top.add(new JLabel(e.getLibelleUE()));
+	    top.add(new JLabel(e.getResponsable()));
+	    bot = new JPanel();
+            bot.add(detail);
+	    ue.add(top);
+	    ue.add(bot);            
 
             ueSemestre2.add(ue);
         }

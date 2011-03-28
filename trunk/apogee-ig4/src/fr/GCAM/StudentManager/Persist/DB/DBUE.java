@@ -83,6 +83,7 @@ public class DBUE extends DB<UE> {
 	    ue.setListeECUE(new DBECUE(conn).list(result.getString("codeUE")));
 	    ue.setListeEtud(new DBEtudiantUE(conn).list(result.getString("codeUE")));
         }
+        s.close();
         return ue;
     }
 
@@ -104,6 +105,7 @@ public class DBUE extends DB<UE> {
                         new DBECUE(conn).list(result.getString("codeUE"))));
 	    } while (result.next());
 	}
+        s.close();
 	return list;
     }
 }

@@ -93,6 +93,6 @@ insert into ChoixUE values('PIGU71',20070003);
 	
 --Sem Level
 insert into PointsJury values(10,20070001,71);
-insert into Etranger values(12.7, 20060006,81 );
+insert into Etranger values(12.7, 20060006,71 );
 insert into Redoublant values(3,20070003,71);
 	

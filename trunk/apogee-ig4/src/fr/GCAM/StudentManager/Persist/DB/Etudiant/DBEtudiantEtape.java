@@ -77,6 +77,7 @@ public class DBEtudiantEtape extends DB<EtudiantEtape> {
 	    e.setPointJuryAnnee(result.getInt("pointJuryAnnee"));
             e.setScoreToeic(result.getInt("scoreToeic"));
         }
+        s.close();
         return e;
     }
 
@@ -115,6 +116,7 @@ public class DBEtudiantEtape extends DB<EtudiantEtape> {
 			result.getFloat("pointJuryAnnee")));
 	    } while (result.next());
 	}
+        s.close();
 	return listeEtud;
     }
 

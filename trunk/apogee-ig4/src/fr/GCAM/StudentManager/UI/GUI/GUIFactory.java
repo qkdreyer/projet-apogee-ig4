@@ -33,7 +33,7 @@ public class GUIFactory extends AbstractUIFactory {
      * @param s La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
      */
-    public GUI<Utilisateur> getUIUtilisateur(String dao) {
+    public GUI<Utilisateur> getUIUtilisateur(String dao) throws Exception {
         return new GUILogin(dao);
     }
 

@@ -33,7 +33,7 @@ public class FacadeUtilisateur {
         return utilisateur.login(nom, prenom, mdp);
     }
 
-    public Utilisateur[] getListLogin() {
+    public Utilisateur[] getListLogin() throws Exception {
         return utilisateur.getListLogin();
     }
     

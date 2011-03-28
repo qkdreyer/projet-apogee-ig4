@@ -42,6 +42,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 	} else {
 	    id_reel = 0;
 	}
+        s_id.close();
 	
 	String str = "insert into Enseignant values(" + id_reel + ", '"
                 + SHA1.getHash(obj.getMDP()) + "', '"
@@ -78,6 +79,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 		}
 	    }
         }
+        s.close();
     }
 
     /**
@@ -121,6 +123,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 		}
 	    }
         }
+        s.close();
     }
 
     /**
@@ -147,6 +150,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 	    }
 	}
 	s.execute("delete from Enseignant where idEnseignant = " + obj.getIdEnseignant());
+        s.close();
     }
 
     /**
@@ -201,8 +205,11 @@ public class DBUtilisateur extends DB<Utilisateur>  {
             util.setListeResponsabilites(listeResp);
             s.close();
             return util;
-        } else
-            return null;  
+        } else {
+            s.close();
+            return null;
+        }
+            
     }
 
     /**
@@ -235,10 +242,12 @@ public class DBUtilisateur extends DB<Utilisateur>  {
                         result.getString("codeResponsabilite"),
                         result.getString("libelle")));
             } while (result.next());
+            s.close();
             return util;
-        } else
+        } else {
+            s.close();
             return null;
-        
+        }
     }
 
     /**
@@ -260,6 +269,7 @@ public class DBUtilisateur extends DB<Utilisateur>  {
 		}
             } while (result.next());
         }
+        s.close();
         return listeUtil;
     }
 }

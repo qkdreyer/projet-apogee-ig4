@@ -1,5 +1,8 @@
 package fr.GCAM.StudentManager.UI;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Classe principale du projet. C'est ici que l'on va regarder les deux arguments
  * obligatoires qui doivent etre passés pour l'éxecution du programme.
@@ -12,7 +15,11 @@ public class Main {
         if (args.length > 1
                 && (args[0].equals("c") || args[0].equals("g"))
                 && (args[1].equals("db") || args[1].equals("xml"))) {
-            AbstractUIFactory.getUIFactory(args[0]).getUIUtilisateur(args[1]);
+            try {
+                AbstractUIFactory.getUIFactory(args[0]).getUIUtilisateur(args[1]);
+            } catch (Exception ex) {
+                System.err.println("Exeception : " + ex);
+            }
         } else {
             System.err.println("Arguments invalides (Format : c/g db/xml)");
         }

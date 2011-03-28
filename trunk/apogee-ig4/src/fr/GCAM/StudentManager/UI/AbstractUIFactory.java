@@ -27,7 +27,7 @@ public abstract class AbstractUIFactory { //TODO params
      * @return Renvoie l'UI Utilisateur, connecté au stockage des données définies
      * par s.
      */
-    public abstract UI<Utilisateur> getUIUtilisateur(String dao);
+    public abstract UI<Utilisateur> getUIUtilisateur(String dao) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour une ECUE

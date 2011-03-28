@@ -78,9 +78,11 @@ public class DBECUE extends DB<ECUE> {
      */
     private void updateNote1(int numEtud, String codeMatiere, float noteSession1) throws Exception {
         System.out.println(numEtud + " " + codeMatiere + " " + " = " + noteSession1);
-        this.conn.createStatement().executeUpdate("UPDATE VO_EtudiantECUE SET noteSession1 = " + noteSession1
+        Statement s = this.conn.createStatement();
+        s.executeUpdate("UPDATE VO_EtudiantECUE SET noteSession1 = " + noteSession1
                 + " WHERE codeMatiere = '" + codeMatiere
                 + "' and numEtudiant = " + numEtud);
+        s.close();
     }
 
     /**
@@ -94,9 +96,11 @@ public class DBECUE extends DB<ECUE> {
      * @throws Exception
      */
     private void updateNote2(int numEtud, String codeMatiere, float noteSession2) throws Exception {
-        this.conn.createStatement().executeUpdate("UPDATE VO_EtudiantECUE SET noteSession2 = " + noteSession2
+        Statement s = this.conn.createStatement();
+        s.executeUpdate("UPDATE VO_EtudiantECUE SET noteSession2 = " + noteSession2
                 + " WHERE codeMatiere = '" + codeMatiere
                 + "' and numEtudiant = " + numEtud);
+        s.close();
     }
 
     /**
@@ -133,6 +137,7 @@ public class DBECUE extends DB<ECUE> {
             ecue.setCodeUE(result.getString("codeUE"));
 	    ecue.setListeEtud(new DBEtudiantECUE(conn).list(result.getString("codeMatiere")));
         }
+        s.close();
         return ecue;
     }
 
@@ -154,6 +159,7 @@ public class DBECUE extends DB<ECUE> {
 			new DBEtudiantECUE(conn).list(result.getString("codeMatiere"))));
 	    } while (result.next());
 	}
+        s.close();
 	return list;
     }
 

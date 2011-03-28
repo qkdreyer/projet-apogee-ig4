@@ -75,6 +75,7 @@ public class DBEtudiantSemestre extends DB<EtudiantSemestre> {
 	    e.setPrenom(result.getString("prenom"));
 	    e.setMail(result.getString("mail"));
         }
+        s.close();
         return e;
     }
 
@@ -114,6 +115,7 @@ public class DBEtudiantSemestre extends DB<EtudiantSemestre> {
 			result.getFloat("moyenneRedoublant")));
 	    } while (result.next());
 	}
+        s.close();
 	return listeEtud;
     }
 

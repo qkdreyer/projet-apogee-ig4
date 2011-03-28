@@ -73,6 +73,7 @@ public class DBDepartement extends DB<Departement> {
             dept.setMnemo(result.getString("mnemo"));
 	    dept.setListeEtape(new DBEtape(conn).list(result.getString("versionDiplome")));
         }
+        s.close();
         return dept;
     }
 
