@@ -76,7 +76,7 @@ public class DBEtudiantUE extends DB<EtudiantUE> {
 	    e.setPrenom(result.getString("prenom"));
 	    e.setMail(result.getString("mail"));
         }
-
+        s.close();
         return e;
     }
 
@@ -115,6 +115,7 @@ public class DBEtudiantUE extends DB<EtudiantUE> {
 			(result.getString("apdj").equals("t") ? true : false)));
 	    } while (result.next());
 	}
+        s.close();
 	return listeEtud;
     }
 

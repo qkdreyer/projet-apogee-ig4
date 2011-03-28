@@ -26,7 +26,7 @@ public class GUILogin extends GUI<Utilisateur> {
     private String dao;
 
     /** Creates new form Login */
-    public GUILogin(String dao) {
+    public GUILogin(String dao) throws Exception {
 	initComponents();
 	this.dao = dao;
 	facadeUtilisateur = new FacadeUtilisateur(dao);

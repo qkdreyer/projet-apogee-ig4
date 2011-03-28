@@ -114,6 +114,7 @@ public class DBEtape extends DB<Etape> {
                 etape.getSemestre(i).setListeEtud(new DBEtudiantSemestre(conn).list(result.getString("codeSemestre")));
             } while (result.next());
         }
+        s.close();
         return etape;
     }
 
@@ -129,9 +130,9 @@ public class DBEtape extends DB<Etape> {
         if (result.first()) {
             do {
                 list.add(new Etape(result.getString("codeEtape"), result.getString("versionEtape")));
-                //System.out.println(new Etape(result.getString("codeEtape"), result.getString("versionEtape")).toString());
             } while (result.next());
         }
+        s.close();
         return list;
     }
 }

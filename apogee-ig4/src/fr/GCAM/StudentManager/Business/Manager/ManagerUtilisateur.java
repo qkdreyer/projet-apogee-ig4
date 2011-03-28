@@ -113,6 +113,7 @@ public class ManagerUtilisateur {
                         r.getString("libelle")));
             } while (r.next());
         }
+        s.close();
         return listeRespDispo;
     }
 

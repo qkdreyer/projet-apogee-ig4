@@ -79,6 +79,7 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
 	    e.setNoteSession1(result.getFloat("noteSession1"));
 	    e.setNoteSession2(result.getFloat("noteSession2"));
 	}
+        s.close();
 	return e;
     }
 
@@ -118,6 +119,7 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
 			result.getFloat("noteSession2")));
 	    } while (result.next());
 	}
+        s.close();
 	return listeEtud;
     }
 }
