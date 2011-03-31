@@ -37,7 +37,7 @@ public class GUIECUE extends GUI<ECUE> {
         jTextField1.setText(fECUE.getCodeMatiere());
         jTextField3.setText(Integer.toString(fECUE.getNbHeures()));
 
-	//jTable1.setC
+	
         jTable1.setModel(new ApogeeTableModel(
                 new String[]{"Nom", "Prenom", "Note Session 1", "Note Session 2"},
                 fECUE.getArrayOfEtudiantECUE()));

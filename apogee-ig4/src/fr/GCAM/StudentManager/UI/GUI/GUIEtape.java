@@ -14,21 +14,16 @@ import fr.GCAM.StudentManager.Business.Facade.FacadeEtape;
 import fr.GCAM.StudentManager.POJO.Etape;
 import fr.GCAM.StudentManager.POJO.UE;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
