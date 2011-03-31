@@ -114,6 +114,12 @@ public class Etape {
 	    return str;
 	}
 
+	/**
+	 * Cette methode calcule la moyenne de l'etudiant ayant pour numero
+	 * d'etudiant : numetud
+	 * @param int numEtud : Le numero d'etudiant dont on veut la moyenne
+	 * @return La moyenne du semestre de l'etudiant
+	 */
 	public float getMoyenne(int numEtud) {
 	    float moyenne = 0;
 	    float nbCredit = 0;
@@ -123,7 +129,13 @@ public class Etape {
 	    }
 	    for (EtudiantSemestre e : listeEtud) {
 		if (e.getNumEtudiant() == numEtud) {
-		    return moyenne/nbCredit + e.getPointJurySemestre();
+		    if (e.getMoyEtranger() > 0 ) {
+			return e.getMoyEtranger();
+		    } else if (e.getMoyRedoublant() > 0) {
+			return e.getMoyRedoublant();
+		    } else {
+			return moyenne/nbCredit + e.getPointJurySemestre();
+		    }
 		}
 	    }
 	    return 0;
