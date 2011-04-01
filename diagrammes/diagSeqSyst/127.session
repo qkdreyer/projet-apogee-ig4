@@ -1,17 +1,13 @@
-window_sizes 580 762 171 403 533 82
+window_sizes 1192 778 239 947 533 82
 diagrams
   active  sequencediagram_ref 128255 // sequenceECUE
-    403 606 100 4 0 0
+    947 620 100 4 288 0
   sequencediagram_ref 128383 // sequenceUE
-    704 496 100 4 0 0
-  sequencediagram_ref 128511 // sequenceSemestre
     704 496 100 4 0 0
   sequencediagram_ref 128639 // sequenceAnnee
     704 496 100 4 0 0
-  sequencediagram_ref 128767 // sequenceDepartement
-    704 496 100 4 0 0
   sequencediagram_ref 128895 // sequenceRoot
-    704 496 100 4 0 0
+    704 496 100 4 599 0
 end
 show_stereotypes
 selected sequencediagram_ref 128255 // sequenceECUE
