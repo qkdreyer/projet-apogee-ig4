@@ -5,8 +5,8 @@
 
 package fr.GCAM.StudentManager.UI.GUI;
 
-import fr.GCAM.StudentManager.POJO.*;
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
+import fr.GCAM.StudentManager.Business.POJO.*;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import fr.GCAM.StudentManager.UI.UI;
 
@@ -20,7 +20,7 @@ public class GUIFactory extends AbstractUIFactory {
     /**
      * Méthode permettant de créer une GUIECUE
      *
-     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @param dao La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique ECUE(POJO)
      */
     public GUI<ECUE> getUIECUE(String dao, String id) throws Exception {
@@ -30,7 +30,7 @@ public class GUIFactory extends AbstractUIFactory {
     /**
      * Méthode permettant de créer une GUIUtilisateur
      *
-     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @param dao La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
      */
     public GUI<Utilisateur> getUIUtilisateur(String dao) throws Exception {
@@ -40,7 +40,7 @@ public class GUIFactory extends AbstractUIFactory {
     /**
      * Méthode permettant de créer une GUIUE
      *
-     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @param dao La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique UE(POJO)
      */
     public GUI<UE> getUIUE(String dao, String id) throws Exception {
@@ -50,7 +50,7 @@ public class GUIFactory extends AbstractUIFactory {
     /**
      * Méthode permettant de créer une GUIEtape
      *
-     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @param dao La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Etape(POJO)
      */
     public GUI<Etape> getUIEtape(String dao, String id) throws Exception {
@@ -60,7 +60,7 @@ public class GUIFactory extends AbstractUIFactory {
     /**
      * Méthode permettant de créer une GUIDepartement
      *
-     * @param s La chaine contenant le type de persistence des données (db ou xml)
+     * @param dao La chaine contenant le type de persistence des données (db ou xml)
      * @return L'UI instancié avec le type spécifique Departement(POJO)
      */
     public GUI<Departement> getUIDepartement(String dao, String id) throws Exception {
@@ -70,7 +70,7 @@ public class GUIFactory extends AbstractUIFactory {
     /**
      * Méthode permettant de créer une GUIStat
      *
-     * @param s La chaine contenant le type de persistence des données (db ou xml),
+     * @param dao La chaine contenant le type de persistence des données (db ou xml),
      * ainsi que la chaine contenant l'identité de l'utilisateur courrant
      * @return L'UI instancié avec le type spécifique Departement(POJO)
      */    
@@ -79,7 +79,11 @@ public class GUIFactory extends AbstractUIFactory {
     }
 
     /**
-     * TODO
+     * Méthode permettant de créer une GUIUtilisateur
+     *
+     * @param dao La chaine contenant le type de persistence des données (db ou xml),
+     * ainsi que la chaine contenant l'identité de l'utilisateur courrant
+     * @return L'UI instancié avec le type spécifique Utilisateur(POJO)
      */
     public UI<Utilisateur> getUIAdmin(String dao) throws Exception {
         return new GUIAdmin(dao);

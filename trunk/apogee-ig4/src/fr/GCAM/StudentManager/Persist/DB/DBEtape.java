@@ -4,9 +4,9 @@
  */
 package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.POJO.Etape;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantEtape;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantSemestre;
+import fr.GCAM.StudentManager.Business.POJO.Etape;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantEtape;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantSemestre;
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantEtape;
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantSemestre;
 import java.sql.Connection;
@@ -118,10 +118,21 @@ public class DBEtape extends DB<Etape> {
         return etape;
     }
 
+    /**
+     * Methode permettant de lister les Etapes
+     * @return
+     * @throws Exception
+     */
     public ArrayList<Etape> list() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant de lister les Etapes ayant pour Departement parent id
+     * @param id le departement parent des etapes
+     * @return La liste des etape ayant pour departement parent id
+     * @throws Exception
+     */
     ArrayList<Etape> list(String id) throws Exception {
         System.out.println("codeEtape = " + id);
         ArrayList<Etape> list = new ArrayList<Etape>();

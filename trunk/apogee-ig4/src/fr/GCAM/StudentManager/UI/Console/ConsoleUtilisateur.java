@@ -9,7 +9,7 @@ import fr.GCAM.StudentManager.Business.Facade.FacadeDepartement;
 import fr.GCAM.StudentManager.Business.Facade.FacadeECUE;
 import fr.GCAM.StudentManager.Business.Facade.FacadeEtape;
 import fr.GCAM.StudentManager.Business.Facade.FacadeUE;
-import fr.GCAM.StudentManager.POJO.Utilisateur;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -25,8 +25,9 @@ public class ConsoleUtilisateur extends Console<Utilisateur> {
 	this.accept(dao);
     }
 
-     /**
+    /**
      * This method waits for input from the console. Once it is received, it sends it to the client's message handler.
+     * @param dao Le type de dao associe (db ou xml)
      */
     private void accept(String dao) {
         try {
@@ -43,6 +44,14 @@ public class ConsoleUtilisateur extends Console<Utilisateur> {
         }
     }
 
+    /**
+     * Methode traitant les messages ecrits dans la console
+     * @param message le message entre dans la console
+     * @param dao le type de dao souhaite (db ou xml)
+     * @return Renvoie la chaine de caractere correspondant au traitement associe
+     * au type de message
+     * @throws Exception
+     */
     private String handleMessage(String message, String dao) throws Exception {
         String[] msg = message.split(" ");
         ArrayList<String> userInformation = new ArrayList<String>();
@@ -70,6 +79,11 @@ public class ConsoleUtilisateur extends Console<Utilisateur> {
         return "";
     }
 
+    /**
+     * Methode affichant l'aide, la liste des commandes que l'on peut saisir dans
+     * la console
+     * @return la liste des commandes que l'on peut saisir dans la console
+     */
     private String help() {
         return "#findECUE 'ecue'"
                 + "#findUE 'ue'"
@@ -78,6 +92,9 @@ public class ConsoleUtilisateur extends Console<Utilisateur> {
                 + "#quit";
     }
 
+    /**
+     * Methode mettant fin a l'execution de la console
+     */
     private void quit() {
         System.exit(1);
     }

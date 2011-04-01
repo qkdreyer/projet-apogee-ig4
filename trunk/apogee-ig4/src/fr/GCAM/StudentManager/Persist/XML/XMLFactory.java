@@ -6,8 +6,8 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.Persist.XML.Etudiant.XMLEtudiantECUE;
-import fr.GCAM.StudentManager.POJO.*;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Business.POJO.*;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 

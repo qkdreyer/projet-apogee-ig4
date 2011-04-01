@@ -6,7 +6,7 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import org.junit.Ignore;
-import fr.GCAM.StudentManager.POJO.Utilisateur;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;

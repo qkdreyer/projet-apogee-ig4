@@ -7,8 +7,8 @@ package fr.GCAM.StudentManager.Persist.DB;
 
 import org.junit.Ignore;
 import java.sql.Connection;
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.AbstractEtudiant;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
 import java.util.ArrayList;
 import org.junit.After;
@@ -91,6 +91,7 @@ public class DBEtudiantECUETest {
     /**
      * Test of find method, of class DBEtudiantECUE.
      */
+    @Ignore
     @Test
     public void testFind() throws Exception {
 	System.out.println("find DBEtudiantECUE");
@@ -102,6 +103,7 @@ public class DBEtudiantECUETest {
     /**
      * Test of list method, of class DBEtudiantECUE.
      */
+    @Ignore
     @Test
     public void testList() throws Exception {
 	System.out.println("list DBEtudiantECUE");

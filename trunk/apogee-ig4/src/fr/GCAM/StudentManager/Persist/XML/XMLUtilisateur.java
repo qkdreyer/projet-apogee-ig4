@@ -6,8 +6,8 @@ package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.Util.JDOM;
 import fr.GCAM.StudentManager.Util.SHA1;
-import fr.GCAM.StudentManager.POJO.Utilisateur;
-import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur.Responsabilite;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.jdom.input.SAXBuilder;
@@ -87,7 +87,7 @@ public class XMLUtilisateur extends XML<Utilisateur> {
      * - Soit un ArrayList de String au format {Prenom, Nom, MDP}
      * La fonction delegue le travail en fonction du type de parametre
      *
-     * @param id(int ou ArrayList<String>) L'id de l'Etape que l'on souhaite charger
+     * @param id (int ou ArrayList<String>) L'id de l'Etape que l'on souhaite charger
      * @return L'Etape correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
@@ -172,6 +172,11 @@ public class XMLUtilisateur extends XML<Utilisateur> {
 	return util;
     }
 
+    /**
+     * Methode ranvoyant la liste des Utilisateurs
+     * @return la liste des Utilisateurs
+     * @throws Exception
+     */
     public ArrayList<Utilisateur> list() throws Exception {
 	//TODO 3 listUtil
 	return null;

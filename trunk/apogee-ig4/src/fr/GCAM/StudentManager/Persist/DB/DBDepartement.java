@@ -5,7 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.POJO.Departement;
+import fr.GCAM.StudentManager.Business.POJO.Departement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -58,7 +58,7 @@ public class DBDepartement extends DB<Departement> {
      * REQUETE FAUSSE, La description concerne le fonctionnement théorique de la méthode
      *
      * La fonction, renvoie un POJO Departement, a partir de l'id passé en parametre.<br>
-     * @param id(String) La versionDiplome du département que l'on souhaite charger
+     * @param id (String) La versionDiplome du département que l'on souhaite charger
      * @return Le departement correspondant à la ligne trouvé dans la BD a partir de l'id
      * @throws Exception
      */
@@ -77,6 +77,11 @@ public class DBDepartement extends DB<Departement> {
         return dept;
     }
 
+    /**
+     * Methode permettant de lister les departements
+     * @return La liste des departements
+     * @throws Exception
+     */
     public ArrayList<Departement> list() throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }

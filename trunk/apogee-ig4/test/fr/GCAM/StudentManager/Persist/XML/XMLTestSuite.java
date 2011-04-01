@@ -6,8 +6,8 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.Util.JDOM;
-import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Business.POJO.ECUE;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import java.io.File;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -136,7 +136,7 @@ public class XMLTestSuite {
     @AfterClass
     public static void tearDownClass() throws Exception {
 	System.out.println("tearDownClass");
-	//TODO : supprimer les données rajoutées
+	//suppression les données rajoutées
 	Document d = new SAXBuilder().build("xml/ECUE.xml");
 	d.getRootElement().getChildren("ECUE").remove( d.getRootElement().getChildren("ECUE").size() - 1 );
 

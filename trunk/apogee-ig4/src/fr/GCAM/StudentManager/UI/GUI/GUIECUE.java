@@ -11,7 +11,7 @@
 package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.Facade.FacadeECUE;
-import fr.GCAM.StudentManager.POJO.ECUE;
+import fr.GCAM.StudentManager.Business.POJO.ECUE;
 import fr.GCAM.StudentManager.Util.SSParser;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -20,7 +20,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Classe definissant la GUI de l'ECUE
  * @author pierre
  */
 public class GUIECUE extends GUI<ECUE> {

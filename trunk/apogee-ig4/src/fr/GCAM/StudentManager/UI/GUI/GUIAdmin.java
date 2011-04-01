@@ -10,18 +10,13 @@
  */
 package fr.GCAM.StudentManager.UI.GUI;
 
-import fr.GCAM.StudentManager.Business.Facade.FacadeAdmin;
 import fr.GCAM.StudentManager.Business.Facade.FacadeUtilisateur;
-import fr.GCAM.StudentManager.POJO.Utilisateur;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur;
 import fr.GCAM.StudentManager.Util.SQL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Classe definissant la GUI de l'Admin
  * @author pierre
  */
 public class GUIAdmin extends GUI<Utilisateur> {

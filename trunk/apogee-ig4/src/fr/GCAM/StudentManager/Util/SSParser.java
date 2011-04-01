@@ -4,8 +4,8 @@
  */
 package fr.GCAM.StudentManager.Util;
 
-import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Business.POJO.ECUE;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -14,13 +14,20 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 
 /**
- *
+ * Classe permettant de manipuler les fichiers SpreadSheets contenant les notes
+ * des etudiants pour une ECUE.
  * @author Quentin
  */
 public class SSParser {
 
     public static String sep = ";;";
 
+    /**
+     * Methode creant un fichier csv squelette qui sera utilisé par l'enseignant
+     * pour y renseigner les notes des etudiants.
+     * @param e l'ecue pour laquelle le fichier doit etre cree
+     * @throws IOException
+     */
     public static void createSS(ECUE e) throws IOException {
         FileWriter fw = new FileWriter("spreadsheet.csv");
         fw.write(e.getCodeMatiere() + sep + "Note session 1" + sep + "Note session 2\n");
@@ -31,6 +38,12 @@ public class SSParser {
         fw.close();
     }
 
+    /**
+     * Methode permettant de charger un fichier csv, cree au prealable avec la methode
+     * createSS()
+     * @param e l'ecue pour lesquels les notes seront prises en compte.
+     * @throws Exception
+     */
     public static void loadSS(ECUE e) throws Exception {
         JFileChooser jfc = new JFileChooser();
         SSFilter filtreCSV = new SSFilter(".csv", "Fichier Comma Separeted Values");
@@ -50,6 +63,12 @@ public class SSParser {
         }
     }
 
+    /**
+     * Sous methode utilisee par loadSS() permettant de modifier les notes pour une ECUE
+     * @param e l'ecue a modifier
+     * @param filename le fichier csv contenant les notes
+     * @throws Exception
+     */
     private static void modifyECUE(ECUE e, File filename) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line = br.readLine();

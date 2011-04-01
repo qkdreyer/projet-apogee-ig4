@@ -11,8 +11,8 @@
 package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.Facade.FacadeUE;
-import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.UE;
+import fr.GCAM.StudentManager.Business.POJO.ECUE;
+import fr.GCAM.StudentManager.Business.POJO.UE;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -25,7 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- *
+ * Classe definissant la GUI de l'UE
  * @author pierre
  */
 public class GUIUE extends GUI<UE> implements ActionListener {

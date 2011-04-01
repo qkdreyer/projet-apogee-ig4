@@ -12,10 +12,10 @@
 package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.Facade.FacadeEtape;
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.AbstractEtudiant;
 
 /**
- *
+ * Classe definissant la GUI des stats
  * @author pierre
  */
 public class GUIStat extends GUI<AbstractEtudiant> {

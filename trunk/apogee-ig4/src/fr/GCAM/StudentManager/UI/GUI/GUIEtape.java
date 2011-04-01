@@ -11,8 +11,8 @@
 package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.Facade.FacadeEtape;
-import fr.GCAM.StudentManager.POJO.Etape;
-import fr.GCAM.StudentManager.POJO.UE;
+import fr.GCAM.StudentManager.Business.POJO.Etape;
+import fr.GCAM.StudentManager.Business.POJO.UE;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -26,7 +26,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
 /**
- *
+ * Classe definissant la GUI de l'Etape
  * @author pierre
  */
 public class GUIEtape extends GUI<Etape> implements ActionListener {

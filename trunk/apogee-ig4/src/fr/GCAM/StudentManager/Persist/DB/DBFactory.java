@@ -6,8 +6,8 @@
 package fr.GCAM.StudentManager.Persist.DB;
 
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
-import fr.GCAM.StudentManager.POJO.*;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Business.POJO.*;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 import java.sql.Connection;

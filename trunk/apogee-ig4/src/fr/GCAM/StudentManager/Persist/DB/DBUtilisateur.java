@@ -5,8 +5,8 @@
 package fr.GCAM.StudentManager.Persist.DB;
 
 import fr.GCAM.StudentManager.Util.SHA1;
-import fr.GCAM.StudentManager.POJO.*;
-import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
+import fr.GCAM.StudentManager.Business.POJO.*;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur.Responsabilite;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author Quentin
  */
-public class DBUtilisateur extends DB<Utilisateur>  {
+public class DBUtilisateur extends DB<Utilisateur> {
 
     public DBUtilisateur(Connection conn) {
         super(conn);
@@ -272,4 +272,5 @@ public class DBUtilisateur extends DB<Utilisateur>  {
         s.close();
         return listeUtil;
     }
+
 }

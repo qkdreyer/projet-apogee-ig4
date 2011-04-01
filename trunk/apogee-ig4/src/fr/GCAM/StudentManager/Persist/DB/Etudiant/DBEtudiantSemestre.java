@@ -4,7 +4,7 @@
  */
 package fr.GCAM.StudentManager.Persist.DB.Etudiant;
 
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantSemestre;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantSemestre;
 import fr.GCAM.StudentManager.Persist.DB.DB;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -90,9 +90,9 @@ public class DBEtudiantSemestre extends DB<EtudiantSemestre> {
     }
 
     /**
-     * TODO javadoc
-     * @param id
-     * @return
+     * Methode permettant de lister les EtudiantsSemestre appartenant au semestre id
+     * @param id le semestre a laquelle sont inscrits les EtudiantsSemestre
+     * @return La liste des EtudiantSemestre du semestre id
      * @throws Exception
      */
     public ArrayList<EtudiantSemestre> list(String id) throws Exception {

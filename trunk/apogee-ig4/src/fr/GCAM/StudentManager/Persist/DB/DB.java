@@ -21,7 +21,7 @@ public abstract class DB<T> implements DAO<T> {
     protected static Connection conn = null;
 
     public DB(Connection conn) {
-	this.conn = conn;
+	DB.conn = conn;
     }
 
 }
