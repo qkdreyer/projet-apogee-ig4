@@ -9,7 +9,7 @@ import fr.GCAM.StudentManager.Business.Manager.ManagerUtilisateur;
 import java.util.ArrayList;
 import java.sql.Connection;
 import fr.GCAM.StudentManager.Persist.DB.ConnectionDB;
-import fr.GCAM.StudentManager.POJO.Utilisateur;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur;
 import java.util.HashMap;
 import org.junit.After;
 import org.junit.AfterClass;

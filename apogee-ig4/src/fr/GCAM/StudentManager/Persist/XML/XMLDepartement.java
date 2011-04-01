@@ -5,7 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.POJO.Departement;
+import fr.GCAM.StudentManager.Business.POJO.Departement;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.jdom.Element;
@@ -83,6 +83,11 @@ public class XMLDepartement extends XML<Departement> {
         return dept;
     }
 
+    /**
+     * Methode permettant de lister les Departements
+     * @return La liste des departements
+     * @throws Exception
+     */
     public ArrayList<Departement> list() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }

@@ -5,12 +5,12 @@
 
 package fr.GCAM.StudentManager.Business.Manager;
 
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 
 /**
- *
+ * Manager associe aux statistiques d'un EtudiantECUE
  * @author Quentin
  */
 public class ManagerStat {

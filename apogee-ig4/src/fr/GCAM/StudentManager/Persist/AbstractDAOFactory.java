@@ -4,8 +4,8 @@ package fr.GCAM.StudentManager.Persist;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-import fr.GCAM.StudentManager.POJO.*;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Business.POJO.*;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.DB.DBFactory;
 import fr.GCAM.StudentManager.Persist.XML.XMLFactory;
 import java.util.Observable;

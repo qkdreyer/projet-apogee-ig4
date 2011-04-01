@@ -5,8 +5,8 @@
 package fr.GCAM.StudentManager.Persist.DB;
 
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
-import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Business.POJO.ECUE;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,9 +48,9 @@ public class DBECUE extends DB<ECUE> {
      * ECUE sera modifiée. Afin de fonctionner correctement, il est impératif que
      * "ecue" ait été chargé à partir de la méthode find définit ci dessous.
      * @throws Exception
-     * @see fr.GCAM.StudentManager.Persist.DB.DBECUE.find
-     * @see fr.GCAM.StudentManager.Persist.DB.DBECUE.updateNote1
-     * @see fr.GCAM.StudentManager.Persist.DB.DBECUE.updateNote2
+     * @see #find(java.lang.Object) 
+     * @see #updateNote1(int, java.lang.String, float)
+     * @see #updateNote2(int, java.lang.String, float)
      */
     public void update(ECUE ecue) throws Exception {
         EtudiantECUE etudiant;
@@ -141,10 +141,21 @@ public class DBECUE extends DB<ECUE> {
         return ecue;
     }
 
+    /**
+     * Methode permettant de lister les ECUE
+     * @return la liste des ECUE 
+     * @throws Exception
+     */
     public ArrayList<ECUE> list() throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant de lister les ecue ayant pour ue parente id
+     * @param id l'ue parente des ecue qu'on veut selectionner
+     * @return La liste des ecue ayant pour ue parente id
+     * @throws Exception
+     */
     ArrayList<ECUE> list(String id) throws Exception {
 	ArrayList<ECUE> list = new ArrayList<ECUE>();
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

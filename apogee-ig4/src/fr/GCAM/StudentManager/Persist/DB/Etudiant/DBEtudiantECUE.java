@@ -4,7 +4,7 @@
  */
 package fr.GCAM.StudentManager.Persist.DB.Etudiant;
 
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.DB.DB;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -94,9 +94,9 @@ public class DBEtudiantECUE extends DB<EtudiantECUE> {
     }
 
     /**
-     * TODO javadoc
-     * @param id
-     * @return
+     * Methode permettant de lister les EtudiantsECUE appartenant à la matiere id
+     * @param id l'ECUE a laquelle sont inscrits les EtudiantsECUE
+     * @return La liste des EtudiantECUE de l'ecue id
      * @throws Exception
      */
     public ArrayList<EtudiantECUE> list(String id) throws Exception {

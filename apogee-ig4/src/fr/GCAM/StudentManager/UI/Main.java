@@ -19,6 +19,7 @@ public class Main {
                 AbstractUIFactory.getUIFactory(args[0]).getUIUtilisateur(args[1]);
             } catch (Exception ex) {
                 System.err.println("Exeception : " + ex);
+		ex.printStackTrace();
             }
         } else {
             System.err.println("Arguments invalides (Format : c/g db/xml)");

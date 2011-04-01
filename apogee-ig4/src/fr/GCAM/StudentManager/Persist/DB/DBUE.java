@@ -5,8 +5,8 @@
 
 package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantUE;
-import fr.GCAM.StudentManager.POJO.UE;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantUE;
+import fr.GCAM.StudentManager.Business.POJO.UE;
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantUE;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -87,10 +87,21 @@ public class DBUE extends DB<UE> {
         return ue;
     }
 
+    /**
+     * Methode permettat de lister les UE
+     * @return la liste des UE
+     * @throws Exception
+     */
     public ArrayList<UE> list() throws Exception {
 	throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Methode permettant de lister les UE ayant comme semestre parent id
+     * @param id le semestre parent des ue qu'on veut selectionner
+     * @return La liste des UE ayant pour semestre parent id
+     * @throws Exception
+     */
     public ArrayList<UE> list(String id) throws Exception {
 	ArrayList<UE> list = new ArrayList<UE>();
 	Statement s = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

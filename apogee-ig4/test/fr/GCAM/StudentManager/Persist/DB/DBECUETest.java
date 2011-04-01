@@ -4,10 +4,10 @@
  */
 package fr.GCAM.StudentManager.Persist.DB;
 
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.AbstractEtudiant;
 import org.junit.Ignore;
-import fr.GCAM.StudentManager.POJO.ECUE;
+import fr.GCAM.StudentManager.Business.POJO.ECUE;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.Connection;

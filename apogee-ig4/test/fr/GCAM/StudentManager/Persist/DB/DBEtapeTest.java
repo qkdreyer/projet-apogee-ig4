@@ -8,7 +8,7 @@ package fr.GCAM.StudentManager.Persist.DB;
 import java.util.ArrayList;
 import org.junit.Ignore;
 import java.sql.Connection;
-import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.Business.POJO.Etape;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

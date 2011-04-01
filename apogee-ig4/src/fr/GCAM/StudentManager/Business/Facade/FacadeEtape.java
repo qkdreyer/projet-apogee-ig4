@@ -6,7 +6,7 @@
 package fr.GCAM.StudentManager.Business.Facade;
 
 import fr.GCAM.StudentManager.Business.Manager.ManagerEtape;
-import fr.GCAM.StudentManager.POJO.UE;
+import fr.GCAM.StudentManager.Business.POJO.UE;
 import java.util.ArrayList;
 
 /**

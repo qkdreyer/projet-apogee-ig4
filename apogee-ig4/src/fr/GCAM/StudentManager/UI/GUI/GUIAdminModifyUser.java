@@ -12,15 +12,15 @@
 package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.Facade.FacadeUtilisateur;
-import fr.GCAM.StudentManager.POJO.Utilisateur;
-import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur.Responsabilite;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
 
 /**
- *
+ * Classe definissant la GUI de la modification d'un utilisateur par l'admin
  * @author Quentin
  */
 public class GUIAdminModifyUser extends javax.swing.JDialog {
@@ -266,7 +266,9 @@ public class GUIAdminModifyUser extends javax.swing.JDialog {
                 && (Arrays.equals(jPasswordField1.getPassword(), jPasswordField2.getPassword()))
                 && (jList1.getSelectedValues().length > 0)) {
             jButton1.setEnabled(true);
-        }
+        } else {
+	    jButton1.setEnabled(false);
+	}
     }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

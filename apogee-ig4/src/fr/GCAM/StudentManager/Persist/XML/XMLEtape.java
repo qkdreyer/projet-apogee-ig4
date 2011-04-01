@@ -4,7 +4,7 @@
  */
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.Business.POJO.Etape;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.jdom.Element;
@@ -88,6 +88,11 @@ public class XMLEtape extends XML<Etape> {
         return etape;
     }
 
+    /**
+     * Methode permettant de lister les etapes
+     * @return la liste des etapes
+     * @throws Exception
+     */
     public ArrayList<Etape> list() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }

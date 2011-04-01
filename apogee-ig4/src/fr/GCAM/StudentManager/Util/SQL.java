@@ -14,11 +14,15 @@ import java.sql.Statement;
 import javax.swing.JFileChooser;
 
 /**
- *
+ * Classe permettant d'importer et d'exporter des fichiers sql
  * @author Quentin
  */
 public class SQL {
 
+    /**
+     * Methode permettant d'importer un fichier SQL pour créer la base de données
+     * @throws Exception
+     */
     public static void imports() throws Exception {
         JFileChooser jfc = new JFileChooser();
         SSFilter filtreSQL = new SSFilter(".sql", "Structured Query Language");
@@ -40,6 +44,12 @@ public class SQL {
         }
     }
 
+    /**
+     * Methode permettant d'extraire la base de données sous forme de fichier sql
+     * afin de pouvoir la transporter facilement et l'importer par la suite avec
+     * la methode import()
+     * @throws Exception
+     */
     public static void extract() throws Exception {
         Statement s = ConnectionDB.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet r = s.executeQuery("select noteSession1, noteSession2, numEtudiant, "

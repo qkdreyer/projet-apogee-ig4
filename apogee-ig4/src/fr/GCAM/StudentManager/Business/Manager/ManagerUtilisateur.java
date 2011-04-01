@@ -4,9 +4,9 @@
  */
 package fr.GCAM.StudentManager.Business.Manager;
 
-import fr.GCAM.StudentManager.POJO.Departement;
-import fr.GCAM.StudentManager.POJO.Utilisateur;
-import fr.GCAM.StudentManager.POJO.Utilisateur.Responsabilite;
+import fr.GCAM.StudentManager.Business.POJO.Departement;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur.Responsabilite;
 import fr.GCAM.StudentManager.Persist.AbstractDAOFactory;
 import fr.GCAM.StudentManager.Persist.DAO;
 import fr.GCAM.StudentManager.Persist.DB.ConnectionDB;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
+ * Manager fournissant les informations d'un Utilisateur
  * @author Quentin
  */
 public class ManagerUtilisateur {
@@ -35,7 +35,7 @@ public class ManagerUtilisateur {
     }
 
     /**
-     * Cette fonction affiche la liste des clés primaires (prenom.nom) des Enseignants
+     * Cette fonction fournits la liste des clés primaires (prenom.nom) des Enseignants
      */
     public Utilisateur[] getListLogin() throws Exception {
 	ArrayList<Utilisateur> listeUtil = userDAO.list();
@@ -55,11 +55,13 @@ public class ManagerUtilisateur {
     }
 
     /**
-     * TODO javadoc
+     * Methode renvoyant un HashMap avec les informations du login de l'utilisateur
      * @param nom
      * @param prenom
      * @param mdp
-     * @return
+     * @return Le hashmap contient les informations du login avec les informations
+     * suivantes : {'Nom', 'Prenom', 'mail', 'topResponsability', 'codeResp'}, si le
+     * login ne correspond à aucun utilisateur la methode renvoit null.
      */
     public HashMap<String, String> login(String nom, String prenom, String mdp) {
 	//Créer un arraylist avec nom, prenom, mdp
@@ -94,15 +96,31 @@ public class ManagerUtilisateur {
 	    return null;
 	}
     }
-    
+
+    /**
+     * Methode permettant la creation de l'utilsateur u dans le systeme de
+     * persistence des données
+     * @param u l'utilisateur a cree
+     * @throws Exception
+     */
     public void create(Utilisateur u) throws Exception {
         userDAO.create(u);
     }
-    
+
+    /**
+     * Methode permettant la suppression d'un utlisateur
+     * @param u l'utilisateur a supprime
+     * @throws Exception
+     */
     public void delete(Utilisateur u) throws Exception {
         userDAO.delete(u);
     }
-    
+
+    /**
+     * Methode renvoyant la liste des responsabilites n'ayant aucun responsable
+     * @return La liste des responsabilites n'ayant aucun responsable
+     * @throws Exception
+     */
     public ArrayList<Responsabilite> getListRespDispo() throws Exception {
         ArrayList<Responsabilite> listeRespDispo = new ArrayList<Responsabilite>();
         Statement s = ConnectionDB.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -117,6 +135,11 @@ public class ManagerUtilisateur {
         return listeRespDispo;
     }
 
+    /**
+     * Methode permettant la modification d'un utilisateur
+     * @param u
+     * @throws Exception
+     */
     public void update(Utilisateur u) throws Exception {
         userDAO.update(u);
     }

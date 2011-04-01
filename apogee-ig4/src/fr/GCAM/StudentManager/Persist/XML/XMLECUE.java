@@ -5,8 +5,8 @@
 package fr.GCAM.StudentManager.Persist.XML;
 
 import fr.GCAM.StudentManager.Persist.XML.Etudiant.XMLEtudiantECUE;
-import fr.GCAM.StudentManager.POJO.ECUE;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Business.POJO.ECUE;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -177,6 +177,11 @@ public class XMLECUE extends XML<ECUE> {
         return ecue;
     }
 
+    /**
+     * Methode permettant de lister les ECUE
+     * @return la liste des ECUE
+     * @throws Exception
+     */
     public ArrayList<ECUE> list() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }

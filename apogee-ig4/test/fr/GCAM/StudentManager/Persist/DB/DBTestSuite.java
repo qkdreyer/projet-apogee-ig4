@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- *
+ * Classe contenant la suite de Test pour la Base de Donnees
  * @author pierre
  */
 @RunWith(Suite.class)

@@ -12,13 +12,13 @@
 package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.Facade.FacadeDepartement;
-import fr.GCAM.StudentManager.POJO.Departement;
-import fr.GCAM.StudentManager.POJO.Etape;
+import fr.GCAM.StudentManager.Business.POJO.Departement;
+import fr.GCAM.StudentManager.Business.POJO.Etape;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import javax.swing.JComponent;
 
 /**
- *
+ * Classe definissant la GUI du departement
  * @author PIERRE
  */
 public class GUIDepartement extends GUI<Departement> {

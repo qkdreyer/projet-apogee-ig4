@@ -4,8 +4,8 @@
  */
 package fr.GCAM.StudentManager.UI;
 
-import fr.GCAM.StudentManager.POJO.*;
-import fr.GCAM.StudentManager.POJO.Etudiant.AbstractEtudiant;
+import fr.GCAM.StudentManager.Business.POJO.*;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.AbstractEtudiant;
 import fr.GCAM.StudentManager.UI.Console.ConsoleFactory;
 import fr.GCAM.StudentManager.UI.GUI.GUIFactory;
 
@@ -23,59 +23,69 @@ public abstract class AbstractUIFactory { //TODO params
     /**
      * Methode renvoyant une UI(User Interface) pour un Utilisateur
      *
-     * @param s La chaine contient le type de stockage des données (db ou xml)
-     * @return Renvoie l'UI Utilisateur, connecté au stockage des données définies
-     * par s.
+     * @param dao Le type de dao (db ou xml)
+     * @param id l'id de l'utilisateur
+     * @return L'UI<utilisateur> associe a un DAO de type dao et pour l'utilsateur
+     * d'identifiant id
      */
     public abstract UI<Utilisateur> getUIUtilisateur(String dao) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour une ECUE
      *
-     * @param s La chaine contient le type de stockage des données (db ou xml)
-     * @return Renvoie l'UI ECUE, connecté au stockage des données définies
-     * par s.
+     * @param dao Le type de dao (db ou xml)
+     * @param id l'id de l'ECUE
+     * @return L'UI<ECUE> associe a un DAO de type dao et pour l'ECUE
+     * d'identifiant id
      */
     public abstract UI<ECUE> getUIECUE(String dao, String id) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour une UE
      *
-     * @param s La chaine contient le type de stockage des données (db ou xml)
-     * @return Renvoie l'UI UE, connecté au stockage des données définies
-     * par s.
+     * @param dao Le type de dao (db ou xml)
+     * @param id l'id de l'UE
+     * @return L'UI<UE> associe a un DAO de type dao et pour l'UE
+     * d'identifiant id
      */
     public abstract UI<UE> getUIUE(String dao, String id) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour une Etape
      *
-     * @param s La chaine contient le type de stockage des données (db ou xml)
-     * @return Renvoie l'UI Etape, connecté au stockage des données définies
-     * par s.
+     * @param dao Le type de dao (db ou xml)
+     * @param id l'id de l'Etape
+     * @return L'UI<Etape> associe a un DAO de type dao et pour l'Etape
+     * d'identifiant id
      */
     public abstract UI<Etape> getUIEtape(String dao, String id) throws Exception;
 
     /**
      * Methode renvoyant une UI(User Interface) pour un Departement
      *
-     * @param s La chaine contient le type de stockage des données (db ou xml)
-     * @return Renvoie l'UI Departement, connecté au stockage des données définies
-     * par s.
+     * @param dao Le type de dao (db ou xml)
+     * @param id l'id du departement
+     * @return L'UI<departement> associe a un DAO de type dao et pour le departement
+     * d'identifiant id
      */
     public abstract UI<Departement> getUIDepartement(String dao, String id) throws Exception;
 
     /**
-     * TODO
-     * @param s
-     * @return
+     * Methode renvoyant une UI(User Interface) pour un Etudiant
+     * @param dao Le type de dao (db ou xml)
+     * @param id l'id des stats
+     * @return L'UI<Stats> associe a un DAO de type dao et pour les stats
+     * d'identifiant id
+     * @throws Exception
      */
     public abstract UI<AbstractEtudiant> getUIStat(String dao, String id) throws Exception;
 
     /**
-     * TODO
-     * @param s
-     * @return
+     * Methode renvoyant une UI(User Interface) pour un Admin
+     * @param dao Le type de dao (db ou xml)
+     * @param id l'id de l'admin
+     * @return L'UI<admin> associe a un DAO de type dao et pour l'admin
+     * d'identifiant id
      */
     public abstract UI<Utilisateur> getUIAdmin(String dao) throws Exception;
 

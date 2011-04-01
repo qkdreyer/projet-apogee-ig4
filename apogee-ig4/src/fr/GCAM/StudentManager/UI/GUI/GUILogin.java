@@ -11,13 +11,13 @@
 package fr.GCAM.StudentManager.UI.GUI;
 
 import fr.GCAM.StudentManager.Business.Facade.FacadeUtilisateur;
-import fr.GCAM.StudentManager.POJO.Utilisateur;
+import fr.GCAM.StudentManager.Business.POJO.Utilisateur;
 import fr.GCAM.StudentManager.UI.AbstractUIFactory;
 import java.util.HashMap;
 import javax.swing.JFrame;
 
 /**
- *
+ * Classe definissant la GUI du login
  * @author pierre
  */
 public class GUILogin extends GUI<Utilisateur> {

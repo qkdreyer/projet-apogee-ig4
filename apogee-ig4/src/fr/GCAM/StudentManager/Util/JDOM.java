@@ -5,8 +5,8 @@
 package fr.GCAM.StudentManager.Util;
 
 import fr.GCAM.StudentManager.Persist.DB.Etudiant.DBEtudiantECUE;
-import fr.GCAM.StudentManager.POJO.*;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantECUE;
+import fr.GCAM.StudentManager.Business.POJO.*;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.DB.*;
 import java.io.FileOutputStream;
 import java.sql.Connection;
@@ -40,17 +40,19 @@ public class JDOM {
     }
 
     /**
-     *
-     * @param d
-     * @param fichier
+     * methode permettant la sauvagarde du document en tant que fichier XML
+     * @param d le document xml a sauvegarder
+     * @param fichier le fichier qui accueillera le document XML d
      */
     public static void save(Document d, String fichier) throws Exception {
 	new XMLOutputter(Format.getPrettyFormat()).output(d, new FileOutputStream(fichier));
     }
 
     /**
-     *
-     * @param s
+     * Methode creant un fichier ecue.xml contenant l'ensemble des informations
+     * des ecue de la base de données. La methode recupere aussi la liste d'etudiants
+     * de l'ecue.
+     * @param s le nom du fichier a creer
      * @throws Exception
      */
     private static void createECUEXML(String s) throws Exception {
@@ -94,8 +96,9 @@ public class JDOM {
     }
 
     /**
-     *
-     * @param s
+     * Methode creant un fichier Utilisateur.xml contenant l'ensemble des informations
+     * des utilisateurs de la base de données. 
+     * @param s le nom du fichier a creer
      * @throws Exception
      */
     private static void createUtilisateurXML(String s) throws Exception {
@@ -128,8 +131,10 @@ public class JDOM {
     }
 
     /**
-     *
-     * @param s
+     * Methode creant un fichier ue.xml contenant l'ensemble des informations
+     * des ue de la base de données. La methode recupere aussi la liste d'etudiants
+     * de l'ue.
+     * @param s le nom du fichier a creer
      * @throws Exception
      */
     private static void createUEXML(String s) throws Exception {
@@ -164,8 +169,10 @@ public class JDOM {
     }
 
     /**
-     *
-     * @param s
+     * Methode creant un fichier Etape.xml contenant l'ensemble des informations
+     * des etapes de la base de données. La methode recupere aussi la liste d'etudiants
+     * de l'etape.
+     * @param s le nom du fichier a creer
      * @throws Exception
      */
     private static void createEtapeXML(String s) throws Exception {
@@ -206,8 +213,10 @@ public class JDOM {
     }
 
     /**
-     * 
-     * @param s
+     * Methode creant un fichier departement.xml contenant l'ensemble des informations
+     * des departements de la base de données. La methode recupere aussi la liste d'etudiants
+     * du departement.
+     * @param s le nom du fichier a creer
      * @throws Exception
      */
     private static void createDepartementXML(String s) throws Exception {
@@ -238,6 +247,12 @@ public class JDOM {
 	save(document, "xml/" + s + ".xml");
     }
 
+    /**
+     * Methode creant un fichier Etudiant.xml contenant l'ensemble des informations
+     * des etudiants de la base de données. 
+     * @param s le nom du fichier a creer
+     * @throws Exception
+     */
     private static void createEtudiantECUEXML(String s) throws Exception {
 	Element root = new Element("root");
 	Document document = new Document(root);

@@ -5,7 +5,7 @@
 
 package fr.GCAM.StudentManager.Persist.XML;
 
-import fr.GCAM.StudentManager.POJO.UE;
+import fr.GCAM.StudentManager.Business.POJO.UE;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.jdom.Element;
@@ -86,6 +86,11 @@ public class XMLUE extends XML<UE> {
         return ue;
     }
 
+    /**
+     * Methode permettant de lister les UE
+     * @return la liste des UE
+     * @throws Exception
+     */
     public ArrayList<UE> list() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }

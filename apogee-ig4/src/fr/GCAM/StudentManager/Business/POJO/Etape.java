@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.GCAM.StudentManager.POJO;
+package fr.GCAM.StudentManager.Business.POJO;
 
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantEtape;
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantSemestre;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantEtape;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantSemestre;
 import java.util.ArrayList;
 
 /**

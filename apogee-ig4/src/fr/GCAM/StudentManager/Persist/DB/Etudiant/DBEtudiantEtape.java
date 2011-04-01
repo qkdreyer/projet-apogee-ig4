@@ -4,7 +4,7 @@
  */
 package fr.GCAM.StudentManager.Persist.DB.Etudiant;
 
-import fr.GCAM.StudentManager.POJO.Etudiant.EtudiantEtape;
+import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantEtape;
 import fr.GCAM.StudentManager.Persist.DB.DB;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -92,9 +92,9 @@ public class DBEtudiantEtape extends DB<EtudiantEtape> {
     }
 
     /**
-     * TODO javadoc
-     * @param id
-     * @return
+     * Methode permettant de lister les EtudiantsEtape appartenant à l'etape id
+     * @param id l'etape a laquelle sont inscrits les EtudiantsEtape
+     * @return La liste des EtudiantEtape de l'etape id
      * @throws Exception
      */
     public ArrayList<EtudiantEtape> list(String id) throws Exception {
