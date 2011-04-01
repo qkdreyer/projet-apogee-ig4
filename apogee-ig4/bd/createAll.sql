@@ -790,7 +790,8 @@ begin
     for r in (
         select ec.codeMatiere
         from ECUE ec
-        where ec.idEnseignant = idEnseignant_in
+        where (ec.idEnseignant = idEnseignant_in)
+        or ((ec.idEnseignant is null) and (idEnseignant_in is null))
     )
     loop
         liste_resp.extend;
@@ -802,7 +803,8 @@ begin
     for r in (
         select u.codeUE
         from UE u
-        where u.idEnseignant = idEnseignant_in
+        where (u.idEnseignant = idEnseignant_in)
+        or ((u.idEnseignant is null) and (idEnseignant_in is null))
     )
     loop
         liste_resp.extend;
@@ -814,7 +816,8 @@ begin
     for r in (
         select e.codeEtape
         from Etape e
-        where e.idEnseignant = idEnseignant_in
+        where (e.idEnseignant = idEnseignant_in)
+        or ((e.idEnseignant is null) and (idEnseignant_in is null))
     )
     loop
         liste_resp.extend;
@@ -826,7 +829,8 @@ begin
     for r in (
         select d.versionDiplome
         from Departement d
-        where d.idEnseignant = idEnseignant_in
+        where (d.idEnseignant = idEnseignant_in)
+        or ((d.idEnseignant is null) and (idEnseignant_in is null))
     )
     loop
         liste_resp.extend;
