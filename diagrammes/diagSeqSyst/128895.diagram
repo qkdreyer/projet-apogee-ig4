@@ -1,0 +1,210 @@
+format 76
+
+classinstance 128127 class_ref 128383 // Systeme
+  name ""   xyz 263 4 2000 life_line_z 2000
+classinstance 128255 class_ref 128127 // utilisateur
+  name ""   xyz 78 4 2000 life_line_z 2000
+continuation 130303 ""
+  xyzwh 80 137 1995 243 154
+continuation 130943 ""
+  xyzwh 84 300 1990 243 92
+continuation 131071 ""
+  xyzwh 51 68 1985 313 370
+continuation 132607 ""
+  xyzwh 60 448 1995 290 210
+continuation 134015 ""
+  xyzwh 90 699 2000 234 153
+continuation 134655 ""
+  xyzwh 85 894 1995 239 75
+continuation 134783 ""
+  xyzwh 34 48 1980 356 940
+durationcanvas 128383 classinstance_ref 128255 // :utilisateur
+  xyzwh 103 93 2010 11 40
+end
+durationcanvas 128511 classinstance_ref 128127 // :Systeme
+  xyzwh 286 93 2010 11 25
+end
+durationcanvas 129023 classinstance_ref 128255 // :utilisateur
+  xyzwh 103 155 2010 11 89
+end
+durationcanvas 129151 classinstance_ref 128127 // :Systeme
+  xyzwh 286 155 2010 11 34
+end
+durationcanvas 129535 classinstance_ref 128127 // :Systeme
+  xyzwh 286 191 2010 11 81
+  overlappingdurationcanvas 129791
+    xyzwh 292 233 2020 11 34
+  end
+end
+durationcanvas 130047 classinstance_ref 128255 // :utilisateur
+  xyzwh 103 248 2010 11 25
+end
+durationcanvas 130431 classinstance_ref 128255 // :utilisateur
+  xyzwh 103 328 2010 11 40
+end
+durationcanvas 130559 classinstance_ref 128127 // :Systeme
+  xyzwh 286 328 2010 11 32
+end
+durationcanvas 131199 classinstance_ref 128255 // :utilisateur
+  xyzwh 103 486 2010 11 53
+end
+durationcanvas 131327 classinstance_ref 128127 // :Systeme
+  xyzwh 286 486 2010 11 33
+end
+durationcanvas 131711 classinstance_ref 128127 // :Systeme
+  xyzwh 286 523 2010 11 25
+end
+durationcanvas 131967 classinstance_ref 128255 // :utilisateur
+  xyzwh 103 560 2010 11 65
+end
+durationcanvas 132095 classinstance_ref 128127 // :Systeme
+  xyzwh 286 560 2010 11 65
+end
+durationcanvas 132735 classinstance_ref 128255 // :utilisateur
+  xyzwh 103 720 2010 11 60
+end
+durationcanvas 132863 classinstance_ref 128127 // :Systeme
+  xyzwh 286 720 2010 11 31
+end
+durationcanvas 133247 classinstance_ref 128127 // :Systeme
+  xyzwh 286 756 2010 11 25
+end
+durationcanvas 133503 classinstance_ref 128255 // :utilisateur
+  xyzwh 103 797 2010 11 40
+end
+durationcanvas 133631 classinstance_ref 128127 // :Systeme
+  xyzwh 286 797 2010 11 35
+end
+durationcanvas 134143 classinstance_ref 128255 // :utilisateur
+  xyzwh 103 916 2010 11 40
+end
+durationcanvas 134271 classinstance_ref 128127 // :Systeme
+  xyzwh 286 916 2010 11 36
+end
+msg 128639 synchronous
+  from durationcanvas_ref 128383
+  to durationcanvas_ref 128511
+  yz 93 2015 explicitmsg "selectionner_utilisateur(user)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 130 79
+msg 129279 synchronous
+  from durationcanvas_ref 129023
+  to durationcanvas_ref 129151
+  yz 155 2015 explicitmsg "cliquer_modifier"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 162 141
+msg 129407 return
+  from durationcanvas_ref 129151
+  to durationcanvas_ref 129023
+  yz 178 2020 explicitmsg "fenetre_modification"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 151 164
+msg 129663 synchronous
+  from durationcanvas_ref 129023
+  to durationcanvas_ref 129535
+  yz 205 3005 explicitmsg "modifier_informations"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 149 191
+msg 129919 synchronous
+  from durationcanvas_ref 129023
+  to durationcanvas_ref 129791
+  yz 233 2025 explicitmsg "cliquer_valider"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 168 219
+msg 130175 return
+  from durationcanvas_ref 129791
+  to durationcanvas_ref 130047
+  yz 256 2030 explicitmsg "modification_effectuées"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 145 242
+msg 130687 synchronous
+  from durationcanvas_ref 130431
+  to durationcanvas_ref 130559
+  yz 328 2015 explicitmsg "cliquer_supprimer"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 157 314
+msg 130815 return
+  from durationcanvas_ref 130559
+  to durationcanvas_ref 130431
+  yz 349 2020 explicitmsg "utilisateur_supprimer"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 150 335
+msg 131455 synchronous
+  from durationcanvas_ref 131199
+  to durationcanvas_ref 131327
+  yz 486 2015 explicitmsg "cliquer_ajout"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 170 472
+msg 131583 return
+  from durationcanvas_ref 131327
+  to durationcanvas_ref 131199
+  yz 508 2020 explicitmsg "fenetre_ajout"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 167 494
+msg 131839 synchronous
+  from durationcanvas_ref 131199
+  to durationcanvas_ref 131711
+  yz 528 2025 explicitmsg "entrer_toutes_infos"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 152 517
+msg 132223 synchronous
+  from durationcanvas_ref 131967
+  to durationcanvas_ref 132095
+  yz 560 2015 explicitmsg "cliquer_valider"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 165 546
+msg 132351 return
+  from durationcanvas_ref 132095
+  to durationcanvas_ref 131967
+  yz 588 2020 explicitmsg "utilisateur_enregistré"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 150 574
+msg 132479 return
+  from durationcanvas_ref 132095
+  to durationcanvas_ref 131967
+  yz 614 2025 explicitmsg "probleme_de_creation"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 153 603
+msg 132991 synchronous
+  from durationcanvas_ref 132735
+  to durationcanvas_ref 132863
+  yz 720 2015 explicitmsg "cliquer_importer_donnes_apogee"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 120 706
+msg 133119 return
+  from durationcanvas_ref 132863
+  to durationcanvas_ref 132735
+  yz 740 2015 explicitmsg "afficher_fenetre_telechargement"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 121 726
+msg 133375 synchronous
+  from durationcanvas_ref 132735
+  to durationcanvas_ref 133247
+  yz 769 2020 explicitmsg "selectionner_fichier"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 152 755
+msg 133759 synchronous
+  from durationcanvas_ref 133503
+  to durationcanvas_ref 133631
+  yz 797 2015 explicitmsg "cliquer_valider"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 165 783
+msg 133887 return
+  from durationcanvas_ref 133631
+  to durationcanvas_ref 133503
+  yz 821 2020 explicitmsg "données_importées"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 153 807
+msg 134399 synchronous
+  from durationcanvas_ref 134143
+  to durationcanvas_ref 134271
+  yz 916 2015 explicitmsg "cliquer_exporter_donnes_apogee"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 119 902
+msg 134527 return
+  from durationcanvas_ref 134271
+  to durationcanvas_ref 134143
+  yz 941 2020 explicitmsg "fenetre_données_exportées"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 131 927
+end

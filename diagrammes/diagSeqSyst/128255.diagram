@@ -1,0 +1,159 @@
+format 76
+
+classinstance 129279 class_ref 128127 // utilisateur
+  name ""   xyz 71 11 2000 life_line_z 2000
+classinstance 129407 class_ref 128383 // Systeme
+  name ""   xyz 338 16 2000 life_line_z 2000
+continuation 129535 ""
+  xyzwh 54 66 1990 352 193
+continuation 131967 ""
+  xyzwh 66 352 1995 340 114
+continuation 134271 ""
+  xyzwh 62 562 1995 354 198
+continuation 134783 ""
+  xyzwh 8 56 1985 476 749
+durationcanvas 129663 classinstance_ref 129407 // :Systeme
+  xyzwh 361 83 2010 11 25
+end
+durationcanvas 129791 classinstance_ref 129407 // :Systeme
+  xyzwh 361 128 2010 11 26
+end
+durationcanvas 129919 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 83 2010 11 40
+end
+durationcanvas 130047 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 128 2010 11 29
+end
+durationcanvas 130175 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 164 2010 11 28
+end
+durationcanvas 130303 classinstance_ref 129407 // :Systeme
+  xyzwh 361 162 2010 11 25
+end
+durationcanvas 130815 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 208 2010 11 40
+end
+durationcanvas 130943 classinstance_ref 129407 // :Systeme
+  xyzwh 361 208 2010 11 25
+end
+durationcanvas 131199 classinstance_ref 129407 // :Systeme
+  xyzwh 361 278 2010 11 40
+end
+durationcanvas 131327 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 278 2010 11 25
+end
+durationcanvas 131583 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 378 2010 11 38
+end
+durationcanvas 131711 classinstance_ref 129407 // :Systeme
+  xyzwh 361 375 2010 11 60
+end
+durationcanvas 132095 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 408 2010 11 27
+end
+durationcanvas 132351 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 505 2010 11 40
+end
+durationcanvas 132479 classinstance_ref 129407 // :Systeme
+  xyzwh 361 505 2010 11 34
+end
+durationcanvas 132863 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 588 2010 11 40
+end
+durationcanvas 132991 classinstance_ref 129407 // :Systeme
+  xyzwh 361 588 2010 11 34
+end
+durationcanvas 133375 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 639 2010 11 47
+end
+durationcanvas 133503 classinstance_ref 129407 // :Systeme
+  xyzwh 361 639 2010 11 79
+end
+durationcanvas 133887 classinstance_ref 129279 // :utilisateur
+  xyzwh 96 656 2010 11 62
+end
+msg 130431 synchronous
+  from durationcanvas_ref 130047
+  to durationcanvas_ref 129791
+  yz 128 2015 explicitmsg "selectionner_semestre(s)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 144 114
+msg 130559 synchronous
+  from durationcanvas_ref 129919
+  to durationcanvas_ref 129663
+  yz 83 2015 explicitmsg "selectionner_anne(a)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 155 69
+msg 130687 synchronous
+  from durationcanvas_ref 130175
+  to durationcanvas_ref 130303
+  yz 174 2015 explicitmsg "selectionner_UE(ue)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 157 160
+msg 131071 synchronous
+  from durationcanvas_ref 130815
+  to durationcanvas_ref 130943
+  yz 208 2015 explicitmsg "selectionner_ecue(ecue)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 145 194
+msg 131455 return
+  from durationcanvas_ref 131199
+  to durationcanvas_ref 131327
+  yz 278 2015 explicitmsg "afficher_infos_ecue"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 156 264
+msg 131839 synchronous
+  from durationcanvas_ref 131583
+  to durationcanvas_ref 131711
+  yz 394 2015 explicitmsg "entrer_note_eleve_session(eleve,session,note)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 115 380
+msg 132223 return
+  from durationcanvas_ref 131711
+  to durationcanvas_ref 132095
+  yz 422 2020 explicitmsg "note_enregistrée_affichée"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 170 408
+msg 132607 synchronous
+  from durationcanvas_ref 132351
+  to durationcanvas_ref 132479
+  yz 505 2015 explicitmsg "Cliquer_creerCSV"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 191 491
+msg 132735 return
+  from durationcanvas_ref 132479
+  to durationcanvas_ref 132351
+  yz 528 2020 explicitmsg "fichier créé"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 204 514
+msg 133119 synchronous
+  from durationcanvas_ref 132863
+  to durationcanvas_ref 132991
+  yz 588 2015 explicitmsg "cliquer_importer_CSV"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 182 574
+msg 133247 return
+  from durationcanvas_ref 132991
+  to durationcanvas_ref 132863
+  yz 611 2020 explicitmsg "affichage_fenetre_download"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 164 597
+msg 133631 synchronous
+  from durationcanvas_ref 133375
+  to durationcanvas_ref 133503
+  yz 639 2015 explicitmsg "telecharger_ficher(file)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 179 625
+msg 133759 return
+  from durationcanvas_ref 133503
+  to durationcanvas_ref 133375
+  yz 675 2020 explicitmsg "download_effectué"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 187 661
+msg 134143 return
+  from durationcanvas_ref 133503
+  to durationcanvas_ref 133887
+  yz 706 3010 explicitmsg "probleme_fichier"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 194 692
+end
