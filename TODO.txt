@@ -1,6 +1,0 @@
-- Gestion controller
-- Suppr les libelle dans vue etape/dept/ue ?
-
-GUI :
-- Ajouter Resp UE (prenom nom) dans ManageUE.java + Optionnel
-- Virer details de ManageUE.java

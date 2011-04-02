@@ -8,7 +8,6 @@ import fr.GCAM.StudentManager.Business.POJO.*;
 import fr.GCAM.StudentManager.POJO.Business.Etudiant.EtudiantECUE;
 import fr.GCAM.StudentManager.Persist.DB.DBFactory;
 import fr.GCAM.StudentManager.Persist.XML.XMLFactory;
-import java.util.Observable;
 
 /**
  * Cette classe represente la fabrique abstraite de DAO(Data Access Object)
@@ -19,7 +18,7 @@ import java.util.Observable;
  *
  * @author Quentin
  */
-public abstract class AbstractDAOFactory extends Observable {
+public abstract class AbstractDAOFactory {
 
     protected static AbstractDAOFactory fact = null;
 

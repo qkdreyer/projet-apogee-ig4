@@ -55,3 +55,4 @@ drop view VO_UE;
 drop sequence utilseq;
 
 purge recyclebin;
+exit
