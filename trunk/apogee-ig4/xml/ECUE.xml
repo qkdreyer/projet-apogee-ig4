@@ -365,5 +365,21 @@
       </Etudiant>
     </listeEtud>
   </ECUE>
+  <ECUE>
+    <codeMatiere>TEST001</codeMatiere>
+    <libelleECUE>testlibelle</libelleECUE>
+    <nbHeures>99</nbHeures>
+    <responsable>NRtest PRtest</responsable>
+    <codeUE>testCUE</codeUE>
+    <listeEtud>
+      <Etudiant>
+        <numEtudiant>99999</numEtudiant>
+        <nom>nEtud</nom>
+        <prenom>pEtud</prenom>
+        <noteSession1>0.0</noteSession1>
+        <noteSession2>0.0</noteSession2>
+      </Etudiant>
+    </listeEtud>
+  </ECUE>
 </root>
 

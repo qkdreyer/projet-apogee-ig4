@@ -84,3 +84,5 @@ add constraint fketudiant_etr foreign key(numEtudiant) references etudiant(numEt
 
 alter table etranger
 add constraint fksemestre_etr foreign key(codeSemestre) references semestre(codeSemestre);
+
+exit

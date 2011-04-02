@@ -16,7 +16,7 @@ import fr.GCAM.StudentManager.UI.GUI.GUIFactory;
  * @author PIERRE
  */
 
-public abstract class AbstractUIFactory { //TODO params
+public abstract class AbstractUIFactory {
 
     protected static AbstractUIFactory fact = null;
 
