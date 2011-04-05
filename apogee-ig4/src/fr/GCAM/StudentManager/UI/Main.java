@@ -18,11 +18,17 @@ public class Main {
             try {
                 AbstractUIFactory.getUIFactory(args[0]).getUIUtilisateur(args[1]);
             } catch (Exception ex) {
-                System.err.println("Exeception : " + ex);
+                System.err.println("Exception : " + ex);
 		ex.printStackTrace();
             }
         } else {
-            System.err.println("Arguments invalides (Format : c/g db/xml)");
+	    try {
+		//System.err.println("Arguments invalides (Format : c/g db/xml)");
+		AbstractUIFactory.getUIFactory("g").getUIUtilisateur("db");
+	    } catch (Exception ex) {
+		System.err.println("Exception : " + ex);
+		ex.printStackTrace();
+	    }
         }
     }
 }
